@@ -6,7 +6,7 @@ export default function Navi() {
     return (
         <>
             <div className="nav-container">
-            <ul className="menu">
+            <ul className="nav-menu">
                     <li><a className="nav-category" href="#">전체 카테고리</a>
                         <ul>
                             <li><a href="#" className="documents">채소</a></li>
