@@ -8,8 +8,8 @@ import EventListPage from '../Containers/EventListPage'
 import JoinPage from '../Containers/JoinPage'
 import LoginPage from '../Containers/LoginPage'
 import MainPage from '../Containers/MainPage'
-import NoticePage from '../Containers/NoticePage'
 import ProductListPage from '../Containers/ProductListPage'
+import CS from '../CustomerServiceComponents/index'
 
 
 export default function() {
@@ -25,6 +25,7 @@ export default function() {
                         <Route path="/join" component={JoinPage}/>
                         <Route path="/login" component={LoginPage}/>
                         <Route path="/shop" component={ProductListPage}/>
+                        <Route path="/customer" component={CS}/>
                         <Route component={MainPage}/>
                     </Switch>
                 <Footer/>
