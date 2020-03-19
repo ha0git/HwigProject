@@ -3,7 +3,7 @@ import React from 'react'
 export default function ProductList() {
     return (
         <>
-            ddd
+            제품리스트 데이터
         </>
     )
 }
