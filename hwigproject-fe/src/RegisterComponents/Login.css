@@ -10,6 +10,7 @@
     width:340px;
     font-size: 24px;
     margin:0px auto;
+    color: #333333;
 }
 
 .login-input-box{
@@ -62,4 +63,11 @@
 .login-text-link:hover{
     color: #ce6266;
     text-decoration: none;
+}
+
+.login-text-link-position{
+    margin-top: 10px !important;
+    text-align: right;
+    margin: 0px auto;
+    width:340px;
 }

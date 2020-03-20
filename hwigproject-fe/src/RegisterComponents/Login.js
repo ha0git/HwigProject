@@ -48,9 +48,9 @@ export default function Login(props) {
                                 onChange={(e)=>setPw(e.target.value)}
                                 value={getPw}
                             />
-                        <br />
+                        <div className="login-text-link-position">
                             <Link className="login-text-link" to="/find_id">아이디 찾기</Link> | <Link className="login-text-link" to="/find_pw">비밀번호 찾기</Link>
-                        <br />
+                        </div>
                             <Button className="login-button" type="submit">로그인</Button>
                         <br />
                             <Link to="/join">
