@@ -5,7 +5,6 @@ export default function BodyUp() {
     return (
         <>
             <div>
-                바디업
                 <div className="main_product_list">
                     <div className="main_goods_tit_d"><h3 className="main_goods_tit">이 상품 어때요?</h3></div>
                     <div className="main_list_goods">
@@ -51,7 +50,7 @@ export default function BodyUp() {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="main_product_list">
                     <div className="main_goods_tit_d"><a href="#"><h3 className="main_goods_tit">알뜰 상품</h3></a></div>
                     <div className="main_list_goods">
