@@ -5,7 +5,7 @@
 .hd_content{
     margin:0 auto;
     width:1050px;
-    height:164px;
+    height:142px;
 }
 .hd_up{
     padding:3px 0;
@@ -15,7 +15,7 @@
 .hd_event{
     display: inline-block;
     padding:2px 0;
-    width:175px;
+    width:180px;
     height:22px;
     font-size: 11px;
     font-weight: 500;
@@ -24,6 +24,7 @@
     border:1px solid black;
     border-radius: 10px;
     border-color: #999;
+    margin-left: 40px;
 }
 .hd_event > p > span{
     color: #ed7176;
@@ -32,15 +33,17 @@
 .hd_menu{
     float:right;
     clear: both;
+    margin-right: 20px;
 }
 .hd_menu > li{
-    float:left;  
+    float:left; 
+    padding-bottom: 5px;
 }
 .hd_menu > li > a{
     color:#333;
     font-size: 12px;
     font-weight: 600;
-    padding:0 15px;
+    padding: 0 15px;
     border-right:1px solid #d8d8d8;
 }
 .hd_menu > li:first-child > a{
@@ -49,21 +52,27 @@
 .hd_menu > li:last-child > a{
     border:none;
 }
+.hd_menu > li > a > img{
+    padding:9px 0;
+}
 .hd_downMenu{
     display:none;
-    width:90px;
+    width:110px;
     height:auto;
-    border:1px solid #d8d8d8;
+    border:1px solid #d9d9d9;
     position:absolute;
+    top:33px;
     z-index:200;
 }
 .hd_downMenu > li{
     padding:1px 0;
+    padding-left:10px;
     margin:2px 0;
 }
 .hd_downMenu > li > a{
     color:#333;
     font-size: 13px;
+    font-weight: 600;
 }
 .hd_downMenu > li:hover > a{
     text-decoration: none;
@@ -75,19 +84,28 @@
     text-align: center;
 }
 .hd_logo > a > img{
-    width:100px;
-    height:70px;
+    width:130px;
+    height:90px;
 }
 .floating{
     position: fixed; 
     right: 50%; 
-    top: 180px; 
-    margin-right: -720px; 
+    top: 200px; 
+    margin-right: -675px; 
     text-align:center; 
-    width: 120px; 
+    width: 90px; 
+    margin-bottom:10px;
+    background-color: white;
 }
-.floating div:nth-child(1){ 
-    border:2px solid #ff3535; 
-    border-radius: 8px; } 
-    .floating div:nth-child(2){ border:2px solid #ff3535; border-radius: 8px; } .floating div:nth-child(3){ 
-    border:2px solid #ff3535; border-radius: 8px; }
+.floating div{ 
+    border:1px solid #eee; 
+    color:#666;
+    font-size:12px;
+    padding:10px 0;
+    font-weight: 600;
+} 
+.floating > div > a > img{
+    width:80px;
+    height:120px;
+}
+
