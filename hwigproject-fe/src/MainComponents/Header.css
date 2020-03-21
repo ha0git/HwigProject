@@ -5,7 +5,7 @@
 .hd_content{
     margin:0 auto;
     width:1050px;
-    height:164px;
+    height:142px;
 }
 .hd_up{
     padding:3px 0;
@@ -24,6 +24,7 @@
     border:1px solid black;
     border-radius: 10px;
     border-color: #999;
+    margin-left: 40px;
 }
 .hd_event > p > span{
     color: #ed7176;
@@ -32,6 +33,7 @@
 .hd_menu{
     float:right;
     clear: both;
+    margin-right: 20px;
 }
 .hd_menu > li{
     float:left; 
@@ -88,15 +90,16 @@
 .floating{
     position: fixed; 
     right: 50%; 
-    top: 180px; 
-    margin-right: -720px; 
+    top: 200px; 
+    margin-right: -675px; 
     text-align:center; 
     width: 90px; 
     margin-bottom:10px;
+    background-color: white;
 }
 .floating div{ 
-    border:1px solid #d8d8d8; 
-    color:#333;
+    border:1px solid #eee; 
+    color:#666;
     font-size:12px;
     padding:10px 0;
     font-weight: 600;

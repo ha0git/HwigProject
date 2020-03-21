@@ -10,6 +10,8 @@ import LoginPage from '../Containers/LoginPage'
 import MainPage from '../Containers/MainPage'
 import ProductListPage from '../Containers/ProductListPage'
 import CS from '../CustomerServiceComponents/index'
+import FindIdInfoPage from '../Containers/FindIdInfoPage'
+import FindPwInfoPage from '../Containers/FindPwInfoPage'
 
 
 export default function() {
@@ -26,6 +28,8 @@ export default function() {
                         <Route path="/login" component={LoginPage}/>
                         <Route path="/shop" component={ProductListPage}/>
                         <Route path="/customer" component={CS}/>
+                        <Route path="/find_id" component={FindIdInfoPage}/>
+                        <Route path="/find_pw" component={FindPwInfoPage}/>
                         <Route component={MainPage}/>
                     </Switch>
                 <Footer/>
