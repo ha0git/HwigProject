@@ -88,12 +88,13 @@
     height:90px;
 }
 .floating{
+    z-index: 10000;
     position: fixed; 
     right: 50%; 
-    top: 200px; 
+    top: 470px; 
     margin-right: -675px; 
     text-align:center; 
-    width: 90px; 
+    width: 80px; 
     margin-bottom:10px;
     background-color: white;
 }
@@ -105,7 +106,7 @@
     font-weight: 600;
 } 
 .floating > div > a > img{
-    width:80px;
-    height:120px;
+    width:70px;
+    height:90px;
 }
 
