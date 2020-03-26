@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import './Body.css';
+import save10 from '../images/10.png';
+import save30 from '../images/30.png';
+import save50 from '../images/50.png';
 import Carousel from 'react-bootstrap/Carousel'
 export default function BodyUp() {
 
@@ -7,7 +10,7 @@ export default function BodyUp() {
         <>
             <div>
                 <div className="crsq">
-                <Carousel>
+                <Carousel fade="true" interval="3000">
                 <Carousel.Item>
                     <div className="crs">
                     <img
@@ -51,7 +54,7 @@ export default function BodyUp() {
                                 </li>
                                 <li className="main_goods_li">
                                     <a href="#">
-                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_15.png" className="saleico"/>
+                                        <img src={save10} className="saleico"/>
                                         <div className="main_thumb_img">
                                         <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div>
                                     </a>
@@ -76,7 +79,7 @@ export default function BodyUp() {
                                 </li>
                                 <li className="main_goods_li">
                                     <a href="#">
-                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_15.png" className="saleico"/>
+                                        <img src={save10} className="saleico"/>
                                         <div className="main_thumb_img">
                                         <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div>
                                     </a>
@@ -148,7 +151,7 @@ export default function BodyUp() {
                             <ul className="main_goods_ul">
                                 <li className="main_goods_li">
                                     <a href="#">
-                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_15.png" className="saleico"/><div className="main_thumb_img">
+                                        <img src={save50} className="saleico"/><div className="main_thumb_img">
                                         <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
@@ -160,7 +163,7 @@ export default function BodyUp() {
                                 </li>
                                 <li className="main_goods_li">
                                     <a href="#">
-                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_20.png" className="saleico"/><div className="main_thumb_img">
+                                        <img src={save50} className="saleico"/><div className="main_thumb_img">
                                         <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
@@ -172,7 +175,7 @@ export default function BodyUp() {
                                 </li>
                                 <li className="main_goods_li">
                                     <a href="#">
-                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_15.png" className="saleico"/><div className="main_thumb_img">
+                                        <img src={save50} className="saleico"/><div className="main_thumb_img">
                                         <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
@@ -184,7 +187,7 @@ export default function BodyUp() {
                                 </li>
                                 <li className="main_goods_li">
                                     <a href="#">
-                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_30.png" className="saleico"/><div className="main_thumb_img">
+                                        <img src={save50} className="saleico"/><div className="main_thumb_img">
                                         <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">

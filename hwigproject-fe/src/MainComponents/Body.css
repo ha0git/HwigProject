@@ -17,6 +17,7 @@
     font-weight: bold;
     position: relative;
     padding-top: 50px;
+    color: #444;
 }
 .main_goods_tit_d {
     width: 1050px;
@@ -106,9 +107,9 @@
     font-weight: bold;
 }
 .event_name a, .goods_name a {
-    color: #333;
+    color: #444;
 }
-.main_product_list span, .main_product_list_sale span, .main_event span, .main_product_listmenu span{
+.main_product_list span, .main_product_list_sale span, .main_event span, .main_product_listmenu span, .main_product_list_today span{
     display: block;
 }
 
@@ -131,8 +132,8 @@
     text-align: center;
     font-size: 16px;
 }
-.main_product_list a:hover, .main_product_list_sale a:hover, .main_event a:hover, .main_product_listmenu a:hover{
-    color: #ed7176;
+.main_product_list a:hover, .main_product_list_sale a:hover, .main_event a:hover, .main_product_listmenu a:hover, .main_product_list_today a:hover{
+    color: #ff7276;
     font-weight: bold;
     
 }
@@ -143,12 +144,11 @@
 }
 .saleico {
     z-index: 1;
-    transition: all 0.3s ease-in-out;
     position: absolute;
     left: 0;
     top: 0;
-    width: 62px;
-    height: 54px;
+    width: 55px;
+    height: 55px;
 }
 .crs img{
     height: 370px;
@@ -177,6 +177,12 @@
     border-radius: 30px;
     margin-right: 20px;
     background-color: #eee;
+
+    -webkit-transition: background-color .1s ease-in-out;
+	-moz-transition: background-color .1s ease-in-out;
+	-o-transition: background-color .1s ease-in-out;
+	-ms-transition: background-color .1s ease-in-out;
+	transition: background-color .1s ease-in-out;
 }
 .main_goods_listmenu {
     padding-top: 23px;
@@ -186,7 +192,7 @@
 }
 .main_goods_listmenu a:hover{
     color: white;
-    background-color: #ed7176;
+    background-color: #ff7276;
 }
 .bottombanner {
     margin: auto;

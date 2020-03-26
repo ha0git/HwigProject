@@ -18,7 +18,7 @@ import FindPwInfoPage from '../Containers/FindPwInfoPage'
 export default function () {
     return (
         <>
-            <Router>
+            <Router className="router">
                 <Header />
                 <Navi />
                 <Switch>

@@ -95,7 +95,7 @@
     line-height:20px;
 }
 .ft_comlist > a{
-    color: #ed7176;
+    color: #ff7276;
 }
 .ft_comlist > span ::after{
     content: "l";

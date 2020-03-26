@@ -27,7 +27,7 @@
     margin-left: 40px;
 }
 .hd_event > p > span{
-    color: #ed7176;
+    color: #ff7276;
     font-weight: 600;
 }
 .hd_menu{
@@ -47,7 +47,7 @@
     border-right:1px solid #d8d8d8;
 }
 .hd_menu > li:first-child > a{
-    color: #ed7176;
+    color: #ff7276;
 }
 .hd_menu > li:last-child > a{
     border:none;
