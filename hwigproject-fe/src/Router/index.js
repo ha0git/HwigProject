@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from '../MainComponents/Header'
 import Navi from '../MainComponents/Navi'
@@ -13,6 +14,7 @@ import ProductListPage from '../Containers/ProductListPage'
 import CS from '../CustomerServiceComponents/index'
 import FindIdInfoPage from '../Containers/FindIdInfoPage'
 import FindPwInfoPage from '../Containers/FindPwInfoPage'
+import MyPage from '../MypageComponents/Index'
 
 
 export default function () {
@@ -21,6 +23,7 @@ export default function () {
             <Router className="router">
                 <Header />
                 <Navi />
+                <div className="top-container">
                 <Switch>
                     <Route exact path="/" component={MainPage} />
                     <Route path="/search" component={SearchPage} />
@@ -32,9 +35,11 @@ export default function () {
                     <Route path="/customer" component={CS} />
                     <Route path="/find_id" component={FindIdInfoPage} />
                     <Route path="/find_pw" component={FindPwInfoPage} />
+                    <Route path="/mypage" component={MyPage}/>
                     <Route component={MainPage} />
                 </Switch>
                 <Footer />
+                </div>
             </Router>
         </>
     )

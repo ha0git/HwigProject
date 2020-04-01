@@ -1,0 +1,102 @@
+.mypage-userinfo-container{
+    background-color: #f7f7f7;
+    height: 276px;
+    padding-top: 50px;
+}
+
+.mypage-userinfo-in-container{
+    background-color: #f7f7f7;
+    width: 1050px;
+    height: 176px;
+    margin: 0px auto;
+}
+
+.mypage-userinfo-grade, .mypage-userinfo-reserves{
+    height:176px;
+    background-color: white;  
+    position: relative;
+    float:left;
+    padding:30px;
+    margin-left: 40px;
+}
+
+.mypage-userinfo-grade{
+    width:444px;
+}
+
+.mypage-userinfo-grade-container{
+    border:1px solid #949295;
+    width: 62px;
+    height: 61px;
+    border-radius: 3px;
+    text-align: center;
+    float: left;
+}
+
+.mypage-userinfo-grade-font{
+    margin-top: 19px;
+    margin-left: 17px;
+    font-size:16px;
+    float: left;
+}
+
+.mypage-userinfo-namendetail-container{
+    float:left;
+    color: #3d3d3d;
+    margin-left: 20px;
+}
+
+.mypage-userinfo-namendetail-name{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 1000px;
+}
+
+.mypage-userinfo-namendetail-detail{
+    margin-top: 9px;
+    font-size: 14px;
+}
+
+.mypage-userinfo-buttons-container{
+    width: 414px;
+    height:52px;
+    margin-top: 90px;
+    margin-left:120px;
+}
+
+.mypage-userinfo-button{
+    font-size: 14px;
+    background-color: #f4f4f4;
+    margin-left: 10px;
+    padding:3px 15px 3px 15px;
+    border-radius: 15px;
+    color: #333333;
+}
+
+
+.mypage-userinfo-reserves{
+    width:198px;
+    margin-left: 4px;
+}
+
+.mypage-userinfo-reserves-title{
+    font-size: 14px;
+    color:#333333;
+    font-weight: 700;
+}
+
+.mypage-userinfo-reserves-price{
+    font-size: 20px;
+    font-weight: bold;
+    color: #ed7176;
+    margin: 25px 0px 15px 0px;
+}
+
+.mypage-userinfo-reserves-price > span{
+    font-weight: 100;
+    color: #adadad;
+}
+
+.mypage-userinfo-reserves-drop{
+    font-size: 12px;
+}

@@ -1,0 +1,41 @@
+.mypage-navi-design{
+    position: relative;
+    float: left;
+    padding-top: 63px;
+    width: 225px;
+    /* border: 1px solid black; */
+    margin-bottom: 100px;
+}
+
+.mypage-navi-title{
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+
+.mypage-navi-button{
+    width: 198px;
+    height: 50px;
+    padding-top: 15px;
+    border: 1px solid #dcdbde;
+    list-style: none;
+    text-align: center;
+    font-size: 14px;
+    border-bottom:none;
+    color:#7f7f7f;
+}
+
+#mypage-navi-button{
+    border-bottom: 1px solid #dcdbde;
+}
+
+
+.mypage-navi-button:hover, .mypage-navi:hover{
+    text-decoration: none;
+    color: #ed7176;
+    background-color: rgb(232, 232, 232);
+}
+
+
