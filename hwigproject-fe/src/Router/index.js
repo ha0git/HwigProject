@@ -7,6 +7,7 @@ import Footer from '../MainComponents/Footer'
 import SearchPage from '../Containers/SearchPage'
 import CartPage from '../Containers/CartPage'
 import EventListPage from '../Containers/EventListPage'
+import EventPage from '../Containers/EventPage'
 import JoinPage from '../Containers/JoinPage'
 import LoginPage from '../Containers/LoginPage'
 import MainPage from '../Containers/MainPage'
@@ -27,7 +28,8 @@ export default function () {
                     <Route exact path="/" component={MainPage} />
                     <Route path="/search" component={SearchPage} />
                     <Route path="/cart" component={CartPage} />
-                    <Route path="/event" component={EventListPage} />
+                    <Route path="/eventlist" component={EventListPage} />
+                    <Route path="/event" component={EventPage} />
                     <Route path="/join" component={JoinPage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/shop" component={ProductListPage} />

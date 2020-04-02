@@ -3,6 +3,8 @@ import './Body.css';
 import save10 from '../images/10.png';
 import save30 from '../images/30.png';
 import save50 from '../images/50.png';
+import jangbanner from "../images/banner/jangbanner.png";
+import paperbanner from "../images/banner/paperbanner.png";
 import Carousel from 'react-bootstrap/Carousel'
 export default function BodyUp() {
 
@@ -13,24 +15,18 @@ export default function BodyUp() {
                 <Carousel fade="true" interval="3000">
                 <Carousel.Item>
                     <div className="crs">
+                    <a href="/event">
                     <img
-                    src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1584420879.jpg"
-                    alt="First slide"
-                    />
-                    </div>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <div className="crs">
-                    <img
-                    src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1583113323.jpg"
+                    src={jangbanner}
                     alt="Third slide"
                     />
+                    </a>
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
                     <div className="crs">
                     <img
-                    src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1584511887.jpg"
+                    src={paperbanner}
                     alt="Third slide"
                     />
                     </div>
@@ -104,12 +100,12 @@ export default function BodyUp() {
                                 <li className="main_event_li">
                                     <a href="#">
                                     <div className="main_thumb_event_img">
-                                        <img className="imgscale1" src="https://img-cf.kurly.com/shop/data/main/3/pc_img_1584607565.jpg" />
+                                        <img className="imgscale1" src="https://img-cf.kurly.com/shop/data/main/3/pc_img_1585211936.jpg" />
                                     </div>
                                     </a>
                                     <div className="info_event">
                                         <span className="event_name">
-                                            <a href="#" >텐더밸리 최대 40% 할인</a>
+                                            <a href="#" >냉동식품 최대 40% 할인</a>
                                         </span><p />
                                         <span className="eventsubtext">색다른 식사가 필요할 때</span>
                                     </div>
@@ -117,12 +113,12 @@ export default function BodyUp() {
                                 <li className="main_event_li">
                                     <a href="#">
                                     <div className="main_thumb_event_img">
-                                        <img className="imgscale1" src="https://img-cf.kurly.com/shop/data/main/3/pc_img_1584607565.jpg" />
+                                        <img className="imgscale1" src="https://img-cf.kurly.com/shop/data/main/3/pc_img_1585211936.jpg" />
                                     </div>
                                     </a>
                                     <div className="info_event">
                                         <span className="event_name">
-                                            <a href="#">텐더밸리 최대 40% 할인</a>
+                                            <a href="#">냉동식품 최대 40% 할인</a>
                                         </span><p />
                                         <span className="eventsubtext">색다른 식사가 필요할 때</span>
                                     </div>
@@ -130,12 +126,12 @@ export default function BodyUp() {
                                 <li className="main_event_li">
                                     <a href="#">
                                     <div className="main_thumb_event_img">
-                                        <img className="imgscale1" src="https://img-cf.kurly.com/shop/data/main/3/pc_img_1584607565.jpg" />
+                                        <img className="imgscale1" src="https://img-cf.kurly.com/shop/data/main/3/pc_img_1585211936.jpg" />
                                     </div>
                                     </a>
                                     <div className="info_event">
                                         <span className="event_name">
-                                            <a href="#">텐더밸리 최대 40% 할인</a>
+                                            <a href="#">냉동식품 최대 40% 할인</a>
                                         </span><p />
                                         <span className="eventsubtext">색다른 식사가 필요할 때</span>
                                     </div>
