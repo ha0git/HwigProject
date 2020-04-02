@@ -11,7 +11,8 @@
     margin: 0px auto;
 }
 
-.mypage-userinfo-grade, .mypage-userinfo-reserves{
+.mypage-userinfo-grade, 
+.mypage-userinfo-reserves{
     height:176px;
     background-color: white;  
     position: relative;

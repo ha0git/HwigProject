@@ -13,20 +13,20 @@ import MyPageConfirmPw from './MyPageConfirmPw'
 export default function() {
     return (
         <>
-        <div className="mypage-container">
+        
             <Router>
-                
                     <MyPageInfo/>
+                    <div className="mypage-container">
                     <MyPageNavi/>
-                        <Switch>
+                    <Switch>
                             <Route path="/mypage/order" component={MyPageOrderList}/>
                             <Route path="/mypage/review" component={MyPageReviewList}/>
                             <Route path="/mypage/confpw" component={MyPageConfirmPw}/>
-                            <Route path="/mypage/userinfo" component={MyPageModifyUserInfo}/>
+                            <Route path="/mypage/modify" component={MyPageModifyUserInfo}/>
                             <Route component={MyPageOrderList}/>
-                        </Switch>
+                    </Switch>
+                    </div>
             </Router>
-        </div>
         </>
     )
 }

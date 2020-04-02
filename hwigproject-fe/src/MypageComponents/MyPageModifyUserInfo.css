@@ -1,0 +1,110 @@
+.mypage-modify-container{
+    /* border: 1px solid black; */
+    margin-top: 70px;
+    width: 820px;
+    float: left;
+}
+
+.mypage-modify-title{
+    font-size: 24px;
+    color:#333333;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.mypage-modify-subtitle,  
+.mypage-modify-title2{
+    position: relative;
+    font-size: 20px;
+    color: #333333;
+    font-weight: 500;
+    top:10px;
+}
+
+.mypage-modify-subtitle2{
+    position: relative;
+    font-size: 12px;
+    text-align: right;
+    bottom:10px;
+}
+
+.mypage-modify-line{
+    border-bottom: 2px solid #ed7176;
+}
+
+.mypage-modify-title2{
+    margin-top:15px;
+    margin-bottom: 18px;
+}
+
+
+.mypage-modigy-form-container{
+    padding-left: 20px;
+}
+
+.mypage-modify-input{
+    font-size: 15px;
+    color: #333333;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.mypage-modify-input-text-title{
+    width:150px;
+    padding-left: 20px;
+    padding-top: 30px;
+    
+}
+
+.mypage-modify-inputbox{
+    font-size: 16px;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.mypage-modify-checkbox-container{
+    font-size: 14px;
+    color: #333333;
+    padding:15px;
+}
+
+.mypage-modify-checkbox-object{
+    margin: 20px 0px 10px 0px;
+}
+
+.mypage-modify-checkbox-object2{
+    margin:40px;
+}
+
+.mypage-modify-checkbox-design{
+    margin-right: 20px;
+    width:20px;
+    height:20px;
+}
+
+
+.mypage-modify-form-submit1, 
+.mypage-modify-form-submit2{
+    width: 260px;
+    height:54px;
+    border: 1px solid #ed7176;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 70px 0px 20px 10px;
+}
+
+.mypage-modify-form-submit-buttons{
+    text-align: center;
+}
+
+.mypage-modify-form-submit1{
+    color: #ed7176;
+}
+
+.mypage-modify-form-submit2{
+    color: white;
+    background-color: #ed7176;
+}
+

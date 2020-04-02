@@ -23,7 +23,6 @@ export default function () {
             <Router className="router">
                 <Header />
                 <Navi />
-                <div className="top-container">
                 <Switch>
                     <Route exact path="/" component={MainPage} />
                     <Route path="/search" component={SearchPage} />
@@ -38,6 +37,7 @@ export default function () {
                     <Route path="/mypage" component={MyPage}/>
                     <Route component={MainPage} />
                 </Switch>
+                <div className="top-container">
                 <Footer />
                 </div>
             </Router>
