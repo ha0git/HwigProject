@@ -37,6 +37,7 @@ export default function () {
                     <Route path="/mypage" component={MyPage}/>
                     <Route component={MainPage} />
                 </Switch>
+                
                 <div className="top-container">
                 <Footer />
                 </div>

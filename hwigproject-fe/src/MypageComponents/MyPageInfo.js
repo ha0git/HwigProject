@@ -2,6 +2,7 @@ import React from 'react'
 import './MyPageInfo.css'
 
 export default function MyPageInfo() {
+    
     return (
         <div className="mypage-userinfo-container">
             <div className="mypage-userinfo-in-container">

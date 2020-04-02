@@ -5,6 +5,7 @@ import './MyPageNavi.css'
 export default function MyPageNavi() {
     return (
         <>
+        
             <div className="mypage-navi-design">
                 <ul>
                     <h3 className="mypage-navi-title">고객센터</h3>

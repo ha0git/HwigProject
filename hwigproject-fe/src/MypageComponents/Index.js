@@ -13,7 +13,6 @@ import MyPageConfirmPw from './MyPageConfirmPw'
 export default function() {
     return (
         <>
-        
             <Router>
                     <MyPageInfo/>
                     <div className="mypage-container">

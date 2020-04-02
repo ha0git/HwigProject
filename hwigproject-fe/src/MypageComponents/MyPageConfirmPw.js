@@ -3,6 +3,7 @@ import './MyPageConfirmPw.css'
 
 export default function MyPageConfirmPw() {
     return (
+        
         <div className="mypage-confirm-container">
             <div className="mypage-confirm-title">개인정보 수정</div>
                 <div className="mypage-confirm-line"></div>

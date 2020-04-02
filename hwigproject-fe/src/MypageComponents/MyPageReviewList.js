@@ -22,6 +22,7 @@ export default function ReviewList() {
                     </Nav.Item> 
                     </Nav>
                     <div>
+                    
             <table className="mypage-review-table-container">
                             <tr>
                                 <td className="mypage-review-table-item" colspan="5"><br/><br/>작성가능한 후기 내역이 없습니다.<br/><br/><br/></td>

@@ -1,6 +1,5 @@
 import React from 'react'
 import './MyPageModifyUserInfo.css'
-import img_event_check from "../images/img_event_check.webp"
 
 export default function ModifyUserInfo() {
     return (
