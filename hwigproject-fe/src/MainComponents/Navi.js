@@ -11,11 +11,11 @@ export default function Navi() {
                 <ul className="nav-menu">
                     <li><a className="nav-category" href="#"><img src={list}></img>전체 카테고리</a>
                         <ul>
-                            <li><a href="#" className="documents">채소</a></li>
-                            <li><a href="#" className="messages">과일 · 견과 · 쌀</a></li>
-                            <li><a href="#" className="signout">수산 · 해산 · 건어물</a></li>
-                            <li><a href="#" className="signout">정육 · 계란</a></li>
-                            <li><a href="#" className="signout">국 · 반찬 · 메인요리</a></li>
+                            <li><a href="#" className="nav_list">과일 · 견과 · 쌀</a></li>
+                            <li><a href="#" className="nav_list">채소</a></li>
+                            <li><a href="#" className="nav_list">수산 · 해산 · 건어물</a></li>
+                            <li><a href="#" className="nav_list">정육 · 계란</a></li>
+                            <li><a href="#" className="nav_list">국 · 반찬 · 메인요리</a></li>
                         </ul>
                     </li>
                     <li><a className="nav-items" href="#">신상품</a></li>

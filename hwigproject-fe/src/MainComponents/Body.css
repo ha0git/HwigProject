@@ -1,3 +1,22 @@
+
+@media ( max-width: 1440px ) {
+    .crs img{
+        height: 370px;
+        width: auto;
+        margin-left: -270px;
+    }
+    .crs {
+        overflow: hidden;
+    }
+  }
+@media ( min-width: 1441px ) {
+    .crs img{
+        width: 100%;
+    }
+    .crs {
+        width: 100%;
+    }
+  }
 .main_list_goods {
     /* background-color:red; */
     height: 450px;
@@ -149,16 +168,6 @@
     top: 0;
     width: 55px;
     height: 55px;
-}
-.crs img{
-    height: 370px;
-    width: auto;
-    margin-left: -230px;
-}
-.crs {
-    width: 100%;
-    height: 370px;
-    overflow: "hidden";
 }
 .main_goods_tit_d_menu{
     height: 200px;

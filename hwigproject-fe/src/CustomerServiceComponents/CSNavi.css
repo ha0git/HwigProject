@@ -1,0 +1,45 @@
+.cs_navi{
+    width:100%;
+    height:auto;
+    position: relative;
+}
+.cs_content{
+    padding-top: 70px;
+    width:1050px;
+    height:auto;
+    margin:0 auto;
+}
+.cs_menu{
+    float:left;
+    width:200px;
+    margin-right:30px;
+}
+.cs_menu .cs_tit{
+    padding: 0 0 30px 2px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 41px;
+    color: #4a4a4a;
+}
+.cs_menu .cs_inner{
+    border: 1px solid #dcdbde;
+    border-bottom: 0 none;
+}
+.cs_menu .cs_inner li {
+    border-bottom: 1px solid #dcdbde;
+}
+.cs_menu .cs_inner li a{
+    display: block;
+    overflow: hidden;
+    padding: 16px 0 16px 19px;
+    background: #fff url(https://res.kurly.com/pc/ico/1803/ico_arrow_12x22.png) no-repeat 174px 50%;
+    background-size: 6px 10px;
+    font-size: 12px;
+    color: #666;
+    line-height: 18px;
+}
+.cs_menu .cs_inner li a:hover{
+    background: #f7f7f7 url(https://res.kurly.com/pc/ico/1803/ico_arrow_on_12x22.png) no-repeat 174px 50%;
+    background-size: 6px 10px;
+    color: #ff7276;
+}
