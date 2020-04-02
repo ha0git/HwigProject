@@ -10,7 +10,7 @@ export default function BodyUp() {
 
     return (
         <>
-            <div>
+            <div className="main">
                 <div className="crsq">
                 <Carousel fade="true" interval="3000">
                 <Carousel.Item>

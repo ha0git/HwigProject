@@ -1,27 +1,27 @@
 .i1 {
-    width: 1440px;
+    width: 100%;
 }
 .i2 {
-    width: 1050px;
+    width: 100%;
 }
 .d2 {
     padding-top: 120px;
     padding-bottom: 120px;
-    width: 1050px;
+    width: 72.91%;
     margin: auto;
 }
 .b2 {
-    width: 1440px;
+    width: 100%;
     background-color: #f4f4f4;
 }
 .d3 {
     padding-top: 70px;
     padding-bottom: 70px;
-    width: 1050px;
+    width: 72.91%;
     margin: auto;
 }
 .b3 {
-    width: 1440px;
+    width: 100%;
     background-color: #eee;
 }
 .d4 {
@@ -31,17 +31,17 @@
     margin: auto;
 }
 .b4 {
-    width: 1440px;
+    width: 100%;
     background-color: #f4f4f4;
 }
 .d5 {
     padding-top: 70px;
     padding-bottom: 70px;
-    width: 1050px;
+    width: 72.91%;
     margin: auto;
 }
 .b5 {
-    width: 1440px;
+    width: 100%;
     margin-bottom: 40px;
     background-color: #eee;
 }
