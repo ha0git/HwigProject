@@ -66,14 +66,36 @@
     color: #333333;
 }
 
+.product-text-title{
+    width: 305px;
+    height:55px;
+    font-size: 20px;
+    text-align: left;
+    margin-left:25px;
+    color: #333333;
+}
+
 .product-text-link{
     width: 305px;
     font-size: 20px;
 }
 
 .product-text-price{
-    font-size: 17px;
+    font-size: 20px;
     text-align: left;
     margin-left:25px;
     color:#ed7176;
+}
+
+
+.pagination pagination-sm{
+    width: 1050px !important;
+    margin: 0px auto;
+    margin-bottom: 500px;
+}
+.product-pagenation-container{
+    width: 1050px !important;
+    margin-left: 30rem;
+    margin-top: -1rem;
+    margin-bottom: 7rem;
 }

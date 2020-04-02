@@ -1,0 +1,29 @@
+.mypage-order-container{
+    /* border: 1px solid black; */
+    margin-top: 70px;
+    width: 820px;
+    float: left;
+}
+
+.mypage-order-title, .mypage-order-subtitle{
+    color:#333333;
+}
+
+.mypage-order-title{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.mypage-order-subtitle{
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+
+.mypage-order-table-item{
+    border-top: 2px solid #ed7176;
+    text-align: center;
+    border-bottom: 1px solid #dddfe1;
+}
+
+
