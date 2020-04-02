@@ -1,0 +1,74 @@
+.mypage-confirm-container{
+    /* border: 1px solid black; */
+    margin-top: 70px;
+    width: 820px;
+    float: left;
+}
+
+
+.mypage-confirm-title{
+    font-size: 24px;
+    color:#333333;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.mypage-confirm-line{
+    border-bottom: 2px solid #ed7176;
+}
+
+.mypage-confirm-pw-title, .mypage-confirm-pw-subtitle{
+    text-align: center;
+    color: #333333;
+}
+
+.mypage-confirm-pw-title{
+    padding: 50px 0px 10px 0px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.mypage-confirm-pw-subtitle{
+    font-size: 14px;
+}
+
+.mypage-confirm-form{
+    padding-top:40px;
+    width:820px;
+    height:198px;
+    border: 2px solid #dddddd;
+    text-align: center;
+    margin: 30px 0px 30px 0px;
+    color: #000000;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.mypage-confirm-inputbox-id, .mypage-confirm-inputbox-pw{
+    margin: 5px 0px 15px 0px;
+    width: 120px;
+    height:34px;
+    text-align: center;
+}
+
+.mypage-confirm-inputbox-id{
+    color:#ed7176;
+}
+
+.mypage-confirm-inputbox-pw{
+    border: 1px solid #514859;
+}
+
+.mypage-confirm-submit-container{
+    text-align: center;
+}
+
+.mypage-confirm-submit{
+    width:260px;
+    height:54px;
+    background-color: #ed7176;
+    font-size: 14px;
+    color: white;
+    border-radius: 3px;
+}

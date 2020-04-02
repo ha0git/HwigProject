@@ -21,9 +21,9 @@ export default function Navi() {
                     <li><a className="nav-items" href="#">신상품</a></li>
                     <li><a className="nav-items" href="#">베스트</a></li>
                     <li><a className="nav-items" href="#">알뜰쇼핑</a></li>
-                    <li><a className="nav-items" href="#">이벤트</a></li>
+                    <li><a className="nav-items" href="/eventlist">이벤트</a></li>
                     <li className="nav-search-container">
-                        <FormControl id="nav-search" type="text" placeholder="Search" className="mr-sm-2" />
+                        <FormControl id="nav-search" type="text" className="mr-sm-2" />
                         <input type="image" className="nav-btn" src={nvBtn}></input>
                     </li>
                 </ul>

@@ -1,0 +1,21 @@
+.mypage-review-container{
+    /* border: 1px solid black; */
+    margin-top: 70px;
+    width:820px;
+    float: left;
+}
+
+
+.mypage-review-title{
+    font-size: 24px;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.mypage-review-subtitle { margin-bottom: 20px;}
+.mypage-review-subtitle > p{ font-size: 12px; }
+
+.mypage-review-table-item{
+    text-align: center;
+}
