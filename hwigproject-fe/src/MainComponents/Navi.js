@@ -10,13 +10,18 @@ export default function Navi() {
             <div className="nav-container">
                 <ul className="nav-menu">
                     <li><a className="nav-category" href="#"><img src={list}></img>전체 카테고리</a>
-                        <ul>
-                            <li><a href="#" className="nav_list">과일 · 견과 · 쌀</a></li>
-                            <li><a href="#" className="nav_list">채소</a></li>
-                            <li><a href="#" className="nav_list">수산 · 해산 · 건어물</a></li>
-                            <li><a href="#" className="nav_list">정육 · 계란</a></li>
-                            <li><a href="#" className="nav_list">국 · 반찬 · 메인요리</a></li>
-                        </ul>
+                        <div>
+                            <ul> 채소·과일
+                                <li>기본채소</li>
+                                <li>국산 과일</li>
+                                <li>수입 과일</li>
+                            </ul>
+                            <ul> 수산·해산·건어물
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
                     </li>
                     <li><a className="nav-items" href="#">신상품</a></li>
                     <li><a className="nav-items" href="#">베스트</a></li>
