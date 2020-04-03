@@ -4,6 +4,7 @@ import bottombanner from '../images/bottombanner.png';
 import save10 from '../images/10.png';
 import save30 from '../images/30.png';
 import save50 from '../images/50.png';
+import vienna from '../images/product/vienna.png';
 export default function BodyDown() {
     return (
         <>
@@ -17,7 +18,7 @@ export default function BodyDown() {
                                 <li className="main_goods_li">
                                     <a href="#">
                                         <img src={save10} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -29,7 +30,7 @@ export default function BodyDown() {
                                 <li className="main_goods_li">
                                     <a href="#">
                                         <img src={save10} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -41,7 +42,7 @@ export default function BodyDown() {
                                 <li className="main_goods_li">
                                     <a href="#">
                                         <img src={save30} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -53,7 +54,7 @@ export default function BodyDown() {
                                 <li className="main_goods_li">
                                     <a href="#">
                                         <img src={save30} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -83,7 +84,7 @@ export default function BodyDown() {
                                 <li className="main_goods_li">
                                     <a href="#">
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -95,7 +96,7 @@ export default function BodyDown() {
                                     <a href="#">
                                         <img src={save50} className="saleico"/>
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div>
+                                        <img className="imgscale" src={vienna} /></div>
                                     </a>
                                     <div className="info_goods">
                                         <span className="goods_name">
@@ -107,7 +108,7 @@ export default function BodyDown() {
                                 </li>
                                 <li className="main_goods_li">
                                     <a href="#"><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -120,7 +121,7 @@ export default function BodyDown() {
                                     <a href="#">
                                         <img src={save30} className="saleico"/>
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div>
+                                        <img className="imgscale" src={vienna} /></div>
                                     </a>
                                     <div className="info_goods">
                                         <span className="goods_name">
