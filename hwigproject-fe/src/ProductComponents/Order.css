@@ -290,7 +290,7 @@
     right: 150px;
     /* top:100px;
     left:945px; */
-    width:255px;
+    width:270px;
     height: 300px;
 }
 .order-payview-container > p{
@@ -305,7 +305,7 @@
 }
 
 .order-payview-table > tr > td:first-child{
-    width:100px;
+    width:120px;
     padding-top: 20px;
     font-size: 14px;
     text-align: left;
@@ -465,7 +465,7 @@
 
 .order-pay-info > td > div > select{
     border: 1px solid #ddd;
-    width:190px;
+    width:200px;
     height:34px;
     font-size: 14px;
     margin-top: 5px;
@@ -543,4 +543,3 @@
     font-size: 12px;
     margin-top: 15px;
 }
-

@@ -3,11 +3,12 @@
     position: relative;
     margin-top: 70px;
     width: 820px;
-    float: left;
+    display:table-cell;
 }
 
 
 .mypage-modify-title{
+    margin-top: 70px;
     font-size: 24px;
     color:#333333;
     margin-bottom: 25px;
@@ -109,4 +110,3 @@
     color: white;
     background-color: #ed7176;
 }
-

@@ -1,14 +1,14 @@
 .mypage-confirm-container{
     position: relative;
     /* border: 1px solid black; */
-    margin-top: 70px;
+
     width: 820px;
-    float: left;
-    display: inline-block;
+    display: table-cell;
 }
 
 
 .mypage-confirm-title{
+    margin-top: 70px;
     font-size: 24px;
     color:#333333;
     margin-bottom: 25px;
