@@ -8,18 +8,22 @@ export default function Order() {
         /* top:100px;
     left:945px; */
     window.$ = window.jQuery = jQuery;
+
+    window.$(document).ready(function(){
     window.$(window).scroll(function(event){
-        if(window.$(window).scrollTop() > window.$("#order-action-start").offset().top) {
+        if(window.$(window).scrollTop() > 1458) {
+            // console.log(window.$(".order-action-start").offset().top)
             window.$(".order-payview-container").css("position", "fixed").css('top','100px').css('left','70%').css('right', '0px');
         }
-        else if((window.$(window).scrollTop() < window.$("#order-action-end").offset().top)) {
-            window.$(".order-payview-container").css("position", "absolute").css('top','1620px').css('left','70%').css('right', '150px');;
+        else if((window.$(window).scrollTop() < 1792)) {
+            window.$(".order-payview-container").css("position", "absolute").css('top','1620px').css('left','70%').css('right', '150px');
         }
-
-if((window.$(window).scrollTop() > window.$("#order-action-end").offset().top)) {
-            window.$(".order-payview-container").css("position", "absolute").css('top','1920px').css('left','70%').css('right', '150px');;
+        if((window.$(window).scrollTop() > 1792)) {
+            // console.log(window.$(".order-action-end").offset().top)
+            window.$(".order-payview-container").css("position", "absolute").css('top','1920px').css('left','70%').css('right', '150px');
         }
         });
+    })
 
         
 
@@ -140,7 +144,7 @@ if((window.$(window).scrollTop() > window.$("#order-action-end").offset().top)) 
                                 </tr>
                                 <tr className="order-delivery-info">
                                     <td className="order-delivery-require-title" >배송 요청사항</td>
-                                    <td id="order-action-start">
+                                    <td class="order-action-start">
                                         <textarea className="order-delivery-require" type="MSG" rows="4" cols="25"/>
                                     </td>
                                 </tr>
@@ -207,7 +211,7 @@ if((window.$(window).scrollTop() > window.$("#order-action-end").offset().top)) 
                                             <input type="checkbox"/>
                                                 <span>모두사용</span>
                                         <p>보유 적립금: 0원</p>
-                                    <p id="order-action-end">*적립금 내역: 마이컬리 > 적립금</p>
+                                    <p class="order-action-end">*적립금 내역: 마이컬리 > 적립금</p>
                                 </td>
                             </tr>
                         </table>
