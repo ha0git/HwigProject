@@ -1,10 +1,5 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); 
-<<<<<<< HEAD
-div {
+* {
     font-family: 'Noto Sans KR', sans-serif !important;
-}
-=======
-.router {
-    font-family: 'Noto Sans KR', sans-serif;
-}
->>>>>>> 8bd268823e55d5d898eb9f9d1559f315c2b08b26
+} 
+
