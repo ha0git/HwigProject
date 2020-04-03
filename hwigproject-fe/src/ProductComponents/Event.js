@@ -5,7 +5,7 @@ import intro from "../images/eventpage/img_intro.png";
 import best from "../images/eventpage/img_best.png";
 import intro_noti from "../images/eventpage/img_intro_noti.png";
 import best_noti from "../images/eventpage/img_best_noti.png";
-export default function EventList() {
+export default function Event() {
     return (
         <>
             <div>
