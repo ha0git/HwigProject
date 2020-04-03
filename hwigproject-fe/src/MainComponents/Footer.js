@@ -80,9 +80,6 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="footer_link">
-
-            </div>
         </div>
     );
 };

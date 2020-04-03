@@ -1,5 +1,6 @@
 .mypage-order-container{
     /* border: 1px solid black; */
+    position: relative;
     margin-top: 70px;
     width: 820px;
     float: left;

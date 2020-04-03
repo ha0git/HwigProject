@@ -17,6 +17,7 @@ import CS from '../CustomerServiceComponents/index'
 import FindIdInfoPage from '../Containers/FindIdInfoPage'
 import FindPwInfoPage from '../Containers/FindPwInfoPage'
 import MyPage from '../MypageComponents/Index'
+import Order from '../ProductComponents/Order'
 
 
 export default function () {
@@ -39,6 +40,7 @@ export default function () {
                     <Route path="/find_id" component={FindIdInfoPage} />
                     <Route path="/find_pw" component={FindPwInfoPage} />
                     <Route path="/mypage" component={MyPage}/>
+                    <Route path="/order" component={Order}/>
                     <Route component={MainPage} />
                 </Switch>
                 
