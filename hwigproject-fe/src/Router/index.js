@@ -17,6 +17,7 @@ import FindIdInfoPage from '../Containers/FindIdInfoPage'
 import FindPwInfoPage from '../Containers/FindPwInfoPage'
 import MyPage from '../MypageComponents/Index'
 import Order from '../ProductComponents/Order'
+import JoinComplete from '../RegisterComponents/JoinComplete'
 
 
 export default function () {
@@ -37,13 +38,14 @@ export default function () {
                     <Route path="/customer" component={CS} />
                     <Route path="/find_id" component={FindIdInfoPage} />
                     <Route path="/find_pw" component={FindPwInfoPage} />
-                    <Route path="/mypage" component={MyPage}/>
-                    <Route path="/order" component={Order}/>
+                    <Route path="/mypage" component={MyPage} />
+                    <Route path="/order" component={Order} />
+                    <Route path="/joincomplete" component={JoinComplete} />
                     <Route component={MainPage} />
                 </Switch>
-                
+
                 <div className="top-container">
-                <Footer />
+                    <Footer />
                 </div>
             </Router>
         </>
