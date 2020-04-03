@@ -1,16 +1,15 @@
 .footer{
+    width:100%;
+    height:auto;
+}
+.ft_content{
     width: 1050px;
+    height:300px;
     margin:0 auto;
     margin-top:40px;
-    padding-bottom: 60px;
     font-weight: 400;
     letter-spacing: -0.2px;
-    display: inline-block;
-}
-
-.ft_content{
-    overflow: hidden;
-    padding-bottom: 24px;  
+    margin-bottom: 40px;  
     border-bottom: 1px solid #eee;
 }
 .ft_img > img{
