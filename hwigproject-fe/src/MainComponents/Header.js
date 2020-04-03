@@ -11,7 +11,7 @@ export default function Header() {
             <div className="header">
                 <div className="hd_content">
                     <div className="hd_up">
-                        <div className="hd_event"><p><Link to="./event">신규 회원가입 시 <span>15% </span>쿠폰 증정</Link></p></div>
+                        <div className="hd_event"><p><Link to="./event">장바구니 자랑하면 적립금 <span>2배</span>로!</Link></p></div>
                         <ui className="hd_menu">
                             <li><Link to="./join">회원가입</Link></li>
                             <li><Link to="./login">로그인</Link></li>
