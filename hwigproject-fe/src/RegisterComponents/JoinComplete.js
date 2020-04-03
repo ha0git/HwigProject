@@ -22,7 +22,7 @@ const JoinComplete = () => {
                             <li>ididid@HWIG.COM</li>
                         </ul>
                     </div>
-                    <form>
+                    <form className="jc_mypage">
                         <button><Link to='/mypage'>마이페이지로 이동</Link></button>
                     </form>
                 </div>

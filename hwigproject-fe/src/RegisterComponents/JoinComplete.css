@@ -2,3 +2,61 @@
     width:100%;
     height:auto;
 }
+.jc_content{
+    margin: 100px auto;
+    width:1050px;
+    height: 500px;
+    background: #f9f9f9;
+    border-top: 1.5px solid #ff7276;
+    border-bottom: 1.5px solid #ff7276;
+}
+.jc_tit{
+    text-align: center;
+    font-size:22px;
+    font-weight: 700;
+    color: #333;
+    margin:50px 0;
+}
+.jc_list{
+    margin:0 auto;
+    width:450px;
+    height:200px;
+    border-top: 1.5px solid #ff7276;
+}
+.jc_list > ul{
+    border-bottom: 1px solid #ff7276;
+    height: 70px;
+}
+.jc_list > ul >li{
+    display: inline-block;
+    height:70px;  
+    line-height: 70px;
+}
+.jc_list > ul >li:first-of-type{
+    width:150px;
+    text-align: center;
+}
+.jc_list > ul >li:last-of-type{
+    width:300px;
+    padding-left: 30px;
+}
+.jc_mypage{
+    
+    text-align: center;
+    margin-top:60px;
+    height:50px;
+}
+.jc_mypage button{
+    border: 1px solid #ff7276;
+    width:200px;
+    height:50px;
+    border-radius: 5px;
+    background: #ff7276;
+}
+.jc_mypage button a{
+    display: inline-block;
+    line-height: 48px;
+    width:200px;
+    height:50px;
+    color:white;
+}
