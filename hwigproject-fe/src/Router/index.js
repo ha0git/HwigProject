@@ -1,5 +1,5 @@
 import React from 'react'
-import './index.css'
+import './index.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from '../MainComponents/Header'
 import Navi from '../MainComponents/Navi'
@@ -12,6 +12,7 @@ import JoinPage from '../Containers/JoinPage'
 import LoginPage from '../Containers/LoginPage'
 import MainPage from '../Containers/MainPage'
 import ProductListPage from '../Containers/ProductListPage'
+import ProductPage from '../Containers/ProductPage'
 import CS from '../CustomerServiceComponents/index'
 import FindIdInfoPage from '../Containers/FindIdInfoPage'
 import FindPwInfoPage from '../Containers/FindPwInfoPage'
@@ -33,6 +34,7 @@ export default function () {
                     <Route path="/join" component={JoinPage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/shop" component={ProductListPage} />
+                    <Route path="/product" component={ProductPage} />
                     <Route path="/customer" component={CS} />
                     <Route path="/find_id" component={FindIdInfoPage} />
                     <Route path="/find_pw" component={FindPwInfoPage} />
