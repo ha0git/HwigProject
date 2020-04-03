@@ -18,11 +18,11 @@
     position: relative;
     float:left;
     padding:30px;
-    margin-left: 40px;
+    margin-left: 130px;
 }
 
 .mypage-userinfo-grade{
-    width:444px;
+    width:530px;
 }
 
 .mypage-userinfo-grade-container{
@@ -76,7 +76,7 @@
 
 
 .mypage-userinfo-reserves{
-    width:198px;
+    width:250px;
     margin-left: 4px;
 }
 
