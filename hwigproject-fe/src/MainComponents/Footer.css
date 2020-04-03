@@ -16,16 +16,19 @@
     width:1024px;
     height:160px;
 }
+.ft_cc , .ft_company{
+    float: left;
+}
 .ft_company{
     float: left;
     padding-top: 19px;
     font-size: 12px;
     color: #999;
     line-height: 20px;
-    padding-left : 10px;
+    margin-right:45px;
 }
-.ft_cc , .ft_company{
-    float: left;
+.ft_cc{
+    margin-left:45px;
 }
 .ft_cc > h2{
     padding: 29px 0 2px;
