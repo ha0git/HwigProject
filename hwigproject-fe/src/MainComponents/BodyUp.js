@@ -3,6 +3,8 @@ import './Body.css';
 import save10 from '../images/10.png';
 import save30 from '../images/30.png';
 import save50 from '../images/50.png';
+import vienna from '../images/product/vienna.png';
+import mandu from '../images/eventlist/mandu.png';
 import jangbanner from "../images/banner/jangbanner.png";
 import paperbanner from "../images/banner/paperbanner.png";
 import Carousel from 'react-bootstrap/Carousel'
@@ -40,7 +42,7 @@ export default function BodyUp() {
                             <ul className="main_goods_ul">
                                 <li className="main_goods_li">
                                     <a href="#"><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -52,7 +54,7 @@ export default function BodyUp() {
                                     <a href="#">
                                         <img src={save10} className="saleico"/>
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div>
+                                        <img className="imgscale" src={vienna} /></div>
                                     </a>
                                     <div className="info_goods">
                                         <span className="goods_name">
@@ -64,7 +66,7 @@ export default function BodyUp() {
                                 </li>
                                 <li className="main_goods_li">
                                     <a href="#"><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -77,7 +79,7 @@ export default function BodyUp() {
                                     <a href="#">
                                         <img src={save10} className="saleico"/>
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div>
+                                        <img className="imgscale" src={vienna} /></div>
                                     </a>
                                     <div className="info_goods">
                                         <span className="goods_name">
@@ -100,7 +102,7 @@ export default function BodyUp() {
                                 <li className="main_event_li">
                                     <a href="#">
                                     <div className="main_thumb_event_img">
-                                        <img className="imgscale1" src="https://img-cf.kurly.com/shop/data/main/3/pc_img_1585211936.jpg" />
+                                        <img className="imgscale1" src={mandu} />
                                     </div>
                                     </a>
                                     <div className="info_event">
@@ -113,7 +115,7 @@ export default function BodyUp() {
                                 <li className="main_event_li">
                                     <a href="#">
                                     <div className="main_thumb_event_img">
-                                        <img className="imgscale1" src="https://img-cf.kurly.com/shop/data/main/3/pc_img_1585211936.jpg" />
+                                        <img className="imgscale1" src={mandu} />
                                     </div>
                                     </a>
                                     <div className="info_event">
@@ -126,7 +128,7 @@ export default function BodyUp() {
                                 <li className="main_event_li">
                                     <a href="#">
                                     <div className="main_thumb_event_img">
-                                        <img className="imgscale1" src="https://img-cf.kurly.com/shop/data/main/3/pc_img_1585211936.jpg" />
+                                        <img className="imgscale1" src={mandu} />
                                     </div>
                                     </a>
                                     <div className="info_event">
@@ -148,7 +150,7 @@ export default function BodyUp() {
                                 <li className="main_goods_li">
                                     <a href="#">
                                         <img src={save50} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -160,7 +162,7 @@ export default function BodyUp() {
                                 <li className="main_goods_li">
                                     <a href="#">
                                         <img src={save50} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -172,7 +174,7 @@ export default function BodyUp() {
                                 <li className="main_goods_li">
                                     <a href="#">
                                         <img src={save50} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>
@@ -184,7 +186,7 @@ export default function BodyUp() {
                                 <li className="main_goods_li">
                                     <a href="#">
                                         <img src={save50} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src="https://img-cf.kurly.com/shop/data/goods/1583815961374l0.jpg" /></div></a>
+                                        <img className="imgscale" src={vienna} /></div></a>
                                     <div className="info_goods">
                                         <span className="goods_name">
                                             <a href="#">고소한 비엔나 소세지</a>

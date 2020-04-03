@@ -3,6 +3,7 @@ import { FormControl } from 'react-bootstrap'
 import './Navi.css'
 import list from "../images/list.svg"
 import nvBtn from "../images/nvBtn.webp"
+import bg from "../images/bg_1x9.webp"
 import { Link } from 'react-router-dom'
 
 export default function Navi() {
@@ -35,6 +36,7 @@ export default function Navi() {
                         <input type="image" className="nav-btn" src={nvBtn}></input>
                     </li>
                 </ul>
+                <img src={bg} className="bg"/>
             </div>
         </>
     )

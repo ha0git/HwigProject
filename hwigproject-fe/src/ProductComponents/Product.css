@@ -1,0 +1,31 @@
+.section_view {
+    width: 1050px;
+    height: 993px;
+    padding-top: 20px;
+    margin: auto;
+}
+.thumb {
+    width: 430px;
+    height: 553px;
+    float: left;
+}
+.thumb_img {
+    width: 430px;
+    height: 553px;
+}
+.goods_name {
+    width: 560px;
+    height: 97px;
+    float: right;
+}
+.name {
+    display: block;
+    font-size: 24px;
+    font-weight: 500 ;
+    color: #444;
+}
+.srtdesc {
+    display: block;
+    font-size: 14px;
+    padding-top: 4px;
+}
