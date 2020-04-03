@@ -20,7 +20,7 @@ export default function Order() {
         }
         if((window.$(window).scrollTop() > 1792)) {
             // console.log(window.$(".order-action-end").offset().top)
-            window.$(".order-payview-container").css("position", "absolute").css('top','1920px').css('left','70%').css('right', '150px');
+            window.$(".order-payview-container").css("position", "absolute").css('top','1780px').css('left','70%').css('right', '150px');
         }
         });
     })
@@ -252,6 +252,7 @@ export default function Order() {
                             </tr>
                         </table>
                     </div>
+                    
                     {/* 개인정보 수집/제공 */}
                     <div>
                         <div className="order-agree-title" >개인정보 수집/제공 *</div>
