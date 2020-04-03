@@ -38,7 +38,6 @@ export default function Navi() {
                 </ul>
                 <img src={bg} className="bg"/>
             </div>
-
         </>
     )
 }
