@@ -80,23 +80,23 @@
 	background: white;
 	width:500px;
 }
-.nav_sub > .submenu{
+.nav_sub > .nav_submenu{
 	float: left;	
 	width:220px;
 	margin:14px;
 }
-.nav_sub > .submenu > li > a{
+.nav_sub > .nav_submenu > li > a{
 	display: inline-block;
 	width:220px;	
 }
-.nav_sub > .submenu >li:first-of-type a{
+.nav_sub > .nav_submenu >li:first-of-type a{
 	font-weight: 700;
 	height: 55px;
 	border-bottom: 1px solid #ff7276;
 	padding: 15px;
 	font-size: 16px;
 }
-.nav_sub > .submenu >li:not(:first-of-type) a{
+.nav_sub > .nav_submenu >li:not(:first-of-type) a{
 	padding:14px 0 0 16px;
 	font-size:14px;
 	height: 50px;
