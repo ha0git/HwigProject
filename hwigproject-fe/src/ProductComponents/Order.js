@@ -10,14 +10,14 @@ export default function Order() {
     window.$ = window.jQuery = jQuery;
     window.$(window).scroll(function(event){
         if(window.$(window).scrollTop() > window.$("#order-action-start").offset().top) {
-            window.$(".order-payview-container").css("position", "fixed").css('top','100px').css('left','945px').css('right', '0px');
+            window.$(".order-payview-container").css("position", "fixed").css('top','100px').css('left','70%').css('right', '0px');
         }
         else if((window.$(window).scrollTop() < window.$("#order-action-end").offset().top)) {
-            window.$(".order-payview-container").css("position", "absolute").css('top','1620px').css('left','945px').css('right', '150px');;
+            window.$(".order-payview-container").css("position", "absolute").css('top','1620px').css('left','70%').css('right', '150px');;
         }
 
 if((window.$(window).scrollTop() > window.$("#order-action-end").offset().top)) {
-            window.$(".order-payview-container").css("position", "absolute").css('top','1920px').css('left','945px').css('right', '150px');;
+            window.$(".order-payview-container").css("position", "absolute").css('top','1920px').css('left','70%').css('right', '150px');;
         }
         });
 
@@ -118,7 +118,7 @@ if((window.$(window).scrollTop() > window.$("#order-action-end").offset().top)) 
                                 <tr className="order-delivery-info">
                                     <td>배송구분</td>
                                     <td className="order-delivery-info-detail">
-                                        <p>아래의 장소는 배송 불가 지역입니다.</p>
+                                        <p>아래의 장소는 배송 불가 지역입니다.</p>
                                         <p><span>> 배송 불가 장소</span>: 관공서/학교/병원/시장/공단 지역/산간 지역/백화점 등</p>
                                     </td>
                                 </tr>
@@ -182,7 +182,6 @@ if((window.$(window).scrollTop() > window.$("#order-action-end").offset().top)) 
                                         <td colSpan="2"><div className="order-user-line2"></div></td>
                                         <td></td>
                                     </tr>
-                                    <div className="order-user-line2"></div>
                                     <tr className="order-payview-table-total">
                                         <td>최종결제금액</td>
                                         <td>0원</td>

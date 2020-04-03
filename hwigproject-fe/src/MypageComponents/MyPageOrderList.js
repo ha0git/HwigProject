@@ -6,8 +6,8 @@ export default function OrderList() {
     return (
         <>
             <div className="mypage-order-container">
-                <span className="mypage-order-title">주문내역</span>
-                <span className="mypage-order-subtitle">지난 3년간의 주문내역 조회가 가능합니다</span>
+                <div className="mypage-order-title">주문내역<span className="mypage-order-subtitle">지난 3년간의 주문내역 조회가 가능합니다</span></div>
+                
                 <div>
                     <table className="mypage-order-table-container">
                             <tr>
@@ -33,7 +33,7 @@ export default function OrderList() {
                             <td>Table cell</td>
                             </tr> */}
                     </table>
-
+                    <div className="space"></div>
                 </div>
             </div>
         </>
