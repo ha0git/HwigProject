@@ -46,6 +46,7 @@
 }
 .srtdesc {
     display: block;
+    color: #999999;
     font-size: 14px;
     padding-top: 4px;
 }

@@ -18,20 +18,18 @@ export default function BodyUp() {
                 <Carousel fade="true" interval="3000">
                 <Carousel.Item>
                     <div className="crs">
-                    <Link to="./event">
                     <img
-                    src={jangbanner}
-                    alt="Third slide"
+                    src={paperbanner}
                     />
-                    </Link>
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
                     <div className="crs">
+                    <Link to="./event">
                     <img
-                    src={paperbanner}
-                    alt="Third slide"
+                    src={jangbanner}
                     />
+                    </Link>
                     </div>
                 </Carousel.Item>
                 </Carousel>
