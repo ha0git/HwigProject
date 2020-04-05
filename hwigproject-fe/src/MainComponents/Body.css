@@ -107,7 +107,6 @@
     width: 249px;
     height: 320px;
     overflow: hidden;
-    
 }
 
 .main_thumb_event_img {
@@ -154,7 +153,6 @@
 .main_product_list a:hover, .main_product_list_sale a:hover, .main_event a:hover, .main_product_listmenu a:hover, .main_product_list_today a:hover{
     color: #ff7276;
     font-weight: bold;
-    
 }
 .tit_a  {
     display: block;
