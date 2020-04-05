@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from "react-router-dom";
 import './Body.css';
 import save10 from '../images/10.png';
 import save30 from '../images/30.png';
@@ -17,20 +18,18 @@ export default function BodyUp() {
                 <Carousel fade="true" interval="3000">
                 <Carousel.Item>
                     <div className="crs">
-                    <a href="/event">
                     <img
-                    src={jangbanner}
-                    alt="Third slide"
+                    src={paperbanner}
                     />
-                    </a>
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
                     <div className="crs">
+                    <Link to="./event">
                     <img
-                    src={paperbanner}
-                    alt="Third slide"
+                    src={jangbanner}
                     />
+                    </Link>
                     </div>
                 </Carousel.Item>
                 </Carousel>

@@ -17,7 +17,7 @@ import CS from '../CustomerServiceComponents/index'
 import FindIdInfoPage from '../Containers/FindIdInfoPage'
 import FindPwInfoPage from '../Containers/FindPwInfoPage'
 import MyPage from '../MypageComponents/Index'
-import Order from '../ProductComponents/Order'
+import OrderPage from '../Containers/OrderPage'
 import JoinComplete from '../RegisterComponents/JoinComplete'
 
 
@@ -41,7 +41,7 @@ export default function () {
                     <Route path="/find_id" component={FindIdInfoPage} />
                     <Route path="/find_pw" component={FindPwInfoPage} />
                     <Route path="/mypage" component={MyPage} />
-                    <Route path="/order" component={Order} />
+                    <Route path="/order" component={OrderPage} />
                     <Route path="/joincomplete" component={JoinComplete} />
                     <Route component={MainPage} />
                 </Switch>
