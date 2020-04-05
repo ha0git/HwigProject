@@ -20,7 +20,7 @@ export default function ProductList(props) {
         <>
             <div className="product-list-body">
                 <div>
-                    <p className="product-title">신상품</p>
+                    <p className="product-title"></p>
                 </div>
                 <nav className="product-category-container">
                     <span>
