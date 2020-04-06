@@ -36,7 +36,7 @@ export default function Template(props) {
     return(
     <>
         <tr key={index}>
-            <td>{list.faq_id}</td>
+            <td>{index+1}</td>
             <td>{list.faq_category}</td>
             <td><a onClick={()=>handleShow(index)}>{list.faq_subject}</a></td>
         </tr>

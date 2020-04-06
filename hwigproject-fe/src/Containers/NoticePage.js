@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import {host} from './ServerAddress'
 import queryString from 'query-string'
 import Notice from '../CustomerServiceComponents/Notice'
+import Axios from 'axios'
 
 export default function NoticePage({location, history}) {
     const [articleList, setArticleList] = useState(null)
@@ -9,8 +11,14 @@ export default function NoticePage({location, history}) {
     const [size, setSize] = useState(10)
     console.log(query)
     console.log(history)
-
+    const getAxiosData = (uri)=>{
+        Axios.get(host+uri)
+        .then(res=>{
+            console.log(res.data)
+        })
+    }
     useEffect(() => {
+        // getAxiosData('/notice')
         if(query.page === undefined){
             history.push(`/customer/notice?page=${page}`)
         }

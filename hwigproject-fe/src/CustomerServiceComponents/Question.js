@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import './Question.css'
+import response from '../images/qna/response.png'
+import jQuery from "jquery";
 import { Link } from 'react-router-dom'
 import Pagination from "react-js-pagination";
 
 export default function Question(props) {
+    window.$ = window.jQuery = jQuery;
     const [activePage, setactivePage] = useState(15);
 
     const handlePageChange = (pageNumber) => {
@@ -11,23 +14,55 @@ export default function Question(props) {
         setactivePage(pageNumber)
         props.history.push(`/customer/qna?page=${pageNumber}`)
     }
-
-    console.log(props.qnaList[6].reply_content)
-
+    const handleShow = (index)=>{
+        window.$(document).ready(function(){
+            console.log('실행')
+            if(window.$(`.temp_toggle${index}`).css('display') == "none"){
+                window.$(`.temp_toggle${index}`).css('display', "")
+            }else{
+                window.$(`.temp_toggle${index}`).css('display', "none")
+            }
+            
+        })
+    }
     const getQnaList = props.qnaList;
-    console.log(getQnaList[0].qna_category)
-    const getList = getQnaList.map((list,index)=>
+    const getList = getQnaList.map((list,index)=>{
+        window.$(document).ready(function(){
+            console.log('실행')
+            window.$(`.temp_toggle${index}`).css('display', 'none')
+        })
+    return(
+    <>
         <tr key={index}>
-            <th>{list.qna_id}</th>
+            <th>{index+1}</th>
             <th>{list.qna_category}</th>
             <th>
-                <Link>{list.qna_subject}</Link>
+            <a onClick={()=>handleShow(index)}>{list.qna_subject}</a>
                 {list.reply_content && <span>[답변완료]</span>}
             </th>
             <th>{list.mem_id}</th>
             <th>{list.qna_regdate}</th>
         </tr>
-    )
+        <tr className={`temp_toggle${index}`}>
+            <td className="temp_toggle_content" colSpan="5">
+                {list.qna_content}
+            </td>
+        </tr>
+        {list.reply_content && 
+        <tr className={`temp_toggle${index}`}>
+            <td className="temp_toggle_content2" colSpan="5">
+                <div></div>
+                <div>
+                    <img src={response}/>
+                            <p>안녕하세요 휙 고객님,</p> 
+                            <p>누구보다 빠른배송! 휙입니다.</p>
+                            <br/>
+                            <p>{list.reply_content}</p>
+                </div>
+            </td>
+        </tr>}
+    </>)
+    })
 
     const showQnaist = () =>{
         let list =[];
@@ -47,7 +82,6 @@ export default function Question(props) {
 
         return list
     }
-
 
     return (
         <>
@@ -78,7 +112,7 @@ export default function Question(props) {
                         1:1 문의 내역이 존재하지 않습니다.
                     </div>}
                     <div className="qs_sitemcd">
-                        <button>글쓰기</button>
+                        <Link to="/customer/qna/board"><button>글쓰기</button></Link>
                     </div>
                     <div className="frm_pagination">
                         <Pagination

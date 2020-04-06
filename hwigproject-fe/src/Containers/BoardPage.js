@@ -1,5 +1,7 @@
 import React, {useState ,useEffect} from 'react'
 import queryString from 'query-string'
+import axios from 'axios'
+import {host} from './ServerAddress'
 import Board from '../CustomerServiceComponents/Board'
 
 export default function BoardPage({location, history}) {
@@ -9,7 +11,14 @@ export default function BoardPage({location, history}) {
     const [num, setNum] = useState(parseInt(query.no))
     console.log(query)
 
+    const getAxiosData = (uri)=>{
+        axios.get(host+uri)
+        .then(res=>{
+            console.log(res.data)
+        })
+    }
     useEffect(() => {
+        // getAxiosData('/notice_board')
         if(query.no === undefined){
             history.push(`/customer/notice?page=${page}`)
         }

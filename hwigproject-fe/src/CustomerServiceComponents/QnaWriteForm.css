@@ -70,11 +70,12 @@
 .qna-writeform-table > tr:nth-child(4) > td > input{
     width:174px;
     height:30px;
+    font-size: 12px;
     border:1px solid #e8e8e8;
     margin-left: 10px;
 }
 
-.qna-writeform-table > tr:nth-child(2) > td > button{
+.qna-writeform-table > tr:nth-child(2) > td > input[type=button]{
     width:100px;
     height:29px;
     background-color:#ed7176;
