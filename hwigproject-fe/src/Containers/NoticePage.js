@@ -6,7 +6,7 @@ import Axios from 'axios'
 
 export default function NoticePage({location, history}) {
     const [articleList, setArticleList] = useState(null)
-    const query = queryString.parse(location.search);
+    const query = queryString.parse(location.search)
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(10)
     console.log(query)
