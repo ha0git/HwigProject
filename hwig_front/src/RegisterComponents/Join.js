@@ -6,7 +6,15 @@ import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 
 window.$(document).ready(function(){
-
+ window.$("input[type=checkbox]:first").click(function(){
+   if(!window.$("input[type=checkbox]:first").attr('checked') || window.$("input[type=checkbox]:first").attr('checked') == false){
+    window.$("input[type=checkbox]").attr('checked', 'true')
+   }else{
+    window.$("input[type=checkbox]").removeAttr('checked')
+   }
+})
+    
+  
 })
 
 export default function Join(props) {
@@ -21,6 +29,10 @@ export default function Join(props) {
   const [address2, setAddress2] = useState("")
   const [mem_addr, setAddress] = useState("")
   const [mem_zipcode, setZipcode] = useState("")
+  const [isChecked1, setIsChecked1] = useState(false)
+  const [isChecked2, setIsChecked2] = useState(false)
+  const [isChecked3, setIsChecked3] = useState(false)
+  const [mem_pribacy, setIsChecked] = useState(false)
   const [redirect, setRedirect] = useState(false)
 
   const handleClose = () => setShow(false);
@@ -28,7 +40,25 @@ export default function Join(props) {
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      if(mem_addr && mem_id && mem_pw && mem_name && mem_email && mem_tel, mem_zipcode){
+      if(isChecked1 && isChecked2 && isChecked3){
+        setIsChecked(true)
+      }
+      
+      if(mem_id.length < 6){
+        alert('6자 이상의 아이디를 입력해주세요.')
+      }else if(mem_pw.length < 10){
+        alert('10자 이상의 비밀번호를 입력해주세요.')
+      }else if(mem_pw !== checkPw){
+        alert('비밀번호가 다릅니다.')
+      }else if(!mem_name){
+        alert('이름을 입력해주세요.')
+      }else if(!mem_tel){
+        alert('전화번호를 입력해주세요.')
+      }else if(!mem_addr && !mem_zipcode){
+        alert('주소를 입력해주세요.')
+      }else if(!mem_pribacy){
+        alert('이용약관에 동의해주세요.')
+      }else if(mem_addr && mem_id && mem_pw && mem_name && mem_email && mem_tel && mem_zipcode && mem_pribacy){
           setAddress(address1 + " " + address2)
           props.onSubmit({ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode});
       }
@@ -148,21 +178,21 @@ export default function Join(props) {
               <div className="agree_subCh">
                 <div className="agree_ch">
                   <label className="ch">
-                    <input type="checkbox"></input>
+                    <input type="checkbox" onChange={(e)=>setIsChecked1(e.target.checked)}></input>
                     <span></span>이용약관 <span className="text_sub">(필수)</span>
                   </label>
                   <a href="#" className="btn_essential">약관보기 ></a>
                 </div>
                 <div className="agree_ch">
                   <label className="ch">
-                    <input type="checkbox"></input>
+                    <input type="checkbox" onChange={(e)=>setIsChecked2(e.target.checked)}></input>
                     <span></span>개인정보처리방침 <span className="text_sub">(필수)</span>
                   </label>
                   <a href="#" className="btn_essential">약관보기 ></a>
                 </div>
                 <div className="agree_ch">
                   <label className="ch">
-                    <input type="checkbox"></input>
+                    <input type="checkbox" onChange={(e)=>setIsChecked3(e.target.checked)}></input>
                     <span></span>본인은 만 14세 이상입니다. <span className="text_sub">(필수)</span>
                   </label>
                 </div>
