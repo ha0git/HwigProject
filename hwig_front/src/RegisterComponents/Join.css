@@ -83,7 +83,8 @@
 .join_pwCheck{
     padding-top: 10px;
 }
-.memCols2 > a{
+
+.memCols2 > input[type=button]{
     float: none;
     display:inline-block;
     width:150px;
@@ -99,6 +100,15 @@
     text-align: center;
     cursor: pointer;
 }
+
+#join_address{
+    width: 150px !important;
+}
+
+#join_address_modal{
+    margin-top: 70px;
+}
+
 .memCols2 > input::placeholder{
     color:#999;
     font-size: 13px;
