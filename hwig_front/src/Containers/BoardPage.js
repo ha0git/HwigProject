@@ -10,7 +10,7 @@ export default function BoardPage({location, history}) {
     const [page, setPage] = useState(1)
     const [num, setNum] = useState(parseInt(query.no))
     console.log(query)
-
+    
     const getAxiosData = (uri)=>{
         axios.get(host+uri)
         .then(res=>{
@@ -22,7 +22,7 @@ export default function BoardPage({location, history}) {
         if(query.no === undefined){
             history.push(`/customer/notice?page=${page}`)
         }
-        if(num == query.no){
+        if(num !== query.no){
             setNum(parseInt(query.no))
         }
 

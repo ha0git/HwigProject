@@ -15,10 +15,12 @@ export default function NoticePage({location, history}) {
         Axios.get(host+uri)
         .then(res=>{
             console.log(res.data)
+            setArticleList(res.data)
+
         })
     }
     useEffect(() => {
-        // getAxiosData('/notice')
+        
         if(query.page === undefined){
             history.push(`/customer/notice?page=${page}`)
         }
@@ -27,6 +29,8 @@ export default function NoticePage({location, history}) {
             console.log(page)
         }
         if(!articleList){
+            // ajax 요청
+            // getAxiosData('/notice/nlist_main')
         setArticleList([
             {
                 notice_id:1,
@@ -100,7 +104,9 @@ export default function NoticePage({location, history}) {
                 notice_regdate:"2020-03-16",
                 notice_hit:334,
             },
-        ])}
+        ])
+    
+    }
     })
 
     console.log(page)
