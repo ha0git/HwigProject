@@ -1,16 +1,29 @@
 import React, {useState} from 'react'
 import './QnaWriteForm.css'
 
-export default function QnaWriteFrom() {
+export default function QnaWriteFrom(props) {
     const [qna_category, setCategory] = useState("")
     const [qna_subject, setSubject] = useState("")
     const [order_id, setOrderNum] = useState("")
-    const [orderOk, setOrderOk] = useState(false)
     const [mem_email, setEmail] = useState("dddd")
     const [mem_tel, setTel] = useState("010-1234-5678")
     const [qna_content, setContent] = useState("")
+
+
+
     const hadleSubmit = (e) => {
-        e.preventDefault();
+        if(qna_category == "none" || !qna_category){
+            alert("카테고리를 선택해 주세요.")
+        }else if(!qna_subject){
+            alert("제목을 입력해주세요.")
+        }else if(!qna_content){
+            alert("내용을 입력해주세요.")
+            props.onSubmit({ qna_category, qna_subject, order_id, mem_email, mem_tel, qna_content});
+        }
+    }
+
+    const checkOrderNum = ()=>{
+        props.checkOrderNum(order_id)
     }
 
     return (
@@ -40,7 +53,9 @@ export default function QnaWriteFrom() {
                         <tr>
                             <td>주문번호</td>
                             <td><input type="text" id="qna-writeform-check-order" value={order_id} onChange={(e)=>{setOrderNum(e.target.value)}}/></td>
-                            <td><button id="qna-writeform-check-order-button">주문조회</button></td>
+                            <td>
+                                <input type="button" id="qna-writeform-check-order-button" onClick={checkOrderNum} value="주문조회"/>
+                            </td>
                         </tr>
                         <tr>
                             <td>이메일</td>

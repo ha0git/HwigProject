@@ -124,3 +124,21 @@
     padding:5.5px 0;
     font-size: 13px;
 } */
+
+.temp_toggle_content2 {
+    padding-top: 20px;
+    border-top: 1px solid #b0aeae;
+    margin-left: 20px;
+}
+
+.temp_toggle_content2 > div {
+    padding-left: 80px;
+}
+
+
+.temp_toggle_content2 > div > p{
+    position: relative;
+    margin-left: 40px;
+    bottom: 18px
+
+}

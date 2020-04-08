@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import {host} from './ServerAddress'
+import axios from 'axios'
 import queryString from 'query-string'
 import Template from '../CustomerServiceComponents/Template'
 
@@ -7,8 +9,14 @@ export default function TemplatePage({history, location}) {
     const query = queryString.parse(location.search);
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(10)
-    
+    const getAxiosData = (api)=>{
+        axios.get(host+api)
+        .then(res=>{
+            console.log(res.data)
+        })
+    }
     useEffect(() => {
+        // getAxiosData('/temp')
         if(query.page === undefined){
             history.push(`/customer/temp?page=${page}`)
         }

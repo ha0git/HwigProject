@@ -42,7 +42,7 @@
     padding-top: 12px;
 }
 .join_board{
-    height:570px;
+    height:610px;
     border: 1px solid #f3f2f4;
     background-color: #fff;
 }
@@ -97,6 +97,7 @@
     line-height: 36px;
     vertical-align: middle;
     text-align: center;
+    cursor: pointer;
 }
 .memCols2 > input::placeholder{
     color:#999;
@@ -165,6 +166,7 @@
 input[type=checkbox]{
     width:0;
     padding:0;
+    opacity:0;
 }
 .agree_ch > .ch > span:first-of-type , .ch_emailsms > .ch > span:first-of-type{
     width: 20px;
@@ -226,4 +228,9 @@ input[type=checkbox]{
     color: #fff;
     line-height: 44px;
     letter-spacing: -0.3px;
+}
+
+
+.join_zipcode{
+    width: 130px !important;
 }
