@@ -4,21 +4,17 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from '../MainComponents/Header'
 import Navi from '../MainComponents/Navi'
 import Footer from '../MainComponents/Footer'
-import SearchPage from '../Containers/SearchPage'
-import CartPage from '../Containers/CartPage'
-import EventListPage from '../Containers/EventListPage'
-import EventPage from '../Containers/EventPage'
 import JoinPage from '../Containers/JoinPage'
 import LoginPage from '../Containers/LoginPage'
 import MainPage from '../Containers/MainPage'
-import ProductListPage from '../Containers/ProductListPage'
-import ProductPage from '../Containers/ProductPage'
 import CS from '../CustomerServiceComponents/index'
 import FindIdInfoPage from '../Containers/FindIdInfoPage'
 import FindPwInfoPage from '../Containers/FindPwInfoPage'
 import MyPage from '../MypageComponents/Index'
-import OrderPage from '../Containers/OrderPage'
 import JoinComplete from '../RegisterComponents/JoinComplete'
+import Shop from '../ProductComponents/index'
+import Event from '../EventComponents/index'
+import Order from '../OrderComponents/index';
 
 
 export default function () {
@@ -29,19 +25,15 @@ export default function () {
                 <Navi />
                 <Switch>
                     <Route exact path="/" component={MainPage} />
-                    <Route path="/search" component={SearchPage} />
-                    <Route path="/cart" component={CartPage} />
-                    <Route path="/eventlist" component={EventListPage} />
-                    <Route path="/event" component={EventPage} />
+                    <Route path="/eventlist" component={Event} />
                     <Route path="/join" component={JoinPage} />
                     <Route path="/login" component={LoginPage} />
-                    <Route path="/shop" component={ProductListPage} />
-                    <Route path="/product" component={ProductPage} />
+                    <Route path="/shop" component={Shop} />
                     <Route path="/customer" component={CS} />
                     <Route path="/find_id" component={FindIdInfoPage} />
                     <Route path="/find_pw" component={FindPwInfoPage} />
                     <Route path="/mypage" component={MyPage} />
-                    <Route path="/order" component={OrderPage} />
+                    <Route path="/order" component={Order} />
                     <Route path="/joincomplete" component={JoinComplete} />
                     <Route component={MainPage} />
                 </Switch>

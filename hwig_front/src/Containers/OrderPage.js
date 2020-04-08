@@ -1,10 +1,10 @@
 import React from 'react'
-import Order from '../ProductComponents/Order'
+import Order from '../OrderComponents/Order'
 
 export default function OrderPage() {
     return (
         <div>
-            <Order/>
+            <Order />
         </div>
     )
 }
