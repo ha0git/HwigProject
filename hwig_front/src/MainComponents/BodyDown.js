@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Body.css';
 import bottombanner from '../images/bottombanner.png';
 import save10 from '../images/10.png';
@@ -10,54 +11,54 @@ export default function BodyDown() {
         <>
             <div>
                 <div className="main_product_list_today">
-                    <div className="main_goods_tit_d"><a className="tit_a" href="#"><h3 className="main_goods_tit">오늘의 신상품</h3></a></div>
+                    <div className="main_goods_tit_d"><Link className="tit_a"><h3 className="main_goods_tit">오늘의 신상품</h3></Link></div>
                     <div className="main_list_goods">
                         <div>
                             <ul className="main_goods_ul">
-                                
+
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save10} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link>
+                                        <img alt="" src={save10} className="saleico" /><div className="main_thumb_img">
+                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save10} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link>
+                                        <img alt="" src={save10} className="saleico" /><div className="main_thumb_img">
+                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save30} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link>
+                                        <img alt="" src={save30} className="saleico" /><div className="main_thumb_img">
+                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save30} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link>
+                                        <img alt="" src={save30} className="saleico" /><div className="main_thumb_img">
+                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
@@ -71,61 +72,61 @@ export default function BodyDown() {
                     <div className="main_goods_tit_d_menu">
                         <h3 className="main_goods_tit">MD의 추천</h3>
                         <div className="main_goods_listmenu">
-                            <a href="#">채소</a>
-                            <a href="#">과일 · 견과 · 쌀</a>
-                            <a href="#">수산 · 해산 · 건어물</a>
-                            <a href="#">정육 · 계란</a>
-                            <a href="#">국 · 반찬 · 메인요리</a>
+                            <Link>채소</Link>
+                            <Link>과일 · 견과 · 쌀</Link>
+                            <Link>수산 · 해산 · 건어물</Link>
+                            <Link>정육 · 계란</Link>
+                            <Link>국 · 반찬 · 메인요리</Link>
                         </div>
                     </div>
                     <div className="main_list_goods">
                         <div>
                             <ul className="main_goods_ul">
                                 <li className="main_goods_li">
-                                    <a href="#">
+                                    <Link>
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save50} className="saleico"/>
+                                    <Link>
+                                        <img alt="" src={save50} className="saleico" />
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div>
-                                    </a>
+                                            <img alt="" className="imgscale" src={vienna} /></div>
+                                    </Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#"><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link><div className="main_thumb_img">
+                                        <img alt="" className="imgscale" src={vienna} /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
-                                        
+
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save30} className="saleico"/>
+                                    <Link>
+                                        <img alt="" src={save30} className="saleico" />
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div>
-                                    </a>
+                                            <img alt="" className="imgscale" src={vienna} /></div>
+                                    </Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
@@ -136,7 +137,7 @@ export default function BodyDown() {
                     </div>
                 </div>
                 <div className="bottombanner">
-                    <a href="#"><img className="bbimg" src={bottombanner}/></a>
+                    <Link><img alt="" className="bbimg" src={bottombanner} /></Link>
                 </div>
             </div>
         </>

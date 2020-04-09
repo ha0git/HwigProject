@@ -73,12 +73,17 @@
     display: block;
     padding: 10px;
 }
+.product_list_goods_info{
+    padding: 10px;
+}
 .product_list_goods_name{
     overflow: hidden;
     max-height: 58px;
     font-size: 20px;
     color: #333;
+    font-weight: 500;
     line-height: 29px;
+    letter-spacing: -1px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
