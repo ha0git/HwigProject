@@ -13,6 +13,10 @@ window.$(document).ready(function () {
       window.$("input[type=checkbox]").removeAttr('checked')
     }
   })
+
+
+
+
 })
 
 
@@ -37,15 +41,21 @@ export default function Join(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  window.$(document).ready(function () {
+  window.$("input[type=checkbox]").click(function () {
+    console.log(window.$("#join_check1").is(":checked") , window.$("#join_check2").is(":checked") , window.$("#join_check3").is(":checked"))
+    if(window.$("#join_check1").is(":checked") && window.$("#join_check2").is(":checked") && window.$("#join_check3").is(":checked")){
+      setIsChecked(true)
+      console.log('체크true실행')
+    }
+  })
+})
+
   const handleSubmit = (e) => {
       e.preventDefault()
-      console.log(window.$("#join_check1").is(":checked") , window.$("#join_check2").is(":checked") , window.$("#join_check3").is(":checked"))
-      if(window.$("#join_check1").is(":checked") && window.$("#join_check2").is(":checked") && window.$("#join_check3").is(":checked")){
-        setIsChecked(true)
-        console.log('체크true실행')
-      }
-      const sumAddr= address1 + " " + address2;
-      setAddress(sumAddr);
+      
+      const sumAddress= address1 + " " + address2;
+      setAddress(sumAddress);
       console.log('체크값', mem_pribacy, mem_addr)
       
       if(mem_id.length < 6){
