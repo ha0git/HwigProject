@@ -19,9 +19,11 @@ export default function NoticePage({location, history}) {
 
         })
     }
+    console.log(isNaN(query.page))
+    console.log(query.page)
     useEffect(() => {
         
-        if(query.page === undefined){
+        if(!query.page){
             history.push(`/customer/notice?page=${page}`)
         }
         if(query.page !== page){

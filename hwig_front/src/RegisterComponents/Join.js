@@ -44,7 +44,9 @@ export default function Join(props) {
         setIsChecked(true)
         console.log('체크true실행')
       }
-      console.log('체크값', mem_pribacy)
+      const sumAddr= address1 + " " + address2;
+      setAddress(sumAddr);
+      console.log('체크값', mem_pribacy, mem_addr)
       
       if(mem_id.length < 6){
         alert('6자 이상의 아이디를 입력해주세요.')
@@ -66,8 +68,8 @@ export default function Join(props) {
         alert('주소를 입력해주세요.')
       }else if(!mem_pribacy){
         alert('이용약관에 동의해주세요.')
-      }else if(mem_addr && mem_id && mem_pw && mem_name && mem_email && mem_tel && mem_zipcode && mem_pribacy){
-          setAddress(address1 + " " + address2)
+      }else{
+          
           console.log('제출 실행',{ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode})
           props.onSubmit({ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode});
       }
