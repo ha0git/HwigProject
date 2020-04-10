@@ -38,7 +38,6 @@ export default function Join(props) {
   const handleShow = () => setShow(true);
 
   const handleSubmit = (e) => {
-<<<<<<< HEAD
       e.preventDefault()
       console.log(window.$("#join_check1").is(":checked") , window.$("#join_check2").is(":checked") , window.$("#join_check3").is(":checked"))
       if(window.$("#join_check1").is(":checked") && window.$("#join_check2").is(":checked") && window.$("#join_check3").is(":checked")){
@@ -81,6 +80,8 @@ export default function Join(props) {
       setIsChecked(true)
       console.log('체크true실행')
     }
+    const sumAddr= address1 + " " + address2
+    setAddress(sumAddr)
     console.log('체크값', mem_pribacy)
 
     if (mem_id.length < 6) {
@@ -103,12 +104,11 @@ export default function Join(props) {
       alert('주소를 입력해주세요.')
     } else if (!mem_pribacy) {
       alert('이용약관에 동의해주세요.')
-    } else if (mem_addr && mem_id && mem_pw && mem_name && mem_email && mem_tel && mem_zipcode && mem_pribacy) {
+    } else {
       setAddress(address1 + " " + address2)
       console.log('제출 실행', { mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode })
       props.onSubmit({ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode });
     }
->>>>>>> 6cf80cc3b4bf63cca5e0291252dce00544fc963c
   }
 
 
