@@ -11,12 +11,12 @@ export default function EventList() {
                         <li className="event_goods_li">
 
                             <div className="event_thumb_img" >
-                                <img src="https://img-cf.kurly.com/shop/data/event/726a36c271e71fa4f4c1d811101df600.jpg" /></div>
+                                <img src="https://img-cf.kurly.com/shop/data/event/726a36c271e71fa4f4c1d811101df600.jpg" alt="" /></div>
                         </li>
                         <li className="event_goods_li">
                             <Link to="/eventlist/event">
                                 <div className="event_thumb_img" >
-                                    <img src={jangevent} /></div></Link>
+                                    <img src={jangevent} alt="" /></div></Link>
                         </li>
                     </ul>
                 </div>

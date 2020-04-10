@@ -14,13 +14,15 @@ export default function ProductList(props) {
 
     const productGoods = productList.map(product => (
         <li key={product.id}>
-            <Link><ImageMapper src={product.prd_img}></ImageMapper></Link>
-            <Link>
-                <span className="product_list_goods_name">{product.prd_name}</span>
-                <span className="product_list_goods_price">{product.prd_price}</span>
-                <span className="product_list_goods_desc">{product.prd_comment}</span>
+            <Link to={`shop/product?goodsno=${product.prd_id}`}><ImageMapper src={product.prd_img}></ImageMapper>
+                <div className="product_list_goods_info">
+                    <span className="product_list_goods_name">{product.prd_name}&nbsp;{product.prd_kg}</span>
+                    <span className="product_list_goods_price">{product.prd_price}</span>
+                    <span className="product_list_goods_desc">{product.prd_comment}</span>
+                </div>
             </Link>
         </li>
+
     ))
 
     const showPrdList = () => {
