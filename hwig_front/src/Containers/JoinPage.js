@@ -1,11 +1,19 @@
 import React, {useState} from 'react'
 import Join from '../RegisterComponents/Join'
+import axios from 'axios'
+import {host} from './ServerAddress'
 
 export default function JoinPage() {
     const [id, setId] = useState("abcde")
     const [email, setEmail] = useState("abc@abc.com")
+
+    const sendJoinData = (uri, data) => {
+        axios.post(host+uri, data)
+        .then(res=>console.log(res.data))
+    }
     const handleData = (data)=>{
         console.log(data)
+        sendJoinData('join', data)
     }
     const checkingId = (checkId)=>{
         if(checkId === id){
