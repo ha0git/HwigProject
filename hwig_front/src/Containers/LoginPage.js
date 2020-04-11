@@ -1,34 +1,43 @@
 import React, {useState, useEffect} from 'react'
 import Login from '../RegisterComponents/Login'
-// import host from './local'
-// import axios from 'axios'
+import {Redirect} from 'react-router-dom'
+import {auth_login} from '../Actions/index'
+import {connect} from 'react-redux'
 
-export default function LoginPage() {
-    const [data, setData] = useState(null)
+function LoginPage(props) {
+    const [isLogged, setIsLogged] = useState(false)
 
-    // const sendArticleAxios = (url,data) => {
-    //     console.log('axios실행')
-    //     axios.post(url, data)
-    //     .then(response => {
-    //         const result = response.data;
-    //         console.log(`POST: data is added `, result);
-    //     })
-    //     .catch(error => console.error(error));
-    // };
-
-    // useEffect(() => {
-    //     if(data){
-    //         sendArticleAxios(host + '/login')
-    //     }
-    // })
+    console.log(props)
+    useEffect(() => {
+        if(isLogged !== props.isLogged){
+            setIsLogged(props.isLogged)
+        }
+    })
 
     const handleData = (data) => {
-        setData(data)
         console.log(data)
+        props.auth_login('/login', data)
     }
     return (
         <>
-            <Login onSubmit={handleData}/>
+            {isLogged ? <Redirect to="/"/> : <Login onSubmit={handleData}/>}
         </>
     )
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        data: state.reducer.data,
+        isLogged: state.reducer.isLogged
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        auth_login: (uri, data) =>  dispatch(auth_login(uri, data))
+    }
+}
+
+LoginPage = connect(mapStateToProps, mapDispatchToProps)(LoginPage)
+
+export default LoginPage
