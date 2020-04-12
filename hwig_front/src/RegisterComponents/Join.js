@@ -14,9 +14,6 @@ window.$(document).ready(function () {
     }
   })
 
-
-
-
 })
 
 
@@ -53,7 +50,6 @@ export default function Join(props) {
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      
       const sumAddress= address1 + " " + address2;
       setAddress(sumAddress);
       console.log('체크값', mem_pribacy, mem_addr)
@@ -79,47 +75,10 @@ export default function Join(props) {
       }else if(!mem_pribacy){
         alert('이용약관에 동의해주세요.')
       }else{
-          
           console.log('제출 실행',{ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode})
           props.onSubmit({ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode});
       }
-      
-    e.preventDefault()
-    console.log(window.$("#join_check1").is(":checked"), window.$("#join_check2").is(":checked"), window.$("#join_check3").is(":checked"))
-    if (window.$("#join_check1").is(":checked") && window.$("#join_check2").is(":checked") && window.$("#join_check3").is(":checked")) {
-      setIsChecked(true)
-      console.log('체크true실행')
-    }
-    const sumAddr= address1 + " " + address2
-    setAddress(sumAddr)
-    console.log('체크값', mem_pribacy)
-
-    if (mem_id.length < 6) {
-      alert('6자 이상의 아이디를 입력해주세요.')
-    } else if (!checkId) {
-      alert('아이디 중복을 확인해주세요.')
-    } else if (mem_pw.length < 10) {
-      alert('10자 이상의 비밀번호를 입력해주세요.')
-    } else if (mem_pw !== checkPw) {
-      alert('비밀번호가 다릅니다.')
-    } else if (!mem_name) {
-      alert('이름을 입력해주세요.')
-    } else if (!mem_email || !props.CheckEmailF(mem_email)) {
-      alert('정확하게 이메일을 입력해주세요. (abc@abc.com)')
-    } else if (!checkEmail) {
-      alert('이메일 중복을 확인해주세요.')
-    } else if (!mem_tel) {
-      alert('전화번호를 입력해주세요.')
-    } else if (!mem_addr && !mem_zipcode) {
-      alert('주소를 입력해주세요.')
-    } else if (!mem_pribacy) {
-      alert('이용약관에 동의해주세요.')
-    } else {
-      setAddress(address1 + " " + address2)
-      console.log('제출 실행', { mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode })
-      props.onSubmit({ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode });
-    }
-  }
+    } 
 
 
   const handleAddress = () => (

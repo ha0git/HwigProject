@@ -4,27 +4,24 @@ import {Link} from 'react-router-dom'
 import './Login.css'
 
 export default function Login(props) {
-    const [getId, setId] = useState("")
-    const [getPw, setPw] = useState("")
-    const [show, setShow] = useState(false)
+    const [mem_id, setId] = useState("")
+    const [mem_pw, setPw] = useState("")
 
     const handleSubmit = (e) => {
         console.log("실행")
         e.preventDefault();
-        if(!getId || !getPw)
-          {setShow(true)
-            setTimeout(() => setShow(false),5000)}      
-        else
-          props.onSubmit({ getId, getPw });
+        if(!mem_id || !mem_pw){
+        console.log("없음")
+        alert('아이디 또는 비밀번호를 입력하세요.') 
+        }else{
+            console.log("성공")
+          props.onSubmit({ mem_id, mem_pw });
+        }
     }
 
-    const handleAlert = () => (
-        alert('아이디 또는 비밀번호를 입력하세요.')
-        )
 
     return (
         <>
-        {show && handleAlert}
         <Container className="login-container">
             <Row>
                 <Col>
@@ -37,7 +34,7 @@ export default function Login(props) {
                                 type="text" 
                                 placeholder="아이디를 입력해주세요."
                                 onChange={(e)=>setId(e.target.value)}
-                                value={getId}
+                                value={mem_id}
                             />
                         <br />
                             <Form.Control 
@@ -46,7 +43,7 @@ export default function Login(props) {
                                 type="password" 
                                 placeholder="비밀번호를 입력해주세요."
                                 onChange={(e)=>setPw(e.target.value)}
-                                value={getPw}
+                                value={mem_pw}
                             />
                         <div className="login-text-link-position">
                             <Link className="login-text-link" to="/find_id">아이디 찾기</Link> | <Link className="login-text-link" to="/find_pw">비밀번호 찾기</Link>
