@@ -7,12 +7,10 @@ import OrderPage from '../Containers/OrderPage';
 export default function () {
     return (
         <>
-            <Router>
-                <Switch>
-                    <Route exact path="/order" component={OrderPage} />
-                    <Route component={OrderPage} />
-                </Switch>
-            </Router>
+            <Switch>
+                <Route exact path="/order" component={OrderPage} />
+                <Route component={OrderPage} />
+            </Switch>
         </>
     )
 }
