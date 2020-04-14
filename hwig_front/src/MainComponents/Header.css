@@ -95,9 +95,7 @@
     right: 2%; 
     top: 470px; 
     text-align:center; 
-    width: 80px; 
-    margin-bottom:10px;
-    background-color: white;
+    width: 80px;
 }
 .floating div{ 
     border:1px solid #eee; 
@@ -105,9 +103,18 @@
     font-size:12px;
     padding:10px 0;
     font-weight: 600;
+    background-color: white;
+} 
+.floating div:first-child{ 
+    border:none; 
+    color:#666;
+    font-size:12px;
+    padding: 0px;
+    margin-bottom: 10px;
+    font-weight: 600;
 } 
 .floating > div > a > img{
-    width:70px;
-    height:90px;
+    width:80px;
+    height:112px;
 }
 
