@@ -10,10 +10,10 @@ export default function ProductList(props) {
     const productList = props.productItems.product
 
     const categoryList = categories.map(category => (
-        <li key={category.id}><Link to="/">{category.category_name}</Link></li>))
+        <li key={category.prd_id}><Link to="/">{category.category_name}</Link></li>))
 
-    const productGoods = productList.map(product => (
-        <li key={product.id}>
+    const productGoods = productList.map((product) => (
+        <li key={product.prd_id}>
             <Link to={`shop/product?goodsno=${product.prd_id}`}><ImageMapper src={product.prd_img}></ImageMapper>
                 <div className="product_list_goods_info">
                     <span className="product_list_goods_name">{product.prd_name}&nbsp;{product.prd_kg}</span>

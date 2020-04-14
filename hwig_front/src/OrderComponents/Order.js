@@ -2,46 +2,91 @@ import React, { useState } from 'react'
 import jQuery from "jquery";
 import './Order.css'
 import { Modal } from 'react-bootstrap'
-import DaumPostcode from 'react-daum-postcode';
-import product_img from '../images/product/product1.png'
+import DaumPostcode from 'react-daum-postcode'
+import ImageMapper from 'react-image-mapper';
 
-
-export default function Order() {
-
-    window.$ = window.jQuery = jQuery;
-
-    window.$(document).ready(function () {
-        var odPayview = document.$('.payview').offset();
-        window.$(window).scroll(function (event) {
-            if (window.$(window).scrollTop() > odPayview.top) {
-                window.$(".order_payview")
-                    .css("position", "fixed")
-                    .css('top', '150px')
-                    .css('left', '70%')
-                    .css('right', '0px');
-            }
-            else if ((window.$(window).scrollTop() < 1900)) {
-                window.$(".order_payview")
-                    .css("position", "absolute")
-                    .css('top', '1620px')
-                    .css('left', '70%')
-                    .css('right', '150px');
-            }
-            if ((window.$(window).scrollTop() > 1900)) {
-                window.$(".order_payview")
-                    .css("position", "absolute")
-                    .css('top', '1900px')
-                    .css('left', '70%')
-                    .css('right', '150px');
-            }
-        });
-    })
-    // 주소 검색 API
+export default function Order(props) {
     const [show, setShow] = useState(false);
-    const [address1, setAddress1] = useState("")
-    const [address2, setAddress2] = useState("")
+    const [getAddress, setGetAdrress] = useState("")
+    const [getaddress1, setGetAddress1] = useState("")
+    const [getaddress2, setGetAddress2] = useState("")
     const [mem_zipcode, setZipcode] = useState("")
+    const [getmem, setGetmem] = useState("휙휙휙")
+    const [gettel, setGettel] = useState("")
+    const [order_request, setOrder_request] = useState("")
+    const [order_checked, setOrder_checked] = useState(false)
+    const [reverse_value, setReverse_value] = useState("")
+    const [pay_selected, setPay_selected] = useState("")
+    const [nogoods_chk, setNogoods_chk] = useState(false)
 
+    // 상품정보
+    const orderGoodsInfo = props.odgoodslist.odgoods;
+
+    const odItems = orderGoodsInfo.map(odgoods => (
+        <tr key={odgoods.prd_id}>
+            <td className="order_thumb">
+                <ImageMapper src={odgoods.prd_thumb_img} />
+            </td>
+            <td className="order_goodsInfo">
+                <div>{odgoods.prd_name}&nbsp;{odgoods.prd_ea}</div>
+                <div>{odgoods.order_count}개 / 개 당 {odgoods.prd_price}원</div>
+            </td>
+            <td>
+                {odgoods.order_count * odgoods.prd_price}원
+            </td>
+        </tr>
+    ))
+    //주문자 정보
+    const orderMemInfo = props.odgoodslist.memInfo[0]
+    console.log(
+        getmem,
+        gettel,
+        order_request,
+        order_checked,
+        reverse_value,
+        pay_selected,
+    )
+
+    const handleOnSubmit = e => {
+
+        const sumAddress = getaddress1 + " " + getaddress2;
+        setGetAdrress(sumAddress);
+        console.log(getAddress)
+
+        if (!getmem) {
+            alert('수령인을 입력해주세요.')
+        } else if (!gettel) {
+            alert('전화번호를 입력해주세요.')
+        } else if (!order_checked) {
+            alert('결제 진행에 동의해주세요.')
+        }
+        e.preventDefault();
+    }
+
+    //배송 정보
+    // const validatePhoneNumber = value => {
+    //     const phoneNumberRegExp = /^\d{3}-\d{3,4}-\d{4}$/;
+
+    //     if (value.match(phoneNumberRegExp)) {
+    //         setGettel({
+    //             isPhoneNumberValid: true,
+    //             phoneNumberEntered: value
+    //         })
+    //         alert('맞아요')
+
+    //     } else {
+    //         setGettel({
+    //             isPhoneNumberValid: false,
+    //             phoneNumberEntered: value
+    //         });
+    //         alert('맞아요')
+    //     }
+    //     alert('맞아요!')
+    // };
+
+
+
+    // 주소 검색 API
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -56,8 +101,7 @@ export default function Order() {
                 />
             </Modal.Body>
         </Modal>)
-
-
+    //다음 주소 검색 
     const handleComplete = (data) => {
         let fullAddress = data.address;
         let extraAddress = '';
@@ -73,10 +117,53 @@ export default function Order() {
         }
         console.log(fullAddress);  // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
         console.log(data.zonecode) // 우편번호
-        setAddress1(fullAddress)
+        setGetAddress1(fullAddress)
         setZipcode(data.zonecode)
-        if (setAddress1) {
+        if (setGetAddress1) {
             handleClose()
+        }
+    }
+
+    //결제금액창
+    window.$ = window.jQuery = jQuery;
+    window.$(document).ready(function () {
+        var odPayview = document.$('.payview').offset();
+        window.$(window).scroll(function (event) {
+            if (window.$(window).scrollTop() > odPayview.top) {
+                window.$(".order_payview")
+                    .css("position", "fixed")
+                    .css('top', '150px')
+                    .css('left', '70%')
+                    .css('right', '0px');
+            }
+            else if ((window.$(window).scrollTop() < 1620)) {
+                window.$(".order_payview")
+                    .css("position", "absolute")
+                    .css('top', '1620px')
+                    .css('left', '70%')
+                    .css('right', '150px');
+            }
+            if ((window.$(window).scrollTop() > 1900)) {
+                window.$(".order_payview")
+                    .css("position", "absolute")
+                    .css('top', '1900px')
+                    .css('left', '70%')
+                    .css('right', '150px');
+            }
+        });
+    })
+
+    //적립금 / 결제수단
+    const payInfo = props.odgoodslist.reverse[0]
+
+    const handleOnChange = (e) => {
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            setReverse_value(e.target.value)
+        }
+        if (e.target.value > payInfo.mem_reverse) {
+            alert('보유 적립금보다 큰 금액 입니다.')
+            setReverse_value(0);
         }
     }
 
@@ -87,7 +174,7 @@ export default function Order() {
                     <h2>주문서</h2>
                     <p>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
                 </div>
-                <form>
+                <form onSubmit={handleOnSubmit}>
                     {/* 상품 정보 */}
                     <div className="order_goodsList">
                         <div className="order_titleArea">
@@ -107,18 +194,7 @@ export default function Order() {
                                 </tr>
                             </thead>
                             <tbody className="order_tbl_body">
-                                <tr>
-                                    <td>
-                                        <img src={product_img}></img>
-                                    </td>
-                                    <td className="order_goodsInfo">
-                                        <div>아보카도 1개</div>
-                                        <div>1개 / 개 당 2,805원</div>
-                                    </td>
-                                    <td>
-                                        3,000원
-                                </td>
-                                </tr>
+                                {odItems}
                             </tbody>
                         </table>
                     </div>
@@ -131,16 +207,16 @@ export default function Order() {
                             <tbody>
                                 <tr>
                                     <th>보내는 분*</th>
-                                    <td>이이이</td>
+                                    <td>{orderMemInfo.mem_name}</td>
                                 </tr>
                                 <tr>
                                     <th>휴대폰*</th>
-                                    <td>010-0000-0000</td>
+                                    <td>{orderMemInfo.mem_tel}</td>
                                 </tr>
                                 <tr>
                                     <th>이메일*</th>
                                     <td>
-                                        hwig@hwig.com
+                                        {orderMemInfo.mem_email}
                                         <p>이메일을 통해 주문처리과정을 보내드립니다.<br />
                                         정보 변경은 마이휙 > 개인정보 수정  메뉴에서 가능합니다.</p>
                                     </td>
@@ -153,9 +229,7 @@ export default function Order() {
                         <div className="order_titleArea">
                             <p>배송 정보</p>
                             <p className="order_delivery_desc">
-                                *정기 배송 휴무일: 샛별배송(
-                            <span>휴무없음</span>
-                            ), 택배 배송(
+                                *정기 배송 휴무일: 택배 배송(
                             <span>일요일</span>
                             )
                         </p>
@@ -167,40 +241,32 @@ export default function Order() {
                                     <td>
                                         {/* <DaumPostcode onComplete={handleAddress} /> */}
                                         {handleAddress()}
-                                        <button onClick={handleShow}>새 배송지 추가</button>
-                                        <input type="text" value={address1} onChange={(e) => setAddress1(e.target.value)} />
-                                        <input type="text" value={address2} onChange={(e) => setAddress2(e.target.value)} />
+                                        <input type="button" id="join_address" onClick={handleShow} value="새 배송지 추가" />
+                                        <input type="text" value={getaddress1} onChange={(e) => setGetAddress1(e.target.value)} />
+                                        <input type="text" value={getaddress2} onChange={(e) => setGetAddress2(e.target.value)} />
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>배송 구분</th>
-                                    <td>샛별 배송 지역 중 아래 장소는 배송 불가 장소입니다. <br />
-                                ▶ 배송 불가 장소 : 관공서/ 학교/ 병원/ 시장/ 공단 지역/ 산간 지역/ 백화점 등
-                                </td>
-                                </tr>
-                                <tr>
+                                <tr className="order_delivery_name">
                                     <th>수령인 이름*</th>
-                                    <td><input type="text" value="휙휙휙"></input></td>
+                                    <td>
+                                        <input type="text" value={getmem} onChange={(e) => setGettel(e.target.value)}></input>
+                                    </td>
                                 </tr>
-                                <tr>
+                                <tr className="order_delivery_tel">
                                     <th>휴대폰*</th>
                                     <td>
-                                        <input type="tel" value="000" />
-                                        <span className="order_bar">
-                                            <span></span>
-                                        </span>
-                                        <input type="tel" value="000" />
-                                        <span className="order_bar">
-                                            <span></span>
-                                        </span>
-                                        <input type="tel" value="000" />
+                                        <input type="text"
+                                            value={gettel}
+                                            placeholder="010-1234-1234"
+                                            onChange={e => setGettel(e.target.value)}
+                                            required></input>
                                     </td>
                                 </tr>
                                 <tr className="order_delivery_memo">
-                                    <th>배송 요청사항*</th>
-                                    <td>
-                                        <textarea value="글자 수만큼 카운트 되어야 함 =>"></textarea>
-                                        <div className="order_chk_bytes">0 / 50자</div>
+                                    <th>배송 요청사항</th>
+                                    <td className="order_remaining">
+                                        <textarea placeholder="문 앞에 놓아주세요." value={order_request} onChange={(e) => setOrder_request(e.target.value)}></textarea>
+                                        <div className="order_chk_bytes"><span class="textcount">0</span> / 50자</div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -263,11 +329,11 @@ export default function Order() {
                                 <tr className="order_method_emoney">
                                     <th>적립금 적용</th>
                                     <td>
-                                        <input type="text" />
+                                        <input type="text" id="wr_2" value={reverse_value} onChange={handleOnChange} />
                                         <span>원</span>
                                         <input type="checkbox" />
-                                        <button>모두사용</button>
-                                        <p>보유 적립금: 0원</p>
+                                        <button type="button" onClick={() => setReverse_value(payInfo.mem_reverse)}>모두 사용</button>
+                                        <p>보유 적립금: {payInfo.mem_reverse}원</p>
                                         <p>*적립금 내역: 마이컬리 > 적립금</p>
                                     </td>
                                 </tr>
@@ -275,12 +341,12 @@ export default function Order() {
                                     <th>결제 수단</th>
                                     <td>
                                         <input type="radio" checked /><span>신용카드</span>
-                                        <div className="order_card_select">
-                                            <select>
+                                        <div className="order_card_select" >
+                                            <select onChange={e => setPay_selected(e.target.value)}>
                                                 <option selected disabled="disabled">카드를 선택해주세요</option>
                                                 <option>신한</option>
                                                 <option>국민</option>
-                                                <option>하나</option>
+                                                <option>우리</option>
                                             </select>
                                         </div>
                                     </td>
@@ -294,7 +360,7 @@ export default function Order() {
                                 <tr className="order_method_nogoods">
                                     <th>미출고 시 조치방법*</th>
                                     <td>
-                                        <input type="radio" name="refund" checked /><span>결제수단으로 환불</span>
+                                        <input type="radio" name="refund" checked={nogoods_chk} onChange={e => setNogoods_chk(e.target.checked)} /><span>결제수단으로 환불</span>
                                         <input type="radio" name="delivery" /><span>상품 입고 시 배송</span>
                                     </td>
                                 </tr>
@@ -316,7 +382,7 @@ export default function Order() {
                                         <div className="order_agree_chk">
                                             <div className="agree_ch">
                                                 <label className="ch">
-                                                    <input type="checkbox" id="join_check1"></input>
+                                                    <input type="checkbox" id="join_check1" onChange={e => setOrder_checked(e.target.checked)}></input>
                                                     <span></span>결제 진행 필수 동의
                                                 </label>
                                             </div>
@@ -332,7 +398,7 @@ export default function Order() {
                     </div>
                     {/* 결제완료 버튼 */}
                     <div className="order_btn_payment">
-                        <button>결제하기</button>
+                        <button type="submit">결제하기</button>
                         <p>* 미성년자가 결제 시 법정대리인이 그 거래를 취소할 수 있습니다.</p>
                     </div>
                 </form>
