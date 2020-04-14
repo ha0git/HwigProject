@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../images/logo.svg";
 import hd_down from "../images/hd_down.webp";
-import peng from "../images/peng.jpg";
+import sidebanner from "../images/sidebanner.png";
 
 export default function Header() {
     return (
@@ -29,10 +29,10 @@ export default function Header() {
                     </Link>
                     </div>
                     <div class="floating">
-                        <div><Link><img src={peng} alt=""></img></Link></div>
-                        <div><Link to="/cart">장바구니</Link></div>
-                        <div><Link>등급별 혜택</Link></div>
-                        <div><Link>최근 본 상품</Link></div>
+                        <div><a href="#"><img src={sidebanner}></img></a></div>
+                        <div><Link to="/shop/cart">장바구니</Link></div>
+                        <div><a>등급별 혜택</a></div>
+                        <div><a>최근 본 상품</a></div>
                     </div>
                 </div>
             </div >
