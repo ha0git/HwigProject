@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 
 function LoginPage(props) {
     const [isLogged, setIsLogged] = useState(false)
-
+    
     console.log(props)
     useEffect(() => {
         if(isLogged !== props.isLogged){

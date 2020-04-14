@@ -50,7 +50,7 @@ export default function Join(props) {
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      const sumAddress= address1 + " " + address2;
+      const sumAddress= "(" + mem_zipcode + ") "+ address1 + " " + address2;
       setAddress(sumAddress);
       console.log('체크값', mem_pribacy, mem_addr)
       
@@ -76,7 +76,7 @@ export default function Join(props) {
         alert('이용약관에 동의해주세요.')
       }else{
           console.log('제출 실행',{ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode})
-          props.onSubmit({ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode});
+          props.onSubmit({ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr});
       }
     } 
 

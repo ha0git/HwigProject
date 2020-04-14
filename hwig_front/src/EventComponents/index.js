@@ -6,13 +6,11 @@ import EventPage from '../Containers/EventPage';
 export default function () {
     return (
         <>
-            <Router>
                 <Switch>
                     <Route exact path="/eventlist" component={EventListPage} />
                     <Route path="/eventlist/event" component={EventPage} />
                     <Route component={EventListPage} ></Route>
                 </Switch>
-            </Router>
         </>
     )
 }
