@@ -14,50 +14,50 @@ export default function Template(props) {
         setactivePage(pageNumber)
         props.history.push(`/customer/temp?page=${pageNumber}`)
     }
-    
+
     const getFaqList = props.articleList;
-   
-    const handleShow = (index)=>{
-        window.$(document).ready(function(){
+
+    const handleShow = (index) => {
+        window.$(document).ready(function () {
             console.log('실행')
-            if(window.$(`.temp_toggle${index}`).css('display') == "none"){
+            if (window.$(`.temp_toggle${index}`).css('display') === "none") {
                 window.$(`.temp_toggle${index}`).css('display', "")
-            }else{
+            } else {
                 window.$(`.temp_toggle${index}`).css('display', "none")
             }
-            
+
         })
     }
-    const getList = getFaqList.map((list, index)=>{
-        window.$(document).ready(function(){
+    const getList = getFaqList.map((list, index) => {
+        window.$(document).ready(function () {
             console.log('실행')
             window.$(`.temp_toggle${index}`).css('display', 'none')
         })
-    return(
-    <>
-        <tr key={index}>
-            <td>{index+1}</td>
-            <td>{list.faq_category}</td>
-            <td><a onClick={()=>handleShow(index)}>{list.faq_subject}</a></td>
-        </tr>
-        <tr className={`temp_toggle${index}`}>
-            <td className="temp_toggle_content" colSpan="3"><img src={faq_img}/>{list.faq_content}</td>
-        </tr>
-    </>)
+        return (
+            <>
+                <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{list.faq_category}</td>
+                    <td><a onClick={() => handleShow(index)}>{list.faq_subject}</a></td>
+                </tr>
+                <tr className={`temp_toggle${index}`}>
+                    <td className="temp_toggle_content" colSpan="3"><img src={faq_img} />{list.faq_content}</td>
+                </tr>
+            </>)
     })
 
-    const showFaqList = () =>{
-        let list =[];
-        let begin = (props.page-1)*props.size;
+    const showFaqList = () => {
+        let list = [];
+        let begin = (props.page - 1) * props.size;
         let end;
-        if(getFaqList.length < props.page*10){
+        if (getFaqList.length < props.page * 10) {
             end = getFaqList.length;
-        }else{
-            end = props.page*10;
+        } else {
+            end = props.page * 10;
         }
-        console.log(begin,end)
+        console.log(begin, end)
 
-        for(let i=begin; i<end; i++){
+        for (let i = begin; i < end; i++) {
             list.push(getList[i])
         }
         console.log(list)
@@ -94,7 +94,7 @@ export default function Template(props) {
                             </tr>
                         </thead>
                         <tbody>
-                                {showFaqList()}
+                            {showFaqList()}
                         </tbody>
                     </table>
                     <div className="frm_pagination">

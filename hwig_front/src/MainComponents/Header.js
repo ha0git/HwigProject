@@ -15,7 +15,7 @@ export default function Header() {
                         <ui className="hd_menu">
                             <li><Link to="/join">회원가입</Link></li>
                             <li><Link to="/login">로그인</Link></li>
-                            <li><Link to="/customer">고객센터 <img src={hd_down}></img></Link>
+                            <li><Link to="/customer">고객센터 <img src={hd_down} alt=""></img></Link>
                                 <ul className="hd_downMenu">
                                     <li><Link to="/customer/notice">공지사항</Link></li>
                                     <li><Link to="/customer/qna">자주하는 질문</Link></li>
@@ -25,14 +25,21 @@ export default function Header() {
                         </ui>
                     </div>
                     <div className="hd_logo"><Link exact to="/">
-                        <img src={logo}></img>
+                        <img src={logo} alt=""></img>
                     </Link>
                     </div>
                     <div class="floating">
+<<<<<<< HEAD
                         <div><a href="#"><img src={sidebanner}></img></a></div>
                         <div><Link to="/shop/cart">장바구니</Link></div>
                         <div><a>등급별 혜택</a></div>
                         <div><a>최근 본 상품</a></div>
+=======
+                        <div><Link><img src={peng} alt=""></img></Link></div>
+                        <div><Link to="/cart">장바구니</Link></div>
+                        <div><Link>등급별 혜택</Link></div>
+                        <div><Link>최근 본 상품</Link></div>
+>>>>>>> dec2d8174032da3306102d9fd3ac453dfe93f077
                     </div>
                 </div>
             </div >

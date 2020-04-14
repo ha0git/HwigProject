@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './Body.css';
 import save10 from '../images/10.png';
@@ -15,24 +15,26 @@ export default function BodyUp() {
         <>
             <div className="main">
                 <div className="crsq">
-                <Carousel fade="true" interval="3000">
-                <Carousel.Item>
-                    <div className="crs">
-                    <img
-                    src={paperbanner}
-                    />
-                    </div>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <div className="crs">
-                    <Link to="./event">
-                    <img
-                    src={jangbanner}
-                    />
-                    </Link>
-                    </div>
-                </Carousel.Item>
-                </Carousel>
+                    <Carousel fade="true" interval="3000">
+                        <Carousel.Item>
+                            <div className="crs">
+                                <img
+                                    src={paperbanner}
+                                    alt=""
+                                />
+                            </div>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <div className="crs">
+                                <Link to="./event">
+                                    <img
+                                        src={jangbanner}
+                                        alt=""
+                                    />
+                                </Link>
+                            </div>
+                        </Carousel.Item>
+                    </Carousel>
                 </div>
                 <div className="main_product_list">
                     <div className="main_goods_tit_d"><h3 className="main_goods_tit">이 상품 어때요?</h3></div>
@@ -40,49 +42,49 @@ export default function BodyUp() {
                         <div>
                             <ul className="main_goods_ul">
                                 <li className="main_goods_li">
-                                    <a href="#"><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link><div className="main_thumb_img">
+                                        <img className="imgscale" src={vienna} alt="" /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save10} className="saleico"/>
+                                    <Link>
+                                        <img src={save10} className="saleico" alt="" />
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div>
-                                    </a>
+                                            <img className="imgscale" src={vienna} alt="" /></div>
+                                    </Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#"><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link><div className="main_thumb_img">
+                                        <img className="imgscale" src={vienna} alt="" /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
-                                        
+
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save10} className="saleico"/>
+                                    <Link>
+                                        <img src={save10} className="saleico" alt="" />
                                         <div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div>
-                                    </a>
+                                            <img className="imgscale" src={vienna} alt="" /></div>
+                                    </Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
@@ -92,47 +94,47 @@ export default function BodyUp() {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="main_event">
-                    <div className="main_goods_tit_d"><a className="tit_a" href="#"><h3 className="main_goods_tit">이벤트 소식</h3></a></div>
+                    <div className="main_goods_tit_d"><Link className="tit_a"><h3 className="main_goods_tit">이벤트 소식</h3></Link></div>
                     <div className="main_list_goods">
                         <div>
                             <ul className="main_event_ul">
                                 <li className="main_event_li">
-                                    <a href="#">
-                                    <div className="main_thumb_event_img">
-                                        <img className="imgscale1" src={mandu} />
-                                    </div>
-                                    </a>
+                                    <Link>
+                                        <div className="main_thumb_event_img">
+                                            <img className="imgscale1" src={mandu} alt="" />
+                                        </div>
+                                    </Link>
                                     <div className="info_event">
                                         <span className="event_name">
-                                            <a href="#" >냉동식품 최대 40% 할인</a>
+                                            <Link>냉동식품 최대 40% 할인</Link>
                                         </span><p />
                                         <span className="eventsubtext">색다른 식사가 필요할 때</span>
                                     </div>
                                 </li>
                                 <li className="main_event_li">
-                                    <a href="#">
-                                    <div className="main_thumb_event_img">
-                                        <img className="imgscale1" src={mandu} />
-                                    </div>
-                                    </a>
+                                    <Link>
+                                        <div className="main_thumb_event_img">
+                                            <img className="imgscale1" src={mandu} alt="" />
+                                        </div>
+                                    </Link>
                                     <div className="info_event">
                                         <span className="event_name">
-                                            <a href="#">냉동식품 최대 40% 할인</a>
+                                            <Link>냉동식품 최대 40% 할인</Link>
                                         </span><p />
                                         <span className="eventsubtext">색다른 식사가 필요할 때</span>
                                     </div>
                                 </li>
                                 <li className="main_event_li">
-                                    <a href="#">
-                                    <div className="main_thumb_event_img">
-                                        <img className="imgscale1" src={mandu} />
-                                    </div>
-                                    </a>
+                                    <Link>
+                                        <div className="main_thumb_event_img">
+                                            <img className="imgscale1" src={mandu} alt="" />
+                                        </div>
+                                    </Link>
                                     <div className="info_event">
                                         <span className="event_name">
-                                            <a href="#">냉동식품 최대 40% 할인</a>
+                                            <Link>냉동식품 최대 40% 할인</Link>
                                         </span><p />
                                         <span className="eventsubtext">색다른 식사가 필요할 때</span>
                                     </div>
@@ -142,53 +144,53 @@ export default function BodyUp() {
                     </div>
                 </div>
                 <div className="main_product_list_sale">
-                    <div className="main_goods_tit_d"><a className="tit_a" href="#"><h3 className="main_goods_tit">알뜰 상품</h3></a></div>
+                    <div className="main_goods_tit_d"><Link className="tit_a"><h3 className="main_goods_tit">알뜰 상품</h3></Link></div>
                     <div className="main_list_goods">
                         <div>
                             <ul className="main_goods_ul">
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save50} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link>
+                                        <img src={save50} className="saleico" alt="" /><div className="main_thumb_img">
+                                            <img className="imgscale" src={vienna} alt="" /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save50} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link>
+                                        <img src={save50} className="saleico" alt="" /><div className="main_thumb_img">
+                                            <img className="imgscale" src={vienna} alt="" /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save50} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link>
+                                        <img src={save50} className="saleico" alt="" /><div className="main_thumb_img">
+                                            <img className="imgscale" src={vienna} alt="" /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
                                     </div>
                                 </li>
                                 <li className="main_goods_li">
-                                    <a href="#">
-                                        <img src={save50} className="saleico"/><div className="main_thumb_img">
-                                        <img className="imgscale" src={vienna} /></div></a>
+                                    <Link>
+                                        <img src={save50} className="saleico" alt="" /><div className="main_thumb_img">
+                                            <img className="imgscale" src={vienna} alt="" /></div></Link>
                                     <div className="info_goods">
                                         <span className="goods_name">
-                                            <a href="#">고소한 비엔나 소세지</a>
+                                            <Link>고소한 비엔나 소세지</Link>
                                         </span><p />
                                         <span className="price">38000원</span>
                                         <span className="cost">50000원</span>
@@ -201,5 +203,5 @@ export default function BodyUp() {
             </div>
         </>
     )
-    
+
 }
