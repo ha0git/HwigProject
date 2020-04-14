@@ -13,7 +13,7 @@ export default function JoinPage() {
     }
     const handleData = (data)=>{
         console.log(data)
-        sendJoinData('join', data)
+        sendJoinData('/api/member', data)
     }
     const checkingId = (checkId)=>{
         if(checkId === id){

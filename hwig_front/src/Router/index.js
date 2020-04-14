@@ -20,7 +20,6 @@ import Order from '../OrderComponents/index';
 export default function () {
     return (
         <>
-            <Router className="router">
                 <Header />
                 <Navi />
                 <Switch>
@@ -41,7 +40,6 @@ export default function () {
                 <div className="top-container">
                     <Footer />
                 </div>
-            </Router>
         </>
     )
 }

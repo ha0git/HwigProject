@@ -10,7 +10,6 @@ import QnaWriteFormPage from '../Containers/QnaWriteFormPage'
 export default function () {
     return (
         <>
-            <Router>
                 <CSNavi/>
                 <Switch>
                     <Route exact path="/customer/notice" component={NoticePage} />
@@ -20,7 +19,6 @@ export default function () {
                     <Route path="/customer/temp" component={TemplatePage} />
                     <Route component={NoticePage} />
                 </Switch>
-            </Router>
         </>
     )
 }

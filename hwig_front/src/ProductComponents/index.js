@@ -9,7 +9,6 @@ import SearchPage from '../Containers/SearchPage'
 export default function () {
     return (
         <>
-            <Router>
                 <Switch>
                     <Route exact path="/shop" component={ProductListPage} />
                     <Route path="/shop/product" component={ProductPage} />
@@ -17,7 +16,6 @@ export default function () {
                     <Route exact path="/shop/search" component={SearchPage} />
                     <Route component={ProductListPage} />
                 </Switch>
-            </Router>
         </>
     )
 }

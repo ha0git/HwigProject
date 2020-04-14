@@ -1,8 +1,13 @@
 import React from 'react';
 import Router from './Router/index'
 import GlobalStyles from "./GlobalStyles";
+import {withRouter} from 'react-router-dom'
 
-function App() {
+function App(props) {
+  console.log(props)
+  props.history.listen((location, action) => {
+    console.log("on route change");
+});
   return (
     <>
       <Router />
@@ -11,4 +16,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
