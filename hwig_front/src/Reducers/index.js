@@ -27,7 +27,7 @@ const reducer = (state = InitialState, action) => {
             return{
                 ...state,
                 userInfo: action.data,
-                isLogged: true
+                // isLogged: true
             }
         case NO_SESSION:
             return{

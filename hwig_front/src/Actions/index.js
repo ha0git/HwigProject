@@ -21,8 +21,9 @@ export const login_fail = () => {
 
 export const auth_login = (uri, data) => {
     return (dispatch) => {
-        return axios.post(host + uri, data)
+        return axios.post(host + uri, data,{withCredentials:true})
         .then(res => {
+            console.log(res.headers)
             if(res.data.isLogged){
                 console.log("로그인 성공",res.data)
                 dispatch(login_success(res.data))
@@ -69,10 +70,10 @@ export const no_session = () => {
 
 export const check_session = (uri) => {
     return (dispatch) => {
-        return axios.get(host + uri)
+        return axios.get(host + uri, {withCredentials:true})
         .then(res => {
-            if(res.headers.session){
-                dispatch(get_session_userInfo(res.headers))
+            if(res.data){
+                dispatch(get_session_userInfo(res.data))
             }else{
                 dispatch(no_session())
             }

@@ -10,13 +10,14 @@ function LoginPage(props) {
     console.log(props)
     useEffect(() => {
         if(isLogged !== props.isLogged){
+            console.log(isLogged, props.isLogged)
             setIsLogged(props.isLogged)
         }
     })
 
     const handleData = (data) => {
         console.log(data)
-        props.auth_login('/login', data)
+        props.auth_login('cds/login', data)
     }
     return (
         <>
