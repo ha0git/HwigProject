@@ -50,7 +50,7 @@ export default function Join(props) {
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      const sumAddress= "(" + mem_zipcode + ") "+ address1 + " " + address2;
+      const sumAddress= "(" + mem_zipcode + ") "+ address1 + ", " + address2;
       setAddress(sumAddress);
       console.log('체크값', mem_pribacy, mem_addr)
       

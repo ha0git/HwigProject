@@ -43,12 +43,23 @@
     float:left; 
     padding-bottom: 5px;
 }
+
+.hd_menu > li > p,
 .hd_menu > li > a{
     color:#333;
     font-size: 12px;
     padding: 0 15px;
     border-right:1px solid #d8d8d8;
 }
+.hd_menu > li > p{
+    padding-top: 5px;
+}
+
+.hd_menu > li > p:hover{
+    color:gray;
+    cursor: pointer;
+}
+
 .hd_menu > li:first-child > a{
     color: #ff7276;
 }
