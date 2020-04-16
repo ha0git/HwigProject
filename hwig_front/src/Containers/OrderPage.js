@@ -8,6 +8,7 @@ export default function OrderPage() {
     const [odgoodslist, setOdgoodslist] = useState(null)
 
 
+
     useEffect(() => {
         if (odgoodslist === null) {
             setOdgoodslist({
@@ -18,14 +19,14 @@ export default function OrderPage() {
                         prd_name: "비엔나",
                         prd_ea: '1개',
                         prd_price: 8650,
-                        order_count: 3
+                        order_count: 3,
                     },
                     {
                         prd_id: 2,
                         prd_thumb_img: vienna,
                         prd_name: "브로콜리",
                         prd_ea: '1개',
-                        prd_price: 8650,
+                        prd_price: 86500,
                         order_count: 1
                     },
                     {
@@ -33,7 +34,7 @@ export default function OrderPage() {
                         prd_thumb_img: vienna,
                         prd_name: "아보카도",
                         prd_ea: '1개',
-                        prd_price: 8650,
+                        prd_price: 865000,
                         order_count: 1
                     }
                 ],

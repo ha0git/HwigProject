@@ -3,12 +3,22 @@ import { Spinner } from 'react-bootstrap'
 import queryString from 'query-string'
 import ProductList from '../ProductComponents/ProductList'
 import product1 from '../images/product1.png'
+import axios from 'axios'
+import { host } from './ServerAddress'
 
 export default function ProductListPage({ history, location }) {
     const [productItems, setProductItems] = useState(null)
     const query = queryString.parse(location.search);
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(9)
+
+    const getAxiosData = (uri) => {
+        axios.get(host + uri)
+            .then(res => {
+                console.log(res.data)
+                setProductItems(res.data)
+            })
+    }
 
     useEffect(() => {
         if (!query.page) {
@@ -20,6 +30,7 @@ export default function ProductListPage({ history, location }) {
         }
 
         if (productItems === null) {
+            //getAxiosData(`api/product/mainlist?category_p_id=1&category_id=100`)
             setProductItems({
                 category: [
                     {
@@ -132,7 +143,8 @@ export default function ProductListPage({ history, location }) {
 
             })
         }
-    })
+    }
+    )
     return (
         <>
             {productItems && <ProductList productItems={productItems} page={page} size={size} history={history} />}
