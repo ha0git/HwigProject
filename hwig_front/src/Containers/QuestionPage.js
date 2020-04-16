@@ -13,20 +13,25 @@ export default function QuestionPage({ location, history }) {
     console.log(history)
     console.log(host)
 
-    // const getAxiosData = (uri)=>{
-    //     axios.get(host+ uri)
-    //     .then(res => { console.log(res.data) })
-    // }
+    const getAxiosData = (uri)=>{
+        axios.get(host+ uri)
+        .then(res => { 
+            console.log(res.data)
+            setQnaList(res.data)
+            })
+    }
     useEffect(() => {
-        // getAxiosData('/qna')
+        
         if (query.page === undefined) {
             history.push(`/customer/qna?page=${page}`)
         }
-        if (query.page !== page) {
+        if (parseInt(query.page) !== page) {
             setPage(parseInt(query.page));
             console.log(page)
+            // getAxiosData('/qna')
         }
         if (!qnaList) {
+            // getAxiosData('/qna')
             setQnaList([
                 {
                     qna_id: 1,

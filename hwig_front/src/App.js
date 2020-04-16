@@ -14,11 +14,13 @@ function App(props) {
       console.log("firstPageLoad 실행")
       setFirstPageLoad(1)
       // props.check_session("cds/session")
+      // props.check_session("api/mlogin/session")
     }
   })
   props.history.listen((location, action) => {
     console.log("라우트 체인지 실행", location, action);
     // props.check_session("cds/session")
+    // props.check_session("api/mlogin/session")
 });
   return (
     <>
@@ -36,7 +38,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    check_session: (uri, data) =>  dispatch(check_session(uri))
+    check_session: (uri) =>  dispatch(check_session(uri))
   }
 }
 

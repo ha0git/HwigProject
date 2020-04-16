@@ -89,6 +89,11 @@
     font-size: 13px;
 }
 
+.tp_frmList > table > thead > tr > th:nth-child(2){
+    width:174px !important;
+}
+
+
 .tp_frmList > table > tbody > tr > td:last-child > a{
     cursor: pointer;
 }
