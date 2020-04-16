@@ -11,13 +11,14 @@ function App(props) {
 
   useEffect(() => {
     if(!firstPageLoad){
+      console.log("firstPageLoad 실행")
       setFirstPageLoad(1)
-      props.check_session("cds/session")
+      // props.check_session("cds/session")
     }
   })
   props.history.listen((location, action) => {
-    console.log("on route change", location, action);
-    props.check_session("cds/session")
+    console.log("라우트 체인지 실행", location, action);
+    // props.check_session("cds/session")
 });
   return (
     <>

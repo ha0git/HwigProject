@@ -13,9 +13,10 @@ export const login_success = (data) => {
     }
 }
 
-export const login_fail = () => {
+export const login_fail = (data) => {
     return{
-        type: LOGIN_FAIL
+        type: LOGIN_FAIL,
+        data
     }
 }
 
@@ -23,13 +24,13 @@ export const auth_login = (uri, data) => {
     return (dispatch) => {
         return axios.post(host + uri, data,{withCredentials:true})
         .then(res => {
-            console.log(res.headers)
+            console.log("로그인 응답 데이터=> "+ res.data)
             if(res.data.isLogged){
-                console.log("로그인 성공",res.data)
+                console.log("로그인 성공=> ",res.data)
                 dispatch(login_success(res.data))
             }else{
-            console.log("로그인 실패", res.data)
-                dispatch(login_fail())
+            console.log("로그인 실패=> ", res.data)
+                dispatch(login_fail(res.data.isLogged))
             }
         })
         .catch(error => {
@@ -46,10 +47,12 @@ export const logout = (data) => {
 }
 
 export const auth_logout = (uri, data) => {
+    console.log("로그아웃 실행")
     return (dispatch) => {
-        return axios.post(host + uri, data)
+        return axios.get(host + uri, {withCredentials:true})
         .then(res => {
-            dispatch(logout(res.data))
+            console.log(res.data)
+            dispatch(logout(res.data.isLogged))
         })
     }
 }
@@ -62,9 +65,10 @@ export const get_session_userInfo = (data) => {
     }
 }
 
-export const no_session = () => {
+export const no_session = (data) => {
     return{
-        type: NO_SESSION
+        type: NO_SESSION,
+        data
     }
 }
 
@@ -72,10 +76,13 @@ export const check_session = (uri) => {
     return (dispatch) => {
         return axios.get(host + uri, {withCredentials:true})
         .then(res => {
-            if(res.data){
+            console.log("세션 체크 응답 데이터=> " + res.data)
+            if(res.data.isLogged){
+                console.log(res.data, "세션 존재")
                 dispatch(get_session_userInfo(res.data))
             }else{
-                dispatch(no_session())
+                console.log(res.data, "세션 없음")
+                dispatch(no_session(res.data.isLogged))
             }
         })
     }

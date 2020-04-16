@@ -18,6 +18,7 @@ function LoginPage(props) {
     const handleData = (data) => {
         console.log(data)
         props.auth_login('cds/login', data)
+        // props.auth_login('api/member/p_login', data)
     }
     return (
         <>
@@ -28,7 +29,6 @@ function LoginPage(props) {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        data: state.reducer.data,
         isLogged: state.reducer.isLogged
     }
 }
