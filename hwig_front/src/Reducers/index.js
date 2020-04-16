@@ -2,7 +2,6 @@ import {LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT ,GET_SESSION_USERINFO, NO_SESSION} fro
 import {combineReducers} from 'redux'
 
 const InitialState = {
-    data:"없음.",
     userInfo: "없음",
     isLogged:false,
     session:"없음."
@@ -11,35 +10,39 @@ const InitialState = {
 const reducer = (state = InitialState, action) => {
     switch(action.type){
         case LOGIN_SUCCESS:
-            return{
-                ...state,
-                data: action.data,
-                isLogged:true,
-                session:"있음"
-            }
-        case LOGIN_FAIL:
-            return{
-                ...state,
-                data: "fail",
-                isLogged:false
-            }
-        case GET_SESSION_USERINFO:
+            console.log("LOGIN_SUCCESS 실행")
             return{
                 ...state,
                 userInfo: action.data,
-                isLogged: true
+                isLogged:true,
+            }
+        case LOGIN_FAIL:
+            console.log("LOGIN_FAIL 실행")
+            return{
+                ...state,
+                userInfo: "",
+                isLogged:false
+            }
+        case GET_SESSION_USERINFO:
+            console.log("GET_SESSION_USERINFO 실행")
+            return{
+                ...state,
+                userInfo: action.data,
+                isLogged: action.data.isLogged
             }
         case NO_SESSION:
+            console.log("NO_SESSION 실행")
             return{
                 ...state,
-                userInfo:"none",
-                isLogged: false
+                userInfo:"",
+                isLogged: action.data.isLogged
             }
         case LOGOUT:
+            console.log("LOGOUT 실행")
             return{
                 ...state,
-                userInfo:"none",
-                isLogged:false
+                userInfo:"",
+                isLogged: action.data.isLogged
             }
         default:
             return state;
