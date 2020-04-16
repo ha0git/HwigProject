@@ -18,7 +18,7 @@ export default function Notice(props) {
     const getNoticeList = notice_list.map((list,index)=>
         <tr key={index}>
             <td>공지</td>
-            <td><Link to={`/customer/notice/board?no=${list.notice_id}`}>{list.notice_subject}</Link></td>
+            <td><Link to={`/customer/notice/board?notice_id=${list.notice_id}`}>{list.notice_subject}</Link></td>
             <td>HWIG</td>
             <td>{list.notice_regdate}</td>
             <td>{list.notice_hit}</td>

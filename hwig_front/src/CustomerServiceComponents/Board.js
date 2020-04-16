@@ -4,7 +4,7 @@ import './Board.css'
 export default function Board(props) {
     console.log(props)
 
-    const article = props.article[props.num-1]
+    const article = props.article
     return (
         <>
             <div className="board-container">

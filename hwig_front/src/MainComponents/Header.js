@@ -18,7 +18,8 @@ function Header(props) {
 
     const handleLogoutAction = () => {
         console.log("logout action 실행")
-        props.auth_logout('cds/logout');
+        // props.auth_logout('cds/logout');
+        props.auth_logout('api/mlogin/p_logout');
     }
 
     return (

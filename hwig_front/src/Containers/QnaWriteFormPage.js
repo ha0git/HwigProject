@@ -9,7 +9,7 @@ export default function QnaWriteFormPage() {
     const [sendData, setSendData] = useState(null)
 
     const postAxiosData = (uri, data) => {
-        axios.post(host + uri, { data: data })
+        axios.post(host + uri, data)
             .then((res) => {
                 console.log(res.data)
             })
