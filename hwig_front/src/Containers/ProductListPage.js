@@ -24,13 +24,13 @@ export default function ProductListPage({ history, location }) {
         if (!query.page) {
             history.push(`/shop?page=${page}`)
         }
-        if (query.page !== page) {
-            setPage(parseInt(query.page));
-            console.log(page)
+        if (parseInt(query.category_id) !== page) {
+            setPage(parseInt(query.category_id))
+            getAxiosData(`api/product/mainlist?category_id=${query.category_id}`)
         }
 
-        if (productItems === null) {
-            //getAxiosData(`api/product/mainlist?category_p_id=1&category_id=100`)
+        if (!productItems) {
+            //getAxiosData(`api/product/mainlist?category_id=${query.category_id}`)
             setProductItems({
                 category: [
                     {
