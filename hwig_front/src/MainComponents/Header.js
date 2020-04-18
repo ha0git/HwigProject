@@ -20,6 +20,7 @@ function Header(props) {
         console.log("logout action 실행")
         // props.auth_logout('cds/logout');
         props.auth_logout('api/mlogin/p_logout');
+        window.location.reload()
     }
 
     return (
@@ -34,8 +35,8 @@ function Header(props) {
                             <li><Link to="/customer">고객센터 <img src={hd_down} alt=""></img></Link>
                                 <ul className="hd_downMenu">
                                     <li><Link to="/customer/notice">공지사항</Link></li>
-                                    <li><Link to="/customer/qna">자주하는 질문</Link></li>
-                                    <li><Link to="/customer/temp">1:1 문의</Link></li>
+                                    <li><Link to="/customer/temp">자주하는 질문</Link></li>
+                                    <li><Link to="/customer/qna">1:1 문의</Link></li>
                                 </ul>
                             </li>
                         </ui> :
@@ -45,8 +46,8 @@ function Header(props) {
                             <li><Link to="/customer">고객센터 <img src={hd_down} alt=""></img></Link>
                                 <ul className="hd_downMenu">
                                     <li><Link to="/customer/notice">공지사항</Link></li>
-                                    <li><Link to="/customer/qna">자주하는 질문</Link></li>
-                                    <li><Link to="/customer/temp">1:1 문의</Link></li>
+                                    <li><Link to="/customer/temp">자주하는 질문</Link></li>
+                                    <li><Link to="/customer/qna">1:1 문의</Link></li>
                                 </ul>
                             </li>
                         </ui>

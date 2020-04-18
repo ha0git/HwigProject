@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
 import { host } from './ServerAddress'
 import QnaWriteForm from '../CustomerServiceComponents/QnaWriteForm'
+import {connect} from 'react-redux'
 
-export default function QnaWriteFormPage() {
+function QnaWriteFormPage(props) {
+    console.log(props.isLogged)
     const [returnOrderNum, setReturnOrderNum] = useState(null)
     const [orderNumCheck, setOrderNumCheck] = useState(null)
-    const [sendData, setSendData] = useState(null)
+    const [orderOK, setOrderOK] = useState(false)
+    const [userInfo, setUserInfo] = useState("")
+    const [isLogged, setIsLogged] = useState(false)
 
     const postAxiosData = (uri, data) => {
+        console.log("실행")
         axios.post(host + uri, data)
             .then((res) => {
                 console.log(res.data)
@@ -16,14 +22,29 @@ export default function QnaWriteFormPage() {
     }
 
     useEffect(() => {
+        if(isLogged !== props.isLogged){
+            setIsLogged(props.isLogged)
+        }
+
+
         if (!returnOrderNum) {
             setReturnOrderNum(1)
+        }
+
+        if(!userInfo){
+            console.log("실행")
+            setUserInfo(props.userInfo)
+        }
+
+        if(userInfo != props.userInfo){
+            console.log("바뀐거 실행")
+            setUserInfo(props.userInfo)
         }
     })
 
     const handleData = (data) => {
         console.log(data)
-        postAxiosData('/qna', data)
+        postAxiosData('api/qna/qna_write', data)
     }
 
     const checkOrderNum = (orderNum) => {
@@ -34,9 +55,20 @@ export default function QnaWriteFormPage() {
         }
     }
 
+    console.log(userInfo)
     return (
         <>
-            <QnaWriteForm onSubmit={handleData} orderNumCheck={orderNumCheck} checkOrderNum={checkOrderNum} />
+            {userInfo && <QnaWriteForm onSubmit={handleData} orderNumCheck={orderNumCheck} checkOrderNum={checkOrderNum} userInfo={userInfo}/>}
         </>
     )
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogged: state.reducer.isLogged
+    }
+}
+
+QnaWriteFormPage = connect(mapStateToProps)(QnaWriteFormPage)
+
+export default QnaWriteFormPage

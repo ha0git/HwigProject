@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Question.css'
+import {Redirect} from 'react-router-dom'
 import response from '../images/qna/response.png'
 import jQuery from "jquery";
 import { Link } from 'react-router-dom'
@@ -25,7 +26,9 @@ export default function Question(props) {
             
         })
     }
+    // console.log(props.qnaList[0].qna.qna_category)
     const getQnaList = props.qnaList;
+    // console.log(getQnaList)
     const getList = getQnaList.map((list,index)=>{
         window.$(document).ready(function(){
             console.log('실행')
@@ -44,8 +47,12 @@ export default function Question(props) {
             <th>{list.qna_regdate}</th>
         </tr>
         <tr className={`temp_toggle${index}`}>
-            <td className="temp_toggle_content" colSpan="5">
-                {list.qna_content}
+            <td v-html="description" className="temp_toggle_content" colSpan="5">
+                {
+                list.qna_content.split('\n').map( line => {
+                return (<span>{line}<br/></span>)
+            })
+            }
             </td>
         </tr>
         {list.reply_content && 
@@ -54,10 +61,9 @@ export default function Question(props) {
                 <div></div>
                 <div>
                     <img src={response}/>
-                            <p>안녕하세요 휙 고객님,</p> 
-                            <p>누구보다 빠른배송! 휙입니다.</p>
-                            <br/>
-                            <p>{list.reply_content}</p>
+                            <p>{list.reply_content.split(/(<br>|<br\/>|<br \/>)/g).map( line => {
+                return (<span>{line.replace(/(<br>|<br\/>|<br \/>)/g, '')}<br/></span>)
+            })}</p>
                 </div>
             </td>
         </tr>}
@@ -125,6 +131,7 @@ export default function Question(props) {
                     </div>
                 </form>
             </div>
+            
         </>
     )
 }

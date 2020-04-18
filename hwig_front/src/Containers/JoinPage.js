@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import Join from '../RegisterComponents/Join'
+import {connect} from 'react-redux'
 import axios from 'axios'
 import {host} from './ServerAddress'
 
-export default function JoinPage() {
+function JoinPage(props) {
+    console.log(props)
     const [id, setId] = useState("abcde")
     const [email, setEmail] = useState("abc@abc.com")
 
@@ -59,3 +61,14 @@ export default function JoinPage() {
         </>
     )
 }
+
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogged: state.reducer.isLogged
+    }
+}
+
+JoinPage = connect(mapStateToProps)(JoinPage)
+
+export default JoinPage
