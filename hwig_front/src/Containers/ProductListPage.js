@@ -3,6 +3,8 @@ import { Spinner } from 'react-bootstrap'
 import queryString from 'query-string'
 import ProductList from '../ProductComponents/ProductList'
 import product1 from '../images/product1.png'
+import axios from 'axios'
+import { host } from './ServerAddress'
 
 export default function ProductListPage({ history, location }) {
     const [productItems, setProductItems] = useState(null)
@@ -10,16 +12,25 @@ export default function ProductListPage({ history, location }) {
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(9)
 
+    const getAxiosData = (uri) => {
+        axios.get(host + uri)
+            .then(res => {
+                console.log(res.data)
+                setProductItems(res.data)
+            })
+    }
+
     useEffect(() => {
         if (!query.page) {
             history.push(`/shop?page=${page}`)
         }
-        if (query.page !== page) {
-            setPage(parseInt(query.page));
-            console.log(page)
+        if (parseInt(query.category_id) !== page) {
+            setPage(parseInt(query.category_id))
+            getAxiosData(`api/product/mainlist?category_id=${query.category_id}`)
         }
 
-        if (productItems === null) {
+        if (!productItems) {
+            //getAxiosData(`api/product/mainlist?category_id=${query.category_id}`)
             setProductItems({
                 category: [
                     {
@@ -132,7 +143,8 @@ export default function ProductListPage({ history, location }) {
 
             })
         }
-    })
+    }
+    )
     return (
         <>
             {productItems && <ProductList productItems={productItems} page={page} size={size} history={history} />}
