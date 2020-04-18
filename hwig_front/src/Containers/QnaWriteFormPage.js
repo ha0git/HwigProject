@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import { host } from './ServerAddress'
 import QnaWriteForm from '../CustomerServiceComponents/QnaWriteForm'
 import {connect} from 'react-redux'
@@ -20,12 +20,14 @@ function QnaWriteFormPage(props) {
                 console.log(res.data)
             })
     }
-
     useEffect(() => {
         if(isLogged !== props.isLogged){
             setIsLogged(props.isLogged)
         }
 
+        if(!props.isLogged){
+            props.history.push("/login")
+        }
 
         if (!returnOrderNum) {
             setReturnOrderNum(1)
@@ -65,10 +67,11 @@ function QnaWriteFormPage(props) {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        isLogged: state.reducer.isLogged
+        isLogged: state.reducer.isLogged,
+        userInfo: state.reducer.userInfo
     }
 }
 
-QnaWriteFormPage = connect(mapStateToProps)(QnaWriteFormPage)
+QnaWriteFormPage = withRouter(connect(mapStateToProps)(QnaWriteFormPage))
 
 export default QnaWriteFormPage

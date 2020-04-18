@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { host } from './ServerAddress'
+import {withRouter} from 'react-router-dom'
 import queryString from 'query-string'
 import Notice from '../CustomerServiceComponents/Notice'
 import Axios from 'axios'
 
-export default function NoticePage({ location, history }) {
+function NoticePage(props) {
     const [articleList, setArticleList] = useState(null)
-    const query = queryString.parse(location.search)
+    const query = queryString.parse(props.location.search)
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(10)
     console.log(query)
-    console.log(history)
+    console.log(props.history)
     const getAxiosData = (uri) => {
         Axios.get(host + uri)
             .then(res => {
@@ -23,7 +24,7 @@ export default function NoticePage({ location, history }) {
     useEffect(() => {
 
         if (!query.page) {
-            history.push(`/customer/notice?page=${page}`)
+            props.history.push(`/customer/notice?page=${page}`)
         }
         if (query.page !== page) {
             setPage(parseInt(query.page));
@@ -108,10 +109,13 @@ export default function NoticePage({ location, history }) {
             // ])
 
         }
-    }, [query.page, page, articleList, history])
+    }, [query.page, page, articleList, props.history])
     return (
         <>
-            {articleList && <Notice articleList={articleList} page={page} history={history} size={size} />}
+            {articleList && <Notice articleList={articleList} page={page} history={props.history} size={size} />}
         </>
     )
 }
+
+
+export default withRouter(NoticePage)

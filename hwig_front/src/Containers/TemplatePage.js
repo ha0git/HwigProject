@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { host } from './ServerAddress'
+import {withRouter} from 'react-router-dom'
 import axios from 'axios'
 import queryString from 'query-string'
 import Template from '../CustomerServiceComponents/Template'
 
-export default function TemplatePage({ history, location }) {
+function TemplatePage(props) {
     const [articleList, setArticleList] = useState(null)
-    const query = queryString.parse(location.search);
+    const query = queryString.parse(props.location.search);
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(10)
     const getAxiosData = (api) => {
@@ -19,7 +20,7 @@ export default function TemplatePage({ history, location }) {
     useEffect(() => {
         
         if (query.page === undefined) {
-            history.push(`/customer/temp?page=${page}`)
+            props.history.push(`/customer/temp?page=${page}`)
         }
         if (parseInt(query.page) !== page) {
             setPage(parseInt(query.page));
@@ -122,13 +123,16 @@ export default function TemplatePage({ history, location }) {
             // ])
         }
 
-    }, [query.page, page, articleList, history])
+    }, [query.page, page, articleList, props.history])
 
 
 
     return (
         <>
-            {articleList && <Template articleList={articleList} page={page} size={size} history={history} />}
+            {articleList && <Template articleList={articleList} page={page} size={size} history={props.history} />}
         </>
     )
 }
+
+
+export default withRouter(TemplatePage)

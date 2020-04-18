@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import queryString from 'query-string'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Question from '../CustomerServiceComponents/Question'
 import { host } from './ServerAddress'
@@ -195,7 +195,6 @@ function QuestionPage({ location, history, isLogged }) {
     }, [query.page, page, qnaList, history])
     return (
         <>
-            <Redirect to="/login"/>
             {qnaList && <Question qnaList={qnaList} page={page} size={size} history={history} />}
         </>
     )
@@ -208,6 +207,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 
-QuestionPage = connect(mapStateToProps)(QuestionPage)
+QuestionPage = withRouter(connect(mapStateToProps)(QuestionPage))
 
 export default QuestionPage
