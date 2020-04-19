@@ -7,7 +7,27 @@ import { Link } from 'react-router-dom'
 import jQuery from "jquery";
 import './Navi.css'
 
-export default function Navi() {
+export default function Navi(props) {
+    const categoryLists = props.categoryList.category
+    const PcategoryLists = props.categoryList.pcategory
+
+    const category = PcategoryLists.map((pcategory) => {
+        if (!pcategory.category_id) {
+            return (
+                <ul className="nav_submenu">
+                    <li key={pcategory.category_p_id}><Link to={`/shop?category_id=${pcategory.category_p_id}&page=1`}>{pcategory.category_name}</Link></li>
+                    {categoryLists.map(category => {
+                        if (pcategory.category_p_id === category.category_p_id) {
+                            return (
+                                <li><Link to={`/shop?category_id=${category.category_p_id}${category.category_id}&page=1`}>{category.category_name}</Link></li>
+                            )
+                        }
+                    })}
+                </ul>
+            )
+        }
+    })
+
     document.$ = document.jQuery = jQuery;
     window.$ = window.jQuery = jQuery;
 
@@ -29,18 +49,7 @@ export default function Navi() {
                 <ul className="nav-menu">
                     <li><a className="nav-category" href="#"><img src={list}></img>전체 카테고리</a>
                         <div className="nav_sub">
-                            <ul className="nav_submenu">
-                                <li><Link>채소 · 과일</Link></li>
-                                <li><Link>기본 채소</Link></li>
-                                <li><Link>국산 과일</Link></li>
-                                <li><Link>수입 과일</Link></li>
-                            </ul>
-                            <ul className="nav_submenu">
-                                <li><Link>수산 · 해산 · 건어물</Link></li>
-                                <li><Link>생선류</Link></li>
-                                <li><Link>해산물 · 조개류</Link></li>
-                                <li><Link>건어물 · 다시팩</Link></li>
-                            </ul>
+                            {category}
                         </div>
                     </li>
                     <li><Link className="nav-items">신상품</Link></li>
