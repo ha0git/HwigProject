@@ -16,7 +16,7 @@ export default function CartPage() {
                         prd_thumb_img: vienna,
                         prd_name: '고소한 비엔나 소세지',
                         prd_comment: '들기름을 넣어 고소한 비엔나 소세지',
-                        prd_price: 10000,
+                        prd_price: 1000,
                         prd_quantity: 1,
                     },
                     {
@@ -24,7 +24,7 @@ export default function CartPage() {
                         prd_thumb_img: vienna,
                         prd_name: '고소한 비엔나 소세지',
                         prd_comment: '들기름을 넣어 고소한 비엔나 소세지',
-                        prd_price: 20000,
+                        prd_price: 1000,
                         prd_quantity: 1,
                     },
                     {
@@ -32,7 +32,7 @@ export default function CartPage() {
                         prd_thumb_img: vienna,
                         prd_name: '고소한 비엔나 소세지',
                         prd_comment: '들기름을 넣어 고소한 비엔나 소세지',
-                        prd_price: 30000,
+                        prd_price: 1000,
                         prd_quantity: 1,
                     },
                 ]
@@ -41,7 +41,7 @@ export default function CartPage() {
     }, [prdList])
     return (
         <>
-            {prdList && <Cart prdList={prdList}/> }
+            {prdList && <Cart prdList={prdList} setPrdList={setPrdList}/> }
         </>
     )
 }

@@ -5,18 +5,15 @@ import "./Join.css";
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 
-window.$(document).ready(function () {
-  window.$("input[type=checkbox]:first").click(function () {
-    if (!window.$("input[type=checkbox]:first").attr('checked') || window.$("input[type=checkbox]:first").attr('checked') === false) {
-      window.$("input[type=checkbox]").attr('checked', 'true')
-    } else {
-      window.$("input[type=checkbox]").removeAttr('checked')
-    }
+window.$(document).ready(function(){
+  window.$("input[type=checkbox]:first").click(function(){
+      if(window.$("input[type=checkbox]:first").prop("checked")){
+          window.$("input[name=chk]").prop("checked",true);
+      }else{
+          window.$("input[name=chk]").prop("checked",false);
+      }
   })
-
 })
-
-
 
 export default function Join(props) {
   const [show, setShow] = useState(false);
@@ -37,17 +34,6 @@ export default function Join(props) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  window.$(document).ready(function () {
-  window.$("input[type=checkbox]").click(function () {
-    console.log(window.$("#join_check1").is(":checked") , window.$("#join_check2").is(":checked") , window.$("#join_check3").is(":checked"))
-    if(window.$("#join_check1").is(":checked") && window.$("#join_check2").is(":checked") && window.$("#join_check3").is(":checked")){
-      setIsChecked(true)
-      console.log('체크true실행')
-    }
-  })
-})
-
   const handleSubmit = (e) => {
       e.preventDefault()
       const sumAddress= "(" + mem_zipcode + ") "+ address1 + ", " + address2;
@@ -195,21 +181,21 @@ export default function Join(props) {
                 <div className="agree_subCh">
                   <div className="agree_ch">
                     <label className="ch">
-                      <input type="checkbox" id="join_check1"></input>
+                      <input type="checkbox" name="chk"></input>
                       <span></span>이용약관 <span className="text_sub">(필수)</span>
                     </label>
                     <a href="#" className="btn_essential">약관보기 ></a>
                   </div>
                   <div className="agree_ch">
                     <label className="ch">
-                      <input type="checkbox" id="join_check2"></input>
+                      <input type="checkbox" name="chk"></input>
                       <span></span>개인정보처리방침 <span className="text_sub">(필수)</span>
                     </label>
                     <a href="#" className="btn_essential">약관보기 ></a>
                   </div>
                   <div className="agree_ch">
                     <label className="ch">
-                      <input type="checkbox" id="join_check3"></input>
+                      <input type="checkbox" name="chk"></input>
                       <span></span>본인은 만 14세 이상입니다. <span className="text_sub">(필수)</span>
                     </label>
                   </div>

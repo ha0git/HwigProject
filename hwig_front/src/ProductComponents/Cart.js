@@ -1,30 +1,63 @@
 import React, { useState, useEffect }  from 'react'
 import {Table} from 'react-bootstrap'
 import './Cart.css'
-import vienna from '../images/product/vienna.png';
+import jQuery from "jquery";
+import { First } from 'react-bootstrap/PageItem';
+window.$ = window.jQuery = jQuery;
 
+window.$(document).ready(function(){
+  window.$("input[type=checkbox]:first").click(function(){
+      if(window.$("input[type=checkbox]:first").prop("checked")){
+          window.$("input[name=chk]").prop("checked",true);
+      }else{
+          window.$("input[name=chk]").prop("checked",false);
+      }
+  })
+})
 export default function Cart(props) {
-    const goodsInfo = props.prdList.product
-    const rise = (quantities) => {
-        quantities = quantities + 1
-    }
-    const reduce = (quantities) => {
-        quantities = quantities - 1
-
-    }
-
+    const [goodsInfo,setGoodsInfo] = useState(props.prdList.product)
+    const [quant,setQuant] = useState(1)
     
+    let result = 0;
+    let delivery_charge = 0;
+
+    for (let i = 0; i < goodsInfo.length; i++) {
+        result += (goodsInfo[i].prd_price * goodsInfo[i].prd_quantity)
+    }
+    if (result >= 25000) {
+        delivery_charge = 0
+    } else if (result < 25000) {
+        delivery_charge = 3000
+    }
+
+    const deleteprd = () => {
+        console.log(goodsInfo)
+    }
     const productGoods = goodsInfo.map(goodsInfo => {
 
-        const quantity = goodsInfo.prd_quantity
-        
+        const rise = () => {
+            goodsInfo.prd_quantity += 1
+            setQuant( quant => quant = goodsInfo.prd_quantity)
+        }
+        const reduce = () => {
+            if (quant > 1) {
+                goodsInfo.prd_quantity -= 1
+                setQuant( quant => quant = goodsInfo.prd_quantity)
+            }
+            else {
+                return
+            }
+        }
+
+
         return (
-        <tbody>
+            <>
+            <tbody>
                 <tr>
                     {/*<td className="cart-table-item-none" colspan="5"><br/><br/>장바구니에 담긴 상품이 없습니다.<br/><br/><br/></td>*/}
                     <td>
-                        <label className="ch">
-                        <input type="checkbox" id="cart_check2"></input>
+                        <label className="cart_ch">
+                        <input type="checkbox" id="cart_check2" name="chk"></input>
                         <span></span>
                     </label>
                     </td>
@@ -44,11 +77,11 @@ export default function Cart(props) {
                     </td>
                     <td>
                         <div className="cart-goods-quantity">
-                            <button type="button" className="btn_reduce" onClick={reduce(quantity)}>
+                            <button type="button" className="btn_reduce" onClick={reduce}>
                                 <img src="https://res.kurly.com/pc/ico/1801/ico_minus_24x4_777.png" />
                             </button> 
-                            <input type="text" className="inp_quantity" value={quantity}/>
-                            <button type="button" className="btn_rise" onClick={rise(quantity)}>
+                            <input type="text" className="inp_quantity" value={goodsInfo.prd_quantity}/>
+                            <button type="button" className="btn_rise" onClick={rise}>
                                 <img src="https://res.kurly.com/pc/ico/1801/ico_plus_24x24_777.png" />
                             </button>
                         </div>
@@ -60,12 +93,12 @@ export default function Cart(props) {
                     </td>
                 </tr>
             </tbody>
+            </>
         )
     } )
     return (
         <>
-            <div className="cart-container">
-
+            <div className="cart_container">
                             <div className="cart-tit">
                                 <div className="cart-title">장바구니</div>
                                 <div>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</div>
@@ -77,8 +110,8 @@ export default function Cart(props) {
                                     <thead>
                                         <tr>
                                             <th className="cart-table-column-check">
-                                            <label className="ch">
-                                                <input type="checkbox" id="join_check1"></input>
+                                            <label className="cart_ch">
+                                                <input type="checkbox" ></input>
                                                 <span></span>
                                             </label></th>
                                             <th className="cart-table-column-detail"><div className="cartd">상품 정보</div></th>
@@ -86,11 +119,12 @@ export default function Cart(props) {
                                             <th className="cart-table-column-price"><div className="cartd">상품금액</div></th>
                                         </tr>
                                     </thead>
-                                    {productGoods}
+                                        {productGoods}
+                                    
                                 </Table>
                                 <div className="cart-button">
-                                <button className="cart-delete-button">선택상품 삭제</button>
-                                <button className="cart-delete-button">품절상품 삭제</button>
+                                <button className="cart-delete-button" type="button" onClick={deleteprd}>선택상품 삭제</button>
+                                <button className="cart-delete-button" type="button">품절상품 삭제</button>
                                 </div>
                                 <Table className="cart_table2">
                                     <thead>
@@ -105,15 +139,15 @@ export default function Cart(props) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <div className="cart-calculate-price" id="">38000 원</div>
+                                                <div className="cart-calculate-price" id="">{result}원</div>
                                             </td>
                                             <td className="cart-calculate-plus"><div className="cartd2">+</div></td>
                                             <td>
-                                                <div className="cart-calculate-price" id="">0 원</div>
+                                                <div className="cart-calculate-price" id="">{delivery_charge}원</div>
                                             </td>
                                             <td className="cart-calculate-equal"><div className="cartd2">=</div></td>
                                             <td>
-                                                <div className="cart-calculate-price" id="cart-calculate-price">38000 원</div>
+                                                <div className="cart-calculate-price" id="cart-calculate-price">{result+delivery_charge}</div>
                                             </td>
 
                                         </tr>
@@ -121,8 +155,8 @@ export default function Cart(props) {
                                 
                                 </Table>
                                 <div>
-                                    <button className="cart-submit1" >계속 쇼핑하기</button>
-                                    <button className="cart-submit" type="submit">주문하기</button>
+                                    <button type="button" className="cart-submit1" >계속 쇼핑하기</button>
+                                    <button type="button" className="cart-submit" type="submit">주문하기</button>
                                 </div>
                             </form>
 

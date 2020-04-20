@@ -1,9 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import Join from '../RegisterComponents/Join'
+import {Redirect} from 'react-router-dom'
 import axios from 'axios'
 import {host} from './ServerAddress'
+import {connect} from 'react-redux'
 
-export default function JoinPage() {
+function JoinPage(props) {
+    const [isLogged, setIsLogged] = useState(false)
+    useEffect(() => {
+        if(isLogged !== props.isLogged){
+            console.log(isLogged, props.isLogged)
+            setIsLogged(props.isLogged)
+        }
+    })
     const [id, setId] = useState("abcde")
     const [email, setEmail] = useState("abc@abc.com")
 
@@ -55,7 +64,16 @@ export default function JoinPage() {
 
     return (
         <>
-            <Join onSubmit={handleData} checkingId={checkingId} checkingEmail={checkingEmail} CheckEmailF={CheckEmailF}/>
+           {isLogged ? <Redirect to="/"/> : <Join onSubmit={handleData} checkingId={checkingId} checkingEmail={checkingEmail} CheckEmailF={CheckEmailF}/> }
         </>
     )
 }
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogged: state.reducer.isLogged
+    }
+}
+
+JoinPage = connect(mapStateToProps)(JoinPage)
+
+export default JoinPage
