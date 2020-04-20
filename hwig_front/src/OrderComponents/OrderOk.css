@@ -1,0 +1,81 @@
+.orderOk-container{
+    background-color: #f7f7f7;
+    padding: 50px 0px 50px 0px;
+    width:100%;
+    height:auto;
+}
+
+
+
+.orderOk-subcontainer{
+    background-color: white;
+    margin: 0px auto;
+    width:600px;
+    height:auto;
+}
+
+.orderOk-subcontainer > div:first-child{
+    color:#ed7175;
+    font-size: 22px;
+}
+
+.orderOk-subcontainer > div:first-child,
+.orderOk-subcontainer > div:nth-child(2),
+.orderOk-subcontainer > div:nth-child(3){
+    text-align: center;
+    padding:15px;
+}
+
+.orderOk-subcontainer > div:nth-child(3){
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+}
+
+.orderOk-subcontainer-orderlist{
+    margin: 0px auto;
+    padding:15px;
+    width:450px;
+    font-weight: 300;
+    color: black;
+    /* border: 1px solid black; */
+}
+
+.orderOk-subcontainer-orderlist > div{
+    border-top: 2px solid #ed7175;
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px solid rgb(230, 227, 227);
+    margin-bottom: 10px;
+}
+
+.orderOk-subcontainer-orderlist > div > a{
+    font-size: 18px;
+    color: #ed7175;
+}
+.orderOk-subcontainer-orderlist > div > a > span{
+    padding-right: 15px;
+}
+.orderOk-subcontainer-orderlist > div > a > span:last-child{
+    padding-left: 185px;
+    font-size: 20px;
+}
+
+.orderOk-subcontainer-orderlist > table > tbody > tr > td:first-child{
+    width: 90px;
+}
+.orderOk-subcontainer-orderlist > table > tbody > tr > td:last-child{
+    width: 350px;
+    padding-left: 40px;
+}
+
+.orderOk-subcontainer > div:last-child{
+    text-align: center;
+}
+
+.orderOk-subcontainer > div:last-child > a >input{
+    border: 1px solid #ed7175;
+    background-color: #ed7175;
+    color: white;
+    padding: 10px 50px 10px 50px;
+    margin: 20px 0px 50px 0px;
+}

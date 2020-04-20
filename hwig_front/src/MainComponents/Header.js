@@ -58,10 +58,9 @@ function Header(props) {
                     </Link>
                     </div>
                     <div class="floating">
-                        <div><a href="#"><img src={sidebanner}></img></a></div>
+                        <div><Link to="/"><img src={sidebanner}></img></Link></div>
                         <div><Link to="/shop/cart">장바구니</Link></div>
-                        <div><a>등급별 혜택</a></div>
-                        <div><a>최근 본 상품</a></div>
+                        <div><Link>등급별 혜택</Link></div>
                     </div>
                 </div>
             </div>
