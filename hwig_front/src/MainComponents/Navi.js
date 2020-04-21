@@ -9,15 +9,18 @@ import './Navi.css'
 
 export default function Navi(props) {
     const categoryLists = props.categoryList.category
-    const PcategoryLists = props.categoryList.pcategory
+    const pcategoryLists = props.categoryList.pcategory
 
-    const category = PcategoryLists.map((pcategory) => {
-        if (!pcategory.category_id) {
+    console.log(categoryLists.pcategory)
+
+
+    const category = pcategoryLists.map((pcategory) => {
+        if (!pcategory.category_p_id) {
             return (
                 <ul className="nav_submenu">
-                    <li key={pcategory.category_p_id}><Link to={`/shop?category_id=${pcategory.category_p_id}&page=1`}>{pcategory.category_name}</Link></li>
+                    <li key={pcategory.category_id}><Link to={`/shop?category_id=${pcategory.category_id}&page=1`}>{pcategory.category_name}</Link></li>
                     {categoryLists.map(category => {
-                        if (pcategory.category_p_id === category.category_p_id) {
+                        if (pcategory.category_id === category.category_p_id) {
                             return (
                                 <li><Link to={`/shop?category_id=${category.category_p_id}${category.category_id}&page=1`}>{category.category_name}</Link></li>
                             )
@@ -28,6 +31,7 @@ export default function Navi(props) {
         }
     })
 
+    //네비 메뉴 고정 (JQuery)
     document.$ = document.jQuery = jQuery;
     window.$ = window.jQuery = jQuery;
 
