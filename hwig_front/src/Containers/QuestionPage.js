@@ -22,8 +22,8 @@ function QuestionPage({ location, history, isLogged }) {
         .then(res => { 
             console.log("에이젝스 실행")
             console.log(res.data)
-            setQnaList(res.data)
-            // setQnaList(res.data.rlist)
+            // setQnaList(res.data)
+            setQnaList(res.data.rlist)
             })
     }
 

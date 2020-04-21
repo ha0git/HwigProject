@@ -27,6 +27,7 @@ export default function Question(props) {
         })
     }
     // console.log(props.qnaList[0].qna.qna_category)
+    
     const getQnaList = props.qnaList;
     // console.log(getQnaList)
     const getList = getQnaList.map((list,index)=>{
