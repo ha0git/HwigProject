@@ -56,7 +56,7 @@
     padding-right: 15px;
 }
 .orderOk-subcontainer-orderlist > div > a > span:last-child{
-    padding-left: 185px;
+    float: right;
     font-size: 20px;
 }
 

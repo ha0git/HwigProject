@@ -18,7 +18,7 @@ function LoginPage(props) {
     const handleData = (data) => {
         console.log(data)
         // props.auth_login('cds/login', data)
-        props.auth_login('api/mlogin/p_login', data)
+        props.auth_login('api/mlogin/login', data)
     }
     return (
         <>

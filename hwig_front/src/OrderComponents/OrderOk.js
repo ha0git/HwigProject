@@ -21,7 +21,7 @@ export default function OrderOk(props) {
                                     <tbody>
                                         <tr>
                                             <td>상품명</td>
-                                            <td>{orderInfo.prd_name}</td>
+                                            <td>{orderInfo.prd_name + " 외 " + (orderInfo.order_count-1) + "건"}</td>
                                         </tr>
                                         <tr>
                                             <td>배송지 정보</td>

@@ -31,6 +31,7 @@ export const auth_login = (uri, data) => {
             }else{
             console.log("로그인 실패=> ", res.data)
                 dispatch(login_fail(res.data.isLogged))
+                alert("아이디 또는 비밀번호가 틀렸습니다.")
             }
         })
         .catch(error => {

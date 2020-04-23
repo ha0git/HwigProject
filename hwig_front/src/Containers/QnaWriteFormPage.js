@@ -47,6 +47,7 @@ function QnaWriteFormPage(props) {
     const handleData = (data) => {
         console.log(data)
         postAxiosData('api/qna/qna_write', data)
+        props.history.push("/customer/qna")
     }
 
     const checkOrderNum = (orderNum) => {
