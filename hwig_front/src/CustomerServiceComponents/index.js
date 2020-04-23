@@ -27,17 +27,21 @@ function Index(props) {
                     <Route path="/customer/notice/board" component={BoardPage}/>
                     <Route exact path="/customer/qna" render={(props) => {
                         if(isCheck){
-                            return <QuestionPage isLogged={isLogged} history={props.history} location={props.location}/>
-                        }else{
-                            props.history.push('/login')
+                            if(!isLogged){
+                                props.history.push('/login')
+                            }else{
+                                return <QuestionPage isLogged={isLogged} history={props.history} location={props.location}/>
+                            }
                         }
                         }
                     }/>
                     <Route path="/customer/qna/board" render={(props) => {
                         if(isCheck){
-                            return <QnaWriteFormPage/>
-                        }else{
-                            props.history.push('/login')
+                            if(!isLogged){
+                                props.history.push('/login')
+                            }else{
+                                return <QnaWriteFormPage/>
+                            }
                         }
                         }
                         }/>

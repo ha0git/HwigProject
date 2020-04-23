@@ -37,7 +37,8 @@ const reducer = (state = InitialState, action) => {
             return{
                 ...state,
                 userInfo:"",
-                isLogged: action.data.isLogged
+                isLogged: action.data.isLogged,
+                isCheck:true
             }
         case LOGOUT:
             console.log("LOGOUT 실행")
