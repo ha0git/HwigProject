@@ -11,7 +11,7 @@ function QnaWriteFormPage(props) {
     const [orderNumCheck, setOrderNumCheck] = useState(null)
     const [orderOK, setOrderOK] = useState(false)
     const [userInfo, setUserInfo] = useState("")
-    const [isLogged, setIsLogged] = useState(false)
+    const [isLogged, setIsLogged] = useState()
 
     const postAxiosData = (uri, data) => {
         console.log("실행")
