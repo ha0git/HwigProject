@@ -4,7 +4,8 @@ import {combineReducers} from 'redux'
 const InitialState = {
     userInfo: "없음",
     isLogged:false,
-    session:"없음."
+    session:"없음.",
+    isCheck:false
 }
 
 const reducer = (state = InitialState, action) => {
@@ -28,14 +29,16 @@ const reducer = (state = InitialState, action) => {
             return{
                 ...state,
                 userInfo: action.data.mem,
-                isLogged: action.data.isLogged
+                isLogged: action.data.isLogged,
+                isCheck:true
             }
         case NO_SESSION:
             console.log("NO_SESSION 실행")
             return{
                 ...state,
                 userInfo:"",
-                isLogged: action.data.isLogged
+                isLogged: action.data.isLogged,
+                isCheck:true
             }
         case LOGOUT:
             console.log("LOGOUT 실행")

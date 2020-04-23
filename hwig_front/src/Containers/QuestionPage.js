@@ -6,13 +6,13 @@ import {connect} from 'react-redux'
 import Question from '../CustomerServiceComponents/Question'
 import { host } from './ServerAddress'
 
-function QuestionPage({ location, history, isLogged }) {
+function QuestionPage({ location, history, isLogged}) {
     console.log(isLogged)
     const [qnaList, setQnaList] = useState(null)
     const query = queryString.parse(location.search)
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(10)
-    const [logged, setLogged] = useState(false)
+    const [logged, setLogged] = useState(isLogged)
     console.log(logged)
     console.log(location)
 
@@ -200,13 +200,7 @@ function QuestionPage({ location, history, isLogged }) {
     )
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        isLogged: state.reducer.isLogged
-    }
-}
 
-
-QuestionPage = withRouter(connect(mapStateToProps)(QuestionPage))
+QuestionPage = withRouter(QuestionPage)
 
 export default QuestionPage
