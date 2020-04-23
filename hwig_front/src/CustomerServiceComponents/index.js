@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import CSNavi from './CSNavi'
 import {connect} from 'react-redux'
 import NoticePage from '../Containers/NoticePage'
@@ -12,7 +12,6 @@ function Index(props) {
     console.log(props)
     const [isCheck, setIsCheck] = useState(false)
     const [isLogged, setisLogged] = useState(false)
-
         if(isCheck !== props.isCheck){
             setIsCheck(props.isCheck)
         }
@@ -28,12 +27,18 @@ function Index(props) {
                     <Route path="/customer/notice/board" component={BoardPage}/>
                     <Route exact path="/customer/qna" render={(props) => {
                         if(isCheck){
-                            return <QuestionPage isLogged={isLogged} history={props.history} location={props.location}/>}
+                            return <QuestionPage isLogged={isLogged} history={props.history} location={props.location}/>
+                        }else{
+                            props.history.push('/login')
                         }
-                        }/>
+                        }
+                    }/>
                     <Route path="/customer/qna/board" render={(props) => {
                         if(isCheck){
-                            return <QnaWriteFormPage/>}
+                            return <QnaWriteFormPage/>
+                        }else{
+                            props.history.push('/login')
+                        }
                         }
                         }/>
                     <Route path="/customer/temp" component={TemplatePage} />
@@ -51,6 +56,6 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-Index = connect(mapStateToProps)(Index)
+Index = withRouter(connect(mapStateToProps)(Index))
 
 export default Index

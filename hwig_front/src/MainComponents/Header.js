@@ -19,7 +19,7 @@ function Header(props) {
     const handleLogoutAction = () => {
         console.log("logout action 실행")
         // props.auth_logout('cds/logout');
-        props.auth_logout('api/mlogin/p_logout');
+        props.auth_logout('api/mlogin/logout');
         window.location.reload()
     }
 
@@ -41,7 +41,7 @@ function Header(props) {
                             </li>
                         </ui> :
                         <ui className="hd_menu">
-                            <li><Link to="/mypage">ㅌㅌㅌㅌ 님 안녕하세요.</Link></li>
+                            <li><Link to="/mypage">{props.userInfo.mem_name} 님 안녕하세요.</Link></li>
                             <li><p onClick={()=>handleLogoutAction()}>로그아웃</p></li>
                             <li><Link to="/customer">고객센터 <img src={hd_down} alt=""></img></Link>
                                 <ul className="hd_downMenu">
