@@ -3,13 +3,13 @@ import './Product.css'
 import ImageMapper from 'react-image-mapper';
 
 export default function Product(props) {
-    const goodsInfo = props.prdList.product[props.num - 1];
+    const goodsInfo = props.prdList[0];
     return (
         <>
             <div>
                 <div className="section_view">
                     <div className="thumb">
-                        <ImageMapper src={goodsInfo.prd_thumb_img} />
+                        <ImageMapper src={goodsInfo.prd_thumb} />
                     </div>
                     <p className="product_name">
                         <strong className="p_name">

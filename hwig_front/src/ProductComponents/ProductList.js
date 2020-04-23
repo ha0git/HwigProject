@@ -7,7 +7,7 @@ import './ProductList.css'
 
 export default function ProductList(props) {
     const categoryItem = props.productItems.category
-    const productList = props.productItems.product
+    const productList = props.productItems.productlist
     const pcategoryItem = props.productItems.pcategory
     const allItems = props.productItems.category[0]
 
@@ -23,7 +23,7 @@ export default function ProductList(props) {
     console.log(categoryList)
     const productGoods = productList.map((product) => (
         <li key={product.prd_id}>
-            <Link to={`shop/product?goodsno=${product.prd_id}&page=1`}><ImageMapper src={product.prd_img}></ImageMapper>
+            <Link to={`shop/product?goodsno=${product.prd_id}&page=${props.page}`}><ImageMapper src={product.prd_img}></ImageMapper>
                 <div className="product_list_goods_info">
                     <span className="product_list_goods_name">{product.prd_name}&nbsp;{product.prd_kg}</span>
                     <span className="product_list_goods_price">{product.prd_price}</span>
