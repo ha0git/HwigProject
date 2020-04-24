@@ -19,7 +19,8 @@ function Header(props) {
     const handleLogoutAction = () => {
         console.log("logout action 실행")
         // props.auth_logout('cds/logout');
-        props.auth_logout('api/mlogin/p_logout');
+        props.auth_logout('api/mlogin/logout');
+        window.location.reload()
     }
 
     return (
@@ -34,19 +35,19 @@ function Header(props) {
                             <li><Link to="/customer">고객센터 <img src={hd_down} alt=""></img></Link>
                                 <ul className="hd_downMenu">
                                     <li><Link to="/customer/notice">공지사항</Link></li>
-                                    <li><Link to="/customer/qna">자주하는 질문</Link></li>
-                                    <li><Link to="/customer/temp">1:1 문의</Link></li>
+                                    <li><Link to="/customer/temp">자주하는 질문</Link></li>
+                                    <li><Link to="/customer/qna">1:1 문의</Link></li>
                                 </ul>
                             </li>
                         </ui> :
                         <ui className="hd_menu">
-                            <li><Link to="/mypage">ㅌㅌㅌㅌ 님 안녕하세요.</Link></li>
+                            <li><Link to="/mypage">{props.userInfo.mem_name} 님 안녕하세요.</Link></li>
                             <li><p onClick={()=>handleLogoutAction()}>로그아웃</p></li>
                             <li><Link to="/customer">고객센터 <img src={hd_down} alt=""></img></Link>
                                 <ul className="hd_downMenu">
                                     <li><Link to="/customer/notice">공지사항</Link></li>
-                                    <li><Link to="/customer/qna">자주하는 질문</Link></li>
-                                    <li><Link to="/customer/temp">1:1 문의</Link></li>
+                                    <li><Link to="/customer/temp">자주하는 질문</Link></li>
+                                    <li><Link to="/customer/qna">1:1 문의</Link></li>
                                 </ul>
                             </li>
                         </ui>
@@ -57,10 +58,9 @@ function Header(props) {
                     </Link>
                     </div>
                     <div class="floating">
-                        <div><a href="#"><img src={sidebanner}></img></a></div>
+                        <div><Link to="/"><img src={sidebanner}></img></Link></div>
                         <div><Link to="/shop/cart">장바구니</Link></div>
-                        <div><a>등급별 혜택</a></div>
-                        <div><a>최근 본 상품</a></div>
+                        <div><Link>등급별 혜택</Link></div>
                     </div>
                 </div>
             </div>

@@ -12,11 +12,13 @@ import { BrowserRouter as Router} from 'react-router-dom'
 const store = createStore(reducers, applyMiddleware(ReduxThunk))
 
 ReactDOM.render(
-    <Router>
+    
         <Provider store={store}>
-            <App />
+            <Router>
+                <App />
+            </Router>
         </Provider>
-    </Router>
+    
     , document.getElementById('root'));
 
 serviceWorker.unregister();

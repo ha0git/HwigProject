@@ -1,6 +1,10 @@
 import React, {useState,useEffect} from 'react'
 import Join from '../RegisterComponents/Join'
+<<<<<<< HEAD
 import {Redirect} from 'react-router-dom'
+=======
+import {connect} from 'react-redux'
+>>>>>>> 333ccfbbe2a211c31c9fd68af4ec217b05be4010
 import axios from 'axios'
 import {host} from './ServerAddress'
 import {connect} from 'react-redux'
@@ -91,6 +95,11 @@ function JoinPage(props) {
         </>
     )
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 333ccfbbe2a211c31c9fd68af4ec217b05be4010
 const mapStateToProps = (state, ownProps) => {
     return {
         isLogged: state.reducer.isLogged
@@ -99,4 +108,8 @@ const mapStateToProps = (state, ownProps) => {
 
 JoinPage = connect(mapStateToProps)(JoinPage)
 
+<<<<<<< HEAD
 export default withRouter(JoinPage)
+=======
+export default JoinPage
+>>>>>>> 333ccfbbe2a211c31c9fd68af4ec217b05be4010

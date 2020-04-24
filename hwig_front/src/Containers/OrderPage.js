@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import vienna from '../images/product/vienna.png'
 
 export default function OrderPage() {
-    const [logged, setLogged] = useState(true);
+    const [isLogged, setIsLogged] = useState(true);
     const [odgoodslist, setOdgoodslist] = useState(null)
 
 
@@ -57,7 +57,7 @@ export default function OrderPage() {
 
     return (
         <div>
-            {logged ? odgoodslist && <Order odgoodslist={odgoodslist} /> : <Redirect to="/login" />}
+            {isLogged ? odgoodslist && <Order odgoodslist={odgoodslist} /> : <Redirect to="/login" />}
 
         </div>
     )

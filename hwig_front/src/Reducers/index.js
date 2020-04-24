@@ -13,8 +13,8 @@ const reducer = (state = InitialState, action) => {
             console.log("LOGIN_SUCCESS 실행")
             return{
                 ...state,
-                userInfo: action.data,
-                isLogged:true,
+                userInfo: action.data.mem,
+                isLogged: action.data.isLogged,
             }
         case LOGIN_FAIL:
             console.log("LOGIN_FAIL 실행")
@@ -22,20 +22,22 @@ const reducer = (state = InitialState, action) => {
                 ...state,
                 userInfo: "",
                 isLogged:false
-            }
+            }   
         case GET_SESSION_USERINFO:
-            console.log("GET_SESSION_USERINFO 실행")
+            console.log("GET_SESSION_USERINFO 실행", action.data)
             return{
                 ...state,
-                userInfo: action.data,
-                isLogged: action.data.isLogged
+                userInfo: action.data.mem,
+                isLogged: action.data.isLogged,
+                isCheck:true
             }
         case NO_SESSION:
             console.log("NO_SESSION 실행")
             return{
                 ...state,
                 userInfo:"",
-                isLogged: action.data.isLogged
+                isLogged: action.data.isLogged,
+                isCheck:true
             }
         case LOGOUT:
             console.log("LOGOUT 실행")
