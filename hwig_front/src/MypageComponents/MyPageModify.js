@@ -3,9 +3,9 @@ import './MyPageModify.css'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
 import MyPageModifyUserInfo from './MyPageModifyUserInfo.js'
-export default function Modify() {
+import {withRouter} from 'react-router-dom'
+function Modify(props) {
     const [userInfo, setUserInfo] = useState(null)
-
     const getAxiosData = (uri) => {
         axios.get(host + uri)
             .then(res => {
@@ -14,26 +14,30 @@ export default function Modify() {
             })
     }
     useEffect(() => {if (!userInfo) {
-        //getAxiosData(`api/`)
-        setUserInfo(
-            {
-                mem_ID : "testid",
-                mem_PW : 12345,
-                mem_name: "테스트",
-                mem_email: "test@test.test",
-                mem_tel: "01039350584"
-            }
-        )}})
+        getAxiosData(`api/members/momomo`)
+        
+    }})
     const [id, setId] = useState("abcde")
-    const [email, setEmail] = useState("abc@abc.com")
 
-    const sendJoinData = (uri, data) => {
-        axios.post(host+uri, data)
-        .then(res=>console.log(res.data))
-    }
+    const sendMemData = (uri, data) => {
+        axios.put(host+uri, data)
+        .then(res=>{
+            console.log(res.data)
+            if (res.data.code === 200 ) {
+                alert("추카")
+                props.history.push('/mypage')
+            } else if (res.data.duplicated === true){
+                alert("ㅈㅂ")
+                return true
+            } else if (res.data.duplicated === false){
+                alert("사용할수 있습니다")
+                return false
+                
+            } 
+    })}
     const handleData = (data)=>{
         console.log(data)
-        //sendJoinData('/api/member/', data)
+        sendMemData('/api/members/momomo', data)
     }
     const checkingId = (checkId)=>{
         if(checkId === id){
@@ -47,6 +51,10 @@ export default function Modify() {
             return false
         }
     }
+    const checkingEmail = (data)=>{
+        console.log(data)
+        sendMemData(`api/members/check/email`, data)
+    }
 
     function CheckEmailF(str){                                                 
         const reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -59,7 +67,8 @@ export default function Modify() {
    }                                
     return (
         <>
-            {userInfo && <MyPageModifyUserInfo userInfo = {userInfo} onSubmit={handleData} checkingId={checkingId} CheckEmailF={CheckEmailF}/>}
+            {userInfo && <MyPageModifyUserInfo userInfo = {userInfo} onSubmit={handleData} checkingId={checkingId} CheckEmailF={CheckEmailF} checkingEmail={checkingEmail} />}
         </>
     )
 }
+export default withRouter(Modify)

@@ -16,13 +16,8 @@ export default function MyPageConf() {
             })
     }
     useEffect(() => {if (!userInfo) {
-        //getAxiosData(`api/`)
-        setUserInfo(
-            {
-                mem_ID : "testid",
-                mem_PW : 12345
-            }
-        )}})
+        getAxiosData(`api/members/momomo`)
+        }})
     return (
         <>
             {userInfo && <MyPageConfirmPw userInfo = {userInfo}/>}

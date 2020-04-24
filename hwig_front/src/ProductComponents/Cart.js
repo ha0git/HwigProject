@@ -5,16 +5,29 @@ import jQuery from "jquery";
 import { First } from 'react-bootstrap/PageItem';
 window.$ = window.jQuery = jQuery;
 
-window.$(document).ready(function(){
-  window.$("input[type=checkbox]:first").click(function(){
-      if(window.$("input[type=checkbox]:first").prop("checked")){
-          window.$("input[name=chk]").prop("checked",true);
-      }else{
-          window.$("input[name=chk]").prop("checked",false);
-      }
-  })
-})
+
 export default function Cart(props) {
+    window.$(document).ready(function(){
+        window.$("input[type=checkbox]:first").click(function(){
+            if(window.$("input[type=checkbox]:first").prop("checked")){
+                window.$("input[name=chk]").prop("checked",true);
+            }else{
+                window.$("input[name=chk]").prop("checked",false);
+            }
+        })
+        window.$('#delete').click(function(){
+          if(window.confirm("삭제하시겠습니까?")){
+              window.$("input[name=chk]:checked").each(function(){
+                  var tr_value =window.$(this).val();
+                  setGoodsInfo(
+                      goodsInfo.splice(tr_value,1)
+                  )
+              });
+          }else{
+              return false;
+          }
+      });
+      })
     const [goodsInfo,setGoodsInfo] = useState(props.prdList.product)
     const [quant,setQuant] = useState(1)
     
@@ -30,8 +43,8 @@ export default function Cart(props) {
         delivery_charge = 3000
     }
 
-    const deleteprd = () => {
-        console.log(goodsInfo)
+    const deleteprd = (i) => {
+        console.log(goodsInfo[i])
     }
     const productGoods = goodsInfo.map(goodsInfo => {
 
@@ -53,11 +66,11 @@ export default function Cart(props) {
         return (
             <>
             <tbody>
-                <tr>
+                <tr data-tr_value={goodsInfo.prd_id}>
                     {/*<td className="cart-table-item-none" colspan="5"><br/><br/>장바구니에 담긴 상품이 없습니다.<br/><br/><br/></td>*/}
                     <td>
                         <label className="cart_ch">
-                        <input type="checkbox" id="cart_check2" name="chk"></input>
+                        <input type="checkbox" id="cart_check2" name="chk" value={goodsInfo.prd_id}></input>
                         <span></span>
                     </label>
                     </td>
@@ -123,7 +136,7 @@ export default function Cart(props) {
                                     
                                 </Table>
                                 <div className="cart-button">
-                                <button className="cart-delete-button" type="button" onClick={deleteprd}>선택상품 삭제</button>
+                                <button className="cart-delete-button" type="button" id="delete">선택상품 삭제</button>
                                 <button className="cart-delete-button" type="button">품절상품 삭제</button>
                                 </div>
                                 <Table className="cart_table2">

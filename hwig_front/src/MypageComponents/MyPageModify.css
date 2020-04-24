@@ -110,3 +110,61 @@
     color: white;
     background-color: #ed7176;
 }
+.memCols2{
+    padding: 20px 0 0 0;
+    border-top: 0 none;
+    font-size: 0;
+    vertical-align: top;
+    text-align: left;
+}
+.memCols2 > input{
+    width: 300px;
+    height: 40px;
+    padding: 0 9px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+}
+.memCols2 > input[type=button]{
+    float: none;
+    display:inline-block;
+    width:150px;
+    height: 40px;
+    margin-left: 10px;
+    border: 1px solid #ed7176;
+    border-radius: 3px;
+    background-color: #ed7176;
+    font-size: 14px;
+    color: #fff;
+    line-height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+}
+.memCols2 > input::placeholder{
+    color:#999;
+    font-size: 13px;
+}
+.memCols2 > a {
+    margin-left:0;
+    display: block;
+}
+.memCols2 > input{
+    margin-top:10px;
+    width:460px;
+    height:40px;
+}
+.mypage_zipcode{
+    width: 130px !important;
+}
+#mypage_address{
+    width: 150px !important;
+}
+
+#mypage_address_modal{
+    margin-top: 150px;
+}

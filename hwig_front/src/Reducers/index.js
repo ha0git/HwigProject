@@ -3,7 +3,7 @@ import {combineReducers} from 'redux'
 
 const InitialState = {
     userInfo: "없음",
-    isLogged: false,
+    isLogged: true,
     session:"없음."
 }
 

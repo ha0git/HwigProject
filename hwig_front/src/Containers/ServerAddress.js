@@ -1,1 +1,1 @@
-export const host = "http://192.168.0.233:8090/"        //지혜
+export const host = "http://192.168.0.232:8090/"

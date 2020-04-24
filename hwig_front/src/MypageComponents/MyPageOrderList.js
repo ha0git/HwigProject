@@ -18,20 +18,7 @@ export default function OrderList() {
                                 <td></td>
                             </tr>
                             
-                            {/* <tr>
-                            <td>2</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            </tr> */}
+                            
                     </table>
                     <div className="space"></div>
                 </div>

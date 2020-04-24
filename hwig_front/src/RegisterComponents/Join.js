@@ -29,36 +29,36 @@ export default function Join(props) {
   const [address2, setAddress2] = useState("")
   const [mem_addr, setAddress] = useState("")
   const [mem_zipcode, setZipcode] = useState("")
-  const [mem_pribacy, setIsChecked] = useState(false)
+  const [mem_privacy, setIsChecked] = useState(true)
   const [redirect, setRedirect] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
       e.preventDefault()
-      const sumAddress= "(" + mem_zipcode + ") "+ address1 + ", " + address2;
+      let sumAddress= "(" + mem_zipcode + ") "+ address1 + ", " + address2;
       setAddress(sumAddress);
-      console.log('체크값', mem_pribacy, mem_addr)
+      console.log('체크값',  mem_addr)
       
-      if(mem_id.length < 6){
-        alert('6자 이상의 아이디를 입력해주세요.')
-      }else if(!checkId){
+      if(mem_id.length < 6 || !props.CheckIDF(mem_id)){
+        alert('규칙에 따라 아이디를 입력해주세요.')
+      }else if(checkId){
         alert('아이디 중복을 확인해주세요.')
-      }else if(mem_pw.length < 10){
-        alert('10자 이상의 비밀번호를 입력해주세요.')
+      }else if(!mem_pw || !props.CheckPWF(mem_pw)){
+        alert('규칙에 따라 비밀번호를 입력해주세요.')
       }else if(mem_pw !== checkPw){
         alert('비밀번호가 다릅니다.')
       }else if(!mem_name){
         alert('이름을 입력해주세요.')
       }else if(!mem_email || !props.CheckEmailF(mem_email)){
         alert('정확하게 이메일을 입력해주세요. (abc@abc.com)')
-      }else if(!checkEmail){
+      }else if(checkEmail){
         alert('이메일 중복을 확인해주세요.')
-      }else if(!mem_tel){
-        alert('전화번호를 입력해주세요.')
-      }else if(!mem_addr && !mem_zipcode){
+      }else if(!mem_tel || !props.CheckTLF){
+        alert('전화번호를 올바로 입력해주세요.')
+      }else if(!mem_addr){
         alert('주소를 입력해주세요.')
-      }else if(!mem_pribacy){
+      }else if(!mem_privacy){
         alert('이용약관에 동의해주세요.')
       }else{
           console.log('제출 실행',{ mem_id, mem_pw, mem_name, mem_email, mem_tel, mem_addr, mem_zipcode})
@@ -118,13 +118,13 @@ export default function Join(props) {
                       <td className="memCols1">아이디*</td>
                       <td className="memCols2">
                         <input type="text" value={mem_id} onChange={(e) => setId(e.target.value)} placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"></input>
-                        <input type="button" onClick={() => setCheckId(props.checkingId(mem_id))} value="중복확인" />
+                        <input type="button" onClick={() => setCheckId(props.checkingId({mem_id}))} value="중복확인" />
                       </td>
                     </tr>
                     <tr className="join_name">
                       <td className="memCols1">비밀번호*</td>
                       <td className="memCols2">
-                        <input type="password" value={mem_pw} onChange={(e) => setPw(e.target.value)} placeholder="비밀번호를 입력해주세요"></input>
+                        <input type="password" value={mem_pw} onChange={(e) => setPw(e.target.value)} placeholder="영문,숫자,특수문자 모두 사용하여 8자리 이상"></input>
                       </td>
                     </tr>
                     <tr className="join_name">
@@ -143,7 +143,7 @@ export default function Join(props) {
                       <td className="memCols1">이메일*</td>
                       <td className="memCols2">
                         <input type="email" value={mem_email} onChange={(e) => setEmail(e.target.value)} placeholder="예:KICCAMPUS@hwig.com"></input>
-                        <input type="button" onClick={() => setCheckEmail(props.checkingEmail(mem_email))} value="이메일 중복확인" />
+                        <input type="button" onClick={() => setCheckEmail(props.checkingEmail({mem_email}))} value="이메일 중복확인" />
                       </td>
                     </tr>
                     <tr className="join_name">
