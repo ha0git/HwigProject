@@ -85,3 +85,57 @@
     color: #333;
     word-break: break-all;
 }
+.last {
+    height: 55px;
+}
+.prd_btn{
+    margin-left:0 !important;
+}
+/* 계산 필드 */
+.prd_pay{
+    text-align: right;
+    color: #333;
+}
+.prd_pay_total{
+    margin-top: 20px;
+}
+.prd_pay_tit{
+    font-size: 15px;
+    line-height: 20px;
+    vertical-align: 2px;
+    color: #333;
+    font-weight: 500;
+}
+.prd_pay_num{
+    padding-left: 8px;
+    font-size: 32px;
+    line-height: 32px;
+    color: #333;
+    font-weight: 700;
+}
+.prd_pay_won{
+    padding-left: 2px;
+    font-size: 20px;
+    line-height: 20px;
+    vertical-align: -1px;
+    color: #333;
+    font-weight: 700;
+}
+.prd_gocart{
+    border: 1px solid #ff7276;
+    background-color: #ff7276;
+    border-radius: 3px;
+    width: 300px;
+    height: 55px;
+    float: right;
+    margin-top: 10px;
+}
+.prd_gocart button[type="submit"]{
+    width:300px;
+    height:100%;
+    color: #fff;
+    font-size: 16px;
+    line-height: 52px;
+    letter-spacing: -.1px;
+    text-align: center;
+}

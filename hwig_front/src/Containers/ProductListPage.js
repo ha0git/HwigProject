@@ -14,6 +14,8 @@ function ProductListPage({ history, location }) {
     const [size, setSize] = useState(9)
     const [list, setList] = useState(1)
 
+    console.log(query)
+
     const getAxiosData = (uri) => {
         axios.get(host + uri)
             .then(res => {
@@ -24,16 +26,38 @@ function ProductListPage({ history, location }) {
 
     useEffect(() => {
         if (!query.category_id || !query.page) {
-            history.push(`/shop?category_p_id=${query.category_id}&page=${page}`)
+            history.push(`/shop?category_id=${list}&page=${page}`)
         }
-        if ((parseInt(query.category_id) !== list) || (parseInt(query.page) !== page)) {
-            setList(parseInt(query.category_id))
-            setPage(parseInt(query.page))
-            //getAxiosData(`api/product/mainlist?category_p_id=${query.category_id}`)
-        }
+        // if ((parseInt(query.category_id) !== list) || (parseInt(query.page) !== page)) {
+        //     setList(parseInt(query.category_id))
+        //     setPage(parseInt(query.page))
+        //     if (query.category_id === list || query.productnew === null) {
+        //         getAxiosData(`api/product/productnew`)
+        //     }
+        //     else if (query.category_id === list || query.productsale === null) {
+        //         getAxiosData(`api/product/productsale`)
+        //     }
+        //     else if (query.category_id === list || query.productbest === null) {
+        //         getAxiosData(`api/product/productbest`)
+        //     }
+        //     else {
+        //         getAxiosData(`api/product/mainlist?category_p_id=${query.category_id}`)
+        //     }
+        // }
 
         if (!productItems) {
-            //getAxiosData(`api/product/mainlist?category_p_id=${query.category_id}`)
+            // if (query.category_id === 33 || query.productnew === null) {
+            //     getAxiosData(`api/product/productnew`)
+            // }
+            // else if (query.category_id === 44 || query.productsale === null) {
+            //     getAxiosData(`api/product/productsale`)
+            // }
+            // else if (query.category_id === 55 || query.productbest === null) {
+            //     getAxiosData(`api/product/productbest`)
+            // }
+            // else {
+            //     getAxiosData(`api/product/mainlist?category_p_id=${query.category_id}`)
+            // }
             setProductItems({
                 pcategory: [
                     {
@@ -45,7 +69,24 @@ function ProductListPage({ history, location }) {
                         category_p_id: null,
                         category_id: 2,
                         category_name: "정육 · 가공육"
-                    }
+                    },
+                    {
+                        category_p_id: null,
+                        category_id: 33,
+                        category_name: "신상품"
+                    },
+                    {
+                        category_p_id: null,
+                        category_id: 44,
+                        category_name: "알뜰상품"
+                    },
+                    {
+                        category_p_id: null,
+                        category_id: 55,
+                        category_name: "베스트"
+                    },
+
+
                 ],
                 category: [
                     {
@@ -97,7 +138,7 @@ function ProductListPage({ history, location }) {
                         prd_kg: '80g',
                         prd_price: '2,950원',
                         prd_comment: '여기는 채소 / 과일 상품들',
-                        prd_sale: 0.5
+                        prd_sale: 0.3
                     },
                     {
                         prd_id: 3,
@@ -106,7 +147,7 @@ function ProductListPage({ history, location }) {
                         prd_kg: '225g',
                         prd_price: '3,510원',
                         prd_comment: '여기는 채소 / 과일 상품들',
-                        prd_sale: 0.5
+                        prd_sale: 0.1
                     },
                     {
                         prd_id: 4,
@@ -115,7 +156,7 @@ function ProductListPage({ history, location }) {
                         prd_kg: '225g',
                         prd_price: '3,510원',
                         prd_comment: '여기는 채소 / 과일 상품들',
-                        prd_sale: 0.5
+                        prd_sale: 0
                     },
                     {
                         prd_id: 5,

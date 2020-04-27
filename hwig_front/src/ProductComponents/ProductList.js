@@ -4,11 +4,15 @@ import Pagination from "react-js-pagination";
 import ImageMapper from 'react-image-mapper';
 // import jQuery from "jquery";
 import './ProductList.css'
+import save10 from '../images/sales/10.png';
+import save30 from '../images/sales/30.png';
+import save50 from '../images/sales/50.png';
+import product1 from '../images/product1.png'
 
 export default function ProductList(props) {
+    const pcategoryItem = props.productItems.pcategory
     const categoryItem = props.productItems.category
     const productList = props.productItems.productlist
-    const pcategoryItem = props.productItems.pcategory
     const allItems = props.productItems.category[0]
 
     console.log(categoryItem)
@@ -20,10 +24,17 @@ export default function ProductList(props) {
         <li key={category.category_id}><Link to={`/shop?category_id=${category.category_p_id}${category.category_id}&page=${props.page}`}>{category.category_name}</Link></li>
     ))
 
-    console.log(categoryList)
-    const productGoods = productList.map((product) => (
+
+    const productGoods = productList.map(product => (
         <li key={product.prd_id}>
-            <Link to={`shop/product?goodsno=${product.prd_id}&page=${props.page}`}><ImageMapper src={product.prd_img}></ImageMapper>
+            <Link to={`shop/product?goodsno=${product.prd_id}&page=${props.page}`}>
+                <div className="prd_img">
+                    <img className="imgscale3" src={product1} />
+                    {(product.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
+                    {(product.prd_sale === 0.3) && <img className="product_sale_icon" src={save30} />}
+                    {(product.prd_sale === 0.5) && <img className="product_sale_icon" src={save50} />}
+                    {(!product.prd_sale) && <p></p>}
+                </div>
                 <div className="product_list_goods_info">
                     <span className="product_list_goods_name">{product.prd_name}&nbsp;{product.prd_kg}</span>
                     <span className="product_list_goods_price">{product.prd_price}</span>
@@ -32,7 +43,9 @@ export default function ProductList(props) {
             </Link>
         </li>
 
-    ))
+    )
+
+    )
 
     const showPrdList = () => {
         let list = [];
@@ -67,7 +80,7 @@ export default function ProductList(props) {
                             {categorytit}
                         </div>
                         <ul className="product_list_category">
-                            <li><Link to={`/shop?catogory_id=${allItems.category_p_id}&page=${props.page}`}>전체 보기</Link></li>
+                            <li><Link to={`/shop?catogory_id=1&page=${props.page}`}>전체 보기</Link></li>
                             {categoryList}
                         </ul>
                     </div>
