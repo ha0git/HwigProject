@@ -1,8 +1,8 @@
 import React from 'react'
 import './MyPageInfo.css'
 
-export default function MyPageInfo() {
-    
+export default function MyPageInfo(props) {
+    const userInfo = props.userInfo
     return (
         <div className="mypage-userinfo-container">
             <div className="mypage-userinfo-in-container">
@@ -11,7 +11,7 @@ export default function MyPageInfo() {
                         <p className="mypage-userinfo-grade-font">웰컴</p>
                     </div>
                     <div className="mypage-userinfo-namendetail-container">
-                        <span className="mypage-userinfo-namendetail-name">홍길동</span><span>님</span>
+                        <span className="mypage-userinfo-namendetail-name">{userInfo.mem_name}</span><span>님</span>
                         <div className="mypage-userinfo-namendetail-detail">5% 적립 + 최초 1회 무료배송</div>
                     </div>
                     <div className="mypage-userinfo-buttons-container">
@@ -21,7 +21,7 @@ export default function MyPageInfo() {
                 </div>
                 <div className="mypage-userinfo-reserves">
                     <div className="mypage-userinfo-reserves-title">적립금</div>
-                    <div className="mypage-userinfo-reserves-price">0원 <span>></span></div>
+                    <div className="mypage-userinfo-reserves-price">{userInfo.mem_reverse}원 <span>></span></div>
                     <div className="mypage-userinfo-reserves-drop">소멸예정 0원</div>
                 </div>
             </div>
