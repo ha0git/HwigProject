@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './Body.css';
-import save10 from '../images/10.png';
-import save30 from '../images/30.png';
-import save50 from '../images/50.png';
+import save10 from '../images/sales/10.png';
+import save30 from '../images/sales/30.png';
+import save50 from '../images/sales/50.png';
 import vienna from '../images/product/vienna.png';
 import mandu from '../images/eventlist/mandu.png';
 import jangbanner from "../images/banner/jangbanner.png";
@@ -14,11 +14,11 @@ export default function BodyUp(props) {
     let bannerItem = []
     let eventItem = []
     //메인배너
-    if(props.evtData){
+    if (props.evtData) {
         bannerItem = props.evtData.banner
         eventItem = props.evtData.square
     }
-    const getBennerItems = bannerItem.map((list, index) => 
+    const getBennerItems = bannerItem.map((list, index) =>
         <Carousel.Item>
             <div className="crs">
                 <Link to={`/eventlist/event?event_id=${list.event_id}`}>
@@ -32,9 +32,9 @@ export default function BodyUp(props) {
     )
 
     //메인 이벤트 영역
-    const getEventItems = eventItem.map((list, index) => 
+    const getEventItems = eventItem.map((list, index) =>
         <li className="main_event_li">
-            <Link  to={`/eventlist/event?event_id=${list.event_id}`}>
+            <Link to={`/eventlist/event?event_id=${list.event_id}`}>
                 <div className="main_thumb_event_img">
                     <img className="imgscale1" src={"http://13.209.202.242:8080/" + list.event_square_img} alt="" />
                 </div>
@@ -54,7 +54,7 @@ export default function BodyUp(props) {
             <div className="main">
                 <div className="crsq">
                     <Carousel fade="true" interval="3000">
-                       {getBennerItems}
+                        {getBennerItems}
                     </Carousel>
                 </div>
                 <div className="main_product_list">
