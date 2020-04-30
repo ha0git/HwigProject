@@ -9,7 +9,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-less": "^3.3.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ps": "^1.0.0",
     "qs": "^6.9.3",
     "query-string": "^6.11.1",
