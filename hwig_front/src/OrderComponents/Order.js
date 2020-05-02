@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import jQuery from "jquery";
 import './Order.css'
 import { Modal } from 'react-bootstrap'
@@ -10,61 +10,61 @@ export default function Order(props) {
     const [getAddress, setGetAdrress] = useState("")
     const [getaddress1, setGetAddress1] = useState("")
     const [getaddress2, setGetAddress2] = useState("")
-    const [mem_zipcode, setZipcode] = useState("")
-    const [getmem, setGetmem] = useState("휙휙휙")
-    const [gettel, setGettel] = useState("")
+    const [zipcode, setZipcode] = useState("")
+    const [order_receiver, setOrder_receiver] = useState("")
+    const [order_receiver_tel, setOrder_receiver_tel] = useState("")
     const [order_request, setOrder_request] = useState("")
     const [order_checked, setOrder_checked] = useState(false)
-    const [reverse_value, setReverse_value] = useState(0)
-    const [pay_selected, setPay_selected] = useState("")
+    const [order_reverse, setOrder_reverse] = useState(0)
+    const [order_initPay, setOrder_initPay] = useState(0)
+    const [order_used_reverse, setOrder_used_reverse] = useState(0)
+    const [order_payway, setOrder_payway] = useState("")
     const [order_paymoney, setOrder_paymoney] = useState(0)
-
-    // 상품정보
-    const orderGoodsInfo = props.odgoodslist.odgoods;
-
-    const odItems = orderGoodsInfo.map(odgoods => (
-        <tr key={odgoods.prd_id}>
-            <td className="order_thumb">
-                <ImageMapper src={odgoods.prd_thumb_img} />
-            </td>
-            <td className="order_goodsInfo">
-                <div>{odgoods.prd_name}&nbsp;{odgoods.prd_ea}</div>
-                <div>{odgoods.order_count}개 / 개 당 {odgoods.prd_price}원</div>
-            </td>
-            <td>
-                {odgoods.order_count * odgoods.prd_price}원
-            </td>
-        </tr>
-    ))
+    const [order_salePay, setOrder_salePay] = useState(0)
+    const [isNewAddr, setIsNewAddr] = useState(false)
+    const [isPhoneNumberValid, setisPhoneNumberValid] = useState(false)
 
     //주문자 정보
-    const orderMemInfo = props.odgoodslist.memInfo[0]
-    console.log(
-        getmem,
-        gettel,
-        order_request,
-        order_checked,
-        reverse_value,
-        pay_selected,
-    )
+    const mem_id = props.userInfo.mem_id
+    const mem_reverse = props.userInfo.mem_reverse
+    const mem_name = props.userInfo.mem_name
+    const mem_tel = props.userInfo.mem_tel
+    const mem_email = props.userInfo.email
+    const order_sender = props.userInfo.mem_name
+
+    // 상품정보
+
+    //상품id 배열 선언
+    const goodsInfo = props.prdList;
+    let item = ""
+    let order_prd_ids = new Array();
+
+    for (let i = 0; i < goodsInfo.length; i++) {
+        item = goodsInfo[i].prd_id
+        order_prd_ids[i] = item
+    }
+    console.log(item)
+    console.log(order_prd_ids)
+
+    //상품정보 mapping
+    const odItems = goodsInfo.map(odgoods => {
+        return (
+            <tr key={odgoods.prd_id}>
+                <td className="order_thumb">
+                    <ImageMapper src={odgoods.prd_thumb} />
+                </td>
+                <td className="order_goodsInfo">
+                    <div>{odgoods.prd_name}&nbsp;{odgoods.prd_ea}</div>
+                    <div>{odgoods.order_count}개 / 개 당 {odgoods.prd_price}원</div>
+                </td>
+                <td>
+                    {odgoods.order_count * odgoods.prd_price}원
+            </td>
+            </tr>
+        )
+    })
 
     //배송 정보
-    const validatePhoneNumber = phoneNumberInput => {
-        const phoneNumberRegExp = /^\d{3}-\d{3,4}-\d{4}$/;
-
-        if (phoneNumberInput.match(phoneNumberRegExp)) {
-            setGettel({
-                isPhoneNumberValid: true,
-                phoneNumberEntered: phoneNumberInput,
-            })
-        } else {
-            setGettel({
-                isPhoneNumberValid: false,
-                phoneNumberEntered: phoneNumberInput
-            });
-        }
-        console.log(validatePhoneNumber)
-    };
 
     // 주소 검색 API
     const handleClose = () => setShow(false);
@@ -99,59 +99,108 @@ export default function Order(props) {
         console.log(data.zonecode) // 우편번호
         setGetAddress1(fullAddress)
         setZipcode(data.zonecode)
+        setIsNewAddr(true)
         if (setGetAddress1) {
             handleClose()
         }
     }
 
+    //휴대폰 번호 정규표현식
+    const validatePhoneNumber = phoneNumberInput => {
+        const phoneNumberRegExp = /^\d{3}-\d{3,4}-\d{4}$/;
+        if (phoneNumberInput.match(phoneNumberRegExp)) {
+            setisPhoneNumberValid(true)
+            setOrder_receiver_tel(phoneNumberInput)
 
-
-    //결제금액창
-
-    let result = 0;
-    let delivery_charge = 0;
-
-    for (let i = 0; i < orderGoodsInfo.length; i++) {
-        result += (orderGoodsInfo[i].order_count * orderGoodsInfo[i].prd_price)
-    }
-
-    if (result >= 25000) {
-        delivery_charge = 0
-    } else if (result < 25000) {
-        delivery_charge = 3000
+        } else {
+            setisPhoneNumberValid(false)
+            setOrder_receiver_tel(phoneNumberInput)
+        }
     }
 
     //적립금 / 결제수단
-    const payInfo = props.odgoodslist.reverse[0]
-
     const handleOnChange = (e) => {
+        setOrder_used_reverse(parseInt(e.target.value))
         const re = /^[0-9\b]+$/;
-        if (e.target.value === '' || re.test(e.target.value)) {
-            setReverse_value(e.target.value)
+
+        if (!e.target.value) {
+            setOrder_used_reverse(0)
         }
-        if (e.target.value > payInfo.mem_reverse) {
+        if (re.test(e.target.value)) {
+            setOrder_used_reverse(e.target.value)
+        }
+        if (e.target.value > mem_reverse) {
             alert('보유 적립금보다 큰 금액 입니다.')
-            setReverse_value(0);
+            setOrder_used_reverse(0);
         }
     }
 
+    //결제금액창
+
+    useEffect(() => {
+        let sales = 0
+        let initPay = 0
+        let pay = 0
+
+        for (let i = 0; i < goodsInfo.length; i++) {
+            //상품 금액 (할인 전 금액)
+            initPay += (goodsInfo[i].prd_price * goodsInfo[i].order_count)
+            //상품 할인 금액
+            sales += (goodsInfo[i].prd_price * goodsInfo[i].prd_sales)
+        }
+        pay = order_initPay - order_salePay + delivery_charge - order_used_reverse
+
+        setOrder_salePay(sales)
+        setOrder_initPay(initPay)
+        setOrder_paymoney(pay)
+        setOrder_reverse(order_paymoney * 0.05)
+        console.log(order_paymoney)
+
+        // useEffect 반복되는것 잡기 / 두번째함수 개념 알기
+        // 넘어가는값 정리하기
+        // 로컬스토리지 해보기 (배송비)
+    }, [order_salePay, order_initPay, order_paymoney, order_reverse, order_used_reverse])
+    //배송비
+    let delivery_charge = 0;
+
+    if ((order_initPay - order_salePay) >= 25000) {
+        delivery_charge = 0
+    } else if ((order_initPay - order_salePay) < 25000) {
+        delivery_charge = 3000
+    }
+
     //결제하기 버튼
-    const handleOnSubmit = e => {
+    const handleSubmit = (e) => {
 
         const sumAddress = getaddress1 + " " + getaddress2;
         setGetAdrress(sumAddress);
         console.log(getAddress)
 
-        if (!getmem) {
+        if (!order_receiver) {
             alert('수령인을 입력해주세요.')
-        } else if (!gettel) {
+        } else if (!order_receiver_tel) {
             alert('휴대폰 번호를 입력해주세요.')
-        } else if (!gettel.isPhoneNumberValid) {
+        } else if (!isPhoneNumberValid) {
             alert('휴대폰 번호를 양식에 맞게 입력해주세요.')
         } else if (!order_checked) {
             alert('결제 진행에 동의해주세요.')
         }
-        e.prDefault();
+        e.preventDefault();
+
+        props.onSubmit({
+            mem_id,
+            order_reverse,
+            order_used_reverse,
+            order_paymoney,
+            order_request,
+            order_prd_ids,
+            // order_count,
+            order_sender,
+            order_receiver,
+            order_receiver_tel,
+            isNewAddr,
+            order_payway
+        })
     }
     return (
         <div className="order">
@@ -160,7 +209,7 @@ export default function Order(props) {
                     <h2>주문서</h2>
                     <p>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
                 </div>
-                <form onSubmit={handleOnSubmit}>
+                <form onSubmit={handleSubmit}>
                     {/* 상품 정보 */}
                     <div className="order_goodsList">
                         <div className="order_titleArea">
@@ -193,16 +242,16 @@ export default function Order(props) {
                             <tbody>
                                 <tr>
                                     <th>보내는 분*</th>
-                                    <td>{orderMemInfo.mem_name}</td>
+                                    <td>{mem_name}</td>
                                 </tr>
                                 <tr>
                                     <th>휴대폰*</th>
-                                    <td>{orderMemInfo.mem_tel}</td>
+                                    <td>{mem_tel}</td>
                                 </tr>
                                 <tr>
                                     <th>이메일*</th>
                                     <td>
-                                        {orderMemInfo.mem_email}
+                                        {mem_email}
                                         <p>이메일을 통해 주문처리과정을 보내드립니다.<br />
                                         정보 변경은 마이휙 > 개인정보 수정  메뉴에서 가능합니다.</p>
                                     </td>
@@ -228,9 +277,8 @@ export default function Order(props) {
                                         {/* <DaumPostcode onComplete={handleAddress} /> */}
                                         {handleAddress()}
                                         <input type="button" id="join_address" onClick={handleShow} value="새 배송지 추가" />
-
                                         {getaddress1 &&
-                                            <form>
+                                            < form >
                                                 <input
                                                     className="input-box"
                                                     type="text"
@@ -253,7 +301,11 @@ export default function Order(props) {
                                 <tr className="order_delivery_name">
                                     <th>수령인 이름*</th>
                                     <td>
-                                        <input type="text" value={getmem} onChange={(e) => setGettel(e.target.value)}></input>
+                                        <input
+                                            type="text"
+                                            placeholder="홍길동"
+                                            value={order_receiver}
+                                            onChange={(e) => setOrder_receiver(e.target.value)} />
                                     </td>
                                 </tr>
                                 <tr className="order_delivery_tel">
@@ -268,7 +320,10 @@ export default function Order(props) {
                                 <tr className="order_delivery_memo">
                                     <th>배송 요청사항</th>
                                     <td className="order_remaining">
-                                        <textarea placeholder="문 앞에 놓아주세요." value={order_request} onChange={(e) => setOrder_request(e.target.value)}></textarea>
+                                        <textarea
+                                            placeholder="문 앞에 놓아주세요."
+                                            value={order_request}
+                                            onChange={(e) => setOrder_request(e.target.value)} />
                                         <div className="order_chk_bytes"><span class="textcount">0</span> / 50자</div>
                                     </td>
                                 </tr>
@@ -288,7 +343,7 @@ export default function Order(props) {
                                 <tbody>
                                     <tr className="order_payview_first">
                                         <th>상품 금액</th>
-                                        <td>{result}원</td>
+                                        <td>{order_initPay}원</td>
                                     </tr>
                                     <tr className="order_payview_table_line">
                                         <th><hr className="order_payview_line" /></th>
@@ -296,7 +351,7 @@ export default function Order(props) {
                                     </tr>
                                     <tr>
                                         <th>상품할인금액</th>
-                                        <td>0원</td>
+                                        <td>{order_salePay}원</td>
                                     </tr>
                                     <tr>
                                         <th>배송비</th>
@@ -304,7 +359,7 @@ export default function Order(props) {
                                     </tr>
                                     <tr className="order_payment_emoney">
                                         <th>적립금사용</th>
-                                        <td>{reverse_value}원</td>
+                                        <td>{order_used_reverse}원</td>
                                     </tr>
                                     <tr className="order_payview_table_line">
                                         <th><hr className="order_payview_line" /></th>
@@ -312,10 +367,10 @@ export default function Order(props) {
                                     </tr>
                                     <tr className="order_payview_last">
                                         <th>최종결제금액</th>
-                                        <td>0원</td>
+                                        <td>{order_paymoney}원</td>
                                     </tr>
                                     <tr className="order_payview_reverse">
-                                        <td colSpan="2">구매 시 0원 (5%) 적립예정</td>
+                                        <td colSpan="2">구매 시 {order_reverse}원 (5%) 적립예정</td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -332,11 +387,10 @@ export default function Order(props) {
                                 <tr className="order_method_emoney">
                                     <th>적립금 적용</th>
                                     <td>
-                                        <input type="text" id="wr_2" value={reverse_value} onChange={handleOnChange} />
+                                        <input type="text" id="wr_2" onChange={handleOnChange} />
                                         <span>원</span>
-                                        <input type="checkbox" />
-                                        <button type="button" onClick={() => setReverse_value(payInfo.mem_reverse)}>모두 사용</button>
-                                        <p>보유 적립금: {payInfo.mem_reverse}원</p>
+                                        <button type="button" onClick={() => setOrder_used_reverse(mem_reverse)}>모두 사용</button>
+                                        <p>보유 적립금: {mem_reverse}원</p>
                                         <p>*적립금 내역: 마이컬리 > 적립금</p>
                                     </td>
                                 </tr>
@@ -345,7 +399,7 @@ export default function Order(props) {
                                     <td>
                                         <input type="radio" checked /><span>신용카드</span>
                                         <div className="order_card_select" >
-                                            <select onChange={e => setPay_selected(e.target.value)}>
+                                            <select onChange={e => setOrder_payway(e.target.value)}>
                                                 <option selected disabled="disabled">카드를 선택해주세요</option>
                                                 <option>신한</option>
                                                 <option>국민</option>

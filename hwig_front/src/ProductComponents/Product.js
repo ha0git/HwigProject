@@ -5,10 +5,10 @@ import ImageMapper from 'react-image-mapper';
 export default function Product(props) {
     const [order_count, setOrder_count] = useState(1)
 
-    const mem_id = props.userInfo.mem_id
-
     const goodsInfo = props.prdList;
+    const mem_id = props.userInfo.mem_id;
     const prd_id = props.prdList.prd_id;
+
 
     const onIncrease = () => {
         setOrder_count(unit => unit + 1)
