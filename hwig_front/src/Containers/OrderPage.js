@@ -22,7 +22,7 @@ function OrderPage(props) {
         axios.post(host + uri, data)
             .then(res => {
                 console.log(res.data)
-                props.history.push('/order?orderPage')
+                props.history.push('/order/orderOk')
             })
     }
     const handleData = (data) => {
@@ -60,7 +60,7 @@ function OrderPage(props) {
                     prd_name: "아보카도",
                     prd_ea: '1개',
                     prd_price: 1000,
-                    prd_sales: 0.3,
+                    prd_sales: 0.5,
                     order_count: 1
                 }
             ]

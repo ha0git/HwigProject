@@ -7,7 +7,7 @@ import ImageMapper from 'react-image-mapper';
 
 export default function Order(props) {
     const [show, setShow] = useState(false);
-    const [getAddress, setGetAdrress] = useState("")
+    const [order_receiver_addr, setOrder_receiver_addr] = useState("")
     const [getaddress1, setGetAddress1] = useState("")
     const [getaddress2, setGetAddress2] = useState("")
     const [zipcode, setZipcode] = useState("")
@@ -23,28 +23,37 @@ export default function Order(props) {
     const [order_salePay, setOrder_salePay] = useState(0)
     const [isNewAddr, setIsNewAddr] = useState(false)
     const [isPhoneNumberValid, setisPhoneNumberValid] = useState(false)
+    const [order_prd_ids, setOrder_prd_ids] = useState(new Array())
+    const [order_counts, setOrder_counts] = useState(new Array())
+
 
     //주문자 정보
-    const mem_id = props.userInfo.mem_id
+    const mem_id = "jn4624"
     const mem_reverse = props.userInfo.mem_reverse
-    const mem_name = props.userInfo.mem_name
     const mem_tel = props.userInfo.mem_tel
     const mem_email = props.userInfo.email
-    const order_sender = props.userInfo.mem_name
+    const order_sender = "휙휙휙"
 
     // 상품정보
 
     //상품id 배열 선언
     const goodsInfo = props.prdList;
     let item = ""
-    let order_prd_ids = new Array();
+    let count = ""
+    // let order_prd_ids = new Array();
+    // let order_counts = new Array();
 
     for (let i = 0; i < goodsInfo.length; i++) {
         item = goodsInfo[i].prd_id
+        console.log(item)
         order_prd_ids[i] = item
+
+        count = goodsInfo[i].order_count
+        console.log(count)
+        order_counts[i] = count
     }
-    console.log(item)
     console.log(order_prd_ids)
+    console.log(order_counts)
 
     //상품정보 mapping
     const odItems = goodsInfo.map(odgoods => {
@@ -172,9 +181,10 @@ export default function Order(props) {
     //결제하기 버튼
     const handleSubmit = (e) => {
 
-        const sumAddress = getaddress1 + " " + getaddress2;
-        setGetAdrress(sumAddress);
-        console.log(getAddress)
+        const sumAddress = zipcode + getaddress1 + " " + getaddress2;
+        setOrder_receiver_addr(sumAddress);
+        console.log(zipcode)
+        console.log(order_receiver_addr)
 
         if (!order_receiver) {
             alert('수령인을 입력해주세요.')
@@ -194,11 +204,12 @@ export default function Order(props) {
             order_paymoney,
             order_request,
             order_prd_ids,
-            // order_count,
+            order_counts,
             order_sender,
             order_receiver,
             order_receiver_tel,
             isNewAddr,
+            order_receiver_addr,
             order_payway
         })
     }
@@ -242,7 +253,7 @@ export default function Order(props) {
                             <tbody>
                                 <tr>
                                     <th>보내는 분*</th>
-                                    <td>{mem_name}</td>
+                                    <td>{order_sender}</td>
                                 </tr>
                                 <tr>
                                     <th>휴대폰*</th>
@@ -291,7 +302,7 @@ export default function Order(props) {
                                                     value={getaddress2}
                                                     onChange={e => {
                                                         setGetAddress2(e.target.value)
-                                                        setGetAdrress(getaddress1 + " " + getaddress2)
+                                                        setOrder_receiver_addr("(" + zipcode + ")" + " " + getaddress1 + " " + getaddress2)
                                                     }
                                                     }
                                                     placeholder="나머지 주소를 작성해주세요." />
