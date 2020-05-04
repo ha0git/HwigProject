@@ -37,17 +37,17 @@ function OrderOkPage(props) {
         }
 
         if (!orderInfo) {
-            setOrderInfo(
-                {
-                    order_id: "2020042100009",
-                    order_paydate: "2019-04-19 08:33:33",
-                    prd_name: "[everyday] 오징어채 볶음",
-                    order_count: 6,
-                    order_receiver_addr: "고양시 일산동구",
-                    order_payway: "국민카드",
-                    order_paymoney: 29700
-                }
-            )
+            // setOrderInfo(
+            //     {
+            //         order_id: "2020042100009",
+            //         order_paydate: "2019-04-19 08:33:33",
+            //         prd_name: "[everyday] 오징어채 볶음",
+            //         order_count: 6,
+            //         order_receiver_addr: "고양시 일산동구",
+            //         order_payway: "국민카드",
+            //         order_paymoney: 29700
+            //     }
+            // )
         }
     })
     return (
