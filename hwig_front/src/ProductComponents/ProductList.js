@@ -50,7 +50,7 @@ export default function ProductList(props) {
         return list
     }
 
-    const [activePage, setactivePage] = useState(15);
+    const [activePage, setactivePage] = useState(1);
 
     const handlePageChange = (pageNumber) => {
         console.log(`active page is ${pageNumber}`);
@@ -84,7 +84,7 @@ export default function ProductList(props) {
                         itemsCountPerPage={9}
                         totalItemsCount={productList.length}
                         pageRangeDisplayed={9}
-                        onChange={handlePageChange}
+                        onChange={handlePageChange(activePage)}
                     />
                 </div>
             </div>

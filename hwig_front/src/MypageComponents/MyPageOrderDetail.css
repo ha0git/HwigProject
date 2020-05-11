@@ -1,32 +1,3 @@
-.mypage-review-container{
-    /* border: 1px solid black; */
-    position: relative;
-    margin-top: 70px;
-    width:820px;
-    display: table-cell;
-}
-
-
-.mypage-review-title{
-    margin-top: 70px;
-    font-size: 24px;
-    font-weight: 400;
-    color: #333333;
-    margin-bottom: 20px;
-}
-
-.mypage-review-subtitle { margin-bottom: 20px;}
-.mypage-review-subtitle > p{ font-size: 12px; }
-
-.mypage-review-table-item{
-    text-align: center;
-}
-.mypage_review_goods {
-    position: relative;
-    margin-top: 20px;
-    padding: 0 20px;
-    border: 1px solid #dddfe1;
-}
 .mypage_orderdetail_tbl_type1 td {
     display: table-cell;
     vertical-align: middle !important;

@@ -15,7 +15,7 @@
 .mypage-order-title{
     margin-top: 70px;
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 00;
 }
 
 .mypage-order-subtitle{
@@ -25,13 +25,116 @@
 }
 
 
-.mypage-order-table-item{
-    border-top: 2px solid #ed7176;
-    text-align: center;
+
+.mypage_order_list_order {
+    padding-top: 10px;
+    border-top: 3px solid #ff7276;
+    margin-top: 25px;
+}
+.mypage_order_date {
+    padding-top: 20px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #666;
+}
+.mypage_order_goods {
+    position: relative;
+    margin-top: 10px;
+    padding: 0 20px;
+    border: 1px solid #dddfe1;
+}
+.mypage_order_name {
+    padding: 20px 0 13px;
     border-bottom: 1px solid #dddfe1;
 }
-
-
-.space{
-    height:150px
+.mypage_order_name a {
+    display: block;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #000 !important;
+    cursor: pointer;
+}
+.mypage_order_name a:hover {
+    color: #ff7276 !important;
+}
+.mypage_order_info {
+    overflow: hidden;
+    padding: 14px 0 20px;
+}
+.mypage_order_goods_thumb {
+    float: left;
+    width: 60px;
+    margin-right: 20px;
+}
+.mypage_order_goods_thumb img {
+    width: 60px;
+    height: auto;
+}
+.mypage_order_desc {
+    overflow: hidden;
+    padding-top: 1px;
+}
+.mypage_order_desc dl:first-child {
+    padding-top: 3px;
+}
+.mypage_order_desc dt {
+    float: left;
+    padding-right: 15px;
+    font-size: 12px;
+    color: #000;
+    line-height: 20px;
+}
+.mypage_order_desc dd {
+    float: left;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #000;
+}
+.mypage_order_desc dl {
+    overflow: hidden;
+    padding-top: 6px;
+}
+.mypage_order_status {
+    display: table;
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    height: 114px;
+    vertical-align: middle;
+}
+.mypage_order_inner_status {
+    display: table-cell;
+    vertical-align: middle;
+}
+.mypage_order_link {
+    display: block;
+    width: 100px;
+    height: 34px;
+    border: 1px solid #ff7276;
+    background-color: #fff;
+    font-size: 12px;
+    color: #ff7276 !important;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+}
+.mypage_order_li {
+    margin-bottom: 10px;
+}
+.mypage_order_confirm {
+    margin-top: 4px;
+    display: block;
+    width: 100px;
+    height: 34px;
+    border: 1px solid #ff7276;
+    background-color: #ff7276;
+    font-size: 12px;
+    color: #fff !important;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
 }

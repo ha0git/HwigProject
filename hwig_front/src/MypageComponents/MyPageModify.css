@@ -110,14 +110,14 @@
     color: white;
     background-color: #ed7176;
 }
-.memCols2{
+.mypage_memCols2{
     padding: 20px 0 0 0;
     border-top: 0 none;
     font-size: 0;
     vertical-align: top;
     text-align: left;
 }
-.memCols2 > input{
+.mypage_memCols2 > input{
     width: 300px;
     height: 40px;
     padding: 0 9px;
@@ -129,7 +129,7 @@
     background: #fff;
     outline: none;
 }
-.memCols2 > input[type=button]{
+.mypage_memCols2 > input[type=button]{
     float: none;
     display:inline-block;
     width:150px;
@@ -145,15 +145,15 @@
     text-align: center;
     cursor: pointer;
 }
-.memCols2 > input::placeholder{
+.mypage_memCols2 > input::placeholder{
     color:#999;
     font-size: 13px;
 }
-.memCols2 > a {
+.mypage_memCols2 > a {
     margin-left:0;
     display: block;
 }
-.memCols2 > input{
+.mypage_memCols2 > input{
     margin-top:10px;
     width:460px;
     height:40px;
