@@ -10,8 +10,9 @@ import './Navi.css'
 export default function Navi(props) {
     const categoryLists = props.categoryList.category
     const pcategoryLists = props.categoryList.pcategory
+    const mainlists = props.categoryList.list
 
-    console.log(categoryLists.pcategory)
+    console.log(mainlists)
 
 
     const category = pcategoryLists.map((pcategory) => {
@@ -30,6 +31,13 @@ export default function Navi(props) {
             )
         }
     })
+
+    // const list = mainlists.map(mainlist => {
+    //     return (
+    //         <li key={mainlist.category_id}><Link to={`/shop?aaa&category_id=${mainlist.category_id}&page=${props.page}`} className="nav-items">{mainlist.category_name}</Link></li>
+
+    //     )
+    // })
 
     //네비 메뉴 고정 (JQuery)
     document.$ = document.jQuery = jQuery;
@@ -51,14 +59,14 @@ export default function Navi(props) {
         <>
             <div className="nav-container jbMenu">
                 <ul className="nav-menu">
-                    <li><a className="nav-category" href="#"><img src={list}></img>전체 카테고리</a>
+                    <li><Link className="nav-category" to='#'><img src={list}></img>전체 카테고리</Link>
                         <div className="nav_sub">
                             {category}
                         </div>
                     </li>
-                    <li><Link className="nav-items">신상품</Link></li>
-                    <li><Link className="nav-items">베스트</Link></li>
-                    <li><Link className="nav-items">알뜰쇼핑</Link></li>
+                    <li><Link to={`/shop?productnew&category_id=${mainlists[0].category_id}&page=${props.page}`} className="nav-items">{mainlists[0].category_name}</Link></li>
+                    <li><Link to={`/shop?productsale&category_id=${mainlists[1].category_id}&page=${props.page}`} className="nav-items">{mainlists[1].category_name}</Link></li>
+                    <li><Link to={`/shop?productbest&category_id=${mainlists[2].category_id}&page=${props.page}`} className="nav-items">{mainlists[2].category_name}</Link></li>
                     <li><Link className="nav-items" to='/eventlist'>이벤트</Link></li>
                     <li className="nav-search-container">
                         <FormControl id="nav-search" type="text" className="mr-sm-2" />

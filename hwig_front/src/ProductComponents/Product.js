@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Product.css'
 import ImageMapper from 'react-image-mapper';
 
 export default function Product(props) {
-    const goodsInfo = props.prdList[0];
+    const [order_count, setOrder_count] = useState(1)
+
+    const goodsInfo = props.prdList;
+    const mem_id = props.userInfo.mem_id;
+    const prd_id = props.prdList.prd_id;
+
+
+    const onIncrease = () => {
+        setOrder_count(unit => unit + 1)
+    }
+    const onDecrease = () => {
+        if (order_count > 1) {
+            setOrder_count(unit => unit - 1)
+        }
+    }
+
+    const handleSubmit = (e) => {
+        console.log('handleSubmit 실행됨')
+        e.preventDefault();
+        props.onSubmit({ mem_id, prd_id, order_count })
+    }
     return (
         <>
-            <div>
+            <form onSubmit={handleSubmit}>
                 <div className="section_view">
                     <div className="thumb">
                         <ImageMapper src={goodsInfo.prd_thumb} />
@@ -59,9 +79,31 @@ export default function Product(props) {
                             <dt class="tit">안내사항</dt>
                             <dd class="desc"><span class="txt">{goodsInfo.prd_info}</span></dd>
                         </dl>
+                        <dl class="list last">
+                            <dt class="tit">구매수량</dt>
+                            <div className="cart-goods-quantity prd_btn">
+                                <button type="button" className="btn_reduce" onClick={onDecrease}>
+                                    <img src="https://res.kurly.com/pc/ico/1801/ico_minus_24x4_777.png" />
+                                </button>
+                                <input type="text" className="inp_quantity" value={order_count} />
+                                <button type="button" className="btn_rise" onClick={onIncrease}>
+                                    <img src="https://res.kurly.com/pc/ico/1801/ico_plus_24x24_777.png" />
+                                </button>
+                            </div>
+                        </dl>
+                        <div className="prd_pay">
+                            <div className="prd_pay_total">
+                                <span className="prd_pay_tit">총 상품금액&nbsp;:&nbsp;</span>
+                                <span className="prd_pay_num"> 48400</span>
+                                <span className="prd_pay_won">원</span>
+                            </div>
+                            <div className="prd_gocart" >
+                                <button type="submit">장바구니 담기</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </>
     )
 }

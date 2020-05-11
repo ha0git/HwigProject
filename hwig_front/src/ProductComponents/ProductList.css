@@ -62,9 +62,31 @@
     height: 611px;
     padding: 25px 10px 0 10px;
 }
-.product_list_goods li a img{
+.prd_img{
+    position: relative;
+    overflow: hidden;
+}
+.prd_img .imgscale3{
     width: 100%;
     vertical-align: top;
+    width: 310px;
+    transition: all 0.3s ease-in-out;
+    
+}
+.prd_img .imgscale3:hover {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+.prd_img .product_sale_icon{
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 55px;
+    height: 55px;
 }
 .product_list_goods li a:hover{
     transition: all 0.5s ease-in-out;

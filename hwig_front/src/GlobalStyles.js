@@ -27,6 +27,7 @@ a {color:#666666;text-decoration:none}
 a:link, a:visited {text-decoration:none}
 a:hover {text-decoration:none}
 .blind{display: none;overflow: hidden;position: absolute;width: 0;height: 0;padding: 0;margin: 0; font-size: 0;line-height: 0; text-indent: -9999em;visibility: hidden;outline: none;z-index: -1;}
+button:focus{outline:0}
 `;
 
 

@@ -19,6 +19,24 @@ function NaviPage() {
         if (!categoryList) {
             getAxiosData('api/product/category')
             // setCategoryList({
+            //     list: [
+            //         {
+            //             category_p_id: null,
+            //             category_id: 33,
+            //             category_name: '신상품'
+            //         },
+            //         {
+            //             category_p_id: null,
+            //             category_id: 44,
+            //             category_name: '알뜰상품'
+            //         },
+            //         {
+            //             category_p_id: null,
+            //             category_id: 55,
+            //             category_name: '베스트'
+            //         }
+            //     ],
+
             //     pcategory: [
             //         {
             //             category_p_id: null,
@@ -30,7 +48,6 @@ function NaviPage() {
             //             category_id: 2,
             //             category_name: "정육 / 가공육"
             //         },
-
             //     ],
             //     category: [
 

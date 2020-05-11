@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Body.css';
 import bottombanner from '../images/bottombanner.png';
-import save10 from '../images/10.png';
-import save30 from '../images/30.png';
-import save50 from '../images/50.png';
+import save10 from '../images/sales/10.png';
+import save30 from '../images/sales/30.png';
+import save50 from '../images/sales/50.png';
 import vienna from '../images/product/vienna.png';
 export default function BodyDown() {
     return (
