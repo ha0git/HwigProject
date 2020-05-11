@@ -4,7 +4,7 @@ import queryString from 'query-string'
 import axios from 'axios'
 import { host } from './ServerAddress'
 import vienna from '../images/product/vienna.png';
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 function CartPage(props) {
@@ -37,7 +37,7 @@ function CartPage(props) {
 
 
     useEffect(() => {
-        if (prdList === null) {
+        if (!prdList) {
             getAxiosData(`api/cartlist`)
             // setPrdList([
             //     {
@@ -73,12 +73,12 @@ function CartPage(props) {
     }, [prdList])
     return (
         <>
-            {prdList && <Cart
+            {isLogged ? prdList && <Cart
                 prdList={prdList}
                 userInfo={props.userInfo}
                 onSubmit={handleData}
                 history={props.history}
-            />}
+            /> : <Redirect to="/login" />}
         </>
     )
 }
