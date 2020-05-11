@@ -3,8 +3,9 @@ import {combineReducers} from 'redux'
 
 const InitialState = {
     userInfo: "없음",
-    isLogged: true,
-    session:"없음."
+    isLogged:true,
+    session:"없음.",
+    isCheck:false
 }
 
 const reducer = (state = InitialState, action) => {

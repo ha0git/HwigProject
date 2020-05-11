@@ -11,7 +11,8 @@ export default function MyPagePage(props) {
     
     return (
         <>
-            {isLogged ? <MyPage /> : <Redirect to="/" /> }       
+            {/*isLogged ? <MyPage /> : <Redirect to="/" /> */}   
+            <MyPage />
         </>
     )
 }

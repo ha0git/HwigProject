@@ -16,7 +16,7 @@ export default function MyPageConf() {
             })
     }
     useEffect(() => {if (!userInfo) {
-        getAxiosData(`api/members/momomo`)
+        getAxiosData(`api/members/kikiki`)
         }})
     return (
         <>

@@ -135,7 +135,7 @@ export default function ModifyUserInfo(props) {
                         </tr>
                         <tr className="mypage-modify-input">
                             <td className="mypage-modify-input-text-title">배송주소*</td>
-                            <td className="memCols2">
+                            <td className="mypage_memCols2">
                                 {/* <DaumPostcode onComplete={handleAddress} /> */}
                                 {handleAddress()}
                                 <input className="mypage_zipcode" type="text" value={mem_zipcode} onChange={(e) => setZipcode(e.target.value)}></input>

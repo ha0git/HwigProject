@@ -2,29 +2,28 @@ import React,{useState} from 'react'
 import {Container, Row, Col, Form, Button} from 'react-bootstrap'
 import './FindPwInfo.css'
 
+
 export default function FindPwInfo(props) {
     const [getName, setName] = useState("")
     const [getId, setId] = useState("")
     const [getEmail, setEmail] = useState("")
     const [show, setShow] = useState(false)
+    const mem_name = getName
+    const mem_id = getId
+    const mem_email = getEmail
+
 
     const handleSubmit = (e) => {
         console.log("실행")
         e.preventDefault();
-        if(!getName || !getEmail)
-          {setShow(true)
-            setTimeout(() => setShow(false),5000)}      
+        if(!getName || !getEmail || !getId)
+            alert('아이디 또는 비밀번호를 입력하세요.')      
         else
-          props.onSubmit({ getName, getEmail });
+          props.onSubmit({ mem_name, mem_id, mem_email });
     }
-
-    const handleAlert = () => (
-        alert('아이디 또는 비밀번호를 입력하세요.')
-        )
 
     return (
         <>
-        {show && handleAlert}
         <Container className="find-pw-container">
             <Row>
                 <Col>
