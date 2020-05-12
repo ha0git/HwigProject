@@ -3,10 +3,12 @@ import './MyPage.css'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import MyPageInfo from './MyPageInfo'
 import MyPageNavi from './MyPageNavi'
-import MyPageOrderList from './MyPageOrderList'
-import MyPageReviewList from './MyPageReviewList'
+import MyPageOrderL from './MyPageOrderL'
+import MyPageOrderD from './MyPageOrderD'
+import MyPageR from './MyPageR'
 import MyPageModify from './MyPageModify'
 import MyPageConf from './MyPageConf'
+import MyPageReviewF from './MyPageReviewF'
 
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
@@ -24,28 +26,21 @@ export default function MyPage() {
             })
     }
     useEffect(() => {if (!userInfo) {
-        //getAxiosData(`api/`)
-        setUserInfo(
-            {
-                mem_ID : "testid",
-                mem_PW : 12345,
-                mem_name: "테스트",
-                mem_email: "test@test.test",
-                mem_phone: "01039350584",
-                mem_reverse: 1110
-            }
-        )}})
+        getAxiosData(`api/members/kikiki`)
+        }})
     return (
         <>
                     {userInfo && <MyPageInfo userInfo = {userInfo} /> }
                     <div className="mypage-container">
                     <MyPageNavi/>
                     <Switch>
-                            <Route path="/mypage/order" component={MyPageOrderList}/>
-                            <Route path="/mypage/review" component={MyPageReviewList}/>
+                            <Route path="/mypage/order" component={MyPageOrderL}/>
+                            <Route path="/mypage/review" component={MyPageR}/>
                             <Route path="/mypage/confpw" component={MyPageConf}/>
                             <Route path="/mypage/modify" component={MyPageModify}/>
-                            <Route component={MyPageOrderList}/>
+                            <Route path="/mypage/orderdetail" component={MyPageOrderD}/>
+                            <Route path="/mypage/reviewform" component={MyPageReviewF}/>
+                            <Route component={MyPageR}/>
                     </Switch>
                     </div>
         </>

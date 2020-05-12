@@ -14,7 +14,7 @@ function Modify(props) {
             })
     }
     useEffect(() => {if (!userInfo) {
-        getAxiosData(`api/members/momomo`)
+        getAxiosData(`api/members/kikiki`)
         
     }})
     const [id, setId] = useState("abcde")
@@ -37,7 +37,7 @@ function Modify(props) {
     })}
     const handleData = (data)=>{
         console.log(data)
-        sendMemData('/api/members/momomo', data)
+        sendMemData('api/members/kikiki', data)
     }
     const checkingId = (checkId)=>{
         if(checkId === id){

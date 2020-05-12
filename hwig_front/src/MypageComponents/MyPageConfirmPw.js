@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import './MyPageConfirmPw.css'
-import {withRouter} from 'react-router-dom'
+import {withRouter,Link} from 'react-router-dom'
 import {Container, Row, Col, Form, Button, Modal} from 'react-bootstrap'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
@@ -53,7 +53,9 @@ function MyPageConfirmPw(props) {
                                 placeholder="비밀번호를 입력해주세요."
                                 onChange={(e)=>setpw(e.target.value)}
                                 value={mem_pw}
-                            /></div>
+                        />
+                    </div>
+                    <Link to="./resetpw">비밀번호를 잊으셨나요?</Link>
                 </div>
                 <div className="mypage-confirm-submit-container">
                     <input className="mypage-confirm-submit" type="submit" value="확인"/>
