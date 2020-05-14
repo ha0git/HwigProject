@@ -18,6 +18,8 @@ function ProductPage(props) {
     const [size, setSize] = useState(1)
     const [list, setList] = useState(1)
 
+
+    console.log(query)
     const getAxiosData1 = (uri) => {
         axios.get(host + uri)
             .then(res => {
@@ -28,30 +30,29 @@ function ProductPage(props) {
 
     const getAxiosData2 = (uri) => {
         axios.get(host + uri)
-        .then(res => {
-            console.log(res.data)
-            setPrdReview(res.data)
-        })
+            .then(res => {
+                console.log(res.data)
+                setPrdReview(res.data)
+            })
     }
     const sendJoinData = (uri, data) => {
         axios.post(host + uri, data)
             .then(res => {
                 console.log(res.data)
-                if(res.data.success === 1){
+                if (res.data.success === 1) {
                     props.history.push(`/shop/cart?goodsCart`)
                 }
             })
     }
     const handleData = (data) => {
         console.log(data)
-        sendJoinData('api/cart/cartinsert', data)
-        if (isLogged === false){
+        if (isLogged === false) {
             props.history.push(`/login`)
         }
-        
-     }
+        sendJoinData('api/cart/cartinsert', data)
 
-     
+
+    }
 
     useEffect(() => {
         if (!query.goodsno) {
@@ -63,7 +64,7 @@ function ProductPage(props) {
         }
         if (!prdList) {
             getAxiosData1(`api/product/productdetail?prd_id=${query.goodsno}`)
-            
+
             // setPrdList([
             //     {
             //         category_id: 1,
@@ -211,8 +212,8 @@ function ProductPage(props) {
             //     }
             // ])
         }
-        if(!prdReview){
-           // getAxiosData2(`api/review/review_main?prd_id=${query.goodsno}`)
+        if (!prdReview) {
+            // getAxiosData2(`api/review/review_main?prd_id=${query.goodsno}`)
             console.log(prdReview)
 
             setPrdReview([
@@ -220,17 +221,17 @@ function ProductPage(props) {
                     review_id: 1,
                     review_subject: '맛있어요1',
                     mem_id: '난나나',
-                    review_regdate:'0203',
+                    review_regdate: '0203',
                     review_img: vienna,
-                    review_content:'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfafsd'
+                    review_content: 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfafsd'
                 },
                 {
                     review_id: 2,
                     review_subject: '맛있어요2',
                     mem_id: '난나나2',
-                    review_regdate:'0203',
+                    review_regdate: '0203',
                     review_img: vienna,
-                    review_content:'qwerqwerqwerqwerqwerqwerqewrqerqwerqwerqwerqwer'
+                    review_content: 'qwerqwerqwerqwerqwerqwerqewrqerqwerqwerqwerqwer'
                 }
             ])
         }
@@ -245,8 +246,8 @@ function ProductPage(props) {
                 history={props.history}
                 onSubmit={handleData}
                 userInfo={props.userInfo}
-                />}
-            
+            />}
+
         </>
     )
 }

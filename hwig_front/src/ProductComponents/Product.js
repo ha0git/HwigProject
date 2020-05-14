@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Product.css'
 import ImageMapper from 'react-image-mapper';
-import { Pagination } from 'react-bootstrap';
+import Pagination from "react-js-pagination";
 import jQuery from "jquery";
 
 
 export default function Product(props) {
-    
+
     const [order_count, setOrder_count] = useState(1)
     const goodsInfo = props.prdList;
     const mem_id = props.userInfo.mem_id;
@@ -18,7 +18,7 @@ export default function Product(props) {
     console.log(prd_review)
 
     // 상품 주문
-    
+
     const onIncrease = () => {
         setOrder_count(unit => unit + 1)
     }
@@ -38,12 +38,7 @@ export default function Product(props) {
 
     //상품 리뷰
 
-    const [activePage, setactivePage] = useState(15);
-    const handlePageChange = (pageNumber) => {
-        console.log(`active page is ${pageNumber}`);
-        setactivePage(pageNumber)
-        props.history.push(`shop/product?goodsno=${goodsInfo.prd_id}page=${pageNumber}`)
-    }
+
 
     console.log(prd_review)
     window.$ = window.jQuery = jQuery;
@@ -53,19 +48,19 @@ export default function Product(props) {
             console.log('실행')
             if (window.$(`.temp_toggle${index}`).css('display') === "none") {
                 window.$(`.temp_toggle${index}`).css('display', "")
-            } 
+            }
             else {
                 window.$(`.temp_toggle${index}`).css('display', "none")
             }
         })
     }
 
-    const prdReviewList = prd_review.map((review,index) => {
+    const prdReviewList = prd_review.map((review, index) => {
         window.$(document).ready(function () {
             console.log('실행')
             window.$(`.temp_toggle${index}`).css('display', 'none')
         })
-        return(
+        return (
             <>
                 <tr key={index}>
                     <td>{review.review_id}</td>
@@ -80,7 +75,8 @@ export default function Product(props) {
                     </td>
                 </tr>
             </>
-        )}
+        )
+    }
     )
 
     const showReviewList = () => {
@@ -101,11 +97,19 @@ export default function Product(props) {
 
         return list
     }
-    
+
+    const [activePage, setactivePage] = useState(1);
+
+    const handlePageChange = (pageNumber) => {
+        console.log(`active page is ${pageNumber}`);
+        setactivePage(pageNumber)
+        props.history.push(`shop/product?goodsno=${goodsInfo.prd_id}&page=${pageNumber}`)
+    }
+
     return (
 
-            <form onSubmit={handleSubmit}>
-                <div className="prd_wrap">
+        <form onSubmit={handleSubmit}>
+            <div className="prd_wrap">
                 <div className="section_view">
                     <div className="thumb">
                         <ImageMapper src={goodsInfo.prd_thumb} />
@@ -179,10 +183,10 @@ export default function Product(props) {
                             <div className="prd_gocart" >
                                 <button type="submit">장바구니 담기</button>
                             </div>
-                        </div>    
+                        </div>
                     </div>
                     <div className="prd_image">
-                            <img src={goodsInfo.prd_img} />
+                        <img src={goodsInfo.prd_img} />
                     </div>
                     <div className="prd_review">
                         <h2>PRODUCT REVIEW</h2>
@@ -196,7 +200,7 @@ export default function Product(props) {
                                 <p>후기작성 및 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이휙 내 1:1 문의에 남겨주세요.</p>
                             </li>
                         </ul>
-                        <form className="prd_frmList">
+                        <div className="prd_frmList">
                             <table>
                                 <thead className="prd_frmtit">
                                     <tr>
@@ -213,17 +217,17 @@ export default function Product(props) {
                             <div className="frm_pagination">
                                 <Pagination
                                     activePage={activePage}
-                                    itemsCountPerPage={13}
+                                    itemsCountPerPage={5}
                                     totalItemsCount={prd_review.length}
-                                    pageRangeDisplayed={13}
+                                    pageRangeDisplayed={5}
                                     onChange={handlePageChange}
                                 />
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </form>
-        
+            </div>
+        </form>
+
     )
 }

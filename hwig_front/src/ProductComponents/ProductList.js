@@ -27,7 +27,7 @@ export default function ProductList(props) {
 
     const productGoods = productList.map(product => (
         <li key={product.prd_id}>
-            <Link to={`shop/product?goodsno=${product.prd_id}`}>
+            <Link to={`shop/product?goodsno=${product.prd_id}&page=${props.page}`}>
                 <div className="prd_img">
                     <img className="imgscale3" src={product1} />
                     {(product.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
@@ -56,7 +56,7 @@ export default function ProductList(props) {
         } else {
             end = props.page * 9;
         }
-        console.log(begin,end)
+        console.log(begin, end)
 
         for (let i = begin; i < end; i++) {
             list.push(productGoods[i])
