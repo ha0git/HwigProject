@@ -26,6 +26,7 @@ function ProductListPage(props) {
 
     useEffect(() => {
         // if (!query.category_id || !query.page) {
+<<<<<<< HEAD
         //     props.history.push(`/shop?category_id=${list}&page=${page}`)
         // }
         if ((parseInt(query.category_id) !== list) || (parseInt(query.page) !== page)) {
@@ -62,6 +63,44 @@ function ProductListPage(props) {
             else {
                 getAxiosData(`api/product/mainlist?cate_id=${query.category_id}`)
             }
+=======
+        //     history.push(`/shop?category_id=${list}&page=${page}`)
+        // }
+        // if ((parseInt(query.category_id) !== list) || (parseInt(query.page) !== page)) {
+        //     setList(parseInt(query.category_id))
+        //     setPage(parseInt(query.page))
+        //     getAxiosData(`api/product/mainlist?category_id=${query.category_id}`)
+        //     if (query.category_id === list || query.productnew === null) {
+        //         getAxiosData(`api/product/productnew`)
+        //     }
+        //     else if (query.category_id === list || query.productsale === null) {
+        //         getAxiosData(`api/product/productsale`)
+        //     }
+        //     else if (query.category_id === list || query.productbest === null) {
+        //         getAxiosData(`api/product/productbest`)
+        //     }
+        //     else {
+        //         getAxiosData(`api/product/mainlist?category_p_id=${query.category_id}`)
+        //     }
+        //}
+
+        if (!productItems) {
+
+            getAxiosData(`api/product/mainlist?category_p_id=${query.category_id}`)
+            //getAxiosData(`api/product/catelist?category_id=${query.category_id}`)
+            // if (query.category_id === 33 || query.productnew === null) {
+            //     getAxiosData(`api/product/productnew`)
+            // }
+            // else if (query.category_id === 44 || query.productsale === null) {
+            //     getAxiosData(`api/product/productsale`)
+            // }
+            // else if (query.category_id === 55 || query.productbest === null) {
+            //     getAxiosData(`api/product/productbest`)
+            // }
+            // else {
+            //     getAxiosData(`api/product/mainlist?category_p_id=${query.category_id}`)
+            // }
+>>>>>>> f22ffee1fde903bb0fc0a8912b57a6ecb5640a1c
             // setProductItems({
             //     pcategory: [
             //         {

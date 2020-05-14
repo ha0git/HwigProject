@@ -1,9 +1,9 @@
 import MyPageReviewList from './MyPageReviewList'
-import React, { useState, useEffect }  from 'react'
+import React, { useState, useEffect } from 'react'
 import vienna from '../images/product/vienna.png';
 import queryString from 'query-string'
 import axios from 'axios'
-import { host2 } from '../Containers/ServerAddress'
+import { host } from '../Containers/ServerAddress'
 
 export default function MyPageR() {
     const [data1, setData1] = useState(null);
@@ -11,14 +11,14 @@ export default function MyPageR() {
 
 
     const getAxiosData1 = (uri) => {
-        axios.get(host2 + uri)
+        axios.get(host + uri)
             .then(res => {
                 console.log(res.data)
                 setData1(res.data)
             })
     }
     const getAxiosData2 = (uri) => {
-        axios.get(host2 + uri)
+        axios.get(host + uri)
             .then(res => {
                 console.log(res.data)
                 setData2(res.data)
@@ -30,11 +30,11 @@ export default function MyPageR() {
             setData1(
                 [
                     {
-                        order_paydate : "2020-05-11 10:22:22",
+                        order_paydate: "2020-05-11 10:22:22",
                         prd_name: "소고기",
                         order_count: 2,
-                        prd_thumb : "dada",
-                        prd_id : 2
+                        prd_thumb: "dada",
+                        prd_id: 2
                     }
                 ]
             )
@@ -54,11 +54,11 @@ export default function MyPageR() {
             //     }
             // )
         }
-    }, [data1],[data2]
+    }, [data1], [data2]
     )
     return (
         <>
-            {data1 && <MyPageReviewList data1={data1}/> }
+            {data1 && <MyPageReviewList data1={data1} />}
         </>
     )
 }

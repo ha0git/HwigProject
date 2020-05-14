@@ -1,11 +1,11 @@
 import MyPageOrderDetail from './MyPageOrderDetail'
-import React, { useState, useEffect }  from 'react'
+import React, { useState, useEffect } from 'react'
 import vienna from '../images/product/vienna.png';
 import queryString from 'query-string'
 import axios from 'axios'
-import { host, host1 } from '../Containers/ServerAddress'
+import { host } from '../Containers/ServerAddress'
 
-export default function MyPageOrderD({location,history}) {
+export default function MyPageOrderD({ location, history }) {
     const [data, setData] = useState(null);
     const query = queryString.parse(location.search)
     const [num, setNum] = useState(parseInt(query.orderno));
@@ -17,13 +17,13 @@ export default function MyPageOrderD({location,history}) {
             })
     }
     const sendData = (uri, data) => {
-        axios.post(host1+uri, data)
-        .then(res=>{
-            console.log(res.data)
-            if (res.data.code === 200 ) {
-                alert("장바구니에 추가 되었습니다.")
-            }
-        })
+        axios.post(host + uri, data)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.code === 200) {
+                    alert("장바구니에 추가 되었습니다.")
+                }
+            })
     }
     useEffect(() => {
         console.log(num)
@@ -41,7 +41,7 @@ export default function MyPageOrderD({location,history}) {
     }
     return (
         <>
-            {data && <MyPageOrderDetail data={data} cart={cart}/> }
+            {data && <MyPageOrderDetail data={data} cart={cart} />}
         </>
     )
 }

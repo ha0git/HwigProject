@@ -38,7 +38,11 @@ function CartPage(props) {
 
     useEffect(() => {
         if (!prdList) {
+<<<<<<< HEAD
             //getAxiosData(`api/cartlist`)
+=======
+            getAxiosData(`api/cartlist`)
+>>>>>>> f22ffee1fde903bb0fc0a8912b57a6ecb5640a1c
             // setPrdList([
             //     {
             //         prd_id: 1,
@@ -78,7 +82,11 @@ function CartPage(props) {
                 userInfo={props.userInfo}
                 onSubmit={handleData}
                 history={props.history}
+<<<<<<< HEAD
             />: <Redirect to="/login" />}
+=======
+            /> : <Redirect to="/login" />}
+>>>>>>> f22ffee1fde903bb0fc0a8912b57a6ecb5640a1c
         </>
     )
 }
