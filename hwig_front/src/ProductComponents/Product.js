@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Product.css'
 import ImageMapper from 'react-image-mapper';
+import { Pagination } from 'react-bootstrap';
+import jQuery from "jquery";
+
 
 export default function Product(props) {
+    
     const [order_count, setOrder_count] = useState(1)
-
     const goodsInfo = props.prdList;
     const mem_id = props.userInfo.mem_id;
     const prd_id = props.prdList.prd_id;
+    const prd_price = props.prdList.prd_price;
+    const prd_review = props.prdReview;
 
 
+    console.log(prd_review)
+
+    // 상품 주문
+    
     const onIncrease = () => {
         setOrder_count(unit => unit + 1)
     }
@@ -24,9 +33,79 @@ export default function Product(props) {
         e.preventDefault();
         props.onSubmit({ mem_id, prd_id, order_count })
     }
+
+    const totalPay = (goodsInfo.prd_price * order_count)
+
+    //상품 리뷰
+
+    const [activePage, setactivePage] = useState(15);
+    const handlePageChange = (pageNumber) => {
+        console.log(`active page is ${pageNumber}`);
+        setactivePage(pageNumber)
+        props.history.push(`shop/product?goodsno=${goodsInfo.prd_id}page=${pageNumber}`)
+    }
+
+    console.log(prd_review)
+    window.$ = window.jQuery = jQuery;
+
+    const handleShow = (index) => {
+        window.$(document).ready(function () {
+            console.log('실행')
+            if (window.$(`.temp_toggle${index}`).css('display') === "none") {
+                window.$(`.temp_toggle${index}`).css('display', "")
+            } 
+            else {
+                window.$(`.temp_toggle${index}`).css('display', "none")
+            }
+        })
+    }
+
+    const prdReviewList = prd_review.map((review,index) => {
+        window.$(document).ready(function () {
+            console.log('실행')
+            window.$(`.temp_toggle${index}`).css('display', 'none')
+        })
+        return(
+            <>
+                <tr key={index}>
+                    <td>{review.review_id}</td>
+                    <td><a onClick={() => handleShow(index)}>{review.review_subject}</a></td>
+                    <td>{review.mem_id}</td>
+                    <td>{review.review_regdate}</td>
+                </tr>
+                <tr className={`temp_toggle${index}`}>
+                    <td className="prd_toggle_content" colSpan="4">
+                        <img src={review.review_img} />
+                        <p>{review.review_content}</p>
+                    </td>
+                </tr>
+            </>
+        )}
+    )
+
+    const showReviewList = () => {
+        let list = [];
+        let begin = (props.page - 1) * props.size;
+        let end;
+        if (prd_review.length < props.page * 13) {
+            end = prd_review.length;
+        } else {
+            end = props.page * 13;
+        }
+        console.log(begin, end)
+
+        for (let i = begin; i < end; i++) {
+            list.push(prdReviewList[i])
+        }
+        console.log(list)
+
+        return list
+    }
+    
     return (
-        <>
+
             <form onSubmit={handleSubmit}>
+                <div className="prd_wrap">
                 <div className="section_view">
                     <div className="thumb">
                         <ImageMapper src={goodsInfo.prd_thumb} />
@@ -94,16 +173,57 @@ export default function Product(props) {
                         <div className="prd_pay">
                             <div className="prd_pay_total">
                                 <span className="prd_pay_tit">총 상품금액&nbsp;:&nbsp;</span>
-                                <span className="prd_pay_num"> 48400</span>
+                                <span className="prd_pay_num"> {totalPay}</span>
                                 <span className="prd_pay_won">원</span>
                             </div>
                             <div className="prd_gocart" >
                                 <button type="submit">장바구니 담기</button>
                             </div>
-                        </div>
+                        </div>    
+                    </div>
+                    <div className="prd_image">
+                            <img src={goodsInfo.prd_img} />
+                    </div>
+                    <div className="prd_review">
+                        <h2>PRODUCT REVIEW</h2>
+                        <ul className="prd_reviewInfo">
+                            <li>
+                                <span className="prd_ico"></span>
+                                <p>상품에 관련된 후기를 볼 수 있는 공간입니다.</p>
+                            </li>
+                            <li>
+                                <span className="prd_ico"></span>
+                                <p>후기작성 및 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이휙 내 1:1 문의에 남겨주세요.</p>
+                            </li>
+                        </ul>
+                        <form className="prd_frmList">
+                            <table>
+                                <thead className="prd_frmtit">
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>제목</th>
+                                        <th>작성자</th>
+                                        <th>작성일</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="prd_frmContent">
+                                    {showReviewList()}
+                                </tbody>
+                            </table>
+                            <div className="frm_pagination">
+                                <Pagination
+                                    activePage={activePage}
+                                    itemsCountPerPage={13}
+                                    totalItemsCount={prd_review.length}
+                                    pageRangeDisplayed={13}
+                                    onChange={handlePageChange}
+                                />
+                            </div>
+                        </form>
                     </div>
                 </div>
+                </div>
             </form>
-        </>
+        
     )
 }

@@ -10,24 +10,24 @@ import save50 from '../images/sales/50.png';
 import product1 from '../images/product1.png'
 
 export default function ProductList(props) {
+    console.log(props)
     const pcategoryItem = props.productItems.pcategory
     const categoryItem = props.productItems.category
     const productList = props.productItems.productlist
     const allItems = props.productItems.category[0]
 
-    console.log(categoryItem)
     const categorytit = pcategoryItem.map(pcategory => (
         <span>{pcategory.category_name}</span>
     ))
 
     const categoryList = categoryItem.map(category => (
-        <li key={category.category_id}><Link to={`/shop?category_id=${category.category_p_id}${category.category_id}&page=${props.page}`}>{category.category_name}</Link></li>
+        <li key={category.category_id}><Link to={`/shop?category_id=${category.category_p_id}&page=${props.page}`}>{category.category_name}</Link></li>
     ))
 
 
     const productGoods = productList.map(product => (
         <li key={product.prd_id}>
-            <Link to={`shop/product?goodsno=${product.prd_id}&page=${props.page}`}>
+            <Link to={`shop/product?goodsno=${product.prd_id}`}>
                 <div className="prd_img">
                     <img className="imgscale3" src={product1} />
                     {(product.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
@@ -56,6 +56,7 @@ export default function ProductList(props) {
         } else {
             end = props.page * 9;
         }
+        console.log(begin,end)
 
         for (let i = begin; i < end; i++) {
             list.push(productGoods[i])
@@ -97,7 +98,7 @@ export default function ProductList(props) {
                         itemsCountPerPage={9}
                         totalItemsCount={productList.length}
                         pageRangeDisplayed={9}
-                        onChange={handlePageChange(activePage)}
+                        onChange={handlePageChange}
                     />
                 </div>
             </div>

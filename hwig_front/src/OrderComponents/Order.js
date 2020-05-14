@@ -28,7 +28,7 @@ export default function Order(props) {
 
 
     //주문자 정보
-    const mem_id = "jn4624"
+    const mem_id = props.userInfo.mem_id
     const mem_reverse = props.userInfo.mem_reverse
     const mem_tel = props.userInfo.mem_tel
     const mem_email = props.userInfo.email
@@ -165,9 +165,6 @@ export default function Order(props) {
         setOrder_reverse(order_paymoney * 0.05)
         console.log(order_paymoney)
 
-        // useEffect 반복되는것 잡기 / 두번째함수 개념 알기
-        // 넘어가는값 정리하기
-        // 로컬스토리지 해보기 (배송비)
     }, [order_salePay, order_initPay, order_paymoney, order_reverse, order_used_reverse])
     //배송비
     let delivery_charge = 0;
