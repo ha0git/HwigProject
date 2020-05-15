@@ -4,9 +4,10 @@ import {Container, Row, Col, Form, Button, Modal} from 'react-bootstrap'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
 import MyPageConfirmPw from './MyPageConfirmPw'
+import {connect} from 'react-redux'
 
 
-export default function MyPageConf() {
+export default function MyPageConf(props) {
     const [userInfo,setUserInfo] = useState(null)
     const getAxiosData = (uri) => {
         axios.get(host + uri)
@@ -15,8 +16,8 @@ export default function MyPageConf() {
                 setUserInfo(res.data)
             })
     }
-    useEffect(() => {if (!userInfo) {
-        getAxiosData(`api/members/kikiki`)
+    useEffect(() => {if (!userInfo && props.userInfo.mem_id !== undefined) {
+        getAxiosData(`api/members/${props.userInfo.mem_id}`)
         }})
     return (
         <>
@@ -24,3 +25,11 @@ export default function MyPageConf() {
         </>
     )
 }
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogged: state.reducer.isLogged,
+        userInfo: state.reducer.userInfo
+    }
+}
+
+MyPageConf = connect(mapStateToProps)(MyPageConf)

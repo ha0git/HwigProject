@@ -2,9 +2,13 @@ import React, {useState} from 'react'
 import {Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './MyPageReviewList.css'
+import Accordion from 'react-bootstrap/Accordion'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 export default function ReviewList(props) {
     const goodsInfo = props.data1
+    const reviewInfo = props.data2
     const willWriteReviewTable = goodsInfo.map(goodsInfo => {
         return (
             <>
@@ -33,6 +37,25 @@ export default function ReviewList(props) {
             </>
         )
     })
+    const writtenReviewTable = reviewInfo.map((reviewInfo, index) => {
+        return(
+            <div>
+                <div>
+                    <Accordion.Toggle as="button" variant="link" eventKey={index}>
+                        {reviewInfo.prd_name}{reviewInfo.review_subject}
+                    </Accordion.Toggle>
+                </div>
+                <Accordion.Collapse eventKey={index}>
+                    <div>
+                        {reviewInfo.review_content}
+                        <div>
+                            {reviewInfo.review_regdate}
+                        </div>
+                    </div>
+                </Accordion.Collapse>
+            </div>
+        )
+    })
     const willWriteReview = () => {
         //return(
             //<tr>
@@ -54,13 +77,18 @@ export default function ReviewList(props) {
     }
     const writtenReview = () => {
         return(
-            <tr>
-                <td className="mypage-review-table-item" colspan="5"><br/><br/>작성한 후기 내역이 없습니다.<br/><br/><br/></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            // <tr>
+            //     <td className="mypage-review-table-item" colspan="5"><br/><br/>작성한 후기 내역이 없습니다.<br/><br/><br/></td>
+            //     <td></td>
+            //     <td></td>
+            //     <td></td>
+            //     <td></td>
+            // </tr>
+            <>
+            <Accordion defaultActiveKey="0">
+                {writtenReviewTable}
+            </Accordion>
+            </>
         )
     }
     const [review,setReview] = useState(

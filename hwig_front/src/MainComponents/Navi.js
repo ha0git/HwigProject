@@ -64,9 +64,9 @@ export default function Navi(props) {
                             {category}
                         </div>
                     </li>
-                    <li><Link to={`/shop?productnew&category_id=${mainlists[0].category_id}&page=${props.page}`} className="nav-items">{mainlists[0].category_name}</Link></li>
+                    {/* <li><Link to={`/shop?productnew&category_id=${mainlists[0].category_id}&page=${props.page}`} className="nav-items">{mainlists[0].category_name}</Link></li>
                     <li><Link to={`/shop?productsale&category_id=${mainlists[1].category_id}&page=${props.page}`} className="nav-items">{mainlists[1].category_name}</Link></li>
-                    <li><Link to={`/shop?productbest&category_id=${mainlists[2].category_id}&page=${props.page}`} className="nav-items">{mainlists[2].category_name}</Link></li>
+                    <li><Link to={`/shop?productbest&category_id=${mainlists[2].category_id}&page=${props.page}`} className="nav-items">{mainlists[2].category_name}</Link></li> */}
                     <li><Link className="nav-items" to='/eventlist'>이벤트</Link></li>
                     <li className="nav-search-container">
                         <FormControl id="nav-search" type="text" className="mr-sm-2" />

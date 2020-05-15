@@ -16,7 +16,8 @@ import { host } from '../Containers/ServerAddress'
 
 
 
-export default function MyPage() {
+export default function MyPage(props) {
+    const userInfoR = props.userInfoR
     const [userInfo,setUserInfo] = useState(null)
     const getAxiosData = (uri) => {
         axios.get(host + uri)
@@ -25,9 +26,13 @@ export default function MyPage() {
                 setUserInfo(res.data)
             })
     }
-    useEffect(() => {if (!userInfo) {
-        getAxiosData(`api/members/kikiki`)
-        }})
+    useEffect(() => {
+        if (userInfo === null && userInfoR.mem_id !== undefined) {
+            getAxiosData(`api/members/${userInfoR.mem_id}`)
+        } else if (userInfoR.mem_id == undefined) {
+            console.log("tlqkf")
+        }
+    })
     return (
         <>
                     {userInfo && <MyPageInfo userInfo = {userInfo} /> }

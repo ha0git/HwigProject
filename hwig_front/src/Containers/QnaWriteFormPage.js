@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import { host } from './ServerAddress'
 import QnaWriteForm from '../CustomerServiceComponents/QnaWriteForm'
 import {connect} from 'react-redux'
+import queryString from 'query-string'
 
 function QnaWriteFormPage(props) {
     console.log(props.isLogged)
@@ -13,6 +14,9 @@ function QnaWriteFormPage(props) {
     const [userInfo, setUserInfo] = useState("")
     const [isLogged, setIsLogged] = useState()
 
+    const query = queryString.parse(props.location.search)
+    const [num, setNum] = useState(parseInt(query.order_id));
+
     const postAxiosData = (uri, data) => {
         console.log("실행")
         axios.post(host + uri, data)
@@ -21,6 +25,7 @@ function QnaWriteFormPage(props) {
             })
     }
     useEffect(() => {
+        console.log(num)
         if(isLogged !== props.isLogged){
             setIsLogged(props.isLogged)
         }
@@ -61,7 +66,7 @@ function QnaWriteFormPage(props) {
     console.log(userInfo)
     return (
         <>
-            {userInfo && <QnaWriteForm onSubmit={handleData} orderNumCheck={orderNumCheck} checkOrderNum={checkOrderNum} userInfo={userInfo}/>}
+            {userInfo && <QnaWriteForm onSubmit={handleData} orderNumCheck={orderNumCheck} checkOrderNum={checkOrderNum} userInfo={userInfo} num={num}/>}
         </>
     )
 }

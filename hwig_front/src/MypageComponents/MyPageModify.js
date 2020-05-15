@@ -3,8 +3,9 @@ import './MyPageModify.css'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
 import MyPageModifyUserInfo from './MyPageModifyUserInfo.js'
-import {withRouter} from 'react-router-dom'
-function Modify(props) {
+import {connect} from 'react-redux'
+
+export default function Modify(props) {
     const [userInfo, setUserInfo] = useState(null)
     const getAxiosData = (uri) => {
         axios.get(host + uri)
@@ -13,11 +14,10 @@ function Modify(props) {
                 setUserInfo(res.data)
             })
     }
-    useEffect(() => {if (!userInfo) {
-        getAxiosData(`api/members/kikiki`)
+    useEffect(() => {if (!userInfo && props.userInfo.mem_id !== undefined) {
+        getAxiosData(`api/members/${props.userInfo.mem_id}`)
         
     }})
-    const [id, setId] = useState("abcde")
 
     const sendMemData = (uri, data) => {
         axios.put(host+uri, data)
@@ -37,13 +37,13 @@ function Modify(props) {
     })}
     const handleData = (data)=>{
         console.log(data)
-        sendMemData('api/members/kikiki', data)
+        sendMemData(`api/members/${props.userInfo.mem_id}`, data)
     }
     const checkingId = (checkId)=>{
-        if(checkId === id){
+        if(sendMemData(`api/members/check/id`, checkId)){
             alert('이미 존재하는 아이디입니다.')
             return false
-        }else if(checkId !== id && checkId.length >= 6){
+        }else if(!sendMemData(`api/members/check/id`, checkId) && checkId.length >= 6){
             alert('사용할 수 있는 아이디입니다.')
             return true
         }else if(!checkId || checkId.length < 6){
@@ -64,11 +64,37 @@ function Modify(props) {
         else {                       
              return true;         
         }                            
-   }                                
+   }    
+   const unRegister = () => {
+        if (/* eslint no-restricted-globals: ["off"] */confirm("정말 탈퇴하시겠습니까??") == true){    //확인
+            sendUnReg(`api/members/${props.userInfo.mem_id}`)
+        }else{
+            return false;
+        }
+   } 
+   const sendUnReg = (uri) => {
+        axios.delete(host + uri)
+        .then(res => {
+            console.log(res.data)
+            if (res.data.code === 200 ) {
+                alert("잘가요ㅠㅠ")
+                props.history.push('/')
+            } else if (res.data.code === 400){
+                alert("현재 주문한 상품이 있거나 다른 이유로 탈퇴할 수 없습니다.")
+            }
+        })
+   }                           
     return (
         <>
-            {userInfo && <MyPageModifyUserInfo userInfo = {userInfo} onSubmit={handleData} checkingId={checkingId} CheckEmailF={CheckEmailF} checkingEmail={checkingEmail} />}
+            {userInfo && <MyPageModifyUserInfo userInfo = {userInfo} onSubmit={handleData} checkingId={checkingId} CheckEmailF={CheckEmailF} checkingEmail={checkingEmail} unRegister={unRegister}/>}
         </>
     )
 }
-export default withRouter(Modify)
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogged: state.reducer.isLogged,
+        userInfo: state.reducer.userInfo
+    }
+}
+
+Modify = connect(mapStateToProps)(Modify)

@@ -152,7 +152,7 @@ export default function ModifyUserInfo(props) {
                        
                         
                         <div className="mypage-modify-form-submit-buttons">
-                            <input className="mypage-modify-form-submit1" type="submit" value="탈퇴하기"/>
+                            <input className="mypage-modify-form-submit1" type="button" value="탈퇴하기" onClick={props.unRegister}/>
                             <input className="mypage-modify-form-submit2" type="submit" value="회원정보 수정"/>
                         </div>
                     </form>

@@ -3,7 +3,7 @@ import React, { useState, useEffect }  from 'react'
 import vienna from '../images/product/vienna.png';
 import queryString from 'query-string'
 import axios from 'axios'
-import { host, host1 } from '../Containers/ServerAddress'
+import { host } from '../Containers/ServerAddress'
 
 export default function MyPageOrderD({location,history}) {
     const [data, setData] = useState(null);
@@ -17,7 +17,7 @@ export default function MyPageOrderD({location,history}) {
             })
     }
     const sendData = (uri, data) => {
-        axios.post(host1+uri, data)
+        axios.post(host+uri, data)
         .then(res=>{
             console.log(res.data)
             if (res.data.code === 200 ) {

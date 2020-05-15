@@ -55,7 +55,7 @@ function MyPageConfirmPw(props) {
                                 value={mem_pw}
                         />
                     </div>
-                    <Link to="./resetpw">비밀번호를 잊으셨나요?</Link>
+                    <Link to="../find_pw">비밀번호를 잊으셨나요?</Link>
                 </div>
                 <div className="mypage-confirm-submit-container">
                     <input className="mypage-confirm-submit" type="submit" value="확인"/>
