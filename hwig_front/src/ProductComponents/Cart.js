@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Cart.css'
 import xbutton from '../images/xbutton.png'
 
 export default function Cart(props) {
     const [count, setCount] = useState(1)
     const [goodsInfo, setGoodsInfo] = useState(props.prdList)
+    const [arr, setArr] = useState(new Array())
 
     const mem_id = props.userInfo.mem_id;
-    const prd_id = props.prdList.prd_id;
 
     //배송비 금액 부분
     let result = 0;
@@ -37,6 +37,16 @@ export default function Cart(props) {
         setGoodsInfo(goodsInfo.filter(good => good.prd_stock !== 0))
     }
 
+    //장바구니에 담긴 상품아이디 배열
+    let item = "";
+    let prd_id = new Array();
+
+    for (let i = 0; i < goodsInfo.length; i++) {
+        item = goodsInfo[i].prd_id
+        prd_id[i] = item
+        console.log(prd_id[i])
+    }
+
     const productGoods = goodsInfo.map(goods => {
         //상품수량 증가버튼
         const onIncrease = () => {
@@ -53,7 +63,6 @@ export default function Cart(props) {
             const item = goodsInfo.filter(good => good.prd_id !== id)
             setGoodsInfo(item)
         }
-
         return (
             <>
                 <tbody>
@@ -99,6 +108,9 @@ export default function Cart(props) {
             </>
         )
     })
+
+
+
     return (
         <>
             <div className="cart_container">

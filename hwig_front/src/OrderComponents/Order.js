@@ -32,7 +32,7 @@ export default function Order(props) {
     const mem_reverse = props.userInfo.mem_reverse
     const mem_tel = props.userInfo.mem_tel
     const mem_email = props.userInfo.email
-    const order_sender = "휙휙휙"
+    const order_sender = props.userInfo.mem_name
 
     // 상품정보
 
