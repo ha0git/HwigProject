@@ -55,6 +55,7 @@ export default function Navi(props) {
                             {category}
                         </div>
                     </li>
+<<<<<<< HEAD
                     <li><Link to={`/shop?productnew&category_id=${scategoryLists[0].category_id}&page=${props.page}`} className="nav-items">{scategoryLists[0].category_name}</Link></li>
                     <li><Link to={`/shop?productsale&category_id=${scategoryLists[1].category_id}&page=${props.page}`} className="nav-items">{scategoryLists[1].category_name}</Link></li>
                     <li><Link to={`/shop?productbest&category_id=${scategoryLists[2].category_id}&page=${props.page}`} className="nav-items">{scategoryLists[2].category_name}</Link></li>
@@ -63,6 +64,16 @@ export default function Navi(props) {
                         <FormControl id="nav-search" type="text" className="mr-sm-2" />
                         <input type="image" className="nav-btn" src={nvBtn}></input>
                     </li>
+=======
+                <li><Link to={`/shop?productnew&category_id=${scategoryLists[0].category_id}&page=${props.page}`} className="nav-items">{scategoryLists[0].category_name}</Link></li>
+                <li><Link to={`/shop?productsale&category_id=${scategoryLists[1].category_id}&page=${props.page}`} className="nav-items">{scategoryLists[1].category_name}</Link></li>
+                <li><Link to={`/shop?productbest&category_id=${scategoryLists[2].category_id}&page=${props.page}`} className="nav-items">{scategoryLists[2].category_name}</Link></li>
+                <li><Link className="nav-items" to='/eventlist'>이벤트</Link></li>
+                <li className="nav-search-container">
+                    <FormControl id="nav-search" type="text" className="mr-sm-2" />
+                    <input type="image" className="nav-btn" src={nvBtn}></input>
+                </li>
+>>>>>>> 168319716b42d78b3f49f2c7d3f9f35d10aae7d9
                 </ul>
                 <img src={bg} className="bg" />
             </div>

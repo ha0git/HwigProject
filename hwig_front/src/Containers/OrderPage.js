@@ -5,10 +5,14 @@ import { Redirect, withRouter } from 'react-router-dom';
 import vienna from '../images/product/vienna.png'
 import { connect } from 'react-redux';
 import { host } from './ServerAddress';
+import { queryAllByAltText } from '@testing-library/react';
+import queryString from 'query-string'
+
 
 function OrderPage(props) {
     const [isLogged, setIsLogged] = useState(true);
     const [prdList, setPrdList] = useState(null)
+    const query = queryString.parse(props.location.search)
 
     const getAxiosData = (uri) => {
         axios.get(host + uri)
@@ -29,7 +33,6 @@ function OrderPage(props) {
         console.log(data)
         sendJoinData('api/orders/', data)
     }
-
 
     useEffect(() => {
         if (!prdList) {
@@ -70,12 +73,12 @@ function OrderPage(props) {
 
     return (
         <div>
-            {isLogged ? prdList && <Order
+            {isLogged ? <Redirect to="/login" /> : prdList && <Order
                 prdList={prdList}
                 userInfo={props.userInfo}
                 onSubmit={handleData}
                 history={props.history}
-            /> : <Redirect to="/login" />}
+            />}
 
         </div>
     )
