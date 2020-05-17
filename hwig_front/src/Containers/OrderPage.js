@@ -27,44 +27,44 @@ function OrderPage(props) {
     }
     const handleData = (data) => {
         console.log(data)
-        sendJoinData('/api/orders/', data)
+        sendJoinData('api/orders/', data)
     }
 
 
     useEffect(() => {
-        if (prdList === null) {
-            getAxiosData(`api/cartlist`)
-            setPrdList([
-                {
-                    prd_id: 1,
-                    prd_thumb: vienna,
-                    prd_name: "비엔나",
-                    prd_ea: '1개',
-                    prd_price: 300,
-                    prd_sales: 0.1,
-                    order_count: 3,
+        if (!prdList) {
+            getAxiosData(`api/cart/cartlist?mem_id=${props.userInfo.mem_id}`)
+            // setPrdList([
+            //     {
+            //         prd_id: 1,
+            //         prd_thumb: vienna,
+            //         prd_name: "비엔나",
+            //         prd_ea: '1개',
+            //         prd_price: 300,
+            //         prd_sales: 0.1,
+            //         order_count: 3,
 
-                },
-                {
-                    prd_id: 2,
-                    prd_thumb: vienna,
-                    prd_name: "브로콜리",
-                    prd_ea: '1개',
-                    prd_price: 2000,
-                    prd_sales: 0.3,
-                    order_count: 1
-                },
-                {
-                    prd_id: 3,
-                    prd_thumb: vienna,
-                    prd_name: "아보카도",
-                    prd_ea: '1개',
-                    prd_price: 1000,
-                    prd_sales: 0.5,
-                    order_count: 1
-                }
-            ]
-            )
+            //     },
+            //     {
+            //         prd_id: 2,
+            //         prd_thumb: vienna,
+            //         prd_name: "브로콜리",
+            //         prd_ea: '1개',
+            //         prd_price: 2000,
+            //         prd_sales: 0.3,
+            //         order_count: 1
+            //     },
+            //     {
+            //         prd_id: 3,
+            //         prd_thumb: vienna,
+            //         prd_name: "아보카도",
+            //         prd_ea: '1개',
+            //         prd_price: 1000,
+            //         prd_sales: 0.5,
+            //         order_count: 1
+            //     }
+            // ]
+            // )
         }
     })
 
