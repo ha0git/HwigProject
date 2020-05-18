@@ -9,7 +9,7 @@ function OrderOkPage(props) {
     console.log(props.userInfo)
     const [orderComponentOn, setOrderComponentOn] = useState(0)
     const [orderInfo, setOrderInfo] = useState(null)
-    const [isLogged, setIsLogged] = useState(true)
+    const [isLogged, setIsLogged] = useState(false)
     const [mem_name, setMem_name] = useState(null)
     console.log(props.isLogged)
     const getAxiosData = (uri) => {

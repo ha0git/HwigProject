@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Cart.css'
 import xbutton from '../images/xbutton.png'
 
 export default function Cart(props) {
-    const [count, setCount] = useState(1)
+    const [count, setCount] = useState(props.prdList)
     const [goodsInfo, setGoodsInfo] = useState(props.prdList)
+    //삭제된 상품 배열
+    const [prd_id, setPrd_id] = useState(new Array());
+    const [order_count, setOrder_count] = useState(new Array());
 
     const mem_id = props.userInfo.mem_id;
-    const prd_id = props.prdList.prd_id;
 
     //배송비 금액 부분
     let result = 0;
@@ -25,7 +27,7 @@ export default function Cart(props) {
     const handleSubmit = (e) => {
         console.log('handleSubmit 실행됨')
         e.preventDefault();
-        props.onSubmit({ mem_id, prd_id })
+        props.onSubmit({ mem_id, prd_id, order_count })
     }
 
     //장바구니 비우기
@@ -37,7 +39,35 @@ export default function Cart(props) {
         setGoodsInfo(goodsInfo.filter(good => good.prd_stock !== 0))
     }
 
+
+
+    //         // // 전체 상품 객체복사
+    //         const cart = goodsInfo.slice();
+    //         console.log(cart)
+
+    //         let arr = "";
+    //         for (let i = 0; i < cart.length; i++) {
+    //             // arr = cart[i].order_count
+    //             // order_count[i] = arr
+    //             order_count.push(cart[i].order_count)
+    //         }
+
+
+
+    //         //남아있는 상품id 배열 만들기
+
+    // let cartItems = "";
+
+    // for (let i = 0; i < cart.length; i++) {
+    //     // cartItems = cart[i].prd_id
+    //     // prd_id[i] = cartItems
+    //     prd_id.push(items[i].prd_id)
+    // }
+
+
+    //상품 리스트 mapping
     const productGoods = goodsInfo.map(goods => {
+
         //상품수량 증가버튼
         const onIncrease = () => {
             setCount(goods.order_count += 1)
@@ -48,11 +78,63 @@ export default function Cart(props) {
                 setCount(goods.order_count -= 1)
             }
         }
+
+
+
+
+
+
+
         //장바구니 삭제버튼
-        const onRemove = (id) => {
-            const item = goodsInfo.filter(good => good.prd_id !== id)
-            setGoodsInfo(item)
+        const onRemove = prd_id => {
+
+            //상품 리스트 배열 만들기
+
+
+
+
+
+
+
+
+            // let prdCart = new Array();
+
+            // //전체 상품 배열로
+            // for (let i = 0; i < cart.length; i++) {
+            //     prdCart.push(cart[i].prd_id)
+            // }
+            // prdCart.sort();
+            // console.log(prdCart)
+
+            //장바구니 남아있는 상품 객체 골라내기
+            const items = goodsInfo.filter(good => good.prd_id !== prd_id)
+            setGoodsInfo(items)
+            props.onClick({ mem_id, prd_id })
+
+            console.log(mem_id, prd_id)
+
+            // // 전체 상품 객체복사
+            // const cart = goodsInfo.slice();
+            // console.log(cart)
+
+            //상품 order_count 배열만들기
+
+            for (let i = 0; i < items.length; i++) {
+                order_count.push(items[i].order_count)
+            }
+            console.log(order_count)
+            console.log(goodsInfo.length)
+
+            //cartItems.sort()
+            //console.log(cartItems)
+
+
+            // //삭제 할 상품 배열 만들기
+            // setPrd_id(prd_id.concat(prdCart.filter((item) => !cartItems.includes(item))))
+            //delete할 prd_id 전송하기
         }
+
+
 
         return (
             <>
@@ -90,7 +172,7 @@ export default function Cart(props) {
                         </div>
                         </td>
                         <td className="cart_delete_btn">
-                            <button type="button" onClick={() => { onRemove(goods.prd_id) }}>
+                            <button type="button" onClick={() => onRemove(goods.prd_id)}>
                                 <img src={xbutton}></img>
                             </button>
                         </td>
@@ -99,6 +181,9 @@ export default function Cart(props) {
             </>
         )
     })
+
+
+
     return (
         <>
             <div className="cart_container">
@@ -106,7 +191,6 @@ export default function Cart(props) {
                     <div className="cart_title">장바구니</div>
                     <div>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</div>
                 </div>
-
                 <form onSubmit={handleSubmit}>
                     <table className="cart_table">
                         <thead>

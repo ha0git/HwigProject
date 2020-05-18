@@ -31,29 +31,14 @@ export default function Order(props) {
     const mem_id = props.userInfo.mem_id
     const mem_reverse = props.userInfo.mem_reverse
     const mem_tel = props.userInfo.mem_tel
-    const mem_email = props.userInfo.email
-    const order_sender = "휙휙휙"
+    const mem_email = props.userInfo.mem_email
+    const order_sender = props.userInfo.mem_name
 
     // 상품정보
 
-    //상품id 배열 선언
     const goodsInfo = props.prdList;
-    let item = ""
-    let count = ""
-    // let order_prd_ids = new Array();
-    // let order_counts = new Array();
+    console.log(goodsInfo)
 
-    for (let i = 0; i < goodsInfo.length; i++) {
-        item = goodsInfo[i].prd_id
-        console.log(item)
-        order_prd_ids[i] = item
-
-        count = goodsInfo[i].order_count
-        console.log(count)
-        order_counts[i] = count
-    }
-    console.log(order_prd_ids)
-    console.log(order_counts)
 
     //상품정보 mapping
     const odItems = goodsInfo.map(odgoods => {
@@ -144,9 +129,12 @@ export default function Order(props) {
         }
     }
 
-    //결제금액창
 
     useEffect(() => {
+
+
+
+        //결제금액창
         let sales = 0
         let initPay = 0
         let pay = 0
@@ -165,7 +153,30 @@ export default function Order(props) {
         setOrder_reverse(order_paymoney * 0.05)
         console.log(order_paymoney)
 
-    }, [order_salePay, order_initPay, order_paymoney, order_reverse, order_used_reverse])
+        //상품id 배열 선언
+        let item = ""
+        let count = ""
+        // let order_prd_ids = new Array();
+        // let order_counts = new Array();
+
+        for (let i = 0; i < goodsInfo.length; i++) {
+            item = goodsInfo[i].prd_id
+            order_prd_ids[i] = item
+
+            count = goodsInfo[i].order_count
+            order_counts[i] = count
+        }
+        console.log(order_prd_ids)
+        console.log(order_counts)
+
+    }, [order_salePay,
+        order_initPay,
+        order_paymoney,
+        order_reverse,
+        order_used_reverse,
+        order_prd_ids,
+        order_counts])
+
     //배송비
     let delivery_charge = 0;
 
