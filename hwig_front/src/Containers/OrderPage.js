@@ -5,12 +5,11 @@ import { Redirect, withRouter } from 'react-router-dom';
 import vienna from '../images/product/vienna.png'
 import { connect } from 'react-redux';
 import { host } from './ServerAddress';
-import { queryAllByAltText } from '@testing-library/react';
 import queryString from 'query-string'
 
 
 function OrderPage(props) {
-    const [isLogged, setIsLogged] = useState(true);
+    const [isLogged, setIsLogged] = useState(false);
     const [prdList, setPrdList] = useState(null)
     const query = queryString.parse(props.location.search)
 
@@ -21,12 +20,12 @@ function OrderPage(props) {
                 setPrdList(res.data)
             })
     }
-
     const sendJoinData = (uri, data) => {
         axios.post(host + uri, data)
             .then(res => {
-                console.log(res.data)
-                props.history.push('/order/orderOk')
+                localStorage.setItem('order_id', res.data.order_id)
+                console.log(localStorage)
+                { res.data.order_id && props.history.push('/order/orderOk') }
             })
     }
     const handleData = (data) => {
@@ -66,10 +65,9 @@ function OrderPage(props) {
             //         prd_sales: 0.5,
             //         order_count: 1
             //     }
-            // ]
-            // )
+            // ])
         }
-    })
+    }, [prdList])
 
     return (
         <div>

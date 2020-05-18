@@ -26,7 +26,6 @@ export default function Order(props) {
     const [order_prd_ids, setOrder_prd_ids] = useState(new Array())
     const [order_counts, setOrder_counts] = useState(new Array())
 
-
     //주문자 정보
     const mem_id = props.userInfo.mem_id
     const mem_reverse = props.userInfo.mem_reverse
@@ -129,11 +128,7 @@ export default function Order(props) {
         }
     }
 
-
     useEffect(() => {
-
-
-
         //결제금액창
         let sales = 0
         let initPay = 0
@@ -143,7 +138,7 @@ export default function Order(props) {
             //상품 금액 (할인 전 금액)
             initPay += (goodsInfo[i].prd_price * goodsInfo[i].order_count)
             //상품 할인 금액
-            sales += (goodsInfo[i].prd_price * goodsInfo[i].prd_sales)
+            sales += (goodsInfo[i].prd_price * goodsInfo[i].prd_sale)
         }
         pay = order_initPay - order_salePay + delivery_charge - order_used_reverse
 
@@ -189,7 +184,7 @@ export default function Order(props) {
     //결제하기 버튼
     const handleSubmit = (e) => {
 
-        const sumAddress = zipcode + getaddress1 + " " + getaddress2;
+        const sumAddress = zipcode + getaddress1 + " " + getaddress2 + " ";
         setOrder_receiver_addr(sumAddress);
         console.log(zipcode)
         console.log(order_receiver_addr)

@@ -29,7 +29,7 @@ export default function ProductList(props) {
         <li key={product.prd_id}>
             <Link to={`shop/product?goodsno=${product.prd_id}&page=${props.page}`}>
                 <div className="prd_img">
-                    <img className="imgscale3" src={product1} />
+                    <img className="imgscale3" src={product.prd_thumb} />
                     {(product.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
                     {(product.prd_sale === 0.3) && <img className="product_sale_icon" src={save30} />}
                     {(product.prd_sale === 0.5) && <img className="product_sale_icon" src={save50} />}

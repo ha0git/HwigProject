@@ -5,8 +5,79 @@ import bottombanner from '../images/bottombanner.png';
 import save10 from '../images/sales/10.png';
 import save30 from '../images/sales/30.png';
 import save50 from '../images/sales/50.png';
-import vienna from '../images/product/vienna.png';
-export default function BodyDown() {
+
+export default function BodyDown(props) {
+
+    //메인 상품리스트
+    const nproduct = props.mainData.nproduct;
+    const rproduct = props.mainData.rproduct;
+    const rproduct2 = props.mainData.rproduct2;
+
+    // 메인 - 오늘의 신상품
+    const getNproducts = nproduct.map(item =>
+        <li key={item.prd_id} className="main_goods_li">
+            <Link>
+                <div className="main_thumb_img prd_img">
+                    <img className="imgscale" src={item.prd_thumb} alt="상품 이미지" />
+                    {(item.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
+                    {(item.prd_sale === 0.3) && <img className="product_sale_icon" src={save30} />}
+                    {(item.prd_sale === 0.5) && <img className="product_sale_icon" src={save50} />}
+                    {(!item.prd_sale) && <p></p>}
+                </div>
+            </Link>
+            <div className="info_goods">
+                <span className="goods_name">
+                    <Link>{item.prd_name}</Link>
+                </span><p />
+                <span className="price">{item.prd_price * (1 - item.prd_sale)}원</span>
+                <span className="cost">{item.prd_price}원</span>
+            </div>
+        </li>
+    )
+
+    // 메인 - MD의 추천 (채소 / 과일)
+    const getRproducts = rproduct.map(item =>
+        <li key={item.prd_id} className="main_goods_li">
+            <Link>
+                <div className="main_thumb_img prd_img">
+                    <img className="imgscale" src={item.prd_thumb} alt="상품 이미지" />
+                    {(item.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
+                    {(item.prd_sale === 0.3) && <img className="product_sale_icon" src={save30} />}
+                    {(item.prd_sale === 0.5) && <img className="product_sale_icon" src={save50} />}
+                    {(!item.prd_sale) && <p></p>}
+                </div>
+            </Link>
+            <div className="info_goods">
+                <span className="goods_name">
+                    <Link>{item.prd_name}</Link>
+                </span><p />
+                <span className="price">{item.prd_price * (1 - item.prd_sale)}원</span>
+                <span className="cost">{item.prd_price}원</span>
+            </div>
+        </li>
+    )
+
+    // 메인 - MD의 추천 (정육)
+    const getRproducts2 = rproduct2.map(item =>
+        <li key={item.prd_id} className="main_goods_li">
+            <Link>
+                <div className="main_thumb_img prd_img">
+                    <img className="imgscale" src={item.prd_thumb} alt="상품 이미지" />
+                    {(item.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
+                    {(item.prd_sale === 0.3) && <img className="product_sale_icon" src={save30} />}
+                    {(item.prd_sale === 0.5) && <img className="product_sale_icon" src={save50} />}
+                    {(!item.prd_sale) && <p></p>}
+                </div>
+            </Link>
+            <div className="info_goods">
+                <span className="goods_name">
+                    <Link>{item.prd_name}</Link>
+                </span><p />
+                <span className="price">{item.prd_price * item.prd_sale}원</span>
+                <span className="cost">{item.prd_price}원</span>
+            </div>
+        </li>
+    )
     return (
         <>
             <div>
@@ -15,55 +86,7 @@ export default function BodyDown() {
                     <div className="main_list_goods">
                         <div>
                             <ul className="main_goods_ul">
-
-                                <li className="main_goods_li">
-                                    <Link>
-                                        <img alt="" src={save10} className="saleico" /><div className="main_thumb_img">
-                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
-                                    <div className="info_goods">
-                                        <span className="goods_name">
-                                            <Link>고소한 비엔나 소세지</Link>
-                                        </span><p />
-                                        <span className="price">38000원</span>
-                                        <span className="cost">50000원</span>
-                                    </div>
-                                </li>
-                                <li className="main_goods_li">
-                                    <Link>
-                                        <img alt="" src={save10} className="saleico" /><div className="main_thumb_img">
-                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
-                                    <div className="info_goods">
-                                        <span className="goods_name">
-                                            <Link>고소한 비엔나 소세지</Link>
-                                        </span><p />
-                                        <span className="price">38000원</span>
-                                        <span className="cost">50000원</span>
-                                    </div>
-                                </li>
-                                <li className="main_goods_li">
-                                    <Link>
-                                        <img alt="" src={save30} className="saleico" /><div className="main_thumb_img">
-                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
-                                    <div className="info_goods">
-                                        <span className="goods_name">
-                                            <Link>고소한 비엔나 소세지</Link>
-                                        </span><p />
-                                        <span className="price">38000원</span>
-                                        <span className="cost">50000원</span>
-                                    </div>
-                                </li>
-                                <li className="main_goods_li">
-                                    <Link>
-                                        <img alt="" src={save30} className="saleico" /><div className="main_thumb_img">
-                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
-                                    <div className="info_goods">
-                                        <span className="goods_name">
-                                            <Link>고소한 비엔나 소세지</Link>
-                                        </span><p />
-                                        <span className="price">38000원</span>
-                                        <span className="cost">50000원</span>
-                                    </div>
-                                </li>
+                                {getNproducts}
                             </ul>
                         </div>
                     </div>
@@ -72,66 +95,15 @@ export default function BodyDown() {
                     <div className="main_goods_tit_d_menu">
                         <h3 className="main_goods_tit">MD의 추천</h3>
                         <div className="main_goods_listmenu">
-                            <Link>채소</Link>
-                            <Link>과일 · 견과 · 쌀</Link>
-                            <Link>수산 · 해산 · 건어물</Link>
-                            <Link>정육 · 계란</Link>
-                            <Link>국 · 반찬 · 메인요리</Link>
+                            <Link>채소 · 과일</Link>
+                            <Link>정육</Link>
                         </div>
                     </div>
                     <div className="main_list_goods">
                         <div>
                             <ul className="main_goods_ul">
-                                <li className="main_goods_li">
-                                    <Link>
-                                        <div className="main_thumb_img">
-                                            <img alt="" className="imgscale" src={vienna} /></div></Link>
-                                    <div className="info_goods">
-                                        <span className="goods_name">
-                                            <Link>고소한 비엔나 소세지</Link>
-                                        </span><p />
-                                        <span className="price">38000원</span>
-                                    </div>
-                                </li>
-                                <li className="main_goods_li">
-                                    <Link>
-                                        <img alt="" src={save50} className="saleico" />
-                                        <div className="main_thumb_img">
-                                            <img alt="" className="imgscale" src={vienna} /></div>
-                                    </Link>
-                                    <div className="info_goods">
-                                        <span className="goods_name">
-                                            <Link>고소한 비엔나 소세지</Link>
-                                        </span><p />
-                                        <span className="price">38000원</span>
-                                        <span className="cost">50000원</span>
-                                    </div>
-                                </li>
-                                <li className="main_goods_li">
-                                    <Link><div className="main_thumb_img">
-                                        <img alt="" className="imgscale" src={vienna} /></div></Link>
-                                    <div className="info_goods">
-                                        <span className="goods_name">
-                                            <Link>고소한 비엔나 소세지</Link>
-                                        </span><p />
-                                        <span className="price">38000원</span>
-
-                                    </div>
-                                </li>
-                                <li className="main_goods_li">
-                                    <Link>
-                                        <img alt="" src={save30} className="saleico" />
-                                        <div className="main_thumb_img">
-                                            <img alt="" className="imgscale" src={vienna} /></div>
-                                    </Link>
-                                    <div className="info_goods">
-                                        <span className="goods_name">
-                                            <Link>고소한 비엔나 소세지</Link>
-                                        </span><p />
-                                        <span className="price">38000원</span>
-                                        <span className="cost">50000원</span>
-                                    </div>
-                                </li>
+                                {/* {getRproducts}
+                                {getRproducts2} */}
                             </ul>
                         </div>
                     </div>

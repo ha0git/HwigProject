@@ -15,6 +15,7 @@ function CartPage(props) {
     const [list, setList] = useState(1)
     const [num, setNum] = useState(parseInt(query.goodsno));
 
+
     const getAxiosData = (uri) => {
         axios.get(host + uri)
             .then(res => {
@@ -23,19 +24,27 @@ function CartPage(props) {
             })
     }
 
-    const sendJoinData = (uri, data) => {
+    const sendJoinData1 = (uri, data) => {
         axios.post(host + uri, data)
             .then(res => {
                 console.log(res.data)
+
             })
+    }
+    const sendJoinData2 = (uri, data) => {
+        axios.post(host + uri, data)
+            .then(res => {
+                props.history.push('/order')
+            }
+            )
     }
     const handleData1 = (data) => {
         console.log(data)
-        sendJoinData('api/cart/cartdelete', data)
+        sendJoinData1('api/cart/cartdelete', data)
     }
     const handleData2 = (data) => {
         console.log(data)
-        sendJoinData('api/cart/cartupdate', data)
+        sendJoinData2('api/cart/cartupdate', data)
     }
 
     console.log(props.userInfo.mem_id)
@@ -52,38 +61,6 @@ function CartPage(props) {
             //         prd_price: 1000,
             //         order_count: 1,
             //         prd_stock: 10
-            //     },
-            //     {
-            //         prd_id: 2,
-            //         prd_thumb_img: vienna,
-            //         prd_name: '고소한 비엔나 소세지',
-            //         prd_comment: '들기름을 넣어 고소한 비엔나 소세지',
-            //         prd_price: 2000,
-            //         order_count: 1,
-            //         prd_stock: 0
-            //     },
-            //     {
-            //         prd_id: 3,
-            //         prd_thumb_img: vienna,
-            //         prd_name: '고소한 비엔나 소세지',
-            //         prd_comment: '들기름을 넣어 고소한 비엔나 소세지',
-            //         prd_price: 3000,
-            //         order_count: 1,
-            //         prd_stock: 0
-            //     },]
-            // )
-        }
-        if (!prdList) {
-            getAxiosData(`api/cart/cartlist?mem_id=${props.userInfo.mem_id}`)
-            // setPrdList([
-            //     {
-            // prd_id: 1,
-            // prd_thumb_img: vienna,
-            // prd_name: '고소한 비엔나 소세지고소한 비엔나 소세지',
-            // prd_comment: '들기름을 넣어 고소한 비엔나 소세지',
-            // prd_price: 1000,
-            // order_count: 1,
-            // prd_stock: 10
             //     },
             //     {
             //         prd_id: 2,
