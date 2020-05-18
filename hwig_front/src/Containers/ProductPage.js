@@ -6,17 +6,21 @@ import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 import Product from '../ProductComponents/Product'
 import vienna from '../images/product/vienna.png';
+import img from '../images/product/prd_image.png';
+
 
 function ProductPage(props) {
     const [prdList, setPrdList] = useState(null);
+    const [prdReview, setPrdReview] = useState(null);
+    const [isLogged, setIsLogged] = useState(false);
     const query = queryString.parse(props.location.search)
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(1)
+    const [size, setSize] = useState(1)
     const [list, setList] = useState(1)
-    const [num, setNum] = useState(parseInt(query.goodsno));
 
-    console.log(props.userInfo)
 
-    const getAxiosData = (uri) => {
+    console.log(query)
+    const getAxiosData1 = (uri) => {
         axios.get(host + uri)
             .then(res => {
                 console.log(res.data)
@@ -24,32 +28,43 @@ function ProductPage(props) {
             })
     }
 
+    const getAxiosData2 = (uri) => {
+        axios.get(host + uri)
+            .then(res => {
+                console.log(res.data)
+                setPrdReview(res.data)
+            })
+    }
     const sendJoinData = (uri, data) => {
         axios.post(host + uri, data)
             .then(res => {
                 console.log(res.data)
                 if (res.data.success === 1) {
-                    props.history.push('/shop/cart?goodsCart')
+                    props.history.push(`/shop/cart?goodsCart`)
                 }
             })
     }
-
     const handleData = (data) => {
         console.log(data)
-        sendJoinData('/api/cart/cartinsert', data)
+        if (isLogged === false) {
+            props.history.push(`/login`)
+        }
+        sendJoinData('api/cart/cartinsert', data)
+
+
     }
 
     useEffect(() => {
         if (!query.goodsno) {
-            props.history.push(`/shop/product?goodsno=${query.goodsno}&page=${page}`)
+            props.history.push(`/shop/product?goodsno=${query.goodsno}`)
         }
-        if (parseInt(query.goodsno) !== list || (query.page) !== page) {
-            setNum(parseInt(query.goodsno))
-            setPage(query.page)
-            getAxiosData(`api/product/productdetail?prd_id=${query.goodsno}`)
+        if (parseInt(query.goodsno) !== list) {
+            setList(parseInt(query.goodsno))
+            getAxiosData1(`api/product/productdetail?prd_id=${query.goodsno}`)
         }
         if (!prdList) {
-            getAxiosData(`api/product/productdetail?prd_id=${query.goodsno}`)
+            getAxiosData1(`api/product/productdetail?prd_id=${query.goodsno}`)
+
             // setPrdList([
             //     {
             //         category_id: 1,
@@ -62,7 +77,8 @@ function ProductPage(props) {
             //         prd_ea: '1봉',
             //         prd_from: '상품별 별도표기',
             //         prd_wrap: '냉장 / 종이포장',
-            //         prd_info: '상품 특성상 3%내외의 중량차이가 발생할 수 있습니다.'
+            //         prd_info: '상품 특성상 3%내외의 중량차이가 발생할 수 있습니다.',
+            //         prd_img: img
             //     },
             //     {
             //         category_id: 1,
@@ -194,21 +210,44 @@ function ProductPage(props) {
             //         prd_wrap: '냉장 / 종이포장',
             //         prd_info: '상품 특성상 3%내외의 중량차이가 발생할 수 있습니다.'
             //     }
-
-            // ]
-            //)
+            // ])
         }
-    }, [query, prdList, props.history, page])
+        if (!prdReview) {
+            // getAxiosData2(`api/review/review_main?prd_id=${query.goodsno}`)
+            console.log(prdReview)
+
+            setPrdReview([
+                {
+                    review_id: 1,
+                    review_subject: '맛있어요1',
+                    mem_id: '난나나',
+                    review_regdate: '0203',
+                    review_img: vienna,
+                    review_content: 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfafsd'
+                },
+                {
+                    review_id: 2,
+                    review_subject: '맛있어요2',
+                    mem_id: '난나나2',
+                    review_regdate: '0203',
+                    review_img: vienna,
+                    review_content: 'qwerqwerqwerqwerqwerqwerqewrqerqwerqwerqwerqwer'
+                }
+            ])
+        }
+    }, [prdList, prdReview])
     return (
         <>
             {prdList && <Product
                 prdList={prdList}
+                prdReview={prdReview}
+                size={size}
                 page={page}
-                num={num}
                 history={props.history}
                 onSubmit={handleData}
                 userInfo={props.userInfo}
             />}
+
         </>
     )
 }

@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import './MyPageModify.css'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
@@ -20,7 +20,7 @@ export default function MypageReviewF(props) {
     })
 
     const sendMemData = (uri, data) => {
-        axios.post(host+uri, data)
+        axios.post(host+uri, data,{processData: false})
         .then(res=>{
             console.log(res.data)
             console.log(res.status)
@@ -35,7 +35,7 @@ export default function MypageReviewF(props) {
         console.log(data)
         sendMemData('api/review/review_write', data)
     }
-                            
+
     return (
         <>
             <MypageReviewForm onSubmit={handleData} num = {num} id = {id}/>

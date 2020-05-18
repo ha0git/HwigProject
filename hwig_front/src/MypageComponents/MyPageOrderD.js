@@ -1,11 +1,11 @@
 import MyPageOrderDetail from './MyPageOrderDetail'
-import React, { useState, useEffect }  from 'react'
+import React, { useState, useEffect } from 'react'
 import vienna from '../images/product/vienna.png';
 import queryString from 'query-string'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
 
-export default function MyPageOrderD({location,history}) {
+export default function MyPageOrderD({ location, history }) {
     const [data, setData] = useState(null);
     const query = queryString.parse(location.search)
     const [num, setNum] = useState(parseInt(query.orderno));
@@ -41,7 +41,7 @@ export default function MyPageOrderD({location,history}) {
     }
     return (
         <>
-            {data && <MyPageOrderDetail data={data} cart={cart}/> }
+            {data && <MyPageOrderDetail data={data} cart={cart} />}
         </>
     )
 }

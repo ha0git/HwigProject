@@ -15,7 +15,7 @@ export default function QnaWriteFrom(props) {
     const hadleSubmit = (e) => {
         console.log(qna_category, qna_subject, order_id, mem_email, mem_tel, qna_content)
         e.preventDefault();
-        if (qna_category === "none" || !qna_category) {
+        if (qna_category == "선택해주세요." || !qna_category) {
             alert("카테고리를 선택해 주세요.")
         } else if (!qna_subject) {
             alert("제목을 입력해주세요.")
@@ -51,9 +51,9 @@ export default function QnaWriteFrom(props) {
                                     <select onChange={(e) => { setCategory(e.target.options[e.target.selectedIndex].text) }}>
                                         <option>선택해주세요.</option>
                                         <option>주문/결제</option>
-                                        <option>취소/교환/반품</option>
+                                        <option>취소/교환/환불</option>
                                         <option>배송문의</option>
-                                        <option>쿠폰/적립금</option>
+                                        <option>적립금</option>
                                         <option>서비스 이용 및 기타</option>
                                         <option>회원문의</option>
                                     </select>

@@ -7,18 +7,30 @@ export default function MypageReviewForm(props) {
 
     const [review_subject,setTitle] = useState(null)
     const [review_content,setText] = useState(null)
-    const [review_img,setImage] = useState(null)
+    const [content, setContent] = useState("");
+    const onChange = e => {
+        console.log(e.target.files[0])
+        setContent(e.target.files[0]);
+    };
+      
     const mem_id = props.id
     const prd_id = props.num
     const handleSubmit = (e) => {
         e.preventDefault()
         if(!review_subject){
-            alert("제목을입력하세요")
+            alert("제목을 입력하세요")
         }else if(!review_content){
-            alert("내용을입력하세요")
+            alert("내용을 입력하세요")
         } else {
-            console.log(review_subject,review_content,prd_id,mem_id)
-            props.onSubmit({review_subject,review_content,prd_id,mem_id});
+            console.log(content)
+            const formData = new FormData();
+            formData.append("prd_id",prd_id)
+            formData.append("mem_id",mem_id)
+            formData.append("review_subject",review_subject)
+            formData.append("review_content",review_content)
+            formData.append("img", content); 
+            console.log({formData})
+            props.onSubmit(formData);
         }
       } 
    
@@ -38,6 +50,12 @@ export default function MypageReviewForm(props) {
                             <tr className="mypage-modify-input">
                                 <td className="mypage-modify-input-text-title">내용</td>
                                 <td><textarea className="mypage-modify-inputbox"  onChange={(e) => setText(e.target.value)}></textarea></td>
+                            </tr>
+                            <tr className="mypage-modify-input">
+                                <td className="mypage-modify-input-text-title">이미지 첨부</td>
+                                <td>
+                                <input type="file" onChange={onChange} />
+                                </td>
                             </tr>
                         </div>
                         <div className="mypage-modify-form-submit-buttons">

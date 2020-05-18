@@ -10,18 +10,18 @@ import save50 from '../images/sales/50.png';
 import product1 from '../images/product1.png'
 
 export default function ProductList(props) {
+    console.log(props)
     const pcategoryItem = props.productItems.pcategory
     const categoryItem = props.productItems.category
     const productList = props.productItems.productlist
     const allItems = props.productItems.category[0]
 
-    console.log(categoryItem)
     const categorytit = pcategoryItem.map(pcategory => (
         <span>{pcategory.category_name}</span>
     ))
 
     const categoryList = categoryItem.map(category => (
-        <li key={category.category_id}><Link to={`/shop?category_id=${category.category_p_id}${category.category_id}&page=${props.page}`}>{category.category_name}</Link></li>
+        <li key={category.category_id}><Link to={`/shop?category_id=${category.category_p_id}&page=${props.page}`}>{category.category_name}</Link></li>
     ))
 
 
@@ -56,6 +56,7 @@ export default function ProductList(props) {
         } else {
             end = props.page * 9;
         }
+        console.log(begin, end)
 
         for (let i = begin; i < end; i++) {
             list.push(productGoods[i])
@@ -97,7 +98,7 @@ export default function ProductList(props) {
                         itemsCountPerPage={9}
                         totalItemsCount={productList.length}
                         pageRangeDisplayed={9}
-                        onChange={handlePageChange(activePage)}
+                        onChange={handlePageChange}
                     />
                 </div>
             </div>
