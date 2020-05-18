@@ -11,14 +11,14 @@ export default function MyPagePage(props) {
     
     return (
         <>
-            {/*isLogged ? <MyPage /> : <Redirect to="/" /> */}   
-            <MyPage />
+            {isLogged ? <MyPage userInfoR={props.userInfo}/> : <Redirect to="/" />}
         </>
     )
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        isLogged: state.reducer.isLogged
+        isLogged: state.reducer.isLogged,
+        userInfo: state.reducer.userInfo
     }
 }
 

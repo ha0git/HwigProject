@@ -72,7 +72,8 @@ export default function OrderList(props) {
         )
     })
     const showOrderList = () =>{
-        let list =[];
+
+        if (orderInfo.length > 0) {let list =[];
         let begin = (activePage-1)*props.size;
         let end;
         if(orderInfo.length < activePage*2){
@@ -87,7 +88,26 @@ export default function OrderList(props) {
         }
         console.log(list)
 
-        return list
+        return list} else {
+            return (
+                <>
+                <br /> <br /> 최근 주문 내역이 없습니다.
+                </>
+            )
+        }
+    }
+    const showPaging = () => {
+        if (orderInfo.length > 0) {
+            return(<Pagination
+                activePage={activePage}
+                itemsCountPerPage={1}
+                totalItemsCount={orderInfo.length/2}
+                pageRangeDisplayed={3}
+                onChange={handlePageChange}
+            />)
+        } else {
+            return
+        }
     }
     return (
         <>
@@ -100,13 +120,8 @@ export default function OrderList(props) {
                     </ul>
                 </div>
                 <div className="product-pagenation-container">
-                    <Pagination
-                        activePage={activePage}
-                        itemsCountPerPage={1}
-                        totalItemsCount={orderInfo.length/2}
-                        pageRangeDisplayed={3}
-                        onChange={handlePageChange}
-                    />
+                    {showPaging()}
+                    
                 </div>
             </div>
         </>

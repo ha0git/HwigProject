@@ -17,13 +17,13 @@ export default function MyPageOrderD({ location, history }) {
             })
     }
     const sendData = (uri, data) => {
-        axios.post(host + uri, data)
-            .then(res => {
-                console.log(res.data)
-                if (res.data.code === 200) {
-                    alert("장바구니에 추가 되었습니다.")
-                }
-            })
+        axios.post(host+uri, data)
+        .then(res=>{
+            console.log(res.data)
+            if (res.data.code === 200 ) {
+                alert("장바구니에 추가 되었습니다.")
+            }
+        })
     }
     useEffect(() => {
         console.log(num)

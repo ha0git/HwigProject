@@ -41,7 +41,11 @@ export default function Template(props) {
                     <td><a onClick={() => handleShow(index)}>{list.faq_subject}</a></td>
                 </tr>
                 <tr className={`temp_toggle${index}`}>
-                    <td className="temp_toggle_content" colSpan="3"><img src={faq_img} />{list.faq_content}</td>
+                    <td className="temp_toggle_content" colSpan="3"><img src={faq_img} />
+                    {list.faq_content.split(/(<br>|<br\/>|<br \/>)/g).map( line => {
+                return (<span>{line.replace(/(<br>|<br\/>|<br \/>)/g, '')}<br/></span>)
+            })}
+                    </td>
                 </tr>
             </>)
     })

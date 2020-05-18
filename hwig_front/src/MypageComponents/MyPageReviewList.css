@@ -225,3 +225,24 @@
     line-height: 20px;
     vertical-align: top;
 }
+/* 상품 후기 본문 */
+.qaa table{
+    margin-top: 0px !important;
+    border-top:none !important;
+}
+.qaa th{
+    border-bottom:1px solid #ff7276 !important;
+}
+.qaa td:nth-child(2){
+    width: 400px !important;
+    text-align: left;
+    padding-left: 80px;
+}
+.qaa td:nth-child(3){
+    width: 200px !important;
+    text-align: right;
+    padding-left: 80px;
+}
+pre {
+    text-align: left;
+}

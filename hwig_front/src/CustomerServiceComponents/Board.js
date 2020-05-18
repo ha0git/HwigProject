@@ -25,7 +25,9 @@ export default function Board(props) {
                         <td>{article.notice_hit}</td>
                     </tr>
                     <tr>
-                        <td colSpan="4">{article.notice_content}</td>
+                        <td colSpan="4">{article.notice_content.split(/(<br>|<br\/>|<br \/>)/g).map( line => {
+                        return (<span>{line.replace(/(<br>|<br\/>|<br \/>)/g, '')}<br/></span>)
+                    })}</td>
                     </tr>
                 </table>
             </div>

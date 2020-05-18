@@ -2,9 +2,14 @@ import React, {useState} from 'react'
 import {Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './MyPageReviewList.css'
+import jQuery from "jquery";
+import Pagination from "react-js-pagination";
 
 export default function ReviewList(props) {
+
+    window.$ = window.jQuery = jQuery;
     const goodsInfo = props.data1
+    const prd_review = props.data2
     const willWriteReviewTable = goodsInfo.map(goodsInfo => {
         return (
             <>
@@ -33,6 +38,65 @@ export default function ReviewList(props) {
             </>
         )
     })
+    const handleShow = (index) => {
+        window.$(document).ready(function () {
+            console.log('실행')
+            if (window.$(`.temp_toggle${index}`).css('display') === "none") {
+                window.$(`.temp_toggle${index}`).css('display', "")
+            }
+            else {
+                window.$(`.temp_toggle${index}`).css('display', "none")
+            }
+        })
+    }
+    const prdReviewList = prd_review.map((review, index) => {
+        window.$(document).ready(function () {
+            console.log('실행')
+            window.$(`.temp_toggle${index}`).css('display', 'none')
+        })
+        return (
+            <>
+                <tr key={index}>
+                    <td>{review.review_id}</td>
+                    <td><a onClick={() => handleShow(index)}>{review.review_subject}</a></td>
+                    <td>{review.prd_name}</td>
+                    <td>{review.review_regdate}</td>
+                </tr>
+                <tr className={`temp_toggle${index}`}>
+                    <td className="prd_toggle_content" colSpan="4">
+                        <img src={review.review_img} />
+                        <pre text-align="left">{review.review_content}</pre>
+                    </td> 
+                </tr>
+            </>
+        )
+    }
+    )
+    const showReviewList = () => {
+        let list = [];
+        let begin = (props.page - 1) * props.size;
+        let end;
+        if (prd_review.length < props.page * 13) {
+            end = prd_review.length;
+        } else {
+            end = props.page * 13;
+        }
+        console.log(begin, end)
+
+        for (let i = begin; i < end; i++) {
+            list.push(prdReviewList[i])
+        }
+        console.log(list)
+
+        return list
+    }
+    const [activePage, setactivePage] = useState(1);
+
+    const handlePageChange = (pageNumber) => {
+        console.log(`active page is ${pageNumber}`);
+        setactivePage(pageNumber)
+        props.history.push(`shop/product?goodsno=${goodsInfo.prd_id}&page=${pageNumber}`)
+    }
     const willWriteReview = () => {
         //return(
             //<tr>
@@ -53,15 +117,50 @@ export default function ReviewList(props) {
         )
     }
     const writtenReview = () => {
-        return(
-            <tr>
-                <td className="mypage-review-table-item" colspan="5"><br/><br/>작성한 후기 내역이 없습니다.<br/><br/><br/></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        )
+        if (props.data2.length > 0) {
+            console.log(prd_review.length)
+            return(
+                // <tr>
+                //     <td className="mypage-review-table-item" colspan="5"><br/><br/>작성한 후기 내역이 없습니다.<br/><br/><br/></td>
+                //     <td></td>
+                //     <td></td>
+                //     <td></td>
+                //     <td></td>
+                // </tr>
+                <>
+                <div className="prd_frmList qaa">
+                                <table>
+                <thead className="prd_frmtit">
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>상품명</th>
+                        <th>작성일</th>
+                    </tr>
+                </thead>
+                <tbody className="prd_frmContent">
+                    {showReviewList()}
+                </tbody>
+                </table>
+                <div className="frm_pagination">
+                    <Pagination
+                        activePage={activePage}
+                        itemsCountPerPage={5}
+                        totalItemsCount={prd_review.length}
+                        pageRangeDisplayed={5}
+                        onChange={handlePageChange}
+                    />
+                </div>
+                </div>
+                </>
+            )
+        } else if (props.data2.length = 0){
+            return(
+                <>
+                <br>최근 작성한 후기가 없습니다.</br>
+                </>
+            )
+        }
     }
     const [review,setReview] = useState(
         willWriteReview
@@ -103,6 +202,7 @@ export default function ReviewList(props) {
                 <table className="mypage-review-table-container">
                     {review}
                 </table>
+                
             </div>
             </div>
 
