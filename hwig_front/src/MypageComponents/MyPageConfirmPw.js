@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import './MyPageConfirmPw.css'
 import {withRouter,Link} from 'react-router-dom'
-import {Container, Row, Col, Form, Button, Modal} from 'react-bootstrap'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
 
@@ -46,8 +45,8 @@ function MyPageConfirmPw(props) {
                     <div>아이디</div>
                     <div><input className="mypage-confirm-inputbox-id" type="text" value={mem_id} readOnly/></div>
                     <div>비밀번호</div>
-                    <div><Form.Control 
-                                className="login-input-box" 
+                    <div><input
+                                className="mypage-confirm-inputbox-pw" 
                                 size="lg" 
                                 type="password" 
                                 placeholder="비밀번호를 입력해주세요."
@@ -55,7 +54,7 @@ function MyPageConfirmPw(props) {
                                 value={mem_pw}
                         />
                     </div>
-                    <Link to="../find_pw">비밀번호를 잊으셨나요?</Link>
+                    <Link to="../find_pw" className="mypage-confirm-findpw">비밀번호를 잊으셨나요?</Link>
                 </div>
                 <div className="mypage-confirm-submit-container">
                     <input className="mypage-confirm-submit" type="submit" value="확인"/>

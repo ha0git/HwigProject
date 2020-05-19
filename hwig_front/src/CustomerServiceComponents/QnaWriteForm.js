@@ -34,7 +34,7 @@ export default function QnaWriteFrom(props) {
         if (props.num) {
             return ("주문번호 "+props.num+"번 관련 문의입니다.")
         } else {
-            return ("나문의입니다.")
+            return ("문의하실 내용을 입력하세요.")
         }
     }
 

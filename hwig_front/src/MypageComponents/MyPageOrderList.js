@@ -61,7 +61,7 @@ export default function OrderList(props) {
                         </div> 
                         <div className="mypage_order_status">
                             <span className="mypage_order_inner_status">  
-                                <button className="mypage_order_link">1:1 문의</button>
+                                <Link to={`/customer/qna/board?order_id=${orderInfo.order_id}`} className="mypage_order_link">1:1 문의</Link>
                                 {confirmD()}
                             </span>
                             
@@ -101,7 +101,7 @@ export default function OrderList(props) {
             return(<Pagination
                 activePage={activePage}
                 itemsCountPerPage={1}
-                totalItemsCount={orderInfo.length/2}
+                totalItemsCount={orderInfo.length}
                 pageRangeDisplayed={3}
                 onChange={handlePageChange}
             />)
