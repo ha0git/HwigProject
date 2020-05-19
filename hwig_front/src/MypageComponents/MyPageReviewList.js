@@ -10,28 +10,29 @@ export default function ReviewList(props) {
     window.$ = window.jQuery = jQuery;
     const goodsInfo = props.data1
     const prd_review = props.data2
+    const [activePage, setactivePage] = useState(1);
     const willWriteReviewTable = goodsInfo.map(goodsInfo => {
         return (
             <>
-                <tr className="mypage_orderdetail_fst">
+                <tr className="mypage_reviewlist_fst">
                     <td></td>
-                    <td className="mypage_orderdetail_thumb">
+                    <td className="mypage_reviewlist_thumb">
                     <Link to={`reviewform?prdno=${goodsInfo.prd_id}`}><img src={goodsInfo.prd_thumb} /></Link>
                     </td>
-                    <td className="mypage_orderdetail_info">
-                        <div className="mypage_orderdetail_name">
+                    <td className="mypage_reviewlist_info">
+                        <div className="mypage_reviewlist_name">
                         <Link to={`reviewform?prdno=${goodsInfo.prd_id}`}>{goodsInfo.prd_name}</Link>
                         </div>
-                        <div className="mypage_orderdetail_desc">
-                            <span className="mypage_orderdetail_price">{goodsInfo.order_count}개 구매</span><p />
-                            <span className="mypage_orderdetail_ea">{goodsInfo.order_paydate}</span>
+                        <div className="mypage_reviewlist_desc">
+                            <span className="mypage_reviewlist_date">{goodsInfo.order_paydate}</span><p />
+                            <span className="mypage_reviewlist_ea">{goodsInfo.order_count}개 구매</span>
                         </div>
                     </td>
-                    <td className="mypage_orderdetail_progress">
+                    <td className="mypage_reviewlist_progress">
                         
                     </td>
-                    <td className="mypage_orderdetail_action">
-                        <button type="button" className="mypage_orderdetail_btn" onclick="">리뷰쓰기</button>
+                    <td className="mypage_reviewlist_action">
+                        <button type="button" className="mypage_reviewlist_btn" onclick="">후기쓰기</button>
                     </td>
                     <td></td>
                 </tr>
@@ -74,12 +75,12 @@ export default function ReviewList(props) {
     )
     const showReviewList = () => {
         let list = [];
-        let begin = (props.page - 1) * props.size;
+        let begin = (activePage - 1) * 5;
         let end;
-        if (prd_review.length < props.page * 13) {
+        if (prd_review.length < activePage * 5) {
             end = prd_review.length;
         } else {
-            end = props.page * 13;
+            end = activePage * 5;
         }
         console.log(begin, end)
 
@@ -90,31 +91,33 @@ export default function ReviewList(props) {
 
         return list
     }
-    const [activePage, setactivePage] = useState(1);
 
     const handlePageChange = (pageNumber) => {
-        console.log(`active page is ${pageNumber}`);
         setactivePage(pageNumber)
-        props.history.push(`shop/product?goodsno=${goodsInfo.prd_id}&page=${pageNumber}`)
+        console.log(`active page is ${pageNumber}`);
+        props.history.push(`/mypage/review&page=${pageNumber}`)
     }
     const willWriteReview = () => {
-        //return(
-            //<tr>
-                //<td className="mypage-review-table-item" colspan="5"><br/><br/>작성 가능한 후기 내역이 없습니다.<br/><br/><br/></td>
-                //<td></td>
-                //<td></td>
-                //<td></td>
-                //<td></td>
-            //</tr>
-        //)
-        return (
-                    <table className="mypage_orderdetail_tbl_type1">
-                            
-                    <tbody>
-                        {willWriteReviewTable}
-                    </tbody>
-                    </table>
-        )
+        if (props.data1.length > 0) {
+            return (
+                <table className="mypage_reviewlist_tbl_type1">
+                        
+                <tbody>
+                    {willWriteReviewTable}
+                </tbody>
+                </table>
+            )   
+        } else {
+            return(
+                <tr>
+                    <td className="mypage-review-table-item" colspan="5"><br/><br/>작성 가능한 후기가 없습니다.<br/><br/><br/></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            )
+        }      
     }
     const writtenReview = () => {
         if (props.data2.length > 0) {
@@ -154,10 +157,17 @@ export default function ReviewList(props) {
                 </div>
                 </>
             )
-        } else if (props.data2.length = 0){
+        } else {
+            console.log("tqtq")
             return(
                 <>
-                <br>최근 작성한 후기가 없습니다.</br>
+                <tr>
+                    <td className="mypage-review-table-item" colspan="5"><br/><br/>작성한 후기 내역이 없습니다.<br/><br/><br/></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
                 </>
             )
         }
@@ -174,6 +184,7 @@ export default function ReviewList(props) {
             setReview(
                 writtenReview
             )
+            console.log("tq")
         }
     }
     const log = () => {

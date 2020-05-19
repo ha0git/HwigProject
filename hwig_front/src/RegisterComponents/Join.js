@@ -150,7 +150,6 @@ export default function Join(props) {
                       <td className="memCols1">휴대폰*</td>
                       <td className="memCols2">
                         <input type="text" value={mem_tel} onChange={(e) => setTel(e.target.value)} placeholder="숫자만 입력해주세요"></input>
-                        <input type="button" value="인증번호 받기" />
                       </td>
                     </tr>
                     <tr className="join_name">

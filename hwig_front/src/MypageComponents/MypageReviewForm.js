@@ -1,5 +1,6 @@
 import React, {useEffect,useState} from 'react'
 import './MyPageModify.css'
+import './MypageReviewForm.css'
 import { Modal } from 'react-bootstrap'
 import DaumPostcode from 'react-daum-postcode';
 
@@ -49,7 +50,7 @@ export default function MypageReviewForm(props) {
                             </tr>
                             <tr className="mypage-modify-input">
                                 <td className="mypage-modify-input-text-title">내용</td>
-                                <td><textarea className="mypage-modify-inputbox"  onChange={(e) => setText(e.target.value)}></textarea></td>
+                                <td><textarea className="reviewform_text"  onChange={(e) => setText(e.target.value)}></textarea></td>
                             </tr>
                             <tr className="mypage-modify-input">
                                 <td className="mypage-modify-input-text-title">이미지 첨부</td>

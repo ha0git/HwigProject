@@ -4,10 +4,12 @@ import vienna from '../images/product/vienna.png';
 import queryString from 'query-string'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
+import {connect} from 'react-redux'
 
-export default function MyPageOrderD({ location, history }) {
+export default function MyPageOrderD(props) {
     const [data, setData] = useState(null);
-    const query = queryString.parse(location.search)
+    const query = queryString.parse(props.location.search)
+    const userInfoR = props.userInfo
     const [num, setNum] = useState(parseInt(query.orderno));
     const getAxiosData = (uri) => {
         axios.get(host + uri)
@@ -28,10 +30,10 @@ export default function MyPageOrderD({ location, history }) {
     useEffect(() => {
         console.log(num)
         if (!query.orderno) {
-            history.push(`/mypage/orderdetail?orderno=${num}`)
+            props.history.push(`/mypage/orderdetail?orderno=${num}`)
         }
-        if (data === null) {
-            getAxiosData(`api/members/tototo/orders/${num}`)
+        if (data === null && userInfoR.mem_id !== undefined) {
+            getAxiosData(`api/members/${userInfoR.mem_id }/orders/${num}`)
         }
     }
     )
@@ -45,3 +47,11 @@ export default function MyPageOrderD({ location, history }) {
         </>
     )
 }
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogged: state.reducer.isLogged,
+        userInfo: state.reducer.userInfo
+    }
+}
+
+MyPageOrderD = connect(mapStateToProps)(MyPageOrderD)
