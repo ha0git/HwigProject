@@ -44,7 +44,7 @@ export default function Order(props) {
         return (
             <tr key={odgoods.prd_id}>
                 <td className="order_thumb">
-                    <ImageMapper src={odgoods.prd_thumb} />
+                    <ImageMapper src={"http://13.209.202.242:8080/" + odgoods.prd_thumb} />
                 </td>
                 <td className="order_goodsInfo">
                     <div>{odgoods.prd_name}&nbsp;{odgoods.prd_ea}</div>
@@ -194,7 +194,11 @@ export default function Order(props) {
         } else if (!order_receiver_tel) {
             alert('휴대폰 번호를 입력해주세요.')
         } else if (!isPhoneNumberValid) {
-            alert('휴대폰 번호를 양식에 맞게 입력해주세요.')
+            alert(`휴대폰 번호를 양식에 맞게 입력해주세요.`)
+        } else if (!order_request) {
+            alert('배송 요청사항을 입력해주세요.')
+        } else if (!order_payway) {
+            alert('결제 수단을 선택해주세요.')
         } else if (!order_checked) {
             alert('결제 진행에 동의해주세요.')
         }

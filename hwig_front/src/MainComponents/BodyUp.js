@@ -56,9 +56,9 @@ export default function BodyUp(props) {
     // 메인 - 이 상품 어때요?
     const getWproducts = wproduct.map(item =>
         <li key={item.prd_id} className="main_goods_li">
-            <Link>
+            <Link to={`/shop/product?goodsno=${item.prd_id}&page=1`}>
                 <div className="main_thumb_img prd_img">
-                    <img className="imgscale" src={item.prd_thumb} alt="상품 이미지" />
+                    <img className="imgscale" src={"http://13.209.202.242:8080/" + item.prd_thumb} alt="상품 이미지" />
                     {(item.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
                     {(item.prd_sale === 0.3) && <img className="product_sale_icon" src={save30} />}
                     {(item.prd_sale === 0.5) && <img className="product_sale_icon" src={save50} />}
@@ -66,20 +66,22 @@ export default function BodyUp(props) {
                 </div>
             </Link>
             <div className="info_goods">
-                <span className="goods_name">
-                    <Link>{item.prd_name}</Link>
-                </span><p />
-                <span className="price">{item.prd_price * (1 - item.prd_sale)}원</span>
-                <span className="cost">{item.prd_price}원</span>
+                <Link to={`/shop/product?goodsno=${item.prd_id}&page=1`}>
+                    <span className="goods_name">
+                        {item.prd_name}
+                    </span><p />
+                    <span className="price">{item.prd_price * (1 - item.prd_sale)}원</span>
+                    <span className="cost">{item.prd_price}원</span>
+                </Link>
             </div>
         </li>
     )
     // 메인 - 알뜰 상품
     const getSproducts = sproduct.map(item =>
         <li key={item.prd_id} className="main_goods_li">
-            <Link>
+            <Link to={`/shop/product?goodsno=${item.prd_id}&page=1`}>
                 <div className="main_thumb_img prd_img">
-                    <img className="imgscale" src={item.prd_thumb} alt="상품 이미지" />
+                    <img className="imgscale" src={"http://13.209.202.242:8080/" + item.prd_thumb} alt="상품 이미지" />
                     {(item.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
                     {(item.prd_sale === 0.3) && <img className="product_sale_icon" src={save30} />}
                     {(item.prd_sale === 0.5) && <img className="product_sale_icon" src={save50} />}
@@ -87,11 +89,13 @@ export default function BodyUp(props) {
                 </div>
             </Link>
             <div className="info_goods">
-                <span className="goods_name">
-                    <Link>{item.prd_name}</Link>
-                </span><p />
-                <span className="price">{item.prd_price * (1 - item.prd_sale)}원</span>
-                <span className="cost">{item.prd_price}원</span>
+                <Link to={`/shop/product?goodsno=${item.prd_id}&page=1`}>
+                    <span className="goods_name">
+                        {item.prd_name}
+                    </span><p />
+                    <span className="price">{item.prd_price * (1 - item.prd_sale)}원</span>
+                    <span className="cost">{item.prd_price}원</span>
+                </Link>
             </div>
         </li>
     )

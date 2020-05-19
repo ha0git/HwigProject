@@ -9,10 +9,9 @@ export default function Cart(props) {
     const [prd_ids, setPrd_ids] = useState(new Array());
     const [order_counts, setOrder_counts] = useState(new Array());
 
-    console.log(order_counts)
-    console.log(prd_ids)
-
     const mem_id = props.userInfo.mem_id;
+    console.log(mem_id)
+
 
     //배송비 금액 부분
     let result = 0;
@@ -35,7 +34,10 @@ export default function Cart(props) {
 
     //장바구니 비우기
     const onAllRemove = (id) => {
-        setGoodsInfo(goodsInfo.filter(good => good.prd_id === id))
+        const remove = goodsInfo.filter(good => good.prd_id === id)
+        setGoodsInfo(remove)
+        props.onClick2({ mem_id })
+        console.log(remove)
     }
     //품절상품 삭제
     const onStock = () => {
@@ -62,7 +64,7 @@ export default function Cart(props) {
             //장바구니 남아있는 상품 객체 골라내기
             const items = goodsInfo.filter(good => good.prd_id !== prd_id)
             setGoodsInfo(items)
-            props.onClick({ mem_id, prd_id })
+            props.onClick1({ mem_id, prd_id })
             console.log(mem_id, prd_id)
 
             //남아있는 상품 order_count, prd_id 배열 만들기
@@ -76,6 +78,8 @@ export default function Cart(props) {
                 id = items[i].prd_id
                 prd_ids[i] = id
             }
+            console.log(order_counts)
+            console.log(prd_ids)
         }
 
         return (
@@ -85,7 +89,7 @@ export default function Cart(props) {
                         {/*<td className="cart-table-item-none" colspan="5"><br/><br/>장바구니에 담긴 상품이 없습니다.<br/><br/><br/></td>*/}
                         <td>
                             <div className="cart_goods_thumb">
-                                <img src={goods.prd_thumb_img} />
+                                <img src={"http://13.209.202.242:8080/" + goods.prd_thumb} />
                             </div>
                             <div className="cart_goods_desc">
                                 <div className="cart_goods_name">

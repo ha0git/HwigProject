@@ -4,78 +4,90 @@
     width:100%;
     height:auto;
 }
-
-
-
 .orderOk-subcontainer{
     background-color: white;
     margin: 0px auto;
-    width:600px;
+    width:700px;
     height:auto;
 }
-
-.orderOk-subcontainer > div:first-child{
+/* 주문완료 title */
+.orderOk_tit{
     color:#ed7175;
-    font-size: 22px;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-weight: 500;
 }
-
-.orderOk-subcontainer > div:first-child,
 .orderOk-subcontainer > div:nth-child(2),
 .orderOk-subcontainer > div:nth-child(3){
     text-align: center;
     padding:15px;
 }
-
+ 
 .orderOk-subcontainer > div:nth-child(3){
-    font-size: 18px;
-    font-weight: 300;
-    color: black;
+    font-size: 20px;
+    font-weight: 500;
+    color: #444;
 }
-
+/* 주문번호 */
 .orderOk-subcontainer-orderlist{
     margin: 0px auto;
     padding:15px;
-    width:450px;
+    width:550px;
     font-weight: 300;
     color: black;
-    /* border: 1px solid black; */
 }
-
 .orderOk-subcontainer-orderlist > div{
     border-top: 2px solid #ed7175;
-    padding: 5px 0px 5px 0px;
-    border-bottom: 1px solid rgb(230, 227, 227);
-    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding:15px 0;
 }
-
 .orderOk-subcontainer-orderlist > div > a{
-    font-size: 18px;
+    font-size: 19px;
+    font-weight: 500;
     color: #ed7175;
+    letter-spacing: 0.5px;
 }
-.orderOk-subcontainer-orderlist > div > a > span{
-    padding-right: 15px;
+.orderOk-subcontainer-orderlist > div > a > span:first-child{
+    display: inline-block;
+    width:83px;
+}
+.orderOk-subcontainer-orderlist > div > a > span:nth-child(2){
+    padding-left: 40px;
 }
 .orderOk-subcontainer-orderlist > div > a > span:last-child{
     float: right;
     font-size: 20px;
 }
-
+/* 주문 내역 리스트 */
+.orderOk_list tr td{
+    padding:5px 0;
+}
+.orderOk_list tr{
+    font-size: 15px;
+}
+.orderOk_list th{
+    width: 115px;
+    font-weight: 400;
+}
 .orderOk-subcontainer-orderlist > table > tbody > tr > td:first-child{
-    width: 90px;
+    width: 93px;
 }
 .orderOk-subcontainer-orderlist > table > tbody > tr > td:last-child{
     width: 350px;
-    padding-left: 40px;
 }
 
-.orderOk-subcontainer > div:last-child{
+/* 주문 내역 바로가기 버튼 */
+.orderOk_btn{
     text-align: center;
+    padding: 40px 0;
 }
-
-.orderOk-subcontainer > div:last-child > a >input{
+.orderOk_btn a input{
+    width:300px;
+    height:50px;
     border: 1px solid #ed7175;
     background-color: #ed7175;
     color: white;
-    padding: 10px 50px 10px 50px;
-    margin: 20px 0px 50px 0px;
 }

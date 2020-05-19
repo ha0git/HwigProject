@@ -9,12 +9,11 @@ import { connect } from 'react-redux'
 
 function CartPage(props) {
     const [prdList, setPrdList] = useState(null);
-    const [isLogged, setIsLogged] = useState(false);
     const query = queryString.parse(props.location.search)
     const [page, setPage] = useState(1);
     const [list, setList] = useState(1)
     const [num, setNum] = useState(parseInt(query.goodsno));
-
+    const [isLogged, setIsLogged] = useState(false);
 
     const getAxiosData = (uri) => {
         axios.get(host + uri)
@@ -23,20 +22,24 @@ function CartPage(props) {
                 setPrdList(res.data)
             })
     }
-
     const sendJoinData1 = (uri, data) => {
         axios.post(host + uri, data)
             .then(res => {
                 console.log(res.data)
-
             })
     }
     const sendJoinData2 = (uri, data) => {
         axios.post(host + uri, data)
             .then(res => {
                 props.history.push('/order')
-            }
-            )
+            })
+    }
+    const sendJoinData3 = (uri, data) => {
+        axios.get(host + uri, data)
+            .then(res => {
+                console.log(res.data)
+                props.history.push('/')
+            })
     }
     const handleData1 = (data) => {
         console.log(data)
@@ -45,6 +48,10 @@ function CartPage(props) {
     const handleData2 = (data) => {
         console.log(data)
         sendJoinData2('api/cart/cartupdate', data)
+    }
+    const handleData3 = data => {
+        console.log(data.mem_id)
+        sendJoinData3(`api/cart/cartalldelete?mem_id=${props.userInfo.mem_id}`, data)
     }
 
     console.log(props.userInfo.mem_id)
@@ -88,7 +95,8 @@ function CartPage(props) {
             {isLogged ? <Redirect to="/login" /> : prdList && <Cart
                 prdList={prdList}
                 userInfo={props.userInfo}
-                onClick={handleData1}
+                onClick1={handleData1}
+                onClick2={handleData3}
                 onSubmit={handleData2}
                 history={props.history}
             />}
