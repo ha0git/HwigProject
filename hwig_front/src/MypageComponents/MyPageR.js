@@ -12,50 +12,23 @@ export default function MyPageR(props) {
     const [size, setSize] = useState(2)
     const userInfoR = props.userInfo
 
-    const getAxiosData1 = (uri) => {
-        axios.get(host + uri)
-            .then(res => {
-                console.log(res.data)
-                setData1(res.data)
-            })
-    }
-    const getAxiosData2 = (uri) => {
-        axios.get(host + uri)
-            .then(res => {
-                console.log(res.data)
-                setData2(res.data)
-            })
+    const getAxiosData = (uri,uri2) => {
+        axios.all([
+            axios.get(host + uri),
+            axios.get(host + uri2)
+          ])
+          .then(axios.spread((res1, res2) => {
+            console.log(res1.data)
+            setData1(res1.data)
+            console.log(res2.data)
+            setData2(res2.data)
+          })
+          )
     }
     useEffect(() => {
         console.log(userInfoR)
-        if (!data1 && userInfoR.mem_id !== undefined) {
-            getAxiosData1(`api/members/${userInfoR.mem_id }/prds`)
-            // setData1(
-            //     [
-            //         {
-            //             order_paydate: "2020-05-11 10:22:22",
-            //             prd_name: "소고기",
-            //             order_count: 2,
-            //             prd_thumb: "dada",
-            //             prd_id: 2
-            //         },
-            //         {
-            //             order_paydate: "2020-05-11 10:22:22",
-            //             prd_name: "소고기",
-            //             order_count: 2,
-            //             prd_thumb: "dada",
-            //             prd_id: 2
-            //         }
-            //     ]
-            // ) 
-        } 
-        if (!data2 && userInfoR.mem_id !== undefined) {
-            getAxiosData2(`api/review/review_mem?mem_id=${userInfoR.mem_id }`)
-            // setData2(
-            //     [
-                    
-            //     ]
-            // )
+        if (!data1 && !data2) {
+            getAxiosData(`api/members/${userInfoR.mem_id }/prds`,`api/review/review_mem?mem_id=${userInfoR.mem_id }`)
         }
     }, [data1], [data2]
     )

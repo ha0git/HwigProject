@@ -115,7 +115,7 @@ export default function Question(props) {
                         </tbody>
                     }
                     </table>
-                    {!getQnaList && <div className="qs_nodata">
+                    {getQnaList.length == 0 && <div className="qs_nodata">
                         1:1 문의 내역이 존재하지 않습니다.
                     </div>}
                     <div className="qs_sitemcd">

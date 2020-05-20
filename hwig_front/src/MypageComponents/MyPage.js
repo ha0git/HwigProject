@@ -6,7 +6,6 @@ import MyPageNavi from './MyPageNavi'
 import MyPageOrderL from './MyPageOrderL'
 import MyPageOrderD from './MyPageOrderD'
 import MyPageR from './MyPageR'
-import MyPageModify from './MyPageModify'
 import MyPageConf from './MyPageConf'
 import MyPageReviewF from './MyPageReviewF'
 
@@ -41,8 +40,7 @@ export default function MyPage(props) {
                     <Switch>
                             <Route path="/mypage/order" component={MyPageOrderL}/>
                             <Route path="/mypage/review" component={MyPageR}/>
-                            <Route path="/mypage/confpw" component={MyPageConf}/>
-                            <Route path="/mypage/modify" component={MyPageModify}/>
+                            <Route path="/mypage/modify" component={MyPageConf}/>
                             <Route path="/mypage/orderdetail" component={MyPageOrderD}/>
                             <Route path="/mypage/reviewform" component={MyPageReviewF}/>
                             <Route component={MyPageR}/>
