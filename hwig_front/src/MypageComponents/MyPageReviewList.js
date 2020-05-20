@@ -202,10 +202,10 @@ export default function ReviewList(props) {
 
                     <Nav justify variant="tabs" defaultActiveKey="link-1" onSelect={handleSelect}>
                         <Nav.Item>
-                            <Nav.Link eventKey="link-1">작성가능 후기(0)</Nav.Link>
+                            <Nav.Link eventKey="link-1">작성가능 후기</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="link-2" onClick={log}>작성완료 후기(0)</Nav.Link>
+                            <Nav.Link eventKey="link-2" onClick={log}>작성완료 후기</Nav.Link>
                         </Nav.Item> 
                     </Nav>
                 <div>

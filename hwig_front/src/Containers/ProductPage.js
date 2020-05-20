@@ -59,52 +59,52 @@ function ProductPage(props) {
             getAxiosData1(`api/product/productdetail?prd_id=${query.goodsno}`)
             getAxiosData2(`api/review/review_main?prd_id=${query.goodsno}`)
         }
-        // else if ((parseInt(query.goodsno) !== list) || (parseInt(query.page) !== page)) {
-        //     setList(parseInt(query.goodsno))
-        //     setPage(parseInt(query.page))
-        //     getAxiosData1(`api/product/productdetail?prd_id=${query.goodsno}`)
-        //     getAxiosData2(`api/review/review_main?prd_id=${query.goodsno}`)
-        // setPrdReview([
-        //     {
-        //         review_id: 1,
-        //         review_subject: '맛있어요1',
-        //         mem_id: '난나나',
-        //         review_regdate: '0203',
-        //         review_img: vienna,
-        //         review_content: 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfafsd'
-        //     },
-        //     {
-        //         review_id: 2,
-        //         review_subject: '맛있어요2',
-        //         mem_id: '난나나2',
-        //         review_regdate: '0203',
-        //         review_img: vienna,
-        //         review_content: 'qwerqwerqwerqwerqwerqwerqewrqerqwerqwerqwerqwer'
-        //     }
-        // ])
+        else if ((parseInt(query.goodsno) !== list) || (parseInt(query.page) !== page)) {
+            setList(parseInt(query.goodsno))
+            setPage(parseInt(query.page))
+            getAxiosData1(`api/product/productdetail?prd_id=${query.goodsno}`)
+            getAxiosData2(`api/review/review_main?prd_id=${query.goodsno}`)
+        setPrdReview([
+            {
+                review_id: 1,
+                review_subject: '맛있어요1',
+                mem_id: '난나나',
+                review_regdate: '0203',
+                review_img: vienna,
+                review_content: 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfafsd'
+            },
+            {
+                review_id: 2,
+                review_subject: '맛있어요2',
+                mem_id: '난나나2',
+                review_regdate: '0203',
+                review_img: vienna,
+                review_content: 'qwerqwerqwerqwerqwerqwerqewrqerqwerqwerqwerqwer'
+            }
+        ])
 
-        //}
+        }
         if (!prdList || !prdReview) {
             getAxiosData1(`api/product/productdetail?prd_id=${query.goodsno}`)
             getAxiosData2(`api/review/review_main?prd_id=${query.goodsno}`)
-            // setPrdReview([
-            //     {
-            //         review_id: 1,
-            //         review_subject: '맛있어요1',
-            //         mem_id: '난나나',
-            //         review_regdate: '0203',
-            //         review_img: vienna,
-            //         review_content: 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfafsd'
-            //     },
-            //     {
-            //         review_id: 2,
-            //         review_subject: '맛있어요2',
-            //         mem_id: '난나나2',
-            //         review_regdate: '0203',
-            //         review_img: vienna,
-            //         review_content: 'qwerqwerqwerqwerqwerqwerqewrqerqwerqwerqwerqwer'
-            //     }
-            // ])
+            setPrdReview([
+                {
+                    review_id: 1,
+                    review_subject: '맛있어요1',
+                    mem_id: '난나나',
+                    review_regdate: '0203',
+                    review_img: vienna,
+                    review_content: 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfafsd'
+                },
+                {
+                    review_id: 2,
+                    review_subject: '맛있어요2',
+                    mem_id: '난나나2',
+                    review_regdate: '0203',
+                    review_img: vienna,
+                    review_content: 'qwerqwerqwerqwerqwerqwerqewrqerqwerqwerqwerqwer'
+                }
+            ])
             // setPrdList([
             //     {
             //         category_id: 1,
