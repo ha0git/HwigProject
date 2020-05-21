@@ -18,11 +18,19 @@ export default function Navi(props) {
         if (!pcategory.category_p_id) {
             return (
                 <ul key={pcategory.category_id} className="nav_submenu">
-                    <li ><Link to={`/shop?category_id=${pcategory.category_id}&page=1`}>{pcategory.category_name}</Link></li>
+                    <li>
+                        <Link to={`/shop?category_id=${pcategory.category_id}&page=1`}>
+                            {pcategory.category_name}
+                        </Link>
+                    </li>
                     {categoryLists.map(category => {
                         if (pcategory.category_id === category.category_p_id) {
                             return (
-                                <li key={category.category_id}><Link to={`/shop?category_id=${category.category_id}&page=1`}>{category.category_name}</Link></li>
+                                <li key={category.category_id}>
+                                    <Link to={`/shop?category_id=${category.category_id}&page=1`}>
+                                        {category.category_name}
+                                    </Link>
+                                </li>
                             )
                         }
                     })}
