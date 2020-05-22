@@ -45,7 +45,7 @@ export default function OrderList(props) {
                         </div>
                         <div className="mypage_order_info">
                             <div className="mypage_order_goods_thumb">
-                                <img src={orderInfo.prd_thumb}/>
+                                <img src={"http://13.209.202.242:8080/" + orderInfo.prd_thumb}/>
                             </div> 
                             <div className="mypage_order_desc">
                                 <dl>

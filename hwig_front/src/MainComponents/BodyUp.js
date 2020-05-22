@@ -23,17 +23,27 @@ export default function BodyUp(props) {
         bannerItem = props.evtData.banner
         eventItem = props.evtData.square
     }
-    const getBennerItems = bannerItem.map((list, index) =>
-        <Carousel.Item key={index}>
-            <div className="crs">
-                <Link to={`/eventlist/event?event_id=${list.event_id}`}>
-                    <img
-                        src={"http://13.209.202.242:8080/" + list.event_banner_img}
-                        alt=""
-                    />
-                </Link>
-            </div>
-        </Carousel.Item>
+    const getBennerItems = bannerItem.map((list, index) =>{
+        // if (
+        //     list.event_banner_img !== null
+        // ) {
+        //     return
+        // } else
+        return(
+            <Carousel.Item key={index}>
+                <div className="crs">
+                    <Link to={`/eventlist/event?event_id=${list.event_id}`}>
+                        <img
+                            src={"http://13.209.202.242:8080/" + list.event_banner_img}
+                            alt=""
+                        />
+                    </Link>
+                </div>
+            </Carousel.Item>
+        )
+        
+    }
+        
     )
 
     //메인 이벤트 영역

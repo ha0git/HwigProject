@@ -18,6 +18,8 @@ import { host } from '../Containers/ServerAddress'
 export default function MyPage(props) {
     const userInfoR = props.userInfoR
     const [userInfo,setUserInfo] = useState(null)
+    const [isLogged, setIsLogged] = useState(false);
+    const [isCheck, setIsCheck] = useState(false)
     const getAxiosData = (uri) => {
         axios.get(host + uri)
             .then(res => {
@@ -32,6 +34,12 @@ export default function MyPage(props) {
             console.log("tlqkf")
         }
     })
+    if (isCheck !== props.isCheck) {
+        setIsCheck(props.isCheck)
+    }
+    if (isLogged !== props.isLogged) {
+        setIsLogged(props.isLogged)
+    }
     return (
         <>
                     {userInfo && <MyPageInfo userInfo = {userInfo} /> }

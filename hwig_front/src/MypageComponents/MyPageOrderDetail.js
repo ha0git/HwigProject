@@ -36,7 +36,7 @@ export default function MyPageOrderDetail(props) {
                 <tr className="mypage_orderdetail_fst">
                     <td></td>
                     <td className="mypage_orderdetail_thumb">
-                    <Link to={`../shop/product?goodsno=${goodsInfo.prd_id}`}><img src={goodsInfo.prd_thumb} /></Link>
+                    <Link to={`../shop/product?goodsno=${goodsInfo.prd_id}`}><img src={"http://13.209.202.242:8080/" + goodsInfo.prd_thumb} /></Link>
                     </td>
                     <td className="mypage_orderdetail_info">
                         <div className="mypage_orderdetail_name">
@@ -70,7 +70,7 @@ export default function MyPageOrderDetail(props) {
                             <h3 className="mypage_orderdetail_tit">주문번호 {orderInfo.order_id}</h3>
                             <span className="mypage_orderdetail_link">
                             배송 또는 상품에 문제가 있나요?
-                                <a>1:1 문의하기</a>
+                                <Link to={`/customer/qna/board?order_id=${orderInfo.order_id}`}>1:1 문의하기</Link>
                             </span>
                         </div>
                         
@@ -131,7 +131,7 @@ export default function MyPageOrderDetail(props) {
                             </tr>
                             <tr>
                                 <th>결제방법</th>
-                                <td>신용카드 </td>
+                                <td>{orderInfo.order_payway}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -151,10 +151,6 @@ export default function MyPageOrderDetail(props) {
                             <tr>
                             <th>보내는 분</th>
                             <td>{orderInfo.order_sender}</td>
-                            </tr>
-                            <tr>
-                            <th>결제일시</th>
-                            <td>{orderInfo.order_payway}</td>
                             </tr>
                             <tr>
                             <th>주문 처리상태</th>

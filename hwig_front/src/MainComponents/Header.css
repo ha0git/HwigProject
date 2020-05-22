@@ -110,12 +110,16 @@
 }
 .floating div{ 
     border:1px solid #eee; 
+    border-bottom: none;
     color:#666;
     font-size:12px;
     padding:10px 0;
     font-weight: 600;
     background-color: white;
 } 
+.floating div:last-child{
+    border-bottom: 1px solid #eee;
+}
 .floating div:first-child{ 
     border:none; 
     color:#666;

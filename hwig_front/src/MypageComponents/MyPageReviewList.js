@@ -17,7 +17,7 @@ export default function ReviewList(props) {
                 <tr className="mypage_reviewlist_fst">
                     <td></td>
                     <td className="mypage_reviewlist_thumb">
-                    <Link to={`reviewform?prdno=${goodsInfo.prd_id}`}><img src={goodsInfo.prd_thumb} /></Link>
+                    <Link to={`reviewform?prdno=${goodsInfo.prd_id}`}><img src={"http://13.209.202.242:8080/" + goodsInfo.prd_thumb} /></Link>
                     </td>
                     <td className="mypage_reviewlist_info">
                         <div className="mypage_reviewlist_name">
@@ -32,7 +32,7 @@ export default function ReviewList(props) {
                         
                     </td>
                     <td className="mypage_reviewlist_action">
-                        <button type="button" className="mypage_reviewlist_btn" onclick="">후기쓰기</button>
+                        <Link to={`reviewform?prdno=${goodsInfo.prd_id}`} className="mypage_reviewlist_btn">후기쓰기</Link>
                     </td>
                     <td></td>
                 </tr>
@@ -65,7 +65,7 @@ export default function ReviewList(props) {
                 </tr>
                 <tr className={`temp_toggle${index}`}>
                     <td className="prd_toggle_content" colSpan="4">
-                        <img src={review.review_img} />
+                        {review.review_img && <img src={"http://13.209.202.242:8080/" + review.review_img} />}
                         <pre text-align="left">{review.review_content}</pre>
                     </td> 
                 </tr>
