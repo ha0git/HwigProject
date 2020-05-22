@@ -5,7 +5,6 @@ import { Redirect, withRouter } from 'react-router-dom';
 import vienna from '../images/product/vienna.png'
 import { connect } from 'react-redux';
 import { host } from './ServerAddress';
-import { queryAllByAltText } from '@testing-library/react';
 import queryString from 'query-string'
 
 
