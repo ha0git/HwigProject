@@ -26,41 +26,25 @@ export default function Order(props) {
     const [order_prd_ids, setOrder_prd_ids] = useState(new Array())
     const [order_counts, setOrder_counts] = useState(new Array())
 
-
     //주문자 정보
     const mem_id = props.userInfo.mem_id
     const mem_reverse = props.userInfo.mem_reverse
     const mem_tel = props.userInfo.mem_tel
-    const mem_email = props.userInfo.email
+    const mem_email = props.userInfo.mem_email
     const order_sender = props.userInfo.mem_name
 
     // 상품정보
 
-    //상품id 배열 선언
     const goodsInfo = props.prdList;
-    let item = ""
-    let count = ""
-    // let order_prd_ids = new Array();
-    // let order_counts = new Array();
+    console.log(goodsInfo)
 
-    for (let i = 0; i < goodsInfo.length; i++) {
-        item = goodsInfo[i].prd_id
-        console.log(item)
-        order_prd_ids[i] = item
-
-        count = goodsInfo[i].order_count
-        console.log(count)
-        order_counts[i] = count
-    }
-    console.log(order_prd_ids)
-    console.log(order_counts)
 
     //상품정보 mapping
     const odItems = goodsInfo.map(odgoods => {
         return (
             <tr key={odgoods.prd_id}>
                 <td className="order_thumb">
-                    <ImageMapper src={odgoods.prd_thumb} />
+                    <ImageMapper src={"http://13.209.202.242:8080/" + odgoods.prd_thumb} />
                 </td>
                 <td className="order_goodsInfo">
                     <div>{odgoods.prd_name}&nbsp;{odgoods.prd_ea}</div>
@@ -144,9 +128,8 @@ export default function Order(props) {
         }
     }
 
-    //결제금액창
-
     useEffect(() => {
+        //결제금액창
         let sales = 0
         let initPay = 0
         let pay = 0
@@ -155,7 +138,7 @@ export default function Order(props) {
             //상품 금액 (할인 전 금액)
             initPay += (goodsInfo[i].prd_price * goodsInfo[i].order_count)
             //상품 할인 금액
-            sales += (goodsInfo[i].prd_price * goodsInfo[i].prd_sales)
+            sales += (goodsInfo[i].prd_price * goodsInfo[i].prd_sale)
         }
         pay = order_initPay - order_salePay + delivery_charge - order_used_reverse
 
@@ -165,7 +148,30 @@ export default function Order(props) {
         setOrder_reverse(order_paymoney * 0.05)
         console.log(order_paymoney)
 
-    }, [order_salePay, order_initPay, order_paymoney, order_reverse, order_used_reverse])
+        //상품id 배열 선언
+        let item = ""
+        let count = ""
+        // let order_prd_ids = new Array();
+        // let order_counts = new Array();
+
+        for (let i = 0; i < goodsInfo.length; i++) {
+            item = goodsInfo[i].prd_id
+            order_prd_ids[i] = item
+
+            count = goodsInfo[i].order_count
+            order_counts[i] = count
+        }
+        console.log(order_prd_ids)
+        console.log(order_counts)
+
+    }, [order_salePay,
+        order_initPay,
+        order_paymoney,
+        order_reverse,
+        order_used_reverse,
+        order_prd_ids,
+        order_counts])
+
     //배송비
     let delivery_charge = 0;
 
@@ -178,7 +184,7 @@ export default function Order(props) {
     //결제하기 버튼
     const handleSubmit = (e) => {
 
-        const sumAddress = zipcode + getaddress1 + " " + getaddress2;
+        const sumAddress = zipcode + getaddress1 + " " + getaddress2 + " ";
         setOrder_receiver_addr(sumAddress);
         console.log(zipcode)
         console.log(order_receiver_addr)
@@ -188,7 +194,11 @@ export default function Order(props) {
         } else if (!order_receiver_tel) {
             alert('휴대폰 번호를 입력해주세요.')
         } else if (!isPhoneNumberValid) {
-            alert('휴대폰 번호를 양식에 맞게 입력해주세요.')
+            alert(`휴대폰 번호를 양식에 맞게 입력해주세요.`)
+        } else if (!order_request) {
+            alert('배송 요청사항을 입력해주세요.')
+        } else if (!order_payway) {
+            alert('결제 수단을 선택해주세요.')
         } else if (!order_checked) {
             alert('결제 진행에 동의해주세요.')
         }

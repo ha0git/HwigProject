@@ -1,64 +1,56 @@
 import MyPageReviewList from './MyPageReviewList'
 import React, { useState, useEffect } from 'react'
-import vienna from '../images/product/vienna.png';
-import queryString from 'query-string'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
+import {connect} from 'react-redux'
 
-export default function MyPageR() {
+
+export default function MyPageR(props) {
     const [data1, setData1] = useState(null);
     const [data2, setData2] = useState(null);
+    const [page, setPage] = useState(1)
+    const [size, setSize] = useState(2)
+    const userInfoR = props.userInfo
 
-
-    const getAxiosData1 = (uri) => {
-        axios.get(host + uri)
-            .then(res => {
-                console.log(res.data)
-                setData1(res.data)
-            })
-    }
-    const getAxiosData2 = (uri) => {
-        axios.get(host + uri)
-            .then(res => {
-                console.log(res.data)
-                setData2(res.data)
-            })
+    const getAxiosData = (uri,uri2) => {
+        axios.all([
+            axios.get(host + uri),
+            axios.get(host + uri2)
+          ])
+          .then(axios.spread((res1, res2) => {
+            console.log(res1.data)
+            setData1(res1.data)
+            console.log(res2.data)
+            setData2(res2.data)
+          })
+          )
     }
     useEffect(() => {
-        if (!data1) {
-            //getAxiosData1(`api/members/tototo/prds`)
-            setData1(
-                [
-                    {
-                        order_paydate: "2020-05-11 10:22:22",
-                        prd_name: "소고기",
-                        order_count: 2,
-                        prd_thumb: "dada",
-                        prd_id: 2
-                    }
-                ]
-            )
-            getAxiosData2(`api/review/review_mem?mem_id=test1`)
-            // setData2(
-            //     {
-            //         data:[
-            //             {
-            //                 review_id: null,
-            //                 review_subject: null,
-            //                 review_content: null,
-            //                 review_img: null,
-            //                 review_regdate: null,
-            //                 prd_name: null,
-            //             },
-            //         ]
-            //     }
-            // )
+        console.log(userInfoR)
+        if (!data1 && !data2) {
+            getAxiosData(`api/members/${userInfoR.mem_id }/prds`,`api/review/review_mem?mem_id=${userInfoR.mem_id }`)
         }
     }, [data1], [data2]
     )
     return (
         <>
-            {data1 && <MyPageReviewList data1={data1} />}
+            {data1,data2 && 
+                <MyPageReviewList 
+                data1={data1} 
+                data2={data2} 
+                history={props.history} 
+                size={size}
+                page={page}
+                /> 
+            }
         </>
     )
 }
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogged: state.reducer.isLogged,
+        userInfo: state.reducer.userInfo
+    }
+}
+
+MyPageR = connect(mapStateToProps)(MyPageR)

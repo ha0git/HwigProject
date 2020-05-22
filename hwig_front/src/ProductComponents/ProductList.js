@@ -21,7 +21,7 @@ export default function ProductList(props) {
     ))
 
     const categoryList = categoryItem.map(category => (
-        <li key={category.category_id}><Link to={`/shop?category_id=${category.category_p_id}&page=${props.page}`}>{category.category_name}</Link></li>
+        <li key={category.category_id}><Link to={`/shop?category_id=${category.category_id}&page=${props.page}`}>{category.category_name}</Link></li>
     ))
 
 
@@ -29,7 +29,7 @@ export default function ProductList(props) {
         <li key={product.prd_id}>
             <Link to={`shop/product?goodsno=${product.prd_id}&page=${props.page}`}>
                 <div className="prd_img">
-                    <img className="imgscale3" src={product1} />
+                    <img className="imgscale3" src={"http://13.209.202.242:8080/" + product.prd_thumb} />
                     {(product.prd_sale === 0.1) && <img className="product_sale_icon" src={save10} />}
                     {(product.prd_sale === 0.3) && <img className="product_sale_icon" src={save30} />}
                     {(product.prd_sale === 0.5) && <img className="product_sale_icon" src={save50} />}
@@ -37,7 +37,7 @@ export default function ProductList(props) {
                 </div>
                 <div className="product_list_goods_info">
                     <span className="product_list_goods_name">{product.prd_name}&nbsp;{product.prd_kg}</span>
-                    <span className="product_list_goods_price">{product.prd_price}</span>
+                    <span className="product_list_goods_price">{product.prd_price}원</span>
                     <span className="product_list_goods_desc">{product.prd_comment}</span>
                 </div>
             </Link>

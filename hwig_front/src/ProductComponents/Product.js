@@ -70,7 +70,7 @@ export default function Product(props) {
                 </tr>
                 <tr className={`temp_toggle${index}`}>
                     <td className="prd_toggle_content" colSpan="4">
-                        <img src={review.review_img} />
+                        <img src={"http://13.209.202.242:8080/" + review.review_img} />
                         <p>{review.review_content}</p>
                     </td>
                 </tr>
@@ -112,7 +112,7 @@ export default function Product(props) {
             <div className="prd_wrap">
                 <div className="section_view">
                     <div className="thumb">
-                        <ImageMapper src={goodsInfo.prd_thumb} />
+                        <ImageMapper src={"http://13.209.202.242:8080/" + goodsInfo.prd_thumb} />
                     </div>
                     <p className="product_name">
                         <strong className="p_name">
@@ -186,7 +186,7 @@ export default function Product(props) {
                         </div>
                     </div>
                     <div className="prd_image">
-                        <img src={goodsInfo.prd_img} />
+                        <img src={"http://13.209.202.242:8080/" + goodsInfo.prd_img} />
                     </div>
                     <div className="prd_review">
                         <h2>PRODUCT REVIEW</h2>

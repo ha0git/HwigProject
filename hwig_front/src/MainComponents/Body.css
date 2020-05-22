@@ -127,7 +127,10 @@
 .event_name a, .goods_name a {
     color: #444;
 }
-.main_product_list span, .main_product_list_sale span, .main_event span, .main_product_listmenu span, .main_product_list_today span{
+.main_product_list span, 
+.main_product_list_sale span, 
+.main_event span, .main_product_listmenu span, 
+.main_product_list_today span{
     display: block;
 }
 
@@ -150,9 +153,12 @@
     text-align: center;
     font-size: 16px;
 }
-.main_product_list a:hover, .main_product_list_sale a:hover, .main_event a:hover, .main_product_listmenu a:hover, .main_product_list_today a:hover{
+.main_product_list a:hover, 
+.main_product_list_sale a:hover, 
+.main_event a:hover, 
+.main_product_listmenu a:hover, 
+.main_product_list_today a:hover{
     color: #ff7276;
-    font-weight: bold;
 }
 .tit_a  {
     display: block;

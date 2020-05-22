@@ -27,15 +27,17 @@
     padding: 0 20px;
     border: 1px solid #dddfe1;
 }
-.mypage_orderdetail_tbl_type1 td {
+.mypage_reviewlist_tbl_type1 td {
     display: table-cell;
     vertical-align: middle !important;
 }
-.mypage_orderdetail_tbl_type1 tr {
-    border-bottom: 2px solid #dcdbde;
+.mypage_reviewlist_tbl_type1 tr {
+    border-bottom: 1px solid #dcdbde;
+    padding-top: 20px;
+    height: 120px;
 
 }
-.mypage_orderdetail_container{
+.mypage_reviewlist_container{
     /* border: 1px solid black; */
     position: relative;
     margin-top: 70px;
@@ -43,88 +45,85 @@
     display: table-cell;
     margin-bottom: 200px;
 }
-.mypage_orderdetail_mypage_orderdetail_page_section {
+.mypage_reviewlist_mypage_reviewlist_page_section {
     float: right;
     width: 820px;
 }
-.mypage_orderdetail_head_aticle {
+.mypage_reviewlist_head_aticle {
     padding: 5px 0 24px;
 }
-.mypage_orderdetail_link_type {
+.mypage_reviewlist_link_type {
     position: relative;
     padding: 0px 0 14px;
 }
-.mypage_orderdetail_link_type .mypage_orderdetail_tit {
+.mypage_reviewlist_link_type .mypage_reviewlist_tit {
     font-size: 20px;
     color: #666;
     width: 700px;
 }
-.mypage_orderdetail_link {
+.mypage_reviewlist_link {
 
     top: 14px;
     font-size: 12px;
     color: #666;
 }
-.mypage_orderdetail_link a {
+.mypage_reviewlist_link a {
     padding: 0 8px 0 3px;
     color: #ff7276;
     background: url(https://res.kurly.com/pc/ico/1805/ico_arrow_10x18.png) no-repeat 100% 50%;
     background-size: 5px 9px;
 }
-.mypage_orderdetail_tbl_type1 .mypage_orderdetail_fst:first-child td {
-    border-top: 2px solid #ff7276;
-}
-.mypage_orderdetail_none_bd {
+.mypage_reviewlist_none_bd {
     border-top: 0;
 }
-.mypage_orderdetail_head_aticle .mypage_orderdetail_tit {
+.mypage_reviewlist_head_aticle .mypage_reviewlist_tit {
     height: 42px;
     font-weight: 700;
     font-size: 24px;
     line-height: 36px;
     color: #333;
 }
-.mypage_orderdetail_tbl_type1 .mypage_orderdetail_thumb {
+.mypage_reviewlist_thumb {
     padding: 14px 20px 14px 0;
     width:100px;
 }
-.mypage_orderdetail_tbl_type1 .mypage_orderdetail_thumb img {
+.mypage_reviewlist_thumb img {
     width: 80px;
 }
-.mypage_orderdetail_section_orderview .mypage_orderdetail_tbl_type1 .mypage_orderdetail_name {
+.mypage_reviewlist_name {
     font-size: 16px;
     line-height: 24px;
-    font-weight: 700;
+    font-weight: 500;
+}
+.mypage_reviewlist_name a {
     color: #000;
 }
-.mypage_orderdetail_tbl_type1 .mypage_orderdetail_info {
+.mypage_reviewlist_info {
     width: 400px;
-}
-.mypage_orderdetail_tbl_type1 .mypage_orderdetail_progress {
+}.mypage_reviewlist_progress {
     width: 160px;
 }
-.mypage_orderdetail_tbl_type1 .mypage_orderdetail_action {
+.mypage_reviewlist_action {
     width: 100px;
 }
-.mypage_orderdetail_tbl_type1 .mypage_orderdetail_desc {
+.mypage_reviewlist_desc {
     padding-top: 4px;
 }
-.mypage_orderdetail_fst td:first-child, .mypage_orderdetail_fst td:last-child {
+.mypage_reviewlist_fst td:first-child, .mypage_reviewlist_fst td:last-child {
     width: 30px;
 }
-.mypage_orderdetail_price {
+.mypage_reviewlist_date {
     font-size: 14px;
     line-height: 18px;
-    font-weight: 500;
+    font-weight: 300;
     color: #000;
 }
-.mypage_orderdetail_ea {
-    padding-left: 4px;
+.mypage_reviewlist_ea {
     font-size: 12px;
     color: #666;
     line-height: 18px;
 }
-.mypage_orderdetail_progress {
+.mypage_reviewlist_progress {
     padding-right: 10px;
     font-weight: 700;
     font-size: 14px;
@@ -133,7 +132,7 @@
     letter-spacing: -.3px;
     text-align: center;
 }
-.mypage_orderdetail_btn{ 
+.mypage_reviewlist_btn{ 
     display: block;
     width: 100px;
     height: 34px;
@@ -149,16 +148,16 @@
     text-indent: 0;
     margin-top: 0;
 }
-.mypage_orderdetail_order_cancel {
+.mypage_reviewlist_order_cancel {
     padding: 30px 0 0;
     text-align: center;
 }
-.mypage_orderdetail_inner_cancel {
+.mypage_reviewlist_inner_cancel {
     display: inline-block;
     overflow: hidden;
     padding-left: 20px;
 }
-.mypage_orderdetail_cart_btn {
+.mypage_reviewlist_cart_btn {
     float: left;
     width: 200px;
     height: 48px;
@@ -172,7 +171,7 @@
     background-color: #fff;
     color: #ff7276;
 }
-.mypage_orderdetail_btn_cancel {
+.mypage_reviewlist_btn_cancel {
     float: left;
     width: 200px;
     height: 48px;
@@ -187,30 +186,30 @@
     letter-spacing: -.32px;
 
 }
-.mypage_orderdetail_cancel_notice {
+.mypage_reviewlist_cancel_notice {
     padding-top: 19px;
     font-size: 12px;
     color: #666;
     line-height: 18px;
 }
-.mypage_orderdetail_emph {
+.mypage_reviewlist_emph {
     font-weight: 600
 }
-.mypage_orderdetail_head_section{
+.mypage_reviewlist_head_section{
     padding: 43px 0 14px;
 }
-.mypage_orderdetail_tit {
+.mypage_reviewlist_tit {
     font-size: 20px;
     color: #666;
 }
-.mypage_orderdetail_tbl_type2 {
+.mypage_reviewlist_tbl_type2 {
     border-bottom: 1px solid #dddfe1;
     border-top: 2px solid #ff7276;
 }
-.mypage_orderdetail_tbl_type2 tr:first-child th,.mypage_orderdetail_tbl_type2 tr:first-child  td {
+.mypage_reviewlist_tbl_type2 tr:first-child th,.mypage_reviewlist_tbl_type2 tr:first-child  td {
     padding-top: 20px;
 }
-.mypage_orderdetail_tbl_type2 th {
+.mypage_reviewlist_tbl_type2 th {
     padding: 0 0 20px 10px;
     font-size: 14px;
     color: #000;
@@ -219,9 +218,30 @@
     vertical-align: top;
     width: 209px;
 }
-.mypage_orderdetail_tbl_type2 td {
+.mypage_reviewlist_tbl_type2 td {
     font-size: 12px;
     color: #4c4c4c;
     line-height: 20px;
     vertical-align: top;
+}
+/* 상품 후기 본문 */
+.qaa table{
+    margin-top: 0px !important;
+    border-top:none !important;
+}
+.qaa th{
+    border-bottom:1px solid #ff7276 !important;
+}
+.qaa td:nth-child(2){
+    width: 400px !important;
+    text-align: left;
+    padding-left: 80px;
+}
+.qaa td:nth-child(3){
+    width: 200px !important;
+    text-align: right;
+    padding-left: 80px;
+}
+pre {
+    text-align: left;
 }

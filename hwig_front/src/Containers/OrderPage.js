@@ -9,7 +9,7 @@ import queryString from 'query-string'
 
 
 function OrderPage(props) {
-    const [isLogged, setIsLogged] = useState(true);
+    const [isLogged, setIsLogged] = useState(false);
     const [prdList, setPrdList] = useState(null)
     const query = queryString.parse(props.location.search)
 
@@ -20,12 +20,12 @@ function OrderPage(props) {
                 setPrdList(res.data)
             })
     }
-
     const sendJoinData = (uri, data) => {
         axios.post(host + uri, data)
             .then(res => {
-                console.log(res.data)
-                props.history.push('/order/orderOk')
+                localStorage.setItem('order_id', res.data.order_id)
+                console.log(localStorage)
+                { res.data.order_id && props.history.push('/order/orderOk') }
             })
     }
     const handleData = (data) => {
@@ -34,9 +34,6 @@ function OrderPage(props) {
     }
 
     useEffect(() => {
-        if(!query.orderPage){
-            props.history.push('/order?orderPage')
-        }
         if (!prdList) {
             getAxiosData(`api/cart/cartlist?mem_id=${props.userInfo.mem_id}`)
             // setPrdList([
@@ -68,10 +65,9 @@ function OrderPage(props) {
             //         prd_sales: 0.5,
             //         order_count: 1
             //     }
-            // ]
-            // )
+            // ])
         }
-    })
+    }, [prdList])
 
     return (
         <div>

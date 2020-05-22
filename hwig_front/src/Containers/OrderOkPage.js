@@ -1,42 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { host } from './ServerAddress'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import OrderOk from '../OrderComponents/OrderOk'
 
 function OrderOkPage(props) {
     console.log(props.userInfo)
-    const [orderComponentOn, setOrderComponentOn] = useState(0)
     const [orderInfo, setOrderInfo] = useState(null)
-    const [isLogged, setIsLogged] = useState(true)
-    const [mem_name, setMem_name] = useState(null)
+    const [isLogged, setIsLogged] = useState(false)
     console.log(props.isLogged)
+
     const getAxiosData = (uri) => {
         axios.get(host + uri)
             .then(res => {
                 console.log(res.data)
                 setOrderInfo(res.data)
             })
-
     }
-    //props.order_id
-    const order_id = 2020042100009
+
     useEffect(() => {
-        if (orderComponentOn === 0) {
-            setOrderComponentOn(1);
-            getAxiosData(`api/orders/${order_id}/summary`)
-        }
-
-        if (isLogged !== props.isLogged) {
-            setIsLogged(props.isLogged)
-        }
-
-        if (!isLogged) {
-            props.history.push("/login")
-        }
-
         if (!orderInfo) {
+            getAxiosData(`api/orders/${localStorage.getItem('order_id')}/summary`)
             // setOrderInfo(
             //     {
             //         order_id: "2020042100009",
@@ -49,21 +34,20 @@ function OrderOkPage(props) {
             //     }
             // )
         }
-    })
+    }, [orderInfo])
     return (
         <>
-            {orderInfo && <OrderOk orderInfo={orderInfo} mem_name={props.userInfo.mem_name} />}
+            {isLogged ? <Redirect to="/login" /> : orderInfo && <OrderOk
+                orderInfo={orderInfo}
+                mem_name={props.userInfo.mem_name} />}
         </>
     )
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        isLogged: state.reducer.isLogged,
         userInfo: state.reducer.userInfo
     }
 }
 
-OrderOkPage = withRouter(connect(mapStateToProps)(OrderOkPage))
-
-export default OrderOkPage
+export default OrderOkPage = withRouter(connect(mapStateToProps)(OrderOkPage))

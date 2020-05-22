@@ -1,5 +1,6 @@
 import React, {useEffect,useState} from 'react'
 import './MyPageModify.css'
+import './MypageReviewForm.css'
 import { Modal } from 'react-bootstrap'
 import DaumPostcode from 'react-daum-postcode';
 
@@ -7,17 +8,30 @@ export default function MypageReviewForm(props) {
 
     const [review_subject,setTitle] = useState(null)
     const [review_content,setText] = useState(null)
-    const [review_img,setImage] = useState(null)
-    const mem_id= "test1"
+    const [content, setContent] = useState("");
+    const onChange = e => {
+        console.log(e.target.files[0])
+        setContent(e.target.files[0]);
+    };
+      
+    const mem_id = props.id
     const prd_id = props.num
     const handleSubmit = (e) => {
         e.preventDefault()
-        if(true){
-            console.log({review_subject,review_content,prd_id,mem_id})
-            props.onSubmit({review_subject,review_content,prd_id,mem_id});
-        }else{
-            console.log('제출 실행',{})
-            props.onSubmit({review_subject,review_content,review_img,prd_id,mem_id});
+        if(!review_subject){
+            alert("제목을 입력하세요")
+        }else if(!review_content){
+            alert("내용을 입력하세요")
+        } else {
+            console.log(content)
+            const formData = new FormData();
+            formData.append("prd_id",prd_id)
+            formData.append("mem_id",mem_id)
+            formData.append("review_subject",review_subject)
+            formData.append("review_content",review_content)
+            formData.append("img", content); 
+            console.log({formData})
+            props.onSubmit(formData);
         }
       } 
    
@@ -36,14 +50,12 @@ export default function MypageReviewForm(props) {
                             </tr>
                             <tr className="mypage-modify-input">
                                 <td className="mypage-modify-input-text-title">내용</td>
-                                <td><input className="mypage-modify-inputbox" type="text" onChange={(e) => setText(e.target.value)}></input></td>
+                                <td><textarea className="reviewform_text"  onChange={(e) => setText(e.target.value)}></textarea></td>
                             </tr>
                             <tr className="mypage-modify-input">
                                 <td className="mypage-modify-input-text-title">이미지 첨부</td>
                                 <td>
-                                    <label for="ex_file">업로드</label>
-                                    <input className="reviewform_image" id="ex_file" type="file" onChange={(e) => setImage(e.target.value)}></input>
-                                    <input type="hidden" value={review_img}></input>
+                                <input type="file" onChange={onChange} />
                                 </td>
                             </tr>
                         </div>

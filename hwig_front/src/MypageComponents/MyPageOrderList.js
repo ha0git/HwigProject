@@ -45,7 +45,7 @@ export default function OrderList(props) {
                         </div>
                         <div className="mypage_order_info">
                             <div className="mypage_order_goods_thumb">
-                                <img src={orderInfo.prd_thumb}/>
+                                <img src={"http://13.209.202.242:8080/" + orderInfo.prd_thumb}/>
                             </div> 
                             <div className="mypage_order_desc">
                                 <dl>
@@ -61,7 +61,7 @@ export default function OrderList(props) {
                         </div> 
                         <div className="mypage_order_status">
                             <span className="mypage_order_inner_status">  
-                                <button className="mypage_order_link">1:1 문의</button>
+                                <Link to={`/customer/qna/board?order_id=${orderInfo.order_id}`} className="mypage_order_link">1:1 문의</Link>
                                 {confirmD()}
                             </span>
                             
@@ -72,7 +72,8 @@ export default function OrderList(props) {
         )
     })
     const showOrderList = () =>{
-        let list =[];
+
+        if (orderInfo.length > 0) {let list =[];
         let begin = (activePage-1)*props.size;
         let end;
         if(orderInfo.length < activePage*2){
@@ -87,7 +88,26 @@ export default function OrderList(props) {
         }
         console.log(list)
 
-        return list
+        return list} else {
+            return (
+                <>
+                <br /> <br /> 최근 주문 내역이 없습니다.
+                </>
+            )
+        }
+    }
+    const showPaging = () => {
+        if (orderInfo.length > 0) {
+            return(<Pagination
+                activePage={activePage}
+                itemsCountPerPage={1}
+                totalItemsCount={orderInfo.length}
+                pageRangeDisplayed={3}
+                onChange={handlePageChange}
+            />)
+        } else {
+            return
+        }
     }
     return (
         <>
@@ -100,13 +120,8 @@ export default function OrderList(props) {
                     </ul>
                 </div>
                 <div className="product-pagenation-container">
-                    <Pagination
-                        activePage={activePage}
-                        itemsCountPerPage={1}
-                        totalItemsCount={orderInfo.length/2}
-                        pageRangeDisplayed={3}
-                        onChange={handlePageChange}
-                    />
+                    {showPaging()}
+                    
                 </div>
             </div>
         </>

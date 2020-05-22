@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './QnaWriteForm.css'
 
 export default function QnaWriteFrom(props) {
-    console.log(props.userInfo)
+
     const [qna_category, setCategory] = useState("")
     const [qna_subject, setSubject] = useState("")
     const [order_id, setOrderNum] = useState("")
@@ -10,11 +10,12 @@ export default function QnaWriteFrom(props) {
     const [mem_tel, setTel] = useState(props.userInfo.mem_tel)
     const [qna_content, setContent] = useState("")
     const [mem_id, setMem_id] = useState(props.userInfo.mem_id)
+    console.log(order_id)
 
     const hadleSubmit = (e) => {
         console.log(qna_category, qna_subject, order_id, mem_email, mem_tel, qna_content)
         e.preventDefault();
-        if (qna_category === "none" || !qna_category) {
+        if (qna_category == "선택해주세요." || !qna_category) {
             alert("카테고리를 선택해 주세요.")
         } else if (!qna_subject) {
             alert("제목을 입력해주세요.")
@@ -28,6 +29,13 @@ export default function QnaWriteFrom(props) {
 
     const checkOrderNum = () => {
         props.checkOrderNum(order_id)
+    }
+    const returnNum = () => {
+        if (props.num) {
+            return ("주문번호 "+props.num+"번 관련 문의입니다.")
+        } else {
+            return ("문의하실 내용을 입력하세요.")
+        }
     }
 
     return (
@@ -43,9 +51,9 @@ export default function QnaWriteFrom(props) {
                                     <select onChange={(e) => { setCategory(e.target.options[e.target.selectedIndex].text) }}>
                                         <option>선택해주세요.</option>
                                         <option>주문/결제</option>
-                                        <option>취소/교환/반품</option>
+                                        <option>취소/교환/환불</option>
                                         <option>배송문의</option>
-                                        <option>쿠폰/적립금</option>
+                                        <option>적립금</option>
                                         <option>서비스 이용 및 기타</option>
                                         <option>회원문의</option>
                                     </select>
@@ -53,13 +61,6 @@ export default function QnaWriteFrom(props) {
                                 <div>
                                     <input type="text" id="qna-writeform-subject" value={qna_subject} onChange={(e) => { setSubject(e.target.value) }} />
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>주문번호</td>
-                            <td><input type="text" id="qna-writeform-check-order" value={order_id} onChange={(e) => { setOrderNum(e.target.value) }} /></td>
-                            <td>
-                                <input type="button" id="qna-writeform-check-order-button" onClick={checkOrderNum} value="주문조회" />
                             </td>
                         </tr>
                         <tr>
@@ -99,7 +100,7 @@ export default function QnaWriteFrom(props) {
                                 <p>※ 전화번호, 이메일, 주소, 계좌번호 등의 상세 개인정보가 문의 내용에 저장되지 않도록 주의해 주시기 바랍니다.</p>
                                 <br />
                                 <div>
-                                    <textarea cols="105" rows="27" value={qna_content} onChange={(e) => { setContent(e.target.value) }} />
+                                    <textarea cols="105" rows="27" defaultValue={returnNum()} onChange={(e) => { setContent(e.target.value) }} />
                                 </div>
                             </td>
                         </tr>

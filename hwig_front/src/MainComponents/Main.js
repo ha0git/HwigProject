@@ -5,8 +5,8 @@ import BodyDown from './BodyDown'
 export default function Main(props) {
     return (
         <>
-            <BodyUp evtData={props.evtData}/>
-            <BodyDown/>
+            <BodyUp evtData={props.evtData} mainData={props.mainData} />
+            <BodyDown mainData={props.mainData} />
         </>
     )
 }
