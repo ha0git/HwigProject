@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
-import './MyPageConfirmPw.css'
+import '../MypageComponents/MyPageConfirmPw.css'
 import {Container, Row, Col, Form, Button, Modal} from 'react-bootstrap'
 import axios from 'axios'
-import { host } from '../Containers/ServerAddress'
-import MyPageConfirmPw from './MyPageConfirmPw'
+import { host } from './ServerAddress'
+import MyPageConfirmPw from '../MypageComponents/MyPageConfirmPw'
 import {connect} from 'react-redux'
 
 

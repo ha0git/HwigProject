@@ -19,41 +19,25 @@ export default function BodyUp(props) {
         bannerItem = props.evtData.banner
         eventItem = props.evtData.square
     }
-<<<<<<< HEAD
-    const getBennerItems = bannerItem.map((list, index) =>{
-        // if (
-        //     list.event_banner_img !== null
-        // ) {
-        //     return
-        // } else
-        return(
-            <Carousel.Item key={index}>
-                <div className="crs">
-                    <Link to={`/eventlist/event?event_id=${list.event_id}`}>
-                        <img
-                            src={"http://13.209.202.242:8080/" + list.event_banner_img}
-                            alt=""
-                        />
-                    </Link>
-                </div>
-            </Carousel.Item>
-        )
-        
+    const getBennerItems = bannerItem.map((list, index) => {
+        if (list.event_banner_img == "empty") {
+            return 
+        } else {
+            return (
+<               Carousel.Item key={index}>
+                    <div className="crs">
+                        <Link to={`/eventlist/event?event_id=${list.event_id}`}>
+                            <img
+                                src={"http://13.209.202.242:8080/" + list.event_banner_img}
+                                alt="메인 베너 이미지"
+                            />
+                        </Link>
+                    </div>
+                </Carousel.Item>
+            )
+            
+        }
     }
-        
-=======
-    const getBennerItems = bannerItem.map((list, index) =>
-        <Carousel.Item key={index}>
-            <div className="crs">
-                <Link to={`/eventlist/event?event_id=${list.event_id}`}>
-                    <img
-                        src={"http://13.209.202.242:8080/" + list.event_banner_img}
-                        alt="메인 베너 이미지"
-                    />
-                </Link>
-            </div>
-        </Carousel.Item>
->>>>>>> 8e85d5813b2b97a730f7b347f11e51216ff6acf4
     )
     // 메인 - 이 상품 어때요?
     const getWproducts = wproduct.map(item =>
@@ -102,20 +86,27 @@ export default function BodyUp(props) {
         </li>
     )
     //메인 이벤트 영역
-    const getEventItems = eventItem.map((list, index) =>
-        <li key={index} className="main_event_li">
-            <Link to={`/eventlist/event?event_id=${list.event_id}`}>
-                <div className="main_thumb_event_img">
-                    <img className="imgscale1" src={"http://13.209.202.242:8080/" + list.event_square_img} alt="" />
-                </div>
-            </Link>
-            <div className="info_event">
-                <span className="event_name">
-                    <Link to={`/eventlist/event?event_id=${list.event_id}`}>{list.event_subject}</Link>
-                </span><p />
-                <span className="eventsubtext">{list.event_content}</span>
-            </div>
-        </li>
+    const getEventItems = eventItem.map((list, index) => {
+        if (list.event_square_img == "empty") {
+            return 
+        } else {
+            return (
+                <li key={index} className="main_event_li">
+                    <Link to={`/eventlist/event?event_id=${list.event_id}`}>
+                        <div className="main_thumb_event_img">
+                            <img className="imgscale1" src={"http://13.209.202.242:8080/" + list.event_square_img} alt="" />
+                        </div>
+                    </Link>
+                    <div className="info_event">
+                        <span className="event_name">
+                            <Link to={`/eventlist/event?event_id=${list.event_id}`}>{list.event_subject}</Link>
+                        </span><p />
+                        <span className="eventsubtext">{list.event_content}</span>
+                    </div>
+                </li>
+            )
+        }
+    }
     )
     return (
         <>

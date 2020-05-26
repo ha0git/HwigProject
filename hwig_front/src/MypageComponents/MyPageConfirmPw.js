@@ -3,7 +3,7 @@ import './MyPageConfirmPw.css'
 import {withRouter,Link} from 'react-router-dom'
 import axios from 'axios'
 import { host } from '../Containers/ServerAddress'
-import MyPageModify from './MyPageModify'
+import MyPageModify from '../Containers/MyPageModifyPage'
 
 
 function MyPageConfirmPw(props) {
