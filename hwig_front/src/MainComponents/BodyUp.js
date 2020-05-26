@@ -19,7 +19,6 @@ export default function BodyUp(props) {
         bannerItem = props.evtData.banner
         eventItem = props.evtData.square
     }
-<<<<<<< HEAD
     const getBennerItems = bannerItem.map((list, index) => {
         if (list.event_banner_img == "empty") {
             return 
@@ -39,19 +38,6 @@ export default function BodyUp(props) {
             
         }
     }
-=======
-    const getBennerItems = bannerItem.map((list, index) =>
-        <Carousel.Item key={index}>
-            <div className="crs">
-                <Link to={`/eventlist/event?event_id=${list.event_id}`}>
-                    <img
-                        src={"http://13.209.202.242:8080/" + list.event_banner_img}
-                        alt="메인 베너 이미지"
-                    />
-                </Link>
-            </div>
-        </Carousel.Item>
->>>>>>> 86c1331746c13f0326a0e48d58279b105592a38d
     )
     // 메인 - 이 상품 어때요?
     const getWproducts = wproduct.map(item =>
