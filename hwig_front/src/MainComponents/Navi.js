@@ -58,7 +58,7 @@ export default function Navi(props) {
         <>
             <div className="nav-container jbMenu">
                 <ul className="nav-menu">
-                    <li><Link className="nav-category" to='#'><img src={list}></img>전체 카테고리</Link>
+                    <li><Link className="nav-category" to={`/shop?category_id=1&page=1`}><img src={list}></img>전체 카테고리</Link>
                         <div className="nav_sub">
                             {category}
                         </div>

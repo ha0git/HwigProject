@@ -14,7 +14,6 @@ export default function ProductList(props) {
     const pcategoryItem = props.productItems.pcategory
     const categoryItem = props.productItems.category
     const productList = props.productItems.productlist
-    const allItems = props.productItems.category[0]
 
     const categorytit = pcategoryItem.map(pcategory => (
         <span>{pcategory.category_name}</span>
@@ -43,9 +42,7 @@ export default function ProductList(props) {
             </Link>
         </li>
 
-    )
-
-    )
+    ))
 
     const showPrdList = () => {
         let list = [];
@@ -69,7 +66,8 @@ export default function ProductList(props) {
     const handlePageChange = (pageNumber) => {
         console.log(`active page is ${pageNumber}`);
         setactivePage(pageNumber)
-        props.history.push(`/shop?category_id=${productList.category_id}&page=${pageNumber}`)
+        props.history.push(`/shop?category_id=${pcategoryItem[0].category_id}&page=${pageNumber}`)
+        
     }
 
     return (
@@ -81,7 +79,7 @@ export default function ProductList(props) {
                             {categorytit}
                         </div>
                         <ul className="product_list_category">
-                            <li><Link to={`/shop?catogory_id=1&page=${props.page}`}>전체 보기</Link></li>
+                            <li><Link to={`/shop?category_id=${pcategoryItem[0].category_id}&page=${props.page}`}>전체 보기</Link></li>
                             {categoryList}
                         </ul>
                     </div>

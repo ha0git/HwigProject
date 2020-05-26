@@ -76,17 +76,16 @@ export default function Product(props) {
                 </tr>
             </>
         )
-    }
-    )
+    })
 
     const showReviewList = () => {
         let list = [];
         let begin = (props.page - 1) * props.size;
         let end;
-        if (prd_review.length < props.page * 13) {
+        if (prd_review.length < props.page * 5) {
             end = prd_review.length;
         } else {
-            end = props.page * 13;
+            end = props.page * 5;
         }
         console.log(begin, end)
 
@@ -94,7 +93,6 @@ export default function Product(props) {
             list.push(prdReviewList[i])
         }
         console.log(list)
-
         return list
     }
 
@@ -103,7 +101,7 @@ export default function Product(props) {
     const handlePageChange = (pageNumber) => {
         console.log(`active page is ${pageNumber}`);
         setactivePage(pageNumber)
-        props.history.push(`shop/product?goodsno=${goodsInfo.prd_id}&page=${pageNumber}`)
+        props.history.push(`/shop/product?goodsno=${goodsInfo.prd_id}&page=${pageNumber}`)
     }
 
     return (
