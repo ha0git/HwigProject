@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './MyPageReviewList.css'
 import jQuery from "jquery";
 import Pagination from "react-js-pagination";
+import queryString from 'query-string'
 
 export default function ReviewList(props) {
 
@@ -11,6 +12,27 @@ export default function ReviewList(props) {
     const goodsInfo = props.data1
     const prd_review = props.data2
     const [activePage, setactivePage] = useState(1);
+    const query = props.query
+    
+    const handlePageChange = (pageNumber) => {
+        console.log(`active page is ${pageNumber}`);
+        setactivePage(pageNumber)
+        console.log(activePage)
+    }
+    useEffect(() => {
+        console.log("The value after update", activePage);
+        if ((parseInt(query.page) !== activePage)) {
+            props.history.push(`/mypage/review?page=${activePage}`)
+            setReview(
+                () => {
+                    return(
+                        writtenReview
+                    )
+                }
+            )
+        }
+    }
+    )
     const willWriteReviewTable = goodsInfo.map(goodsInfo => {
         return (
             <>
@@ -87,16 +109,10 @@ export default function ReviewList(props) {
         for (let i = begin; i < end; i++) {
             list.push(prdReviewList[i])
         }
-        console.log(list)
 
         return list
     }
 
-    const handlePageChange = (pageNumber) => {
-        setactivePage(pageNumber)
-        console.log(`active page is ${pageNumber}`);
-        props.history.push(`/mypage/review&page=${pageNumber}`)
-    }
     const willWriteReview = () => {
         if (props.data1.length > 0) {
             return (
@@ -173,31 +189,38 @@ export default function ReviewList(props) {
         }
     }
     const [review,setReview] = useState(
-        willWriteReview
+        () => {
+            return(
+                willWriteReview
+            )
+        }
     )
     const handleSelect = (eventKey) => {
         if (eventKey == "link-1") {
             setReview(
-                willWriteReview
+                () => {
+                    return(
+                        willWriteReview
+                    )
+                }
             )
+            console.log(activePage)
         } else if (eventKey == "link-2") {
             setReview(
-                writtenReview
+                () => {
+                    return(
+                        writtenReview
+                    )
+                }
             )
-            console.log("tq")
+            console.log(activePage)
         }
-    }
-    const log = () => {
-        console.log(props.data2)
     }
     return (
         <>
             <div className="mypage-review-container">
                 <div className="mypage-review-title">상품후기</div>
                 <div className="mypage-review-subtitle">
-                    <p>- 후기 작성 시 사진후기 100원, 글후기 50원을 적립해드립니다.</p>
-                    <p>- 주간 베스트 후기로 선정 시 5000원을 추가 적립</p>
-                    <p>* 후기 작성은 배송 완료일로부터 30일 이내 가능합니다.</p>
                 </div>
 
                     <Nav justify variant="tabs" defaultActiveKey="link-1" onSelect={handleSelect}>
@@ -205,13 +228,13 @@ export default function ReviewList(props) {
                             <Nav.Link eventKey="link-1">작성가능 후기</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="link-2" onClick={log}>작성완료 후기</Nav.Link>
+                            <Nav.Link eventKey="link-2">작성완료 후기</Nav.Link>
                         </Nav.Item> 
                     </Nav>
                 <div>
                     
                 <table className="mypage-review-table-container">
-                    {review}
+                    {review()}
                 </table>
                 
             </div>

@@ -1,8 +1,9 @@
-import MyPageReviewList from './MyPageReviewList'
+import MyPageReviewList from '../MypageComponents/MyPageReviewList'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { host } from '../Containers/ServerAddress'
+import { host } from './ServerAddress'
 import {connect} from 'react-redux'
+import queryString from 'query-string'
 
 
 export default function MyPageR(props) {
@@ -10,6 +11,7 @@ export default function MyPageR(props) {
     const [data2, setData2] = useState(null);
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(2)
+    const query = queryString.parse(props.location.search);
     const userInfoR = props.userInfo
 
     const getAxiosData = (uri,uri2) => {
@@ -30,6 +32,12 @@ export default function MyPageR(props) {
         if (!data1 && !data2) {
             getAxiosData(`api/members/${userInfoR.mem_id }/prds`,`api/review/review_mem?mem_id=${userInfoR.mem_id }`)
         }
+        if (!query.page) {
+            props.history.push(`/mypage/review?page=${page}`)
+        }
+        if ((parseInt(query.page) !== page)) {
+            setPage(parseInt(query.page))
+        }
     }, [data1], [data2]
     )
     return (
@@ -41,6 +49,7 @@ export default function MyPageR(props) {
                 history={props.history} 
                 size={size}
                 page={page}
+                query = {query}
                 /> 
             }
         </>

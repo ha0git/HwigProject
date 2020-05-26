@@ -1,9 +1,9 @@
-import MyPageOrderList from './MyPageOrderList'
+import MyPageOrderList from '../MypageComponents/MyPageOrderList'
 import React, { useState, useEffect }  from 'react'
 import vienna from '../images/product/vienna.png';
 import queryString from 'query-string'
 import axios from 'axios'
-import { host } from '../Containers/ServerAddress'
+import { host } from './ServerAddress'
 import {connect} from 'react-redux'
 
 export default function MyPageOrderL(props) {

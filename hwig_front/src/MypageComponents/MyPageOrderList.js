@@ -76,10 +76,10 @@ export default function OrderList(props) {
         if (orderInfo.length > 0) {let list =[];
         let begin = (activePage-1)*props.size;
         let end;
-        if(orderInfo.length < activePage*2){
+        if(orderInfo.length < activePage*3){
             end = orderInfo.length;
         }else{
-            end = activePage*2;
+            end = activePage*3;
         }
         console.log(begin,end)
 
@@ -100,9 +100,9 @@ export default function OrderList(props) {
         if (orderInfo.length > 0) {
             return(<Pagination
                 activePage={activePage}
-                itemsCountPerPage={1}
+                itemsCountPerPage={3}
                 totalItemsCount={orderInfo.length}
-                pageRangeDisplayed={3}
+                pageRangeDisplayed={5}
                 onChange={handlePageChange}
             />)
         } else {

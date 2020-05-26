@@ -1,8 +1,7 @@
 import React, {useEffect,useState} from 'react'
-import './MyPageModify.css'
 import axios from 'axios'
-import { host } from '../Containers/ServerAddress'
-import MyPageModifyUserInfo from './MyPageModifyUserInfo.js'
+import { host } from './ServerAddress'
+import MyPageModifyUserInfo from '../MypageComponents/MyPageModifyUserInfo'
 import {connect} from 'react-redux'
 
 export default function Modify(props) {

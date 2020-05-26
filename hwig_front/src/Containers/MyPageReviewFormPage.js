@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import './MyPageModify.css'
 import axios from 'axios'
-import { host } from '../Containers/ServerAddress'
-import MypageReviewForm from './MypageReviewForm.js'
+import { host } from './ServerAddress'
+import MypageReviewForm from '../MypageComponents/MypageReviewForm'
 import queryString from 'query-string'
 import {connect} from 'react-redux'
 
