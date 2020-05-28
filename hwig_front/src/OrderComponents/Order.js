@@ -151,8 +151,6 @@ export default function Order(props) {
         //상품id 배열 선언
         let item = ""
         let count = ""
-        // let order_prd_ids = new Array();
-        // let order_counts = new Array();
 
         for (let i = 0; i < goodsInfo.length; i++) {
             item = goodsInfo[i].prd_id
@@ -309,7 +307,7 @@ export default function Order(props) {
                                                     value={getaddress2}
                                                     onChange={e => {
                                                         setGetAddress2(e.target.value)
-                                                        setOrder_receiver_addr("(" + zipcode + ")" + " " + getaddress1 + " " + getaddress2)
+                                                        setOrder_receiver_addr("(" + zipcode + ")" + " " + getaddress1 + " " + getaddress2 + " ")
                                                     }
                                                     }
                                                     placeholder="나머지 주소를 작성해주세요." />

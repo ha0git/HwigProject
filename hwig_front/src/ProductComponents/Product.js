@@ -80,8 +80,7 @@ export default function Product(props) {
         props.history.push(`/shop/product?goodsno=${goodsInfo.prd_id}&page=${pageNumber}`)
     }
 
-    const showOrderList = () =>{
-
+    const showPrdList = () =>{
         if (prd_review.length > 0) {
             let list =[];
             let begin = 0;
@@ -100,7 +99,6 @@ export default function Product(props) {
                 list.push(prdReviewList[i])
             }
             console.log(list)
-
             return list
         }
         else{
@@ -217,7 +215,7 @@ export default function Product(props) {
                                     </tr>
                                 </thead>
                                 <tbody className="prd_frmContent">
-                                    {showOrderList()}
+                                    {showPrdList()}
                                 </tbody>
                             </table>
                             <div className="frm_pagination">
