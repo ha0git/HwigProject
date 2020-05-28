@@ -1,4 +1,4 @@
-﻿# [쇼핑몰 바로가기!!](http://hwig.s3-website.ap-northeast-2.amazonaws.com/)
+# [쇼핑몰 바로가기!!](http://hwig.s3-website.ap-northeast-2.amazonaws.com/)
 
 # 식품 쇼핑몰 '휙' 프로젝트_이하영 파트
 <br>
