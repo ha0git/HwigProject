@@ -37,10 +37,6 @@ export default function Product(props) {
     const totalPay = (goodsInfo.prd_price * order_count)
 
     //상품 리뷰
-
-
-
-    console.log(prd_review)
     window.$ = window.jQuery = jQuery;
 
     const handleShow = (index) => {
@@ -57,53 +53,61 @@ export default function Product(props) {
 
     const prdReviewList = prd_review.map((review, index) => {
         window.$(document).ready(function () {
-            console.log('실행')
             window.$(`.temp_toggle${index}`).css('display', 'none')
         })
-        return (
-            <>
-                <tr key={index}>
-                    <td>{review.review_id}</td>
-                    <td><a onClick={() => handleShow(index)}>{review.review_subject}</a></td>
-                    <td>{review.mem_id}</td>
-                    <td>{review.review_regdate}</td>
-                </tr>
-                <tr className={`temp_toggle${index}`}>
-                    <td className="prd_toggle_content" colSpan="4">
-                        <img src={"http://13.209.202.242:8080/" + review.review_img} />
-                        <p>{review.review_content}</p>
-                    </td>
-                </tr>
-            </>
-        )
-    }
-    )
-
-    const showReviewList = () => {
-        let list = [];
-        let begin = (props.page - 1) * props.size;
-        let end;
-        if (prd_review.length < props.page * 13) {
-            end = prd_review.length;
-        } else {
-            end = props.page * 13;
-        }
-        console.log(begin, end)
-
-        for (let i = begin; i < end; i++) {
-            list.push(prdReviewList[i])
-        }
-        console.log(list)
-
-        return list
-    }
-
+            return (
+                <>
+                    <tr key={index}>
+                        <td>{review.review_id}</td>
+                        <td><a onClick={() => handleShow(index)}>{review.review_subject}</a></td>
+                        <td>{review.mem_id}</td>
+                        <td>{review.review_regdate}</td>
+                    </tr>
+                    <tr className={`temp_toggle${index}`}>
+                        <td className="prd_toggle_content" colSpan="4">
+                            <img src={"http://13.209.202.242:8080/" + review.review_img} />
+                            <p>{review.review_content}</p>
+                        </td>
+                    </tr>
+                </>
+            )
+    })
     const [activePage, setactivePage] = useState(1);
 
     const handlePageChange = (pageNumber) => {
         console.log(`active page is ${pageNumber}`);
         setactivePage(pageNumber)
-        props.history.push(`shop/product?goodsno=${goodsInfo.prd_id}&page=${pageNumber}`)
+        props.history.push(`/shop/product?goodsno=${goodsInfo.prd_id}&page=${pageNumber}`)
+    }
+
+    const showPrdList = () =>{
+        if (prd_review.length > 0) {
+            let list =[];
+            let begin = 0;
+            let end;
+
+            begin = (activePage - 1) * 5;
+
+            if(prd_review.length < props.page * 5){
+                end = props.page * 5;
+            }else{
+                end = activePage *5;
+            }
+            console.log(begin,end)
+
+            for(let i=begin; i<end; i++){
+                list.push(prdReviewList[i])
+            }
+            console.log(list)
+            return list
+        }
+        else{
+            return(
+                <tr>
+                    <td colSpan="4">해당 상품에 대한 리뷰가 없습니다.</td>
+                </tr>
+            )
+        }
     }
 
     return (
@@ -211,17 +215,17 @@ export default function Product(props) {
                                     </tr>
                                 </thead>
                                 <tbody className="prd_frmContent">
-                                    {showReviewList()}
+                                    {showPrdList()}
                                 </tbody>
                             </table>
                             <div className="frm_pagination">
-                                <Pagination
-                                    activePage={activePage}
-                                    itemsCountPerPage={5}
-                                    totalItemsCount={prd_review.length}
-                                    pageRangeDisplayed={5}
-                                    onChange={handlePageChange}
-                                />
+                            <Pagination
+                                activePage={activePage}
+                                itemsCountPerPage={5}
+                                totalItemsCount={prd_review.length}
+                                pageRangeDisplayed={5}
+                                onChange={handlePageChange}
+                            />
                             </div>
                         </div>
                     </div>

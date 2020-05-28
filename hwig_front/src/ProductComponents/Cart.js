@@ -10,8 +10,6 @@ export default function Cart(props) {
     const [order_counts, setOrder_counts] = useState(new Array());
 
     const mem_id = props.userInfo.mem_id;
-    console.log(mem_id)
-
 
     //배송비 금액 부분
     let result = 0;
@@ -24,12 +22,6 @@ export default function Cart(props) {
         delivery_charge = 0
     } else if (result < 25000) {
         delivery_charge = 3000
-    }
-
-    const handleSubmit = (e) => {
-        console.log('handleSubmit 실행됨')
-        e.preventDefault();
-        props.onSubmit({ mem_id, prd_ids, order_counts })
     }
 
     //장바구니 비우기
@@ -50,6 +42,7 @@ export default function Cart(props) {
         //상품수량 증가버튼
         const onIncrease = () => {
             setCount(goods.order_count += 1)
+            console.log(goods.order_count)
         }
         //상품수량 감소버튼
         const onDecrease = () => {
@@ -65,21 +58,8 @@ export default function Cart(props) {
             const items = goodsInfo.filter(good => good.prd_id !== prd_id)
             setGoodsInfo(items)
             props.onClick1({ mem_id, prd_id })
+            console.log(items)
             console.log(mem_id, prd_id)
-
-            //남아있는 상품 order_count, prd_id 배열 만들기
-            let order = "";
-            let id = "";
-
-            for (let i = 0; i < items.length; i++) {
-                order = items[i].order_count
-                order_counts[i] = order
-
-                id = items[i].prd_id
-                prd_ids[i] = id
-            }
-            console.log(order_counts)
-            console.log(prd_ids)
         }
 
         return (
@@ -127,6 +107,23 @@ export default function Cart(props) {
             </>
         )
     })
+
+    //주문하기 버튼
+    
+    const handleSubmit = (e) => {
+        console.log('handleSubmit 실행됨')
+        e.preventDefault();
+        //남아있는 상품 order_count, prd_id 배열 만들기
+        let order = "";
+        let id = "";
+
+        for (let i = 0; i < goodsInfo.length; i++) {
+            order_counts.push(goodsInfo[i].order_count)
+            prd_ids.push(goodsInfo[i].prd_id)
+        }
+        props.onSubmit({ mem_id, prd_ids, order_counts })
+    }
+
     return (
         <>
             <div className="cart_container">
