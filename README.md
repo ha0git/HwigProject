@@ -23,7 +23,7 @@
 
 - 작업 기간 : 2020.03.01 ~ 진행중
 - 작업 인원 : 총 6명 (프론트엔드 3명, 백엔드 3명) 
-- Front-end : HTML5 / CSS3 / Bootstrap / ReactJs / Ajax / JQuery
+- Front-end : HTML5 / CSS3 /Javascript / Bootstrap / ReactJs / Ajax / JQuery
 - Back-end : Spring(Mybatis, Java8, JSP) / Oracle 11g
 - 서버 구축 : AWS
 - 버전 관리 : Git
