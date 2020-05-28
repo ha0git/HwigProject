@@ -89,6 +89,22 @@ export default function BodyUp(props) {
     const getEventItems = eventItem.map((list, index) => {
         if (list.event_square_img == "empty") {
             return 
+        } else if (list.event_id == 4) {
+            return(
+                <li key={index} className="main_event_li">
+                    <Link to={`/shop?category_id=101&page=1`}>
+                        <div className="main_thumb_event_img">
+                            <img className="imgscale1" src={"http://13.209.202.242:8080/" + list.event_square_img} alt="" />
+                        </div>
+                    </Link>
+                    <div className="info_event">
+                        <span className="event_name">
+                            <Link to={`/shop?category_id=101&page=1`}>{list.event_subject}</Link>
+                        </span><p />
+                        <span className="eventsubtext">{list.event_content}</span>
+                    </div>
+                </li>
+            )
         } else {
             return (
                 <li key={index} className="main_event_li">

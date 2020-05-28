@@ -44,7 +44,7 @@ export default function MyPageOrderDetail(props) {
                         </div>
                         <div className="mypage_orderdetail_desc">
                             <span className="mypage_orderdetail_price">{goodsInfo.prd_price}원</span>
-                            <span className="mypage_orderdetail_ea">{goodsInfo.prd_count}개 구매</span>
+                            <span className="mypage_orderdetail_ea">{goodsInfo.order_count}개 구매</span>
                         </div>
                     </td>
                     <td className="mypage_orderdetail_progress">

@@ -8,7 +8,11 @@ export default function EventList(props) {
     const [activePage, setactivePage] = useState(15);
     const getEvtList = props.evtList;
     
-    const getList = getEvtList.map((list,index)=>
+    const getList = getEvtList.map((list,index)=>  {
+    if (list.event_list_img == "empty") {
+        return 
+    } else {
+        return (
         <li key={index} className="event_goods_li">
             <Link to={`/eventlist/event?event_id=${list.event_id}`}>
                 <div className="event_thumb_img" >
@@ -16,6 +20,9 @@ export default function EventList(props) {
                 </div>
             </Link>
         </li>
+        )
+    }
+    }   
     )
     console.log(getList)
 
